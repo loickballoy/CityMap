@@ -3,3 +3,4 @@
 Connected :
 
     -Rémy : OK
+    -Loïck: OK
