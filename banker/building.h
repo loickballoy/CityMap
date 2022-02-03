@@ -1,20 +1,21 @@
 #ifndef BUILDING_H
 #define BUILDING_H
 
+
 struct citizen
 {
 	unsigned char age;
 };
-
+/*
 unsigned char NUMBER_TYPE = 7;
 
-unsigned int HALL[] = {500, 30, 0, 0, 0, 0, 20};
-unsigned int PROPERTY[] = {0, 0, 30, 0, 0, 0, 0};
-unsigned int OFFICE[] = {0, 50, 0, 0, 0, 0, 5};
-unsigned int COMISSARY[] = {0, 20, 0, 0, 0, 500, 15};
-unsigned int SHOP[] = {0, 10, 0, 200, 0, 0, 10};
-unsigned int HOSPITAL[] = {0, 20, 0, 0, 300, 0, 20};
-
+unsigned int HALL[NUMBER_TYPE];
+unsigned int PROPERTY[NUMBER_TYPE];
+unsigned int OFFICE[NUMBER_TYPE];
+unsigned int COMISSARY[NUMBER_TYPE];
+unsigned int SHOP[NUMBER_TYPE];
+unsigned int HOSPITAL[NUMBER_TYPE];
+*/
 struct buildingType
 {
 	unsigned int policy;
@@ -33,6 +34,5 @@ struct building
 	unsigned int x;
 	unsigned int y;
 };
-
 
 #endif
