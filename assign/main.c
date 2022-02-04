@@ -1,6 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "assign.h"
 
 int main(void)
 {
-    return 0;
+	printf("hey");
+	return 0;
 }
