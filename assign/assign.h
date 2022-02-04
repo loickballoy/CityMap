@@ -20,4 +20,10 @@ struct map
 	int maxWidth;
 };
 
+struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList);;
+
+void updateNeeds(struct cell *cell, struct map *map);
+
+
+
 #endif

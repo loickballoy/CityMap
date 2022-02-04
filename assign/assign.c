@@ -2,15 +2,26 @@
 #include <stdlib.h>
 #include "assign.h"
 
-void initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList)
+struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList)
 {
 	struct map *newMap = malloc(sizeof(struct map));
 	newMap->maxHeight = maxH;
 	newMap->maxWidth = maxW;
-	newMap->cells = malloc(maxH * maxW * sizeof(struct cell));
-
-	struct cell *center = *newMap->cells + maxH/2 + maxW/2;
-	center->building = *buildingList;
+	printf("%p map pointeur \n",newMap);
+	struct cell **cells = newMap->cells;
+	cells = malloc(maxH * maxW * sizeof(struct cell));
+	printf("%p cells pointeur\n",newMap->cells);
+	printf("%p cells pointeur\n",*cells);
+	struct cell *Fcell = *newMap->cells;
+	printf("%p Fcell pointeur\n", Fcell);
+	struct cell *center = Fcell + maxW/2 + maxW*(maxH/2);
+	printf("%p center pointeur %p \n",center, center->building);
+	printf("%p buildingList pointeur\n", *buildingList);
+	struct building *Hall = *buildingList;
+	printf("%u buildingList policy first\n", Hall->type->policy);
+	center->building = Hall;
+	printf("hey hey\n");
+	return newMap;
 }
 
 void updateNeeds(struct cell *cell, struct map *map)
@@ -32,6 +43,4 @@ void updateNeeds(struct cell *cell, struct map *map)
 		}
 		posX += map->maxWidth - 2*cell->building->type->range;
 	}
-
-
 }
