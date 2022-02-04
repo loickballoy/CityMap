@@ -22,9 +22,14 @@ void updateNeeds(struct cell *cell, struct map *map)
 	{
 		for(; posX <((unsigned int)*cell->*building->*type->range)*2; posX++)
 		{
-			//dispertion pondéré avec hausse des besoin d'habitation par cellule 
+			//dispertion pondéré avec hausse des besoin d'habitation par cellule
 			struct cell *tempCell = *map->*(cells+(*map->maxHeight*posY + posX));
+			unsigned int ponderationX = *cell->*building->x-*map->maxWidth * *cell->*building->y;
+			unsigned int ponderationY = *cell->*building->y-*map->maxWidth * *cell->*building->x;
+			unsigned int ponderation = ponderationX+ponderationY;
+			//mettre a jour les valeurs
 		}
+		posX += *map->maxWidth - 2*cell->*building->*type->range;
 	}
 
 
