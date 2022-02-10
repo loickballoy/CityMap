@@ -3,6 +3,19 @@
 #include "assign.h"
 #include "../banker/need.c"
 
+void freeList(struct building **buildingL)
+{
+	for(int i = 0; i < 21; i++)
+	{
+		struct building *buildingF = *(buildingL+i);
+		struct buildingType *type = buildingF->type;
+		free(buildingF);
+		free(type);
+	}
+	free(buildingL);
+}
+
+
 void testInitMap()
 {
 	struct building **buildingList = initTownList();
@@ -21,9 +34,12 @@ void testInitMap()
 	printf("%p\n",(center->building->type));
 
 	printf("%u\n",(center->building->type->policy));
-	free(buildingList);
+	freeList(buildingList);
+	free(newmap->cells);
 	free(newmap);
 }
+
+
 
 int main(void)
 {
