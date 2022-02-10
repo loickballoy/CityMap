@@ -15,7 +15,7 @@ struct cell{
 
 struct map
 {
-	struct cell **cells;
+	struct cell *cells;
 	int maxHeight;
 	int maxWidth;
 };
