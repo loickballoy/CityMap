@@ -6,7 +6,7 @@
 
 unsigned char NUMBER_TYPE = 7;
 
-unsigned int HALL[] = {500, 30, 0, 0, 0, 0, 20};
+unsigned int HALL[] = {500, 30, 0, 0, 0, 10, 20};
 unsigned int PROPERTY[] = {0, 0, 30, 0, 0, 0, 0};
 unsigned int OFFICE[] = {0, 50, 0, 0, 0, 0, 5};
 unsigned int COMISSARY[] = {0, 20, 0, 0, 0, 500, 15};

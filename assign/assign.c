@@ -28,7 +28,10 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 
 	printf("%u buildingList policy first\n", Hall->type->policy);
 	center->building = Hall;
-	printf("hey hey\n");
+	updateNeeds(center, newMap);
+
+
+	printf("hey hey iniMap works\n");
 	return newMap;
 }
 
@@ -37,6 +40,8 @@ void updateNeeds(struct cell *cell, struct map *map)
 	//V1 dispertion en carré
 	unsigned int posX = cell->building->x-((unsigned int)cell->building->type->range);
 	unsigned int posY = cell->building->y-((unsigned int)cell->building->type->range);
+	printf("%u \n", posY);
+	printf("%u \n", cell->building->y);
 	for(; posY < ((unsigned int)cell->building->type->range)*2; posY++)
 	{
 		for(; posX <((unsigned int)cell->building->type->range)*2; posX++)
@@ -47,7 +52,7 @@ void updateNeeds(struct cell *cell, struct map *map)
 			unsigned int ponderationY = cell->building->y-map->maxWidth * cell->building->x - tempCell->building->y;
 			unsigned int ponderation = ponderationX+ponderationY;
 			ponderation += 0;
-			//mettre a jour les valeurs
+			tempCell->habitation += 50 - ponderation;
 		}
 		posX += map->maxWidth - 2*cell->building->type->range;
 	}

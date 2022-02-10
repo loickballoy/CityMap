@@ -15,8 +15,7 @@ void freeList(struct building **buildingL)
 	free(buildingL);
 }
 
-
-void testInitMap()
+void testAssign()
 {
 	struct building **buildingList = initTownList();
 	struct map *newmap = initMap(250,250,buildingList);
@@ -34,16 +33,22 @@ void testInitMap()
 	printf("%p\n",(center->building->type));
 
 	printf("%u\n",(center->building->type->policy));
+
+	printf("-----------------------------------------------------\n");
+	
+	struct cell *uptest = center - 2;
+	printf("%p\n", uptest);
+	printf("%u\n",(uptest->building->type->policy));
+
+
 	freeList(buildingList);
 	free(newmap->cells);
 	free(newmap);
 }
 
-
-
 int main(void)
 {
-	testInitMap();
+	testAssign();
 	printf("hey\n");
 	return 0;
 }
