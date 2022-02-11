@@ -21,6 +21,11 @@ struct map
 };
 
 void printMatrix(struct map *newmap);
+void printMatrixHab(struct map *newmap);
+void printMatrixJob(struct map *newmap);
+void printMatrixEco(struct map *newmap);
+void printMatrixHeal(struct map *newmap);
+
 
 
 struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList);
