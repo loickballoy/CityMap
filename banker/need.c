@@ -6,15 +6,15 @@
 
 unsigned char NUMBER_TYPE = 7;
 
-unsigned int HALL[] = {500, 30, 0, 0, 0, 10, 20};
-unsigned int PROPERTY[] = {0, 0, 30, 0, 0, 0, 0};
-unsigned int OFFICE[] = {0, 50, 0, 0, 0, 0, 5};
-unsigned int COMISSARY[] = {0, 20, 0, 0, 0, 500, 15};
-unsigned int SHOP[] = {0, 10, 0, 200, 0, 0, 10};
-unsigned int HOSPITAL[] = {0, 20, 0, 0, 300, 0, 20};
+int HALL[] = {0, 10, 50, 0, 0, 10, 30};
+int PROPERTY[] = {0, 50, -50, 40, 40, -35, 15};
+int OFFICE[] = {0, -50, 50, 0, 0, 0, 10};
+int COMISSARY[] = {0, -20, 30, 0, 0, 50, 20};
+int SHOP[] = {0, 0, 20, -50, 0, 20, 10};
+int HOSPITAL[] = {0, 20, 30, 0, -50, 0, 20};
 
 
-unsigned int *select(unsigned char type)
+int *select(unsigned char type)
 {
 	if(type == 0)
 		return HALL;
@@ -33,7 +33,7 @@ unsigned int *select(unsigned char type)
 
 struct building *build(unsigned char type)
 {
-	unsigned int *typeArray = select(type);
+	int *typeArray = select(type);
 	struct buildingType *newType = malloc(sizeof(struct buildingType));
 	struct building *newBuild = malloc(sizeof(struct building));
 	newBuild->type = newType;

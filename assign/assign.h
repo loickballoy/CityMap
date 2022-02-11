@@ -5,11 +5,11 @@
 
 struct cell{
 	struct building *building;
-	unsigned int security;
-	unsigned int job;
-	unsigned int habitation;
-	unsigned int economy;
-	unsigned int health;
+	int security;
+	int job;
+	int habitation;
+	int economy;
+	int health;
 	int isRoadConnected;	
 };
 
@@ -20,9 +20,17 @@ struct map
 	int maxWidth;
 };
 
-struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList);;
+void printMatrix(struct map *newmap);
 
-void updateNeeds(struct cell *cell, struct map *map);
+
+struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList);
+
+void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList);
+
+int maxStat(struct cell *cell, int *stat);
+
+void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct building **buildingList);
+
 
 
 
