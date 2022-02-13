@@ -21,7 +21,7 @@ void freeList(struct building **buildingL)
 void testAssign(int compt)
 {
 	struct building **buildingList = initTownList();
-	struct map *newmap = initMap(50,50,buildingList, compt);
+	struct map *newmap = initMap(60,60,buildingList, compt);
 
 	struct cell *Fcell = newmap->cells;
 
@@ -65,7 +65,7 @@ void printMatrice(struct map *newmap)
 
 int main(int argc, int **argv)
 {
-	testAssign(300);
+	testAssign(501);
 	/*if(argc == 1)
 		testAssign(5);
 	if(argc != 1)
