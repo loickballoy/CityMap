@@ -18,10 +18,10 @@ void freeList(struct building **buildingL)
 	free(buildingL);
 }
 
-void testAssign()
+void testAssign(int compt)
 {
 	struct building **buildingList = initTownList();
-	struct map *newmap = initMap(50,50,buildingList);
+	struct map *newmap = initMap(50,50,buildingList, compt);
 
 	struct cell *Fcell = newmap->cells;
 
@@ -29,7 +29,7 @@ void testAssign()
 
 	printf("-----------------------------------------------------\n");
 
-	printMatrixHab(newmap);
+	printMatrixHab(newmap);/*
 	printf("===========================================================================\n\n =========================================================================================\n");
 	printMatrixEco(newmap);
 	printf("===========================================================================\n\n =========================================================================================\n");
@@ -38,7 +38,7 @@ void testAssign()
 	printMatrixHeal(newmap);
 	printf("===========================================================================\n\n =========================================================================================\n");
 
-	printMatrix(newmap);
+	printMatrix(newmap);*/
 
 
 	freeList(buildingList);
@@ -63,9 +63,13 @@ void printMatrice(struct map *newmap)
 	}	
 }
 
-int main(void)
+int main(int argc, int **argv)
 {
-	testAssign();
-	printf("hey\n");
+	testAssign(300);
+	/*if(argc == 1)
+		testAssign(5);
+	if(argc != 1)
+		testAssign(argv[1]);
+	printf("hey\n");*/
 	return 0;
 }

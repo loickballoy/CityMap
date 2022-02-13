@@ -6,8 +6,40 @@
 #define COLOR_RED "\x1b[31m"
 #define COLOR_RESET "\x1b[0m"
 
+void analyseMatrix(struct map *newmap)
+{
+	int nbbat = 0;
+	int secu = 0;
+	int hab = 0;
+	int job = 0;
+	int eco = 0;
+	int heal = 0;
+	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
+	{
+		struct cell *uptest = newmap->cells + j;
+		if(uptest->building != NULL)
+		{
+			secu += uptest->security;
+			hab += uptest->habitation;
+			job += uptest->job;
+			eco += uptest->economy;
+			heal += uptest->health;
+			nbbat++;
+		}
+	}
+	printf("MOY SECU = %i\n", secu/nbbat);
+	printf("MOY HAB = %i\n", hab/nbbat);
+	printf("MOY JOB = %i\n", job/nbbat);
+	printf("MOY ECO = %i\n", eco/nbbat);
+	printf("MOY HEAL = %i\n", heal/nbbat);
+
+
+}
+
+
 void printMatrix(struct map *newmap)
 {
+	int nbbat = 0;
 	printf("HABITATION\n");
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
@@ -16,12 +48,14 @@ void printMatrix(struct map *newmap)
 			printf("    ;", (upTest->habitation));
 		if(upTest->building != NULL)
 		{
+			nbbat++;
 			printf(COLOR_RED "%i  ;" COLOR_RESET,(upTest->building->type->habitation)); 
 		}
 		if(j%(newmap->maxWidth) == 0){
 			printf("\n");
 		}
 	}
+	printf("NBBAT = %i\n", nbbat);
 	printf("\n");
 }
 
@@ -104,7 +138,7 @@ void printMatrixHeal(struct map *newmap)
 
 
 
-struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList)
+struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt)
 {
 	struct map *newMap = malloc(sizeof(struct map));
 	newMap->maxHeight = maxH;
@@ -132,7 +166,7 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 	printf("%i habitation stat \n", Hall->type->habitation);
 	Hall->x = maxW/2;
 	Hall->y = maxH/2;
-	updateNeeds(center, newMap, 0, buildingList);
+	updateNeeds(center, newMap, 0, buildingList, compt);
 
 
 	printf("hey hey iniMap works\n");
@@ -141,17 +175,18 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 
 
 
-void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList)
+void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList, int nbcompt)
 {
 	//V tout le temps en cercle pondéré
 	//
 	
-	if(compt == 3){
+	if(compt == nbcompt){
 		printf("hey hey update est fini\n");
 		return;
 	}
 
-	//arret 
+	//arret
+	
 	
 	struct cell *deficit;
 	int maxdeficit = 0;
@@ -161,9 +196,9 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 	int *maxStats = &maxiStat;
 
 	int roof = 40;
-	unsigned int posX = cell->building->x-((unsigned int)cell->building->type->range);
+	/*unsigned int posX = cell->building->x-((unsigned int)cell->building->type->range);
 	unsigned int posY = cell->building->y-((unsigned int)cell->building->type->range);
-	/*printf("%u \n", posY);
+	printf("%u \n", posY);
 	printf("%u \n", cell->building->y);
 	printf("%u \n", posX);*/
 
@@ -197,13 +232,15 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		        UpCell->job += biasJob - (int)(ponderation * (float)biasJob);
 			maxTemp = maxStat(UpCell, stat);
 
-			if(maxTemp>= roof && maxTemp > maxdeficit)
+			//le fait de calculer toujours les up avant les down fait que les premiers besoins a etre satisfait seront les besoins des cellules up
+
+			if(maxTemp>= roof && maxTemp > maxdeficit && UpCell->building == NULL)
 			{
-				//printf("hey hey\n");
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
 				deficit = UpCell; 
 			}
+
 
 
 			DownCell->habitation += i == 0?0:biasHab -(int) (ponderation * (float)biasHab);
@@ -213,7 +250,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		        DownCell->job += i ==0?0:biasJob - (int)(ponderation * (float)biasJob);	
 			maxTemp = maxStat(DownCell, stat);
 
-			if(maxTemp  >= roof && maxTemp > maxdeficit)
+			if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell->building == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
@@ -239,7 +276,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		        UpCell->job += biasJob - (int)(ponderation * (float)biasJob);
 			maxTemp = maxStat(UpCell, stat);
 
-			if(maxTemp>= roof && maxTemp > maxdeficit)
+			if(maxTemp>= roof && maxTemp > maxdeficit &&  UpCell->building == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
@@ -254,7 +291,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		        DownCell->job += i ==0?0:biasJob - (int)(ponderation * (float)biasJob);	
 			maxTemp = maxStat(DownCell, stat);
 
-			if(maxTemp  >= roof && maxTemp > maxdeficit)
+			if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell->building == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
@@ -281,9 +318,8 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 				UpCell->job += biasJob - (int)(ponderation * (float)biasJob);
 				maxTemp = maxStat(UpCell, stat);
 
-				if(maxTemp>= roof && maxTemp > maxdeficit)
+				if(maxTemp>= roof && maxTemp > maxdeficit && UpCell->building == NULL)
 				{
-					//printf("hey hey\n");
 					maxdeficit = maxTemp;
 					*maxStats = *stat;
 					deficit = UpCell; 
@@ -297,7 +333,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 				DownCell->job += i ==0?0:biasJob - (int)(ponderation * (float)biasJob);	
 				maxTemp = maxStat(DownCell, stat);
 
-				if(maxTemp  >= roof && maxTemp > maxdeficit)
+				if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell->building == NULL)
 				{
 					maxdeficit = maxTemp;
 					*maxStats = *stat;
@@ -325,9 +361,8 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 			UpCell->job += biasJob - (int)(ponderation * (float)biasJob);
 			maxTemp = maxStat(UpCell, stat);
 
-			if(maxTemp>= roof && maxTemp > maxdeficit)
+			if(maxTemp>= roof && maxTemp > maxdeficit && UpCell->building == NULL)
 			{
-				//printf("hey hey\n");
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
 				deficit = UpCell; 
@@ -341,7 +376,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 			DownCell->job += i ==0?0:biasJob - (int)(ponderation * (float)biasJob);	
 			maxTemp = maxStat(DownCell, stat);
 
-			if(maxTemp  >= roof && maxTemp > maxdeficit)
+			if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell->building == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
@@ -353,8 +388,13 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		k++;	
 
 	}
+	if(compt%50 == 0)
+	{
+		printMatrix(map);
+		analyseMatrix(map);
+	}
 	//printf("%i maxdeficit, %i stat\n", maxdeficit, *maxStats);
-	recUpdate(deficit, map, maxStats, compt, buildingList);
+	recUpdate(deficit, map, maxStats, compt, buildingList, nbcompt);
 
 }
 
@@ -386,7 +426,7 @@ int  maxStat(struct cell *cell, int *stat)
 }
 
 
-void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct building **buildingList)
+void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct building **buildingList, int nbcompt)
 {
 	//printMatrixHab(map);
 	printf("%i stat to put, %i compt\n",*stat, compt);
@@ -394,30 +434,30 @@ void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct 
 	{
 		cell->building = *(buildingList+1);
 		cell->security = 0;
-		updateNeeds(cell, map, compt+1, buildingList);
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
-	if(*stat == 1)
+	else if(*stat == 1)
 	{
-		cell->building = *(buildingList+14+compt);
+		cell->building = *(buildingList+14);
 		cell->job = 0;
-		updateNeeds(cell, map, compt+1, buildingList);
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
-	if(*stat == 2)
+	else if(*stat == 2)
 	{
-		cell->building = *(buildingList+4+compt);
+		cell->building = *(buildingList+4);
 		cell->habitation = 0;
-		updateNeeds(cell, map, compt+1, buildingList);
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
-	if(*stat == 3)
+	else if(*stat == 3)
 	{
-		cell->building = *(buildingList+18+compt);
+		cell->building = *(buildingList+18);
 		cell->economy = 0;
-		updateNeeds(cell, map, compt+1, buildingList);		
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt);		
 	}
 	else
 	{
 		cell->building = *(buildingList+2);
 		cell->health = 0;
-		updateNeeds(cell, map, compt+1, buildingList);
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
 }
