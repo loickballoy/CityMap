@@ -35,4 +35,10 @@ struct building
 	unsigned int y;
 };
 
+struct buildList
+{
+  unsigned int batDisp;
+  struct building *batList;
+};
+
 #endif
