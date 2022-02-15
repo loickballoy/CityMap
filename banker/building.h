@@ -30,9 +30,11 @@ struct buildingType
 
 struct building
 {
-	struct buildingType *type;
+	struct buildingType *values;
 	unsigned int x;
 	unsigned int y;
+	int type;
+	int placed;
 };
 
 #endif

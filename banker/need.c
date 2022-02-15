@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int NO = 0;
+int YES = 1;
+
 unsigned char NUMBER_TYPE = 7;
 
 int HALL[] = {0, 10, 50, 0, 0, 10, 30};
@@ -36,7 +39,9 @@ struct building *build(unsigned char type)
 	int *typeArray = select(type);
 	struct buildingType *newType = malloc(sizeof(struct buildingType));
 	struct building *newBuild = malloc(sizeof(struct building));
-	newBuild->type = newType;
+	newBuild->values = newType;
+	newBuild->placed = NO;
+	newBuild->type = (int) type;
 
 	newType->policy = *typeArray;
 	newType->job = *(typeArray + 1);

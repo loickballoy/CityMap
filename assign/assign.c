@@ -430,34 +430,48 @@ void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct 
 {
 	//printMatrixHab(map);
 	printf("%i stat to put, %i compt\n",*stat, compt);
+
+	cell->building = getBat(*stat, buildingList);
+
 	if(*stat == 0)
 	{
-		cell->building = *(buildingList+1);
+		//cell->building = *(buildingList+1);
 		cell->security = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
 	else if(*stat == 1)
 	{
-		cell->building = *(buildingList+14);
+		//cell->building = *(buildingList+14);
 		cell->job = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
 	else if(*stat == 2)
 	{
-		cell->building = *(buildingList+4);
+		//cell->building = *(buildingList+4);
 		cell->habitation = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
 	else if(*stat == 3)
 	{
-		cell->building = *(buildingList+18);
+		//cell->building = *(buildingList+18);
 		cell->economy = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);		
 	}
 	else
 	{
-		cell->building = *(buildingList+2);
+		//cell->building = *(buildingList+2);
 		cell->health = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
+}
+
+struct building getBat(int stat, struct building **buildingList)
+{
+
+	struct building bat = buildingList+1;
+	while (bat && (bat->type != stat+1 && !bat->placed))
+	{
+		bat += 1;
+	}
+	return bat;
 }
