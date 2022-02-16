@@ -11,9 +11,9 @@ void freeList(struct building **buildingL)
 	for(int i = 0; i < 21; i++)
 	{
 		struct building *buildingF = *(buildingL+i);
-		struct buildingType *type = buildingF->type;
+		struct buildingType *values = buildingF->values;
 		free(buildingF);
-		free(type);
+		free(values);
 	}
 	free(buildingL);
 }
@@ -38,7 +38,7 @@ void testAssign(int compt)
 	printMatrixHeal(newmap);
 	printf("===========================================================================\n\n =========================================================================================\n");
 
-	printMatrix(newmap);*/
+	*/printMatrix(newmap);
 
 
 	freeList(buildingList);
@@ -65,7 +65,8 @@ void printMatrice(struct map *newmap)
 
 int main(int argc, int **argv)
 {
-	testAssign(501);
+	testAssign(0);
+	testAssign(2);
 	/*if(argc == 1)
 		testAssign(5);
 	if(argc != 1)

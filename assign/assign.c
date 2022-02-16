@@ -49,7 +49,7 @@ void printMatrix(struct map *newmap)
 		if(upTest->building != NULL)
 		{
 			nbbat++;
-			printf(COLOR_RED "%i  ;" COLOR_RESET,(upTest->building->type->habitation)); 
+			printf(COLOR_RED "%i  ;" COLOR_RESET,(upTest->building->values->habitation)); 
 		}
 		if(j%(newmap->maxWidth) == 0){
 			printf("\n");
@@ -163,7 +163,7 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 
 	struct building *Hall = *buildingList;
 	center->building = Hall;
-	printf("%i habitation stat \n", Hall->type->habitation);
+	printf("%i habitation stat \n", Hall->values->habitation);
 	Hall->x = maxW/2;
 	Hall->y = maxH/2;
 	updateNeeds(center, newMap, 0, buildingList, compt);
@@ -196,23 +196,23 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 	int *maxStats = &maxiStat;
 
 	int roof = 40;
-	/*unsigned int posX = cell->building->x-((unsigned int)cell->building->type->range);
-	unsigned int posY = cell->building->y-((unsigned int)cell->building->type->range);
+	/*unsigned int posX = cell->building->x-((unsigned int)cell->building->values->range);
+	unsigned int posY = cell->building->y-((unsigned int)cell->building->values->range);
 	printf("%u \n", posY);
 	printf("%u \n", cell->building->y);
 	printf("%u \n", posX);*/
 
-	int biasSecu = cell->building->type->security;
-	int biasJob = cell->building->type->job;
-	int biasHab = cell->building->type->habitation;
-	int biasEco = cell->building->type->economy;
-	int biasHeal = cell->building->type->health;
+	int biasSecu = cell->building->values->security;
+	int biasJob = cell->building->values->job;
+	int biasHab = cell->building->values->habitation;
+	int biasEco = cell->building->values->economy;
+	int biasHeal = cell->building->values->health;
 
 	//printf("%i Secu, %i Job, %i Hab, %i Eco, %i Heal\n",biasSecu,biasJob,biasHab,biasEco,biasHeal);
 
 	int maxTemp = 0;
 
-	unsigned int r = (unsigned int)cell->building->type->range; 
+	unsigned int r = (unsigned int)cell->building->values->range; 
 	
 	struct cell *pos;
 	unsigned int i = 0;
@@ -431,45 +431,44 @@ void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct 
 	//printMatrixHab(map);
 	printf("%i stat to put, %i compt\n",*stat, compt);
 
-	cell->building = getBat(*stat, buildingList);
+	//cell->building = getBat(*stat, buildingList);
 
 	if(*stat == 0)
 	{
-		//cell->building = *(buildingList+1);
+		cell->building = *(buildingList+1);
 		cell->security = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
 	else if(*stat == 1)
 	{
-		//cell->building = *(buildingList+14);
+		cell->building = *(buildingList+14);
 		cell->job = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
 	else if(*stat == 2)
 	{
-		//cell->building = *(buildingList+4);
+		cell->building = *(buildingList+4);
 		cell->habitation = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
 	else if(*stat == 3)
 	{
-		//cell->building = *(buildingList+18);
+		cell->building = *(buildingList+18);
 		cell->economy = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);		
 	}
 	else
 	{
-		//cell->building = *(buildingList+2);
+		cell->building = *(buildingList+2);
 		cell->health = 0;
 		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
 	}
 }
 
-struct building getBat(int stat, struct building **buildingList)
+struct building *getBat(int stat, struct building **buildingList)
 {
-
-	struct building bat = buildingList+1;
-	while (bat && (bat->type != stat+1 && !bat->placed))
+	struct building *bat = *buildingList+1;
+	while (bat && (bat->values != stat+1 && !bat->placed))
 	{
 		bat += 1;
 	}
