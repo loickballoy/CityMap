@@ -36,7 +36,7 @@ int maxStat(struct cell *cell, int *stat);
 
 void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct building **buildingList, int nbcompt);
 
-
+struct building *getBat(int stat, struct building **buildingList);
 
 
 #endif

@@ -468,7 +468,7 @@ void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct 
 struct building *getBat(int stat, struct building **buildingList)
 {
 	struct building *bat = *buildingList+1;
-	while (bat && (bat->values != stat+1 && !bat->placed))
+	while (bat && (bat->type != stat+1 && !bat->placed))
 	{
 		bat += 1;
 	}
