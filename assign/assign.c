@@ -32,8 +32,6 @@ void analyseMatrix(struct map *newmap)
 	printf("MOY JOB = %i\n", job/nbbat);
 	printf("MOY ECO = %i\n", eco/nbbat);
 	printf("MOY HEAL = %i\n", heal/nbbat);
-
-
 }
 
 
@@ -350,7 +348,6 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		pos = cell + n - r/2;
 		for(i = 0; i < r/2 - k; i++)
 		{
-			
 			struct cell *UpCell = pos+map->maxWidth*i;
 			struct cell *DownCell = pos-map->maxWidth*i;
 			float ponderation = ((float)(n-r/2+i)/(float)((r)));
@@ -382,8 +379,6 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 				*maxStats = *stat;
 				deficit = DownCell;
 			}
-
-
 		}
 		k++;	
 
@@ -472,5 +467,6 @@ struct building *getBat(int stat, struct building **buildingList)
 	{
 		bat += 1;
 	}
+	bat->placced = 1;
 	return bat;
 }
