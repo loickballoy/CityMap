@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "assign.h"
 #include "../banker/need.c"
 
@@ -18,10 +19,10 @@ void freeList(struct building **buildingL)
 	free(buildingL);
 }
 
-void testAssign(int compt)
+void testAssign(int compt, int roof)
 {
 	struct building **buildingList = initTownList();
-	struct map *newmap = initMap(60,60,buildingList, compt);
+	struct map *newmap = initMap(60,60,buildingList, compt, roof);
 
 	struct cell *Fcell = newmap->cells;
 
@@ -63,14 +64,10 @@ void printMatrice(struct map *newmap)
 	}	
 }
 
-int main(int argc, int **argv)
+int main(int argc, char **argv)
 {
-	testAssign(0);
-	testAssign(2);
-	/*if(argc == 1)
-		testAssign(5);
-	if(argc != 1)
-		testAssign(argv[1]);
-	printf("hey\n");*/
+	int nbbat = (int) atol (argv[1]);
+	int roof = (int) atol (argv[2]);
+	testAssign(nbbat, roof);
 	return 0;
 }
