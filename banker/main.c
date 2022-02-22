@@ -16,7 +16,7 @@ void testSelect()
 		printf("%u,",*(result));
 	}
 }
-
+/*
 void testNewBuild()
 {
 	struct building *result = build(0);
@@ -47,9 +47,43 @@ void testTownList()
 	freeList(buildingL);
 }
 
+void freeList2(struct buildList **buildingL, int nbBat)
+{
+	for(int i = 0; i < nbBat; i++)
+	{
+	  struct buildList *typeBuild = *(buildingL+i);
+	  struct building *buildings = typeBuild->batList;
+	  unsigned int batDisp = typeBuild->batDisp;
+	  for(unsigned int j = 0; j< batDisp;j++)
+	    {
+	      printf("%d\n",j);
+
+	      struct building *build = (buildings + j);
+	      free(build);
+	    }
+	}
+	free(buildingL);
+}
+*/
+
+
+void testList()
+{
+  struct building **List = initTownList3(200000, 1);
+
+  
+  for(int i = 0; i < 6; i++)
+    {
+      free(List[i]);
+    }
+  free(List);
+
+    
+}
+
 int main(void)
 {
-	testTownList();	
+	testList();	
 	return 0;
 }
 

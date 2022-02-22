@@ -37,4 +37,10 @@ struct building
 	int placed;
 };
 
+struct buildList
+{
+  unsigned int batDisp;
+  struct building *batList;
+};
+
 #endif
