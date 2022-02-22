@@ -1,7 +1,2 @@
-
-Connected :
-
-    -Rémy : OK
-    -Loïck: OK
-    -Axel : OK
-    -Guillaume : OK
+Project site :
+https://thefoxell.github.io/CityMapWebsite/index.html

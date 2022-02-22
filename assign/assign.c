@@ -467,6 +467,6 @@ struct building *getBat(int stat, struct building **buildingList)
 	{
 		bat += 1;
 	}
-	bat->placced = 1;
+	bat->placed = 1;
 	return bat;
 }

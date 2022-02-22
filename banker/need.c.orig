@@ -4,10 +4,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+<<<<<<< HEAD
+unsigned int NUMBER_TYPE = 6;
+=======
 int NO = 0;
 int YES = 1;
 
 unsigned char NUMBER_TYPE = 7;
+>>>>>>> Decourcelle
 
 int HALL[] = {0, 10, 50, 0, 0, 10, 30};
 int PROPERTY[] = {0, 50, -50, 40, 40, -35, 15};
@@ -36,12 +40,23 @@ int *select(unsigned char type)
 
 struct building *build(unsigned char type)
 {
+<<<<<<< HEAD
+	unsigned int *typeArray = select(type);
+	struct buildingType n_type;
+	struct buildingType *newType = &n_type;
+	 //malloc(sizeof(struct buildingType));
+	struct building n_build;
+	struct building *newBuild = &n_build;
+	  //malloc(sizeof(struct building));
+	newBuild->type = newType;
+=======
 	int *typeArray = select(type);
 	struct buildingType *newType = malloc(sizeof(struct buildingType));
 	struct building *newBuild = malloc(sizeof(struct building));
 	newBuild->values = newType;
 	newBuild->placed = NO;
 	newBuild->type = (int) type;
+>>>>>>> Decourcelle
 
 	newType->policy = *typeArray;
 	newType->job = *(typeArray + 1);
@@ -56,7 +71,7 @@ struct building *build(unsigned char type)
 	return newBuild;
 	
 }
-
+/*
 struct building **initTownList()
 {
 	struct building **buildingList = malloc(20*sizeof(struct building)); 
@@ -156,7 +171,7 @@ struct buildList **initTownList2(unsigned int nb_hab, unsigned int sec)
 
   return buildingList;
 }
-
+*/
 struct building **initTownList3(unsigned int nb_hab, unsigned int sec)
 {
   unsigned int comi_range = 60000;
