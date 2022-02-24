@@ -7,6 +7,7 @@
 #define COLOR_RED "\x1b[31m"
 #define COLOR_RESET "\x1b[0m"
 
+
 void freeList(struct building **buildingL)
 {
 	for(int i = 0; i < 21; i++)
@@ -21,53 +22,38 @@ void freeList(struct building **buildingL)
 
 void testAssign(int compt, int roof)
 {
+	//init structs
 	struct building **buildingList = initTownList();
 	struct map *newmap = initMap(60,60,buildingList, compt, roof);
 
-	struct cell *Fcell = newmap->cells;
-
-	struct cell *center = Fcell + newmap->maxHeight/2 + newmap->maxWidth*(newmap->maxWidth/2);
-
-	printf("-----------------------------------------------------\n");
-
-	printMatrixHab(newmap);/*
-	printf("===========================================================================\n\n =========================================================================================\n");
-	printMatrixEco(newmap);
-	printf("===========================================================================\n\n =========================================================================================\n");
-	printMatrixJob(newmap);
-	printf("===========================================================================\n\n =========================================================================================\n");
-	printMatrixHeal(newmap);
-	printf("===========================================================================\n\n =========================================================================================\n");
-
-	*/printMatrix(newmap);
+	//run the algo 
 
 
+	//important values
+	/*struct cell *Fcell = newmap->cells;
+	struct cell *center = Fcell + newmap->maxHeight/2 + newmap->maxWidth*(newmap->maxWidth/2);*/
+
+	//print
+	printMatrix(newmap);
+
+	//free
 	freeList(buildingList);
 	free(newmap->cells);
 	free(newmap);
 }
 
-void printMatrice(struct map *newmap)
-{
-	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
-	{
-		struct cell *upTest = newmap->cells + j;
-		if(upTest->building == NULL)
-			printf("    ;", (upTest->habitation));
-		if(upTest->building != NULL)
-		{
-			printf(COLOR_RED "%i ;" COLOR_RESET,(upTest->habitation)); 
-		}
-		if(j%(newmap->maxWidth) == 0){
-			printf("\n");
-		}
-	}	
-}
-
 int main(int argc, char **argv)
 {
+	if(argc != 3)
+	{
+		printf("You have to pass two arguments: ./main [nbbat] [roof]");
+		return 0;
+	}
+	//init values
 	int nbbat = (int) atol (argv[1]);
 	int roof = (int) atol (argv[2]);
+
+	//test
 	testAssign(nbbat, roof);
 	return 0;
 }

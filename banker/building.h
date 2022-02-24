@@ -1,6 +1,7 @@
 #ifndef BUILDING_H
 #define BUILDING_H
 
+#define NBSTATS 5
 
 struct citizen
 {
@@ -18,6 +19,8 @@ unsigned int HOSPITAL[NUMBER_TYPE];
 */
 struct buildingType
 {
+	unsigned int stats[NBSTATS];
+
 	unsigned int policy;
 	unsigned int job;
 	unsigned int habitation;

@@ -42,6 +42,9 @@ struct building *build(unsigned char type)
 	newBuild->values = newType;
 	newBuild->placed = NO;
 	newBuild->type = (int) type;
+	
+	for(int i = 0; i < NBSTATS; i++)
+		newType->stats[i] = *(typeArray+i);
 
 	newType->policy = *typeArray;
 	newType->job = *(typeArray + 1);

@@ -3,13 +3,17 @@
 
 #include "../banker/building.h"
 
-struct cell{
+struct cell
+{
 	struct building *building;
-	int security;
+
+	int stats[NBSTATS];
+	/*int security;
 	int job;
 	int habitation;
 	int economy;
-	int health;
+	int health;*/
+
 	int isRoadConnected;	
 };
 
@@ -19,6 +23,7 @@ struct map
 	int maxHeight;
 	int maxWidth;
 };
+
 void analyseMatrix(struct map *newmap);
 
 void printMatrixTime(struct map *newmap);
@@ -27,14 +32,9 @@ char charType(int type);
 
 void printMatrix(struct map *newmap);
 
-void printMatrixHab(struct map *newmap);
+void printMatrixStat(struct map *newmap, int stat);
 
-void printMatrixJob(struct map *newmap);
-
-void printMatrixEco(struct map *newmap);
-
-void printMatrixHeal(struct map *newmap);
-
+void stringType(int stat);
 
 
 struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof);
