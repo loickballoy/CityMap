@@ -7,6 +7,11 @@
 #include "../banker/need.h"
 
 #define COLOR_RED "\x1b[31m"
+#define COLOR_BLEU "\x1b[34m"
+#define COLOR_GREEN "\x1b[32m"
+#define COLOR_YELLOW "\x1b[33m"
+#define COLOR_PURPLE "\x1b[35m"
+#define COLOR_CYAN "\x1b[36m"
 #define COLOR_RESET "\x1b[0m"
 
 void analyseMatrix(struct map *newmap)
@@ -90,7 +95,19 @@ void printMatrix(struct map *newmap)
 		if(upTest->building != NULL)
 		{
 			nbbat++;
-			printf(COLOR_RED "%c ;" COLOR_RESET,charType((upTest->building->type))); 
+			printf("");
+			if(upTest->building->type == 0)
+				printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->building->type));
+			else if(upTest->building->type == 1)
+				printf(COLOR_GREEN "%c ;" COLOR_RESET, charType(upTest->building->type));
+			else if(upTest->building->type == 2)
+				printf(COLOR_YELLOW "%c ;" COLOR_RESET, charType(upTest->building->type));
+			else if(upTest->building->type == 3)
+				printf(COLOR_PURPLE "%c ;" COLOR_RESET, charType(upTest->building->type));
+			else if(upTest->building->type == 4)
+				printf(COLOR_CYAN "%c ;" COLOR_RESET, charType(upTest->building->type));
+			else
+				printf(COLOR_RED "%c ;" COLOR_RESET,charType(upTest->building->type)); 
 		}
 		if(j%(newmap->maxWidth) == 0){
 			printf("\n");
@@ -196,8 +213,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		return;
 	}
 
-	//arret
-	
+	//arret	
 	
 	struct cell *deficit;
 	int maxdeficit = 0;
@@ -205,8 +221,6 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 	int *stat = &stats;
 	int maxiStat= 0;
 	int *maxStats = &maxiStat;
-
-	//int roof = 40;
 
 	int bias[NBSTATS];
 	for(int i = 0; i < NBSTATS; i++)
@@ -361,6 +375,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 
 	}
 
+
 	/*if(compt%100 == 0)
 	{
 		printMatrixTime(map);
@@ -380,7 +395,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 
 struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt)
 {
-	int range = 5 + nbcompt/(5+(nbcompt/3));
+	int range = RDMRANGE + nbcompt/(5+(nbcompt/3));
 	//printf("compt :: %i range :: %i \n", nbcompt, range);
 	//printf("compt :: %i ||\n ", nbcompt);
 

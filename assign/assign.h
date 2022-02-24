@@ -3,6 +3,8 @@
 
 #include "../banker/building.h"
 
+#define RDMRANGE 12
+
 struct cell
 {
 	struct building *building;
