@@ -7,6 +7,7 @@
 #define COLOR_RED "\x1b[31m"
 #define COLOR_RESET "\x1b[0m"
 
+
 void freeList(struct building **buildingL)
 {
 	for(int i = 0; i < 21; i++)
@@ -21,53 +22,84 @@ void freeList(struct building **buildingL)
 
 void testAssign(int compt, int roof)
 {
+	//init structs
 	struct building **buildingList = initTownList();
 	struct map *newmap = initMap(60,60,buildingList, compt, roof);
+	
+	int *statmin = (int *) malloc( sizeof(int) * NBSTATS);
+	for(int cal = 0; cal < NBSTATS; ++cal)
+			*(statmin+cal) = 0;
+	printf("%i | \n", NBSTATS);
+	printf("hey hey cest le calloc : %i \n", *statmin);
+	printf("hey hye \n ");
 
-	struct cell *Fcell = newmap->cells;
+	int minsum = 0;
 
-	struct cell *center = Fcell + newmap->maxHeight/2 + newmap->maxWidth*(newmap->maxWidth/2);
+	recAnalyseMatrix(newmap,statmin);
+	for(int n = 0; n < NBSTATS; ++n)
+		minsum += *(statmin + n);
 
-	printf("-----------------------------------------------------\n");
+	int i = 0;
+	struct map *tempmap = malloc(sizeof(struct map));
+	struct cell *tempcells = malloc(sizeof(struct cell) * 60 * 60);
+	tempmap->cells = tempcells;
+	int *tempstat = malloc(sizeof(int) * NBSTATS);
 
-	printMatrixHab(newmap);/*
-	printf("===========================================================================\n\n =========================================================================================\n");
-	printMatrixEco(newmap);
-	printf("===========================================================================\n\n =========================================================================================\n");
-	printMatrixJob(newmap);
-	printf("===========================================================================\n\n =========================================================================================\n");
-	printMatrixHeal(newmap);
-	printf("===========================================================================\n\n =========================================================================================\n");
-
-	*/printMatrix(newmap);
-
-
-	freeList(buildingList);
-	free(newmap->cells);
-	free(newmap);
-}
-
-void printMatrice(struct map *newmap)
-{
-	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
+	while(i < 100)
 	{
-		struct cell *upTest = newmap->cells + j;
-		if(upTest->building == NULL)
-			printf("    ;", (upTest->habitation));
-		if(upTest->building != NULL)
+		for(int cal = 0; cal < NBSTATS; ++cal)
+			*(tempstat+cal) = 0;
+
+		int tempsum = 0;
+
+		rec_initMap(tempmap,60,60,buildingList,compt,roof);
+		recAnalyseMatrix(tempmap,tempstat);
+		for(int j = 0; j < NBSTATS; ++j)
+			tempsum += *(tempstat+j);
+		if(tempsum < minsum)
 		{
-			printf(COLOR_RED "%i ;" COLOR_RESET,(upTest->habitation)); 
+			minsum = tempsum;
+			statmin = tempstat;
+			newmap = tempmap;
 		}
-		if(j%(newmap->maxWidth) == 0){
-			printf("\n");
-		}
-	}	
+		printf("minsum = %i || tempsum = %i\n", minsum,tempsum);
+		++i;
+	}
+	printf("minsum = %i \n", minsum);
+
+	//run the algo 
+
+
+	//important values
+	/*struct cell *Fcell = newmap->cells;
+	struct cell *center = Fcell + newmap->maxHeight/2 + newmap->maxWidth*(newmap->maxWidth/2);*/
+
+	//print
+	printMatrix(newmap);
+
+	//free
+
+	free(tempmap->cells);
+	free(newmap->cells);
+	free(tempmap);
+	free(tempstat);
+	free(statmin);
+	freeList(buildingList);
+	free(newmap);
 }
 
 int main(int argc, char **argv)
 {
+	if(argc != 3)
+	{
+		printf("You have to pass two arguments: ./main [nbbat] [roof]");
+		return 0;
+	}
+	//init values
 	int nbbat = (int) atol (argv[1]);
 	int roof = (int) atol (argv[2]);
+
+	//test
 	testAssign(nbbat, roof);
 	return 0;
 }
