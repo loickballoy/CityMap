@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "assign.h"
 #include "../banker/need.h"
 
@@ -34,6 +35,48 @@ void analyseMatrix(struct map *newmap)
 	printf("MOY HEAL = %i\n", heal/nbbat);
 }
 
+void printMatrixTime(struct map *newmap)
+{
+	int nbbat = 0;
+	printf("HABITATION\n");
+	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
+	{
+		struct cell *upTest = newmap->cells + j;
+		if(upTest->building == NULL)
+			printf("  ;");
+		if(upTest->building != NULL)
+		{
+			nbbat++;
+			printf(COLOR_RED "%c ;" COLOR_RESET,charType((upTest->building->type))); 
+		}
+		if(j%(newmap->maxWidth) == 0){
+			printf("\n");
+		}
+	}
+	printf("NBBAT = %i\n", nbbat);
+	printf("\n");
+	sleep(1);
+	
+}
+
+
+char charType(int type)
+{
+	if(type == 0)
+		return 'M';
+	if(type == 1)
+		return 'P';
+	if(type == 2)
+		return 'O';
+	if(type == 3)
+		return 'C';
+	if(type == 4)
+		return 'S';
+	if(type == 5)
+		return 'H';
+	errx(EXIT_FAILURE, "charType(): Type undifined");
+}
+
 
 void printMatrix(struct map *newmap)
 {
@@ -43,11 +86,11 @@ void printMatrix(struct map *newmap)
 	{
 		struct cell *upTest = newmap->cells + j;
 		if(upTest->building == NULL)
-			printf("    ;", (upTest->habitation));
+			printf("  ;");
 		if(upTest->building != NULL)
 		{
 			nbbat++;
-			printf(COLOR_RED "%i  ;" COLOR_RESET,(upTest->building->values->habitation)); 
+			printf(COLOR_RED "%c ;" COLOR_RESET,charType((upTest->building->type))); 
 		}
 		if(j%(newmap->maxWidth) == 0){
 			printf("\n");
@@ -136,7 +179,7 @@ void printMatrixHeal(struct map *newmap)
 
 
 
-struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt)
+struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof)
 {
 	struct map *newMap = malloc(sizeof(struct map));
 	newMap->maxHeight = maxH;
@@ -164,7 +207,7 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 	printf("%i habitation stat \n", Hall->values->habitation);
 	Hall->x = maxW/2;
 	Hall->y = maxH/2;
-	updateNeeds(center, newMap, 0, buildingList, compt);
+	updateNeeds(center, newMap, 0, buildingList, compt, roof);
 
 
 	printf("hey hey iniMap works\n");
@@ -173,12 +216,13 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 
 
 
-void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList, int nbcompt)
+void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList, int nbcompt, int roof)
 {
-	//V tout le temps en cercle pondéré
+	//V1 tout le temps en cercle pondéré
 	//
 	
-	if(compt == nbcompt){
+	if(compt == nbcompt-1)
+	{
 		printf("hey hey update est fini\n");
 		return;
 	}
@@ -193,12 +237,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 	int maxiStat= 0;
 	int *maxStats = &maxiStat;
 
-	int roof = 40;
-	/*unsigned int posX = cell->building->x-((unsigned int)cell->building->values->range);
-	unsigned int posY = cell->building->y-((unsigned int)cell->building->values->range);
-	printf("%u \n", posY);
-	printf("%u \n", cell->building->y);
-	printf("%u \n", posX);*/
+	//int roof = 40;
 
 	int biasSecu = cell->building->values->security;
 	int biasJob = cell->building->values->job;
@@ -206,11 +245,9 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 	int biasEco = cell->building->values->economy;
 	int biasHeal = cell->building->values->health;
 
-	//printf("%i Secu, %i Job, %i Hab, %i Eco, %i Heal\n",biasSecu,biasJob,biasHab,biasEco,biasHeal);
-
 	int maxTemp = 0;
 
-	unsigned int r = (unsigned int)cell->building->values->range; 
+	unsigned int r = (unsigned int) cell->building->values->range; 
 	
 	struct cell *pos;
 	unsigned int i = 0;
@@ -229,8 +266,6 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 			UpCell->security += biasSecu - (int)(ponderation * (float)biasSecu);
 		        UpCell->job += biasJob - (int)(ponderation * (float)biasJob);
 			maxTemp = maxStat(UpCell, stat);
-
-			//le fait de calculer toujours les up avant les down fait que les premiers besoins a etre satisfait seront les besoins des cellules up
 
 			if(maxTemp>= roof && maxTemp > maxdeficit && UpCell->building == NULL)
 			{
@@ -383,14 +418,47 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		k++;	
 
 	}
-	if(compt%50 == 0)
-	{
-		printMatrix(map);
-		analyseMatrix(map);
-	}
-	//printf("%i maxdeficit, %i stat\n", maxdeficit, *maxStats);
-	recUpdate(deficit, map, maxStats, compt, buildingList, nbcompt);
 
+	/*if(compt%100 == 0)
+	{
+		printMatrixTime(map);
+		analyseMatrix(map);
+	}*/
+
+	if(maxdeficit == 0)
+	{
+		//printf("hey random!!\n");
+		deficit = generateRandomBuilding(map,buildingList,maxStats, compt);
+	}
+
+
+	recUpdate(deficit, map, maxStats, compt, buildingList, nbcompt, roof);
+
+}
+
+struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt)
+{
+	int range = 5 + nbcompt/(5+(nbcompt/3));
+	//printf("compt :: %i range :: %i \n", nbcompt, range);
+	printf("compt :: %i ||\n ", nbcompt);
+	*maxstat = rand() % 6;	
+	//printf("max stat = %i \n", *maxstat);
+	struct cell *tempcell = map->cells;
+	srand(time(0)* rand());
+	int rdm = rand();
+	while(1)
+	{
+		srand(rdm + nbcompt+time(0));
+		rdm = rand();
+		int rdmW = rdm % (2*range) - range;
+		srand(rdm);
+		int rdmH = rand() % (2*range) - range;
+		//printf("%i rdmW, %i rdmH\n", rdmW, rdmH);
+		tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2)+rdmW+ (map->maxWidth*rdmH);
+		if(tempcell->building == NULL)
+			break;
+	}
+	return tempcell;
 }
 
 int  maxStat(struct cell *cell, int *stat)
@@ -421,10 +489,10 @@ int  maxStat(struct cell *cell, int *stat)
 }
 
 
-void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct building **buildingList, int nbcompt)
+void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct building **buildingList, int nbcompt, int roof)
 {
-	//printMatrixHab(map);
-	printf("%i stat to put, %i compt\n",*stat, compt);
+
+	//printf("%i stat to put, %i compt\n",*stat, compt);
 
 	//cell->building = getBat(*stat, buildingList);
 
@@ -432,31 +500,31 @@ void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct 
 	{
 		cell->building = *(buildingList+1);
 		cell->security = 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);
 	}
 	else if(*stat == 1)
 	{
 		cell->building = *(buildingList+14);
 		cell->job = 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);
 	}
 	else if(*stat == 2)
 	{
 		cell->building = *(buildingList+4);
 		cell->habitation = 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);
 	}
 	else if(*stat == 3)
 	{
 		cell->building = *(buildingList+18);
 		cell->economy = 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt);		
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);		
 	}
 	else
 	{
 		cell->building = *(buildingList+2);
 		cell->health = 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt);
+		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);
 	}
 }
 
