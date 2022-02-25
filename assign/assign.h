@@ -28,6 +28,10 @@ struct map
 
 void analyseMatrix(struct map *newmap);
 
+void analyseMatrix_print(struct map *newmap);
+
+void recAnalyseMatrix(struct map *newmap, int *stat);
+
 void printMatrixTime(struct map *newmap);
 
 char charType(int type);
@@ -40,6 +44,8 @@ void stringType(int stat);
 
 
 struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof);
+
+void rec_initMap(struct map *newMap, unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof);
 
 void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList, int nbcompt, int roof);
 
