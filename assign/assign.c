@@ -101,13 +101,11 @@ void recAnalyseMatrix(struct map *newmap, int *stat) //fait la somme des besoin 
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
 		struct cell *uptest = newmap->cells + j;
-		if(uptest->building != NULL)
+		for(int i = 0; i < NBSTATS; ++i)
 		{
-			for(int i = 0; i < NBSTATS; ++i)
-			{
-				*(stat+i) += uptest->stats[i];
-			}
+			*(stat+i) += uptest->stats[i];
 		}
+		
 	}
 }
 
@@ -252,7 +250,7 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 	newMap->maxHeight = maxH;
 	newMap->maxWidth = maxW;
 
-	printf("%p map pointeur \n",newMap);
+	//printf("%p map pointeur \n",newMap);
 
 	struct cell *cells = malloc(sizeof(struct cell) * maxW * maxH);
 	newMap->cells = cells;
@@ -275,7 +273,7 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 
 	updateNeeds(center, newMap, 0, buildingList, compt, roof);
 
-	printf("hey hey iniMap works\n");
+	//printf("hey hey iniMap works\n");
 	return newMap;
 }
 
@@ -317,7 +315,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 	{
 		//analyseMatrix_print(map);
 		//analyseMatrix(map);
-		printf("hey hey update est fini\n");
+		//printf("hey hey update est fini\n");
 		return;
 	}
 

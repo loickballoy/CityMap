@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "assign.h"
 #include "../banker/need.c"
@@ -29,9 +30,9 @@ void testAssign(int compt, int roof)
 	int *statmin = (int *) malloc( sizeof(int) * NBSTATS);
 	for(int cal = 0; cal < NBSTATS; ++cal)
 			*(statmin+cal) = 0;
-	printf("%i | \n", NBSTATS);
-	printf("hey hey cest le calloc : %i \n", *statmin);
-	printf("hey hye \n ");
+	//printf("%i | \n", NBSTATS);
+	//printf("hey hey cest le calloc : %i \n", *statmin);
+	//printf("hey hye \n ");
 
 	int minsum = 0;
 
@@ -44,12 +45,17 @@ void testAssign(int compt, int roof)
 	struct cell *tempcells = malloc(sizeof(struct cell) * 60 * 60);
 	tempmap->cells = tempcells;
 	
-
+	srand(time(0));
+	int rdm = rand() % 100;
+	rdm -= 50;
+	roof += rdm;
+	int broof = roof;
 
 	//produit 100 autre map et regarde laquel est la meilleur
 
-	while(i < 100)
+	while(i < 10000)
 	{
+
 		int *tempstat = (int *) malloc(sizeof(int) * NBSTATS);
 
 		for(int cal = 0; cal < NBSTATS; ++cal)
@@ -63,17 +69,33 @@ void testAssign(int compt, int roof)
 			tempsum += *(tempstat+j);
 		if(tempsum < minsum)
 		{
+			printf("hey hey tempsum < minsum : %i\n", roof);
 			minsum = tempsum;
-			statmin = tempstat;
-						
+			statmin = tempstat;		
 			newmap = tempmap;
+			broof = roof;
+			srand(tempsum);
+			rdm = rand() % 100;
+			rdm -= 50;
+			roof += rdm;
+			roof-= 10;
 		}
-		printf("minsum = %i || tempsum = %i\n", minsum,tempsum);
+		if(i % 100 == 0)
+		{
+			srand(tempsum);
+			rdm = rand() % 100;
+			rdm -= 50;
+			roof += rdm; 
+		}
+		if(roof < -100)
+			roof *= -1;
+		//printf("minsum = %i || tempsum = %i\n", minsum,tempsum);
 		++i;
+		/*if(i < 50)
+			printf("roof : %i \n",roof);*/
 		free(tempstat);
 	}
-	printf("minsum = %i \n", minsum);
-
+	printf("best roof = %i\n", broof);
 	//run the algo 
 
 
