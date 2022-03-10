@@ -103,12 +103,9 @@ void recAnalyseMatrix(struct map *newmap, int *stat)
 		struct cell *uptest = newmap->cells + j;
 		if(uptest->building != NULL)
 		{
-			//printf("hey hey recanalyse !!\n");
-			//printf("%i\n",*stat);
 			for(int i = 0; i < NBSTATS; ++i)
 			{
 				*(stat+i) += uptest->stats[i];
-				//printf("%i ||\n",*(stat+i));
 			}
 		}
 	}
@@ -271,8 +268,6 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 	struct building *Hall = *buildingList;
 	center->building = Hall;
 
-	//printf("%i habitation stat \n", Hall->values->habitation);
-
 	Hall->x = maxW/2;
 	Hall->y = maxH/2;
 
@@ -301,8 +296,6 @@ void rec_initMap(struct map *newMap, unsigned int maxH, unsigned int maxW, struc
 	struct building *Hall = *buildingList;
 	center->building = Hall;
 
-	//printf("%i habitation stat \n", Hall->values->habitation);
-
 	Hall->x = maxW/2;
 	Hall->y = maxH/2;
 
@@ -320,8 +313,8 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 	
 	if(compt == nbcompt-1)
 	{
-		analyseMatrix_print(map);
-		analyseMatrix(map);
+		//analyseMatrix_print(map);
+		//analyseMatrix(map);
 		printf("hey hey update est fini\n");
 		return;
 	}
@@ -505,12 +498,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt)
 {
 	int range = RDMRANGE + nbcompt/(5+(nbcompt/3));
-	//printf("compt :: %i range :: %i \n", nbcompt, range);
-	//printf("compt :: %i ||\n ", nbcompt);
-
 	*maxstat = rand() % 6;	
-	//printf("max stat = %i \n", *maxstat);
-
 	struct cell *tempcell = map->cells;
 	srand(time(0)* rand());
 	int rdm = rand();
@@ -521,7 +509,6 @@ struct cell *generateRandomBuilding(struct map *map, struct building **buildingL
 		int rdmW = rdm % (2*range) - range;
 		srand(rdm);
 		int rdmH = rand() % (2*range) - range;
-		//printf("%i rdmW, %i rdmH\n", rdmW, rdmH);
 
 		tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2)+rdmW+ (map->maxWidth*rdmH);
 		if(tempcell->building == NULL)

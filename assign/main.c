@@ -79,11 +79,17 @@ void testAssign(int compt, int roof)
 
 	//free
 
-	free(tempmap->cells);
+	if(tempmap != newmap)
+	{
+		free(tempmap->cells);
+		free(tempmap);
+	}
 	free(newmap->cells);
-	free(tempmap);
-	free(tempstat);
+	//if(tempstat != statmin)
+
 	free(statmin);
+	if(statmin == tempstat)
+		free(tempstat);
 	freeList(buildingList);
 	free(newmap);
 }
