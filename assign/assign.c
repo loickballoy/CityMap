@@ -14,7 +14,7 @@
 #define COLOR_CYAN "\x1b[36m"
 #define COLOR_RESET "\x1b[0m"
 
-void analyseMatrix(struct map *newmap)
+void analyseMatrix(struct map *newmap)//fait la moyenne de tout les besoins et les print 
 {
 	int nbbat = 0;
 
@@ -39,7 +39,7 @@ void analyseMatrix(struct map *newmap)
 	printf(COLOR_CYAN "MOY HEAL = %i\n" COLOR_RESET, stat[4]/nbbat);
 }
 
-void analyseMatrix_print(struct map *newmap)
+void analyseMatrix_print(struct map *newmap)//print le besoin le plus fort de chaque case en couleur ou rien si il n'y a pas de besoin 
 {
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
@@ -96,7 +96,7 @@ void analyseMatrix_print(struct map *newmap)
 	}
 }
 
-void recAnalyseMatrix(struct map *newmap, int *stat)
+void recAnalyseMatrix(struct map *newmap, int *stat) //fait la somme des besoin de tout les types
 {
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
@@ -111,7 +111,7 @@ void recAnalyseMatrix(struct map *newmap, int *stat)
 	}
 }
 
-void printMatrixTime(struct map *newmap)
+void printMatrixTime(struct map *newmap)//print la matricd en couleur avec une pose de 1sec a la fin 
 {
 	int nbbat = 0;
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
@@ -147,7 +147,7 @@ void printMatrixTime(struct map *newmap)
 	
 }
 
-char charType(int type)
+char charType(int type)//renvoie le symbole associé au type 
 {
 	if(type == 0)
 		return 'M';
@@ -165,7 +165,7 @@ char charType(int type)
 }
 
 
-void printMatrix(struct map *newmap)
+void printMatrix(struct map *newmap)//print la matrix en couleur sans pose 
 {
 	int nbbat = 0;
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
@@ -198,7 +198,7 @@ void printMatrix(struct map *newmap)
 	printf("\n");
 }
 
-void printMatrixStat(struct map *newmap, int stat)
+void printMatrixStat(struct map *newmap, int stat)//print la matrix du besoin passé en argument 
 {
 	stringType(stat);
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
@@ -214,7 +214,7 @@ void printMatrixStat(struct map *newmap, int stat)
 	printf("\n");
 }
 
-void stringType(int stat)
+void stringType(int stat)//renvoie la string associé au type 
 {
 	if(stat == 0)
 	{
@@ -246,6 +246,8 @@ void stringType(int stat)
 
 struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof)
 {
+	/*initialisation de la map plus lancement de la recursion avec le placement de la mairie*/
+
 	struct map *newMap = malloc(sizeof(struct map));
 	newMap->maxHeight = maxH;
 	newMap->maxWidth = maxW;
@@ -277,7 +279,7 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 	return newMap;
 }
 
-void rec_initMap(struct map *newMap, unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof)
+void rec_initMap(struct map *newMap, unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof)//meme fonction que initmap mais avec la map en parametre
 {
 	newMap->maxHeight = maxH;
 	newMap->maxWidth = maxW;
@@ -495,7 +497,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 	recUpdate(deficit, map, maxStats, compt, buildingList, nbcompt, roof);
 }
 
-struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt)
+struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt)//genere un building placé a range de distance du dernier batiment posé
 {
 	int range = RDMRANGE + nbcompt/(5+(nbcompt/3));
 	*maxstat = rand() % 6;	
@@ -517,7 +519,7 @@ struct cell *generateRandomBuilding(struct map *map, struct building **buildingL
 	return tempcell;
 }
 
-int  maxStat(struct cell *cell, int *stat)
+int  maxStat(struct cell *cell, int *stat)//renvoie le type et le nombre du besoin max d'une cell
 {
 	int max = cell->stats[0];
 	*stat = 0;

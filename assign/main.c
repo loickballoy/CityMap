@@ -45,6 +45,9 @@ void testAssign(int compt, int roof)
 	tempmap->cells = tempcells;
 	int *tempstat = malloc(sizeof(int) * NBSTATS);
 
+
+	//produit 100 autre map et regarde laquel est la meilleur
+
 	while(i < 100)
 	{
 		for(int cal = 0; cal < NBSTATS; ++cal)
