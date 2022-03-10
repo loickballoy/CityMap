@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <err.h>
+#include "read.h"
 
 // HALL PROPERTY OFFICE COMISSARY SHOP HOSPITAL //
 int BUILDING_NUMBER_TYPE = 6;
