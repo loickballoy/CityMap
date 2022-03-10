@@ -43,30 +43,34 @@ void testAssign(int compt, int roof)
 	struct map *tempmap = malloc(sizeof(struct map));
 	struct cell *tempcells = malloc(sizeof(struct cell) * 60 * 60);
 	tempmap->cells = tempcells;
-	int *tempstat = malloc(sizeof(int) * NBSTATS);
+	
 
 
 	//produit 100 autre map et regarde laquel est la meilleur
 
 	while(i < 100)
 	{
+		int *tempstat = (int *) malloc(sizeof(int) * NBSTATS);
+
 		for(int cal = 0; cal < NBSTATS; ++cal)
 			*(tempstat+cal) = 0;
 
 		int tempsum = 0;
 
 		rec_initMap(tempmap,60,60,buildingList,compt,roof);
-		recAnalyseMatrix(tempmap,tempstat);
+		recAnalyseMatrix(tempmap, tempstat);
 		for(int j = 0; j < NBSTATS; ++j)
 			tempsum += *(tempstat+j);
 		if(tempsum < minsum)
 		{
 			minsum = tempsum;
 			statmin = tempstat;
+						
 			newmap = tempmap;
 		}
 		printf("minsum = %i || tempsum = %i\n", minsum,tempsum);
 		++i;
+		free(tempstat);
 	}
 	printf("minsum = %i \n", minsum);
 
@@ -89,10 +93,12 @@ void testAssign(int compt, int roof)
 	}
 	free(newmap->cells);
 	//if(tempstat != statmin)
-
+		//free(tempstat);
 	free(statmin);
-	if(statmin == tempstat)
-		free(tempstat);
+	/*if(tempstat)
+		free(tempstat);*/
+	//free(statmin);
+
 	freeList(buildingList);
 	free(newmap);
 }
