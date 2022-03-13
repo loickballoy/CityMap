@@ -3,7 +3,7 @@
 
 #include "../banker/building.h"
 
-#define RDMRANGE 12
+#define RDMRANGE 8
 
 struct cell
 {
@@ -16,7 +16,7 @@ struct cell
 	int economy;
 	int health;*/
 
-	int isRoadConnected;	
+	int isRoadConnected;
 };
 
 struct map
@@ -48,6 +48,8 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 void rec_initMap(struct map *newMap, unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof);
 
 void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList, int nbcompt, int roof);
+
+struct cell *searchGlobalNeed(struct map *map, int *maxstat, int roof);
 
 struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt);
 

@@ -26,7 +26,7 @@ void testAssign(int compt, int roof)
 	//init structs
 	struct building **buildingList = initTownList();
 	struct map *newmap = initMap(60,60,buildingList, compt, roof);
-	
+
 	int *statmin = (int *) malloc( sizeof(int) * NBSTATS);
 	for(int cal = 0; cal < NBSTATS; ++cal)
 			*(statmin+cal) = 0;
@@ -44,16 +44,16 @@ void testAssign(int compt, int roof)
 	struct map *tempmap = malloc(sizeof(struct map));
 	struct cell *tempcells = malloc(sizeof(struct cell) * 60 * 60);
 	tempmap->cells = tempcells;
-	
+
 	srand(time(0));
-	int rdm = rand() % 100;
-	rdm -= 50;
+	int rdm = rand() % 20;
+	rdm -= 10;
 	roof += rdm;
 	int broof = roof;
 
 	//produit 100 autre map et regarde laquel est la meilleur
 
-	while(i < 10000)
+	while(i < 1000)
 	{
 
 		int *tempstat = (int *) malloc(sizeof(int) * NBSTATS);
@@ -66,37 +66,41 @@ void testAssign(int compt, int roof)
 		rec_initMap(tempmap,60,60,buildingList,compt,roof);
 		recAnalyseMatrix(tempmap, tempstat);
 		for(int j = 0; j < NBSTATS; ++j)
+		{
 			tempsum += *(tempstat+j);
-		if(tempsum < minsum)
+			//printf("tempstat(%i) : %i  ||",j,*(tempstat+j));
+		}
+		//printf("tempsum = %i\n",tempsum);
+		if(tempsum <= minsum)
 		{
 			printf("hey hey tempsum < minsum : %i\n", roof);
 			minsum = tempsum;
-			statmin = tempstat;		
+			statmin = tempstat;
 			newmap = tempmap;
 			broof = roof;
-			srand(tempsum);
-			rdm = rand() % 100;
-			rdm -= 50;
+			srand(i);
+			rdm = rand() % 20;
+			rdm -= 10;
 			roof += rdm;
-			roof-= 10;
+			roof-= 5;
 		}
-		if(i % 100 == 0)
+		if(i % 50 == 0)
 		{
-			srand(tempsum);
-			rdm = rand() % 100;
-			rdm -= 50;
-			roof += rdm; 
+			srand(i);
+			rdm = rand() % 20;
+			rdm -= 10;
+			roof += rdm;
 		}
 		if(roof < -100)
 			roof *= -1;
 		//printf("minsum = %i || tempsum = %i\n", minsum,tempsum);
 		++i;
-		/*if(i < 50)
-			printf("roof : %i \n",roof);*/
+		//if(i < 50)
+		printf("roof : %i | tempsum: %i \n",roof, tempsum);
 		free(tempstat);
 	}
 	printf("best roof = %i\n", broof);
-	//run the algo 
+	//run the algo
 
 
 	//important values
@@ -105,6 +109,10 @@ void testAssign(int compt, int roof)
 
 	//print
 	printMatrix(newmap);
+	/*printMatrixStat(newmap, 1);
+	printMatrixStat(newmap, 2);
+	printMatrixStat(newmap, 3);
+	printMatrixStat(newmap, 4);*/
 
 	//free
 
