@@ -25,10 +25,16 @@ int **init_building_value()
 
 char **init_building_labels()
 {
-    char **building_labels = malloc(sizeof(char*) * BUILDING_NUMBER_TYPE);         
-    for (int i = 0; i < BUILDING_NUMBER_TYPE; ++i)                              
+    char **building_labels = malloc(sizeof(char*) * BUILDING_NUMBER_TYPE);
+    for (int i = 0; i < BUILDING_NUMBER_TYPE; ++i)
         *(building_labels + i) = malloc(sizeof(char) * (LABEL_SIZE + 1));
     return building_labels;
+}
+
+int *init_building_bias()
+{
+	int *building_bias = malloc(sizeof(int) * BIAS_NUMBER);
+	return building_bias;
 }
 
 void fill_value(int *value, char *building_line)
@@ -94,6 +100,13 @@ void print_labels(char **building_labels)
     printf("\n");
 }
 
+void print_bias(int *building_bias)
+{
+	for (int i = 0; i < BIAS_NUMBER; ++i)
+		printf("bias %i = %i\n", i, *(building_bias + i));
+	printf("\n");
+}
+
 FILE *settings_open(char *path)
 {
     FILE *file = fopen(path, "r");
@@ -123,23 +136,62 @@ int **load_building_value()
     char buffer[LINE_BUFFER_SIZE];
     fgets(buffer, LINE_BUFFER_SIZE, file);
     int **building_value = init_building_value();
-    int **building_value_copy = building_value;
     for (int i = 0; i < BUILDING_NUMBER_TYPE; ++i)
     {
         fgets(buffer, LINE_BUFFER_SIZE, file);
-        fill_value(*(building_value_copy + i), buffer);
+        fill_value(*(building_value + i), buffer);
     }
     fclose(file);
     return building_value;
 }
 
-void free_building_value_and_labels(int **build_value, char **build_labels)
+char isBias(char *line)
 {
-    for (int i = 0; i < BUILDING_NUMBER_TYPE; ++i)
-    {
-        free(*(build_value + i));
-        free(*(build_labels + i));
-    }
-    free(build_value);
-    free(build_labels);
+	char is = 0;
+	if (*line == 'B' && *(line + 1) == 'I' && *(line + 2) == 'A')
+		is = 1;
+	return is;
 }
+
+int *load_building_bias()
+{
+	FILE *file = settings_open(SETTINGS_PATH);
+	char buffer[LINE_BUFFER_SIZE];
+	fgets(buffer, LINE_BUFFER_SIZE, file);
+	int *building_bias = init_building_bias();
+	while(!isBias(buffer))
+		fgets(buffer, LINE_BUFFER_SIZE, file);
+	fill_value(building_bias, buffer);
+	fclose(file);
+	return building_bias;
+}
+
+char isHabitant(char *line)
+{
+	char is = 0;
+	if (*line == 'H' && *(line + 1) == 'A' && *(line + 2) == 'B')
+		is = 1;
+	return is;
+}
+
+int load_habitant_number()
+{
+	FILE *file = settings_open(SETTINGS_PATH);
+	char buffer[LINE_BUFFER_SIZE];
+	fgets(buffer, LINE_BUFFER_SIZE, file);
+	int habitant_number;
+	while(!isHabitant(buffer))
+		fgets(buffer, LINE_BUFFER_SIZE, file);
+	fill_value(&habitant_number, buffer);
+	fclose(file);
+	return habitant_number;
+}
+
+void free_building_list(void **build_)
+{
+	for (int i = 0; i < BUILDING_NUMBER_TYPE; ++i)
+		free(*(build_ + i));
+	free(build_);
+}
+
+
