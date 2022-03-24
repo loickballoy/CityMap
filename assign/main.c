@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "assign.h"
 #include "../banker/need.c"
@@ -25,13 +26,13 @@ void testAssign(int compt, int roof)
 	//init structs
 	struct building **buildingList = initTownList();
 	struct map *newmap = initMap(60,60,buildingList, compt, roof);
-	
+
 	int *statmin = (int *) malloc( sizeof(int) * NBSTATS);
 	for(int cal = 0; cal < NBSTATS; ++cal)
 			*(statmin+cal) = 0;
-	printf("%i | \n", NBSTATS);
-	printf("hey hey cest le calloc : %i \n", *statmin);
-	printf("hey hye \n ");
+	//printf("%i | \n", NBSTATS);
+	//printf("hey hey cest le calloc : %i \n", *statmin);
+	//printf("hey hye \n ");
 
 	int minsum = 0;
 
@@ -43,31 +44,63 @@ void testAssign(int compt, int roof)
 	struct map *tempmap = malloc(sizeof(struct map));
 	struct cell *tempcells = malloc(sizeof(struct cell) * 60 * 60);
 	tempmap->cells = tempcells;
-	int *tempstat = malloc(sizeof(int) * NBSTATS);
 
-	while(i < 100)
+	srand(time(0));
+	int rdm = rand() % 20;
+	rdm -= 10;
+	roof += rdm;
+	int broof = roof;
+
+	//produit 100 autre map et regarde laquel est la meilleur
+
+	while(i < 1000)
 	{
+
+		int *tempstat = (int *) malloc(sizeof(int) * NBSTATS);
+
 		for(int cal = 0; cal < NBSTATS; ++cal)
 			*(tempstat+cal) = 0;
 
 		int tempsum = 0;
 
 		rec_initMap(tempmap,60,60,buildingList,compt,roof);
-		recAnalyseMatrix(tempmap,tempstat);
+		recAnalyseMatrix(tempmap, tempstat);
 		for(int j = 0; j < NBSTATS; ++j)
-			tempsum += *(tempstat+j);
-		if(tempsum < minsum)
 		{
+			tempsum += *(tempstat+j);
+			//printf("tempstat(%i) : %i  ||",j,*(tempstat+j));
+		}
+		//printf("tempsum = %i\n",tempsum);
+		if(tempsum <= minsum)
+		{
+			printf("hey hey tempsum < minsum : %i\n", roof);
 			minsum = tempsum;
 			statmin = tempstat;
 			newmap = tempmap;
+			broof = roof;
+			srand(i);
+			rdm = rand() % 20;
+			rdm -= 10;
+			roof += rdm;
+			roof-= 5;
 		}
-		printf("minsum = %i || tempsum = %i\n", minsum,tempsum);
+		if(i % 50 == 0)
+		{
+			srand(i);
+			rdm = rand() % 20;
+			rdm -= 10;
+			roof += rdm;
+		}
+		if(roof < -100)
+			roof *= -1;
+		//printf("minsum = %i || tempsum = %i\n", minsum,tempsum);
 		++i;
+		//if(i < 50)
+		printf("roof : %i | tempsum: %i \n",roof, tempsum);
+		free(tempstat);
 	}
-	printf("minsum = %i \n", minsum);
-
-	//run the algo 
+	printf("best roof = %i\n", broof);
+	//run the algo
 
 
 	//important values
@@ -76,14 +109,26 @@ void testAssign(int compt, int roof)
 
 	//print
 	printMatrix(newmap);
+	/*printMatrixStat(newmap, 1);
+	printMatrixStat(newmap, 2);
+	printMatrixStat(newmap, 3);
+	printMatrixStat(newmap, 4);*/
 
 	//free
 
-	free(tempmap->cells);
+	if(tempmap != newmap)
+	{
+		free(tempmap->cells);
+		free(tempmap);
+	}
 	free(newmap->cells);
-	free(tempmap);
-	free(tempstat);
+	//if(tempstat != statmin)
+		//free(tempstat);
 	free(statmin);
+	/*if(tempstat)
+		free(tempstat);*/
+	//free(statmin);
+
 	freeList(buildingList);
 	free(newmap);
 }

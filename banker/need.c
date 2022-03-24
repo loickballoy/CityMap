@@ -9,12 +9,12 @@ int YES = 1;
 
 unsigned char NUMBER_TYPE = 7;
 
-int HALL[] = {0, 10, 50, 0, 0, 10, 30};
-int PROPERTY[] = {0, 50, -50, 40, 40, -35, 15};
-int OFFICE[] = {0, -50, 50, 0, 0, 0, 10};
-int COMISSARY[] = {0, -20, 30, 0, 0, 50, 20};
-int SHOP[] = {0, 0, 20, -50, 0, 20, 10};
-int HOSPITAL[] = {0, 20, 30, 0, -50, 0, 20};
+int HALL[] = {0/*policy*/, 10/*job*/, 50/*property*/, 0/*shop*/, 0/*Hosto*/, 10/*security*/, 30/*range*/};
+int PROPERTY[] = {0, 40, -60, 35, 20, 10, 15};
+int OFFICE[] = {0, -60, 50, 10, 0, 0, 10};
+int COMISSARY[] = {0, -20, 20, 0, 0, -70, 20};
+int SHOP[] = {0, -10, 20, -60, 0, 10, 10};
+int HOSPITAL[] = {0, -20, 30, 0, -70, 0, 20};
 
 
 int *select(unsigned char type)
@@ -42,7 +42,7 @@ struct building *build(unsigned char type)
 	newBuild->values = newType;
 	newBuild->placed = NO;
 	newBuild->type = (int) type;
-	
+
 	for(int i = 0; i < NBSTATS; i++)
 		newType->stats[i] = *(typeArray+i);
 
@@ -57,12 +57,12 @@ struct building *build(unsigned char type)
 	newType->location = NULL;
 
 	return newBuild;
-	
+
 }
 
 struct building **initTownList()
 {
-	struct building **buildingList = malloc(20*sizeof(struct building)); 
+	struct building **buildingList = malloc(20*sizeof(struct building));
 	*buildingList = build(0);
 	*(buildingList + 1) = build(3);
 	*(buildingList + 2) = build (5);
@@ -92,15 +92,15 @@ struct building *createList(int bat, unsigned int nbBat)
   return batList;
 }
 
-  
+
 struct buildList **initTownList2(unsigned int nb_hab, unsigned int sec)
 {
   unsigned int comi_range = 60000;
   unsigned int hosp_range = 20000;
   unsigned int shop_range = 112;
-  
+
   unsigned int nb_prop;
-  
+
   nb_prop = nb_hab / PROPERTY[2];
   if(nb_hab % PROPERTY[2] != 0)
     nb_prop += 1;
@@ -117,7 +117,7 @@ struct buildList **initTownList2(unsigned int nb_hab, unsigned int sec)
 
   int nb_shop = nb_hab / shop_range;
 
-  
+
   struct buildList ha_l;
   struct buildList *hall_list = &ha_l;
   hall_list->batDisp = 1;
@@ -165,9 +165,9 @@ struct building **initTownList3(unsigned int nb_hab, unsigned int sec)
   unsigned int comi_range = 60000;
   unsigned int hosp_range = 20000;
   unsigned int shop_range = 112;
-  
+
   unsigned int nb_prop;
-  
+
   nb_prop = nb_hab / PROPERTY[2];
   if(nb_hab % PROPERTY[2] != 0)
     nb_prop += 1;
@@ -181,7 +181,7 @@ struct building **initTownList3(unsigned int nb_hab, unsigned int sec)
   unsigned int nb_comi = nb_hab / (comi_range * sec);
 
   unsigned int nb_shop = nb_hab / shop_range;
-  
+
   unsigned int nb_hosp = nb_hab / (hosp_range * sec);
 
   unsigned int bat[NUMBER_TYPE];
