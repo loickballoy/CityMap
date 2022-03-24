@@ -34,13 +34,13 @@ void testAssign(int compt, int roof)
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
 	center->building = *buildingList;
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
-	printMatrix(newmap);
+	//printMatrix(newmap);
 	int i = 0;
 	while( i < compt)
 	{
 		fillTown(newmap, buildingList, roof, building_value);
 		i += 1;
-	} 
+	}
 	/*int *statmin = (int *) malloc( sizeof(int) * NBSTATS);
 	for(int cal = 0; cal < NBSTATS; ++cal)
 			*(statmin+cal) = 0;

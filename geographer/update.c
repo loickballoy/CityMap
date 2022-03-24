@@ -35,7 +35,10 @@ int ponderation(int x, int y, int val, int a, int b, int range)
 		ytemp = y - range;
 	    }
     }*/
-    return (int)(((float)(range/3)/(float)((10*ytemp/1+xtemp)))*((float)val));
+    if(val == 50)
+      printf("x : %i  , y : %i  , xtemp : %i  , ytemp : %i  , return : %i \n",x,y,xtemp,ytemp,(int)(((float)(range)/(float)((ytemp/1+xtemp)))*((float)val)));
+    int ponderation = ytemp == 0 || xtemp == 0?range*val:(int)(((float)(range)/(float)((1+ytemp/1+xtemp)))*((float)val));
+    return (int)(((float)(range)/(float)((1+ytemp/1+xtemp)))*((float)val));
 }
 
 void attribuate(int x, int y, struct cell *cell, int *value, int a, int b, int range)
