@@ -5,6 +5,7 @@
 #include <err.h> //use errx()
 #include "assign.h"
 #include "../banker/need.h"
+#include "../geographer/update.c"
 
 #define COLOR_RED "\x1b[31m"
 #define COLOR_BLEU "\x1b[34m"
@@ -203,7 +204,7 @@ void printMatrixStat(struct map *newmap, int stat)//print la matrix du besoin pa
 		if(upTest->stats[stat] == 0)
 			printf("%i ;", (upTest->stats[stat]));
 		if(upTest->stats[stat] != 0)
-			printf(COLOR_RED "%i ;" COLOR_RESET,(upTest->stats[stat]));
+			printf(COLOR_RED "%i;" COLOR_RESET,(upTest->stats[stat]));
 		if(j%(newmap->maxWidth) == 0)
 			printf("\n");
 	}
@@ -260,16 +261,16 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 		(cells+i)->building = NULL;
 	}
 
-	struct cell *Fcell = newMap->cells;
+	/*struct cell *Fcell = newMap->cells;
 	struct cell *center = Fcell + maxW/2 + maxW*(maxH/2);
 
 	struct building *Hall = *buildingList;
 	center->building = Hall;
 
 	Hall->x = maxW/2;
-	Hall->y = maxH/2;
+	Hall->y = maxH/2;*/
 
-	updateNeeds(center, newMap, 0, buildingList, compt, roof);
+	//updateNeeds(center, newMap, 0, buildingList, compt, roof);
 
 	//printf("hey hey iniMap works\n");
 	return newMap;
@@ -297,13 +298,56 @@ void rec_initMap(struct map *newMap, unsigned int maxH, unsigned int maxW, struc
 	Hall->x = maxW/2;
 	Hall->y = maxH/2;
 
-	updateNeeds(center, newMap, 0, buildingList, compt, roof);
+	//updateNeeds(center, newMap, 0, buildingList, compt, roof);
+}
+
+void fillTown(struct map *map, struct building **buildingList, int roof, int **building_value)
+{
+	int *a = malloc(sizeof(int));
+	int *b = malloc(sizeof(int));
+	*a = 0;
+	*b = 12;
+	int maxStats = 0;
+	struct cell *cell = searchGlobalNeed(map, &maxStats,roof, a, b);
+	if(maxStats == 0)
+	{
+		cell->building = *(buildingList+1);
+		cell->stats[0] = 0;
+	}
+	else if(maxStats == 1)
+	{
+		cell->building = *(buildingList+14);
+		cell->stats[1] = 0;
+	}
+	else if(maxStats == 2)
+	{
+		cell->building = *(buildingList+4);
+		cell->stats[2] = 0;
+	}
+	else if(maxStats == 3)
+	{
+		cell->building = *(buildingList+18);
+		cell->stats[3] = 0;
+	}
+	else
+	{
+		cell->building = *(buildingList+2);
+		cell->stats[4]= 0;
+	}
+	int temp = *a; 
+	*b = temp / map->maxWidth;
+	printf("%i \n", *b);
+	*a = temp % map->maxWidth;
+	printf("%i \n", *a);
+	updateAround(map, *a, *b, building_value);
+	free(a);
+	free(b);
+	printMatrix(map);
 }
 
 
 
-
-
+/*
 void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList, int nbcompt, int roof)
 {
 	//V1 tout le temps en cercle pondéré
@@ -478,11 +522,11 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		k++;
 	}
 
-	/*if(compt%10 == 0)
+	if(compt%10 == 0)
 	{
 		printMatrixTime(map);
 		analyseMatrix(map);
-	}*/
+	}
 
 	if(maxdeficit == 0)
 	{
@@ -497,12 +541,15 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 
 	recUpdate(deficit, map, maxStats, compt, buildingList, nbcompt, roof);
 }
+*/
 
-struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof)
+struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a, int *b)
 {
 	int localsum = 0;
 	int maxneed = roof;
-	struct cell *result = NULL;
+	struct cell *result = map->cells;
+	*a = map->maxWidth/2 + map->maxWidth * map->maxHeight/2;
+	result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
 	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
 	{
 		struct cell *uptest = map->cells + j;
@@ -510,12 +557,14 @@ struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof)
 		{
 			if(uptest->stats[i] > maxneed)
 			{
+				*a = j;
 				maxneed = uptest->stats[i];
 				*maxstat = i;
 				result = uptest;
 			}
 		}
 	}
+	printf("%i \n", *a);
 	return result;
 }
 struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt)//genere un building placé a range de distance du dernier batiment posé
@@ -555,7 +604,7 @@ int  maxStat(struct cell *cell, int *stat)//renvoie le type et le nombre du beso
 
 	return max;
 }
-
+/*
 void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct building **buildingList, int nbcompt, int roof)
 {
 	//printf("%i stat to put, %i compt\n",*stat, compt);
@@ -602,4 +651,4 @@ struct building *getBat(int stat, struct building **buildingList)
 	}
 	bat->placed = 1;
 	return bat;
-}
+}*/
