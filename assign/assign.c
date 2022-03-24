@@ -201,7 +201,7 @@ void printMatrixStat(struct map *newmap, int stat)//print la matrix du besoin pa
 	{
 		struct cell *upTest = newmap->cells + j;
 		if(upTest->stats[stat] == 0)
-			printf("%i  ;", (upTest->stats[stat]));
+			printf("%i ;", (upTest->stats[stat]));
 		if(upTest->stats[stat] != 0)
 			printf(COLOR_RED "%i ;" COLOR_RESET,(upTest->stats[stat]));
 		if(j%(newmap->maxWidth) == 0)
