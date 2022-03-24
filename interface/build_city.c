@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <err.h>
 #include <stdlib.h>
+#include "toSDL.h"
 
 
 char **genMat(int DIM)
@@ -71,6 +72,8 @@ void build_city()
   
   char **matrice = genMat(DIM);
 
+  PrintMat(matrice, DIM);
+
   for(int i = 0; i < DIM; i++)
     {
       printf("\n\n");
@@ -91,6 +94,8 @@ void build_city()
   free(matrice);
 
   printf("\n");
+
+  
 
   
 }
