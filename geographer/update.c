@@ -9,36 +9,14 @@ int ponderation(int x, int y, int val, int a, int b, int range)
     int ytemp = y - b;
     xtemp = xtemp < 0?(-1)*xtemp:xtemp;
     ytemp = ytemp < 0?(-1)*ytemp:ytemp;
-    /*if(x <= a)
-    {
-	    if(y <= b)
-	    {
-		xtemp = range - x;
-		ytemp = range - y;
-	    }
-	    else
-	    {
-		xtemp = range - x;
-		ytemp = y - range;
-	    }
-    }
-    else
-    {
-	    if(y <= b)
-	    {
-		xtemp = x - range;
-		ytemp = range - y;
-	    }
-	    else
-	    {
-		xtemp = x - range;
-		ytemp = y - range;
-	    }
-    }*/
-    if(val == 50)
-      printf("x : %i  , y : %i  , xtemp : %i  , ytemp : %i  , return : %i \n",x,y,xtemp,ytemp,(int)(((float)(range)/(float)((ytemp/1+xtemp)))*((float)val)));
-    int ponderation = ytemp == 0 || xtemp == 0?range*val:(int)(((float)(range)/(float)((1+ytemp/1+xtemp)))*((float)val));
-    return (int)(((float)(range)/(float)((1+ytemp/1+xtemp)))*((float)val));
+    if(xtemp+ytemp == 0)
+      return 0;
+    float pond = ((float)1/((float)(0.85+(float)xtemp/4+(float)ytemp/4)));//modulable par changement du 0.85 et des /4
+
+    int ponderation = (int)(pond*(float)val);
+    /*if(val < 0)//test if habitation
+      printf("x : %i  , y : %i  , xtemp : %i  , ytemp : %i  , return : %i \n",x,y,xtemp,ytemp,ponderation);*/
+    return ponderation;
 }
 
 void attribuate(int x, int y, struct cell *cell, int *value, int a, int b, int range)
@@ -50,7 +28,6 @@ void attribuate(int x, int y, struct cell *cell, int *value, int a, int b, int r
 
 char equation(int x, int y, int a, int b, int range)
 {
-    //printf("equation\n");
     return (x - a)*(x - a) + (y - b) * (y - b) < range * range;
 }
 
@@ -67,8 +44,6 @@ void updateAround(struct map *map, int a, int b, int **building_value)
     int xsquare = a - range;
     int ysquare = b - range;
     int diam = range * 2;
-
-    printf("xsquare = %i\n", xsquare);
 
     struct cell *cellatt;
 

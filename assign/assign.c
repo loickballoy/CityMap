@@ -204,7 +204,16 @@ void printMatrixStat(struct map *newmap, int stat)//print la matrix du besoin pa
 		if(upTest->stats[stat] == 0)
 			printf("%i ;", (upTest->stats[stat]));
 		if(upTest->stats[stat] != 0)
-			printf(COLOR_RED "%i;" COLOR_RESET,(upTest->stats[stat]));
+		{
+			if(upTest->stats[stat] < 0)
+				printf(COLOR_RED "%i;" COLOR_RESET,(upTest->stats[stat]));
+			else if(upTest->stats[stat] < 10)
+				printf(COLOR_RED "%i ;" COLOR_RESET,(upTest->stats[stat]));
+			else if(upTest->stats[stat] < 100)
+				printf(COLOR_RED "%i;" COLOR_RESET,(upTest->stats[stat]));
+			else
+				printf(COLOR_RED "%i;" COLOR_RESET,(upTest->stats[stat]));
+		}
 		if(j%(newmap->maxWidth) == 0)
 			printf("\n");
 	}
@@ -309,6 +318,11 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 	*b = 12;
 	int maxStats = 0;
 	struct cell *cell = searchGlobalNeed(map, &maxStats,roof, a, b);
+	if(*a == 0)
+	{
+		printf("hey random\n ");
+		cell = generateRandomBuilding(map, buildingList, &maxStats, a, 0);
+	}
 	if(maxStats == 0)
 	{
 		cell->building = *(buildingList+1);
@@ -334,11 +348,9 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 		cell->building = *(buildingList+2);
 		cell->stats[4]= 0;
 	}
-	int temp = *a; 
+	int temp = *a;
 	*b = temp / map->maxWidth;
-	printf("%i \n", *b);
 	*a = temp % map->maxWidth;
-	printf("%i \n", *a);
 	updateAround(map, *a, *b, building_value);
 	free(a);
 	free(b);
@@ -547,45 +559,52 @@ struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a, in
 {
 	int localsum = 0;
 	int maxneed = roof;
-	struct cell *result = map->cells;
-	*a = map->maxWidth/2 + map->maxWidth * map->maxHeight/2;
+	struct cell *result = NULL;
+	*a = 0;
 	result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
 	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
 	{
 		struct cell *uptest = map->cells + j;
-		for(int i = 0; i < NBSTATS; i++)
+		if(uptest->building == NULL)
 		{
-			if(uptest->stats[i] > maxneed)
+			for(int i = 0; i < NBSTATS; i++)
 			{
-				*a = j;
-				maxneed = uptest->stats[i];
-				*maxstat = i;
-				result = uptest;
+				if(uptest->stats[i] > maxneed)
+				{
+					*a = j;
+					maxneed = uptest->stats[i];
+					*maxstat = i;
+					result = uptest;
+				}
 			}
 		}
 	}
-	printf("%i \n", *a);
 	return result;
 }
-struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt)//genere un building placé a range de distance du dernier batiment posé
+struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int *a, int nbcompt)//genere un building placé a range de distance du dernier batiment posé
 {
-	int range = RDMRANGE + nbcompt/(5+(nbcompt/3));
+	int range = RDMRANGE;
 	*maxstat = rand() % 6;
-	struct cell *tempcell = map->cells;
+	struct cell *tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2);//center
 	srand(time(0)* rand());
 	int rdm = rand();
-	while(1)
+	int compt = 0;
+	int rdmW = 0;
+	int rdmH = 0;
+	while(compt < 10000)
 	{
 		srand(rdm + nbcompt+time(0));
 		rdm = rand();
-		int rdmW = rdm % (2*range) - range;
+		rdmW = rdm % (2*range) - range;
 		srand(rdm);
-		int rdmH = rand() % (2*range) - range;
+		rdmH = rand() % (2*range) - range;
 
-		tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2)+rdmW+ (map->maxWidth*rdmH);
+		tempcell += rdmW + (map->maxWidth*rdmH);
 		if(tempcell->building == NULL)
 			break;
+		compt++;
 	}
+	*a = tempcell - map->cells ;
 	return tempcell;
 }
 

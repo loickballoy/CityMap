@@ -53,7 +53,7 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 
 struct cell *searchGlobalNeed(struct map *map, int *maxstat, int roof, int *a, int *b);
 
-struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt);
+struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int *a, int nbcompt);
 
 int maxStat(struct cell *cell, int *stat);
 

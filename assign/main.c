@@ -34,7 +34,7 @@ void testAssign(int compt, int roof)
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
 	center->building = *buildingList;
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
-	//printMatrix(newmap);
+	printMatrix(newmap);
 	int i = 0;
 	while( i < compt)
 	{
