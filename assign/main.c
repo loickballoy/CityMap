@@ -28,20 +28,23 @@ void testAssign(int compt, int roof)
 {
 	//init structs
 	int **building_value = load_building_value();
+	char **buildind_label = load_building_labels();
 
 	struct building **buildingList = initTownList();
-	struct map *newmap = initMap(60,60,buildingList, compt, roof);
+	struct map *newmap = initMap(60,60);
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
 	center->building = *buildingList;
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
-	printMatrix(newmap);
 	int i = 0;
 	while( i < compt)
 	{
 		fillTown(newmap, buildingList, roof, building_value);
 		i += 1;
 	}
-	/*int *statmin = (int *) malloc( sizeof(int) * NBSTATS);
+
+	/*test du meilleur...
+
+	int *statmin = (int *) malloc( sizeof(int) * NBSTATS);
 	for(int cal = 0; cal < NBSTATS; ++cal)
 			*(statmin+cal) = 0;
 	//printf("%i | \n", NBSTATS);
@@ -135,8 +138,7 @@ void testAssign(int compt, int roof)
 		free(tempmap->cells);
 		free(tempmap);
 	}*/
-	printMatrixStat(newmap, 2);
-	free(newmap->cells);
+
 	//if(tempstat != statmin)
 		//free(tempstat);
 	//free(statmin);
@@ -144,8 +146,12 @@ void testAssign(int compt, int roof)
 		free(tempstat);*/
 	//free(statmin);
 
+	printMatrix(newmap);
+
+	//free :
+	free_building_value_and_labels(building_value,buildind_label);
+	free(newmap->cells);
 	freeList(buildingList);
-	free(building_value);
 	free(newmap);
 }
 
