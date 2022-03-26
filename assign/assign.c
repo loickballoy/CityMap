@@ -308,7 +308,7 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 	struct cell *cell = searchGlobalNeed(map, &maxStats,roof, a);
 	if(*a == 0)//if(there is no vital need) then generate random
 	{
-		printf("hey random\n ");
+		//printf("hey random\n ");
 		cell = generateRandomBuilding(map, buildingList, &maxStats, a, 0);
 		if(*a == 0)
 			errx(1,"There is no possibility to place a building randomly | assign.c: FillTown()\n");
@@ -405,7 +405,7 @@ struct cell *replaceGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 
 	//Research the max need to replace in all the map
 
-	int maxneed = 2*roof;
+	int maxneed = 1*(float)roof;
 	struct cell *result = NULL;
 	*a = 0;
 	result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
@@ -473,6 +473,7 @@ struct cell *generateRandomBuilding(struct map *map, struct building **buildingL
 	int rdmH = 0;
 	while(compt < 10000)
 	{
+		tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2);
 		srand(rdm + nbcompt+time(0));
 		rdm = rand();
 		rdmW = rdm % (2*range) - range;
