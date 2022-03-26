@@ -47,6 +47,10 @@ struct map *initMap(unsigned int maxH, unsigned int maxW);
 
 void fillTown(struct map *map, struct building **buildingList, int roof, int **building_value);
 
+void replaceTown(struct map *map, struct building **buildingList, int roof, int **building_value, int *nbreplacement);
+
+struct cell *replaceGlobalNeed(struct map *map, int *maxstat,int roof, int *a);
+
 struct cell *searchGlobalNeed(struct map *map, int *maxstat, int roof, int *a);
 
 struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int *a, int nbcompt);

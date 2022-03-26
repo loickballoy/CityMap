@@ -31,128 +31,62 @@ void testAssign(int compt, int roof)
 	char **buildind_label = load_building_labels();
 
 	struct building **buildingList = initTownList();
-	struct map *newmap = initMap(60,60);
+	struct map *newmap = initMap(40,40);
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
 	center->building = *buildingList;
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 	int i = 0;
+	while( i < compt/2)
+	{
+		fillTown(newmap, buildingList, roof, building_value);
+		i += 1;
+	}
+
+	//printMatrix(newmap);
+	analyseMatrix_print(newmap);
+
+	int *nbreplacement = malloc(sizeof(int));
+	*nbreplacement = 0;
+	int nbverif = 0;
+
+	while(nbverif < 500)
+	{
+		replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
+		nbverif++;
+	}
+
+	printf(" nb replacement : %i \n", *nbreplacement);
+	//printMatrix(newmap);
+	analyseMatrix_print(newmap);
+
 	while( i < compt)
 	{
 		fillTown(newmap, buildingList, roof, building_value);
 		i += 1;
 	}
 
-	/*test du meilleur...
-
-	int *statmin = (int *) malloc( sizeof(int) * NBSTATS);
-	for(int cal = 0; cal < NBSTATS; ++cal)
-			*(statmin+cal) = 0;
-	//printf("%i | \n", NBSTATS);
-	//printf("hey hey cest le calloc : %i \n", *statmin);
-	//printf("hey hye \n ");
-
-	int minsum = 0;
-
-	recAnalyseMatrix(newmap,statmin);
-	for(int n = 0; n < NBSTATS; ++n)
-		minsum += *(statmin + n);
-
-	int i = 0;
-	struct map *tempmap = malloc(sizeof(struct map));
-	struct cell *tempcells = malloc(sizeof(struct cell) * 60 * 60);
-	tempmap->cells = tempcells;
-
-	srand(time(0));
-	int rdm = rand() % 20;
-	rdm -= 10;
-	roof += rdm;
-	int broof = roof;
-
-	//produit 100 autre map et regarde laquel est la meilleur
-
-	while(i < 1000)
-	{
-
-		int *tempstat = (int *) malloc(sizeof(int) * NBSTATS);
-
-		for(int cal = 0; cal < NBSTATS; ++cal)
-			*(tempstat+cal) = 0;
-
-		int tempsum = 0;
-
-		rec_initMap(tempmap,60,60,buildingList,compt,roof);
-		recAnalyseMatrix(tempmap, tempstat);
-		for(int j = 0; j < NBSTATS; ++j)
-		{
-			tempsum += *(tempstat+j);
-			//printf("tempstat(%i) : %i  ||",j,*(tempstat+j));
-		}
-		//printf("tempsum = %i\n",tempsum);
-		if(tempsum <= minsum)
-		{
-			printf("hey hey tempsum < minsum : %i\n", roof);
-			minsum = tempsum;
-			statmin = tempstat;
-			newmap = tempmap;
-			broof = roof;
-			srand(time(0));
-			rdm = rand() % 20;
-			rdm -= 10;
-			roof += rdm;
-			roof-= 5;
-		}
-		if(i % 50 == 0)
-		{
-			srand(i);
-			rdm = rand() % 20;
-			rdm -= 10;
-			roof += rdm;
-		}
-		if(roof < -100)
-			roof *= -1;
-		//printf("minsum = %i || tempsum = %i\n", minsum,tempsum);
-		++i;
-		//if(i < 50)
-		//printf("roof : %i | tempsum: %i \n",roof, tempsum);
-		free(tempstat);
-	}
-	printf("best roof = %i\n", broof);
-	//run the algo
-
-
-	//important values
-	*struct cell *Fcell = newmap->cells;
-	struct cell *center = Fcell + newmap->maxHeight/2 + newmap->maxWidth*(newmap->maxWidth/2);*/
-
-	//print
 	//printMatrix(newmap);
-	/*printMatrixStat(newmap, 1);
-	printMatrixStat(newmap, 2);
-	printMatrixStat(newmap, 3);
-	printMatrixStat(newmap, 4);*/
+	analyseMatrix_print(newmap);
 
-	//free*/
+	*nbreplacement = 0;
 
-	/*if(tempmap != newmap)
+	while(nbverif < 1000)
 	{
-		free(tempmap->cells);
-		free(tempmap);
-	}*/
+		replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
+		nbverif++;
+	}
 
-	//if(tempstat != statmin)
-		//free(tempstat);
-	//free(statmin);
-	/*if(tempstat)
-		free(tempstat);*/
-	//free(statmin);
-
-	printMatrix(newmap);
+	printf(" nb replacement : %i \n", *nbreplacement);
+	//printMatrix(newmap);
+	analyseMatrix_print(newmap);
 
 	//free :
-	free_building_value_and_labels(building_value,buildind_label);
+	free_building_list(building_value);
+	free_building_list(buildind_label);
 	free(newmap->cells);
 	freeList(buildingList);
 	free(newmap);
+	free(nbreplacement);
 }
 
 int main(int argc, char **argv)

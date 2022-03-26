@@ -27,10 +27,8 @@ void analyseMatrix(struct map *newmap)
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
 		struct cell *uptest = newmap->cells + j;
-
 		for(int i = 0; i < NBSTATS; i++)
 			stat[i] += uptest->stats[i];
-
 		nbbat++;
 	}
 	printf("\n");
@@ -99,6 +97,13 @@ void analyseMatrix_print(struct map *newmap)
 		if(j%(newmap->maxWidth) == 0)
 			printf("\n");
 	}
+
+	printf("\n");
+	printf(COLOR_BLEU "MOY SECU = %i\n" COLOR_RESET, 0 );
+	printf(COLOR_GREEN "MOY JOB = %i\n" COLOR_RESET, 0);
+	printf(COLOR_YELLOW "MOY HAB = %i\n" COLOR_RESET, 0);
+	printf(COLOR_PURPLE "MOY ECO = %i\n" COLOR_RESET, 0);
+	printf(COLOR_CYAN "MOY HEAL = %i\n" COLOR_RESET, 0);
 }
 
 void recAnalyseMatrix(struct map *newmap, int *stat)
@@ -341,9 +346,88 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 	free(b);
 }
 
+void replaceTown(struct map *map, struct building **buildingList, int roof, int **building_value, int *nbreplacement)
+{
 
+	//Replace some building by others to make the town better
 
+	int *a = malloc(sizeof(int));
+	int *b = malloc(sizeof(int));
+	*a = 0;
+	*b = 12;
+	int maxStats = 0;
+	struct cell *cell = replaceGlobalNeed(map, &maxStats,roof, a);
+	if(*a == 0)//if(there is no vital need) then generate random
+	{
+		free(a);
+		free(b);
+		return;
+	}
 
+	int temp = *a;
+	*a = temp % map->maxWidth;//set de a
+	*b = temp / map->maxWidth;//set de b
+	reverseUpdateAround(map, *a, *b, building_value);
+
+	if(maxStats == 0)
+	{
+		cell->building = *(buildingList+1);
+		cell->stats[0] = 0;
+	}
+	else if(maxStats == 1)
+	{
+		cell->building = *(buildingList+14);
+		cell->stats[1] = 0;
+	}
+	else if(maxStats == 2)
+	{
+		cell->building = *(buildingList+4);
+		cell->stats[2] = 0;
+	}
+	else if(maxStats == 3)
+	{
+		cell->building = *(buildingList+18);
+		cell->stats[3] = 0;
+	}
+	else
+	{
+		cell->building = *(buildingList+2);
+		cell->stats[4]= 0;
+	}
+	*nbreplacement += 1;
+	updateAround(map, *a, *b, building_value);
+	free(a);
+	free(b);
+}
+
+struct cell *replaceGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
+{
+
+	//Research the max need to replace in all the map
+
+	int maxneed = 2*roof;
+	struct cell *result = NULL;
+	*a = 0;
+	result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
+	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
+	{
+		struct cell *uptest = map->cells + j;
+		if(uptest->building != NULL && uptest->building->type != 0)
+		{
+			for(int i = 0; i < NBSTATS; i++)
+			{
+				if(uptest->stats[i] > maxneed)
+				{
+					*a = j;
+					maxneed = uptest->stats[i];
+					*maxstat = i;
+					result = uptest;
+				}
+			}
+		}
+	}
+	return result;
+}
 
 struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 {
