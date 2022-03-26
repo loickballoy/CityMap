@@ -4,6 +4,9 @@
 
 #include "assign.h"
 #include "../banker/need.c"
+#include "../loader/read.c"
+#include "../geographer/update.h"
+
 
 #define COLOR_RED "\x1b[31m"
 #define COLOR_RESET "\x1b[0m"
@@ -24,8 +27,22 @@ void freeList(struct building **buildingL)
 void testAssign(int compt, int roof)
 {
 	//init structs
+	int **building_value = load_building_value();
+	char **buildind_label = load_building_labels();
+
 	struct building **buildingList = initTownList();
-	struct map *newmap = initMap(60,60,buildingList, compt, roof);
+	struct map *newmap = initMap(60,60);
+	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
+	center->building = *buildingList;
+	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
+	int i = 0;
+	while( i < compt)
+	{
+		fillTown(newmap, buildingList, roof, building_value);
+		i += 1;
+	}
+
+	/*test du meilleur...
 
 	int *statmin = (int *) malloc( sizeof(int) * NBSTATS);
 	for(int cal = 0; cal < NBSTATS; ++cal)
@@ -78,7 +95,7 @@ void testAssign(int compt, int roof)
 			statmin = tempstat;
 			newmap = tempmap;
 			broof = roof;
-			srand(i);
+			srand(time(0));
 			rdm = rand() % 20;
 			rdm -= 10;
 			roof += rdm;
@@ -96,7 +113,7 @@ void testAssign(int compt, int roof)
 		//printf("minsum = %i || tempsum = %i\n", minsum,tempsum);
 		++i;
 		//if(i < 50)
-		printf("roof : %i | tempsum: %i \n",roof, tempsum);
+		//printf("roof : %i | tempsum: %i \n",roof, tempsum);
 		free(tempstat);
 	}
 	printf("best roof = %i\n", broof);
@@ -104,31 +121,36 @@ void testAssign(int compt, int roof)
 
 
 	//important values
-	/*struct cell *Fcell = newmap->cells;
+	*struct cell *Fcell = newmap->cells;
 	struct cell *center = Fcell + newmap->maxHeight/2 + newmap->maxWidth*(newmap->maxWidth/2);*/
 
 	//print
-	printMatrix(newmap);
+	//printMatrix(newmap);
 	/*printMatrixStat(newmap, 1);
 	printMatrixStat(newmap, 2);
 	printMatrixStat(newmap, 3);
 	printMatrixStat(newmap, 4);*/
 
-	//free
+	//free*/
 
-	if(tempmap != newmap)
+	/*if(tempmap != newmap)
 	{
 		free(tempmap->cells);
 		free(tempmap);
-	}
-	free(newmap->cells);
+	}*/
+
 	//if(tempstat != statmin)
 		//free(tempstat);
-	free(statmin);
+	//free(statmin);
 	/*if(tempstat)
 		free(tempstat);*/
 	//free(statmin);
 
+	printMatrix(newmap);
+
+	//free :
+	free_building_value_and_labels(building_value,buildind_label);
+	free(newmap->cells);
 	freeList(buildingList);
 	free(newmap);
 }
@@ -137,7 +159,7 @@ int main(int argc, char **argv)
 {
 	if(argc != 3)
 	{
-		printf("You have to pass two arguments: ./main [nbbat] [roof]");
+		printf("You have to pass two arguments: ./main [nbbat] [roof] \n");
 		return 0;
 	}
 	//init values

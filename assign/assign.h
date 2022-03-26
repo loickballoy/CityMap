@@ -43,19 +43,15 @@ void printMatrixStat(struct map *newmap, int stat);
 void stringType(int stat);
 
 
-struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof);
+struct map *initMap(unsigned int maxH, unsigned int maxW);
 
-void rec_initMap(struct map *newMap, unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof);
+void fillTown(struct map *map, struct building **buildingList, int roof, int **building_value);
 
-void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList, int nbcompt, int roof);
+struct cell *searchGlobalNeed(struct map *map, int *maxstat, int roof, int *a);
 
-struct cell *searchGlobalNeed(struct map *map, int *maxstat, int roof);
-
-struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt);
+struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int *a, int nbcompt);
 
 int maxStat(struct cell *cell, int *stat);
-
-void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct building **buildingList, int nbcompt, int roof);
 
 struct building *getBat(int stat, struct building **buildingList);
 

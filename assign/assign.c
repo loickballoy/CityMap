@@ -5,6 +5,7 @@
 #include <err.h> //use errx()
 #include "assign.h"
 #include "../banker/need.h"
+#include "../geographer/update.c"
 
 #define COLOR_RED "\x1b[31m"
 #define COLOR_BLEU "\x1b[34m"
@@ -14,8 +15,11 @@
 #define COLOR_CYAN "\x1b[36m"
 #define COLOR_RESET "\x1b[0m"
 
-void analyseMatrix(struct map *newmap)//fait la moyenne de tout les besoins et les print
+void analyseMatrix(struct map *newmap)
 {
+
+	//make an average of all the needs
+
 	int nbbat = 0;
 
 	int stat[NBSTATS] = {0};
@@ -37,8 +41,11 @@ void analyseMatrix(struct map *newmap)//fait la moyenne de tout les besoins et l
 	printf(COLOR_CYAN "MOY HEAL = %i\n" COLOR_RESET, stat[4]/nbbat);
 }
 
-void analyseMatrix_print(struct map *newmap)//print le besoin le plus fort de chaque case en couleur ou rien si il n'y a pas de besoin
+void analyseMatrix_print(struct map *newmap)
 {
+
+	//print the strongest need of each cells of the matrix
+
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
 		struct cell *uptest = newmap->cells + j;
@@ -94,8 +101,11 @@ void analyseMatrix_print(struct map *newmap)//print le besoin le plus fort de ch
 	}
 }
 
-void recAnalyseMatrix(struct map *newmap, int *stat) //fait la somme des besoin de tout les types
+void recAnalyseMatrix(struct map *newmap, int *stat)
 {
+
+	//make the sum of each needs
+
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
 		struct cell *uptest = newmap->cells + j;
@@ -103,12 +113,14 @@ void recAnalyseMatrix(struct map *newmap, int *stat) //fait la somme des besoin 
 		{
 			*(stat+i) += uptest->stats[i];
 		}
-
 	}
 }
 
 void printMatrixTime(struct map *newmap)//print la matricd en couleur avec une pose de 1sec a la fin
 {
+
+	//print the colored building matrix with a second of stop
+
 	int nbbat = 0;
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
@@ -161,8 +173,11 @@ char charType(int type)//renvoie le symbole associé au type
 }
 
 
-void printMatrix(struct map *newmap)//print la matrix en couleur sans pose
+void printMatrix(struct map *newmap)
 {
+
+	//print colored building matrix
+
 	int nbbat = 0;
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
@@ -194,8 +209,11 @@ void printMatrix(struct map *newmap)//print la matrix en couleur sans pose
 	printf("\n");
 }
 
-void printMatrixStat(struct map *newmap, int stat)//print la matrix du besoin passé en argument
+void printMatrixStat(struct map *newmap, int stat)
 {
+
+	//print the stat's natrix
+
 	stringType(stat);
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
@@ -203,15 +221,27 @@ void printMatrixStat(struct map *newmap, int stat)//print la matrix du besoin pa
 		if(upTest->stats[stat] == 0)
 			printf("%i ;", (upTest->stats[stat]));
 		if(upTest->stats[stat] != 0)
-			printf(COLOR_RED "%i ;" COLOR_RESET,(upTest->stats[stat]));
+		{
+			if(upTest->stats[stat] < 0)
+				printf(COLOR_RED "%i;" COLOR_RESET,(upTest->stats[stat]));
+			else if(upTest->stats[stat] < 10)
+				printf(COLOR_RED "%i ;" COLOR_RESET,(upTest->stats[stat]));
+			else if(upTest->stats[stat] < 100)
+				printf(COLOR_RED "%i;" COLOR_RESET,(upTest->stats[stat]));
+			else
+				printf(COLOR_RED "%i;" COLOR_RESET,(upTest->stats[stat]));
+		}
 		if(j%(newmap->maxWidth) == 0)
 			printf("\n");
 	}
 	printf("\n");
 }
 
-void stringType(int stat)//renvoie la string associé au type
+void stringType(int stat)
 {
+
+	//Return the type's string
+
 	if(stat == 0)
 	{
 		printf("SECURITY :");
@@ -240,15 +270,13 @@ void stringType(int stat)//renvoie la string associé au type
 	errx(EXIT_FAILURE,"stringType(): not a type");
 }
 
-struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof)
+struct map *initMap(unsigned int maxH, unsigned int maxW)
 {
-	/*initialisation de la map plus lancement de la recursion avec le placement de la mairie*/
+	/*Map Initialisation*/
 
 	struct map *newMap = malloc(sizeof(struct map));
 	newMap->maxHeight = maxH;
 	newMap->maxWidth = maxW;
-
-	//printf("%p map pointeur \n",newMap);
 
 	struct cell *cells = malloc(sizeof(struct cell) * maxW * maxH);
 	newMap->cells = cells;
@@ -259,51 +287,151 @@ struct map *initMap(unsigned int maxH, unsigned int maxW, struct building **buil
 
 		(cells+i)->building = NULL;
 	}
-
-	struct cell *Fcell = newMap->cells;
-	struct cell *center = Fcell + maxW/2 + maxW*(maxH/2);
-
-	struct building *Hall = *buildingList;
-	center->building = Hall;
-
-	Hall->x = maxW/2;
-	Hall->y = maxH/2;
-
-	updateNeeds(center, newMap, 0, buildingList, compt, roof);
-
-	//printf("hey hey iniMap works\n");
 	return newMap;
 }
 
-void rec_initMap(struct map *newMap, unsigned int maxH, unsigned int maxW, struct building **buildingList, int compt, int roof)//meme fonction que initmap mais avec la map en parametre
+void fillTown(struct map *map, struct building **buildingList, int roof, int **building_value)
 {
-	newMap->maxHeight = maxH;
-	newMap->maxWidth = maxW;
 
-	for(int i = 0; i < (int) (maxH*maxW); i++)
+	//fill the map with a building at a free place (the most interresting one)
+
+	int *a = malloc(sizeof(int));
+	int *b = malloc(sizeof(int));
+	*a = 0;
+	*b = 12;
+	int maxStats = 0;
+	struct cell *cell = searchGlobalNeed(map, &maxStats,roof, a);
+	if(*a == 0)//if(there is no vital need) then generate random
 	{
-		for(int j = 0; j < NBSTATS; j++)
-			((newMap->cells)+i)->stats[j] = 0;
-
-		((newMap->cells)+i)->building = NULL;
+		printf("hey random\n ");
+		cell = generateRandomBuilding(map, buildingList, &maxStats, a, 0);
+		if(*a == 0)
+			errx(1,"There is no possibility to place a building randomly | assign.c: FillTown()\n");
 	}
-
-	struct cell *Fcell = newMap->cells;
-	struct cell *center = Fcell + maxW/2 + maxW*(maxH/2);
-
-	struct building *Hall = *buildingList;
-	center->building = Hall;
-
-	Hall->x = maxW/2;
-	Hall->y = maxH/2;
-
-	updateNeeds(center, newMap, 0, buildingList, compt, roof);
+	if(maxStats == 0)
+	{
+		cell->building = *(buildingList+1);
+		cell->stats[0] = 0;
+	}
+	else if(maxStats == 1)
+	{
+		cell->building = *(buildingList+14);
+		cell->stats[1] = 0;
+	}
+	else if(maxStats == 2)
+	{
+		cell->building = *(buildingList+4);
+		cell->stats[2] = 0;
+	}
+	else if(maxStats == 3)
+	{
+		cell->building = *(buildingList+18);
+		cell->stats[3] = 0;
+	}
+	else
+	{
+		cell->building = *(buildingList+2);
+		cell->stats[4]= 0;
+	}
+	int temp = *a;
+	*a = temp % map->maxWidth;//set de a
+	*b = temp / map->maxWidth;//set de b
+	updateAround(map, *a, *b, building_value);
+	free(a);
+	free(b);
 }
 
 
 
 
 
+struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
+{
+
+	//Research the max need in all the map only at free place
+
+	int maxneed = roof;
+	struct cell *result = NULL;
+	*a = 0;
+	result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
+	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
+	{
+		struct cell *uptest = map->cells + j;
+		if(uptest->building == NULL)
+		{
+			for(int i = 0; i < NBSTATS; i++)
+			{
+				if(uptest->stats[i] > maxneed)
+				{
+					*a = j;
+					maxneed = uptest->stats[i];
+					*maxstat = i;
+					result = uptest;
+				}
+			}
+		}
+	}
+	return result;
+}
+
+struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int *a, int nbcompt)
+{
+
+	//Generate a building at a free place between the center and RDMRANGE
+
+	int range = RDMRANGE;
+	*maxstat = rand() % 6;
+	struct cell *tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2);//center
+	srand(time(0)* rand());
+	int rdm = rand();
+	int compt = 0;
+	int rdmW = 0;
+	int rdmH = 0;
+	while(compt < 10000)
+	{
+		srand(rdm + nbcompt+time(0));
+		rdm = rand();
+		rdmW = rdm % (2*range) - range;
+		srand(rdm);
+		rdmH = rand() % (2*range) - range;
+
+		tempcell += rdmW + (map->maxWidth*rdmH);
+		if(tempcell->building == NULL)
+			break;
+		compt++;
+	}
+	*a = tempcell - map->cells ;
+	return tempcell;
+}
+
+int  maxStat(struct cell *cell, int *stat)//renvoie le type et le nombre du besoin max d'une cell
+{
+	int max = cell->stats[0];
+	*stat = 0;
+	for(int i = 1; i < NBSTATS; i++)
+	{
+		if(cell->stats[i] > max)
+		{
+			max = cell->stats[i];
+			*stat = i;
+		}
+	}
+
+	return max;
+}
+
+struct building *getBat(int stat, struct building **buildingList)
+{
+	struct building *bat = *buildingList+1;
+	while (bat && (bat->type != stat+1 && !bat->placed))
+	{
+		bat += 1;
+	}
+	bat->placed = 1;
+	return bat;
+}
+
+/*
 void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList, int nbcompt, int roof)
 {
 	//V1 tout le temps en cercle pondéré
@@ -478,11 +606,11 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 		k++;
 	}
 
-	/*if(compt%10 == 0)
+	if(compt%10 == 0)
 	{
 		printMatrixTime(map);
 		analyseMatrix(map);
-	}*/
+	}
 
 	if(maxdeficit == 0)
 	{
@@ -497,109 +625,4 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 
 	recUpdate(deficit, map, maxStats, compt, buildingList, nbcompt, roof);
 }
-
-struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof)
-{
-	int localsum = 0;
-	int maxneed = roof;
-	struct cell *result = NULL;
-	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
-	{
-		struct cell *uptest = map->cells + j;
-		for(int i = 0; i < NBSTATS; i++)
-		{
-			if(uptest->stats[i] > maxneed)
-			{
-				maxneed = uptest->stats[i];
-				*maxstat = i;
-				result = uptest;
-			}
-		}
-	}
-	return result;
-}
-struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int nbcompt)//genere un building placé a range de distance du dernier batiment posé
-{
-	int range = RDMRANGE + nbcompt/(5+(nbcompt/3));
-	*maxstat = rand() % 6;
-	struct cell *tempcell = map->cells;
-	srand(time(0)* rand());
-	int rdm = rand();
-	while(1)
-	{
-		srand(rdm + nbcompt+time(0));
-		rdm = rand();
-		int rdmW = rdm % (2*range) - range;
-		srand(rdm);
-		int rdmH = rand() % (2*range) - range;
-
-		tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2)+rdmW+ (map->maxWidth*rdmH);
-		if(tempcell->building == NULL)
-			break;
-	}
-	return tempcell;
-}
-
-int  maxStat(struct cell *cell, int *stat)//renvoie le type et le nombre du besoin max d'une cell
-{
-	int max = cell->stats[0];
-	*stat = 0;
-	for(int i = 1; i < NBSTATS; i++)
-	{
-		if(cell->stats[i] > max)
-		{
-			max = cell->stats[i];
-			*stat = i;
-		}
-	}
-
-	return max;
-}
-
-void recUpdate(struct cell *cell, struct map *map, int *stat, int compt, struct building **buildingList, int nbcompt, int roof)
-{
-	//printf("%i stat to put, %i compt\n",*stat, compt);
-	//cell->building = getBat(*stat, buildingList);
-
-	if(*stat == 0)
-	{
-		cell->building = *(buildingList+1);
-		cell->stats[0] = 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);
-	}
-	else if(*stat == 1)
-	{
-		cell->building = *(buildingList+14);
-		cell->stats[1] = 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);
-	}
-	else if(*stat == 2)
-	{
-		cell->building = *(buildingList+4);
-		cell->stats[2] = 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);
-	}
-	else if(*stat == 3)
-	{
-		cell->building = *(buildingList+18);
-		cell->stats[3] = 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);
-	}
-	else
-	{
-		cell->building = *(buildingList+2);
-		cell->stats[4]= 0;
-		updateNeeds(cell, map, compt+1, buildingList, nbcompt, roof);
-	}
-}
-
-struct building *getBat(int stat, struct building **buildingList)
-{
-	struct building *bat = *buildingList+1;
-	while (bat && (bat->type != stat+1 && !bat->placed))
-	{
-		bat += 1;
-	}
-	bat->placed = 1;
-	return bat;
-}
+*/
