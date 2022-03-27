@@ -58,33 +58,42 @@ void testAssign(int compt, int roof)
 	char **buildind_label = load_building_labels();
 	struct building **buildingList = initTownList();
 
-	/*for(int nbcompt = 1; nbcompt < 100; nbcompt++)
+	for(int nbcompt = 2; nbcompt < 100; nbcompt++)
 	{
-		for(int nbreplay = 1; nbreplay < 20; nbreplay++)
-		{*/
+		for(int nbreplay = 1; nbreplay < 10; nbreplay++)
+		{
 			struct map *newmap = initMap(40,40);
 			struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
 			center->building = *buildingList;
 			updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
-			int i = 0;
-			int nbcompt = 30;
+			int i = 1;
+			//int nbcompt = 40;
 			int verif = 1000;
-			int comptage = compt/nbcompt;
-			while(i < nbcompt)
+			int *comptage = malloc(sizeof(int));
+			*comptage = compt/nbcompt;
+			//printf(" *comptage : %i \n", *comptage);
+			while(i < compt)
 			{
-				fill_and_replace(newmap, buildingList, roof, building_value, i*comptage, verif, i);
-				i++;
+				fill_and_replace(newmap, buildingList, roof, building_value, *comptage, verif, i);
+				i+=*comptage;
 			}
 
-			printf("\n");
+			//printf("\n");
 			analyseMatrix(newmap);
+			if(nbreplay == 9)
+			{
+				//printMatrix(newmap);
+				printf(" *comptage : %i \n", *comptage);
+				sleep(1);
+			}
 
 			//free :
+			free(comptage);
 			free(newmap->cells);
 			free(newmap);
-		/*}
+		}
 		sleep(1);
-	}*/
+	}
 
 	//free
 	freeList(buildingList);
