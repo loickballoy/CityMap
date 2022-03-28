@@ -7,6 +7,7 @@
 #include "../banker/need.c"
 #include "../loader/read.c"
 #include "../geographer/update.h"
+#include "../geographer/road.c"
 
 
 #define COLOR_RED "\x1b[31m"
@@ -58,6 +59,15 @@ void testAssign(int compt, int roof)
 	char **buildind_label = load_building_labels();
 	struct building **buildingList = initTownList();
 
+	struct map *newmap = initMap(40,40);
+	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
+	int a = 0;
+	int b = 0;
+	square(newmap, 5, 5, 5, &a, &b);
+	((newmap->cells)+5 + 5*(newmap->maxWidth))->type = 13;
+	printMatrix(newmap);
+
+/*
 	for(int nbcompt = 2; nbcompt < 100; nbcompt++)
 	{
 		for(int nbreplay = 1; nbreplay < 10; nbreplay++)
@@ -67,7 +77,7 @@ void testAssign(int compt, int roof)
 			center->building = *buildingList;
 			updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 			int i = 1;
-			//int nbcompt = 40;
+			int nbcompt = 40;
 			int verif = 1000;
 			int *comptage = malloc(sizeof(int));
 			*comptage = compt/nbcompt;
@@ -80,6 +90,7 @@ void testAssign(int compt, int roof)
 
 			//printf("\n");
 			analyseMatrix(newmap);
+			printMatrix(newmap);
 			if(nbreplay == 9)
 			{
 				//printMatrix(newmap);
@@ -93,7 +104,8 @@ void testAssign(int compt, int roof)
 			free(newmap);
 		}
 		sleep(1);
-	}
+	}*/
+	//free :
 
 	//free
 	freeList(buildingList);

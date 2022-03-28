@@ -26,9 +26,9 @@ void analyseMatrix(struct map *newmap)
 
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
-		struct cell *uptest = newmap->cells + j;
+		struct cell *upTest = newmap->cells + j;
 		for(int i = 0; i < NBSTATS; i++)
-			stat[i] += uptest->stats[i];
+			stat[i] += upTest->stats[i];
 		nbbat++;
 	}
 	printf("\n");
@@ -46,14 +46,14 @@ void analyseMatrix_print(struct map *newmap)
 
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
-		struct cell *uptest = newmap->cells + j;
-		int max = uptest->stats[0];
+		struct cell *upTest = newmap->cells + j;
+		int max = upTest->stats[0];
 		int type = 0;
 		for(int i = 1; i < NBSTATS; i++)
 		{
-			if(uptest->stats[i] > max)
+			if(upTest->stats[i] > max)
 			{
-				max = uptest->stats[i];
+				max = upTest->stats[i];
 				type = i;
 			}
 		}
@@ -65,32 +65,32 @@ void analyseMatrix_print(struct map *newmap)
 			if(max / 10 < 10)
 			{
 				if(type == 0)
-					printf(COLOR_BLEU "%i ;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 1)
-					printf(COLOR_GREEN "%i ;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_GREEN "%i ;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 2)
-					printf(COLOR_YELLOW "%i ;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_YELLOW "%i ;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 3)
-					printf(COLOR_PURPLE "%i ;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_PURPLE "%i ;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 4)
-					printf(COLOR_CYAN "%i ;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_CYAN "%i ;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 5)
-					printf(COLOR_RED "%i ;" COLOR_RESET,uptest->stats[type]);
+					printf(COLOR_RED "%i ;" COLOR_RESET,upTest->stats[type]);
 			}
 			if(max / 10 >= 10)
 			{
 				if(type == 0)
-					printf(COLOR_BLEU "%i;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_BLEU "%i;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 1)
-					printf(COLOR_GREEN "%i;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_GREEN "%i;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 2)
-					printf(COLOR_YELLOW "%i;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_YELLOW "%i;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 3)
-					printf(COLOR_PURPLE "%i;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_PURPLE "%i;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 4)
-					printf(COLOR_CYAN "%i;" COLOR_RESET, uptest->stats[type]);
+					printf(COLOR_CYAN "%i;" COLOR_RESET, upTest->stats[type]);
 				else if(type == 5)
-					printf(COLOR_RED "%i;" COLOR_RESET,uptest->stats[type]);
+					printf(COLOR_RED "%i;" COLOR_RESET,upTest->stats[type]);
 			}
 
 		}
@@ -113,10 +113,10 @@ void recAnalyseMatrix(struct map *newmap, int *stat)
 
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
-		struct cell *uptest = newmap->cells + j;
+		struct cell *upTest = newmap->cells + j;
 		for(int i = 0; i < NBSTATS; ++i)
 		{
-			*(stat+i) += uptest->stats[i];
+			*(stat+i) += upTest->stats[i];
 		}
 	}
 }
@@ -130,24 +130,24 @@ void printMatrixTime(struct map *newmap)//print la matricd en couleur avec une p
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
 		struct cell *upTest = newmap->cells + j;
-		if(upTest->building == NULL)
+		if(upTest->type == -1)
 			printf("  ;");
-		if(upTest->building != NULL)
+		if(upTest != NULL)
 		{
 			nbbat++;
 			printf("");
-			if(upTest->building->type == 0)
-				printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->building->type));
-			else if(upTest->building->type == 1)
-				printf(COLOR_GREEN "%c ;" COLOR_RESET, charType(upTest->building->type));
-			else if(upTest->building->type == 2)
-				printf(COLOR_YELLOW "%c ;" COLOR_RESET, charType(upTest->building->type));
-			else if(upTest->building->type == 3)
-				printf(COLOR_PURPLE "%c ;" COLOR_RESET, charType(upTest->building->type));
-			else if(upTest->building->type == 4)
-				printf(COLOR_CYAN "%c ;" COLOR_RESET, charType(upTest->building->type));
+			if(upTest->type == 0)
+				printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->type));
+			else if(upTest->type == 1)
+				printf(COLOR_GREEN "%c ;" COLOR_RESET, charType(upTest->type));
+			else if(upTest->type == 2)
+				printf(COLOR_YELLOW "%c ;" COLOR_RESET, charType(upTest->type));
+			else if(upTest->type == 3)
+				printf(COLOR_PURPLE "%c ;" COLOR_RESET, charType(upTest->type));
+			else if(upTest->type == 4)
+				printf(COLOR_CYAN "%c ;" COLOR_RESET, charType(upTest->type));
 			else
-				printf(COLOR_RED "%c ;" COLOR_RESET,charType(upTest->building->type));
+				printf(COLOR_RED "%c ;" COLOR_RESET,charType(upTest->type));
 		}
 		if(j%(newmap->maxWidth) == 0)
 		{
@@ -187,32 +187,51 @@ void printMatrix(struct map *newmap)
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
 		struct cell *upTest = newmap->cells + j;
-		if(upTest->building == NULL)
-			printf("  ;");
-		if(upTest->building != NULL)
+		if(upTest->type == -1)
+			printf("   ;");
+		if(upTest->type == 12)
 		{
-			nbbat++;
+			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
+		}
+		if(upTest->type == 11)
+		{
+			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
+		}
+		if(upTest->type == 13)
+		{
+			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
+		}
+		if(upTest->type == 14)
+		{
+			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
+		}
+		if(j%(newmap->maxWidth) == 0)
+			printf("\n");
+	}
+}
+			/*nbbat++;
 			printf("");
-			if(upTest->building->type == 0)
-				printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->building->type));
-			else if(upTest->building->type == 1)
-				printf(COLOR_GREEN "%c ;" COLOR_RESET, charType(upTest->building->type));
-			else if(upTest->building->type == 2)
-				printf(COLOR_YELLOW "%c ;" COLOR_RESET, charType(upTest->building->type));
-			else if(upTest->building->type == 3)
-				printf(COLOR_PURPLE "%c ;" COLOR_RESET, charType(upTest->building->type));
-			else if(upTest->building->type == 4)
-				printf(COLOR_CYAN "%c ;" COLOR_RESET, charType(upTest->building->type));
+			if(upTest->type == 0)
+				printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->type));
+			else if(upTest->type == 1)
+				printf(COLOR_GREEN "%c ;" COLOR_RESET, charType(upTest->type));
+			else if(upTest->type == 2)
+				printf(COLOR_YELLOW "%c ;" COLOR_RESET, charType(upTest->type));
+			else if(upTest->type == 3)
+				printf(COLOR_PURPLE "%c ;" COLOR_RESET, charType(upTest->type));
+			else if(upTest->type == 4)
+				printf(COLOR_CYAN "%c ;" COLOR_RESET, charType(upTest->type));
 			else
-				printf(COLOR_RED "%c ;" COLOR_RESET,charType(upTest->building->type));
+				printf(COLOR_RED "%c ;" COLOR_RESET,charType(upTest->type));
 		}
 		if(j%(newmap->maxWidth) == 0){
 			printf("\n");
-		}
-	}
+		}*/
+	/*}
 	printf("NBBAT = %i\n", nbbat);
 	printf("\n");
 }
+}*/
 
 void printMatrixStat(struct map *newmap, int stat)
 {
@@ -290,7 +309,7 @@ struct map *initMap(unsigned int maxH, unsigned int maxW)
 		for(int j = 0; j < NBSTATS; j++)
 			(cells+i)->stats[j] = 0;
 
-		(cells+i)->building = NULL;
+		(cells+i)->type = -1;
 	}
 	return newMap;
 }
@@ -325,17 +344,17 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 	}
 	else if(maxStats == 2)
 	{
-		cell->building = *(buildingList+4);
+		cell->building  = *(buildingList+4);
 		cell->stats[2] = 0;
 	}
 	else if(maxStats == 3)
 	{
-		cell->building = *(buildingList+18);
+		cell->building  = *(buildingList+18);
 		cell->stats[3] = 0;
 	}
 	else
 	{
-		cell->building = *(buildingList+2);
+		cell->building  = *(buildingList+2);
 		cell->stats[4]= 0;
 	}
 	int temp = *a;
@@ -371,27 +390,27 @@ void replaceTown(struct map *map, struct building **buildingList, int roof, int 
 
 	if(maxStats == 0)
 	{
-		cell->building = *(buildingList+1);
+		cell->building  = *(buildingList+1);
 		cell->stats[0] = 0;
 	}
 	else if(maxStats == 1)
 	{
-		cell->building = *(buildingList+14);
+		cell->building  = *(buildingList+14);
 		cell->stats[1] = 0;
 	}
 	else if(maxStats == 2)
 	{
-		cell->building = *(buildingList+4);
+		cell->building  = *(buildingList+4);
 		cell->stats[2] = 0;
 	}
 	else if(maxStats == 3)
 	{
-		cell->building = *(buildingList+18);
+		cell->building  = *(buildingList+18);
 		cell->stats[3] = 0;
 	}
 	else
 	{
-		cell->building = *(buildingList+2);
+		cell->building  = *(buildingList+2);
 		cell->stats[4]= 0;
 	}
 	*nbreplacement += 1;
@@ -411,17 +430,17 @@ struct cell *replaceGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 	result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
 	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
 	{
-		struct cell *uptest = map->cells + j;
-		if(uptest->building != NULL && uptest->building->type != 0)
+		struct cell *upTest = map->cells + j;
+		if(upTest != NULL && upTest->type != 0)
 		{
 			for(int i = 0; i < NBSTATS; i++)
 			{
-				if(uptest->stats[i] > maxneed)
+				if(upTest->stats[i] > maxneed)
 				{
 					*a = j;
-					maxneed = uptest->stats[i];
+					maxneed = upTest->stats[i];
 					*maxstat = i;
-					result = uptest;
+					result = upTest;
 				}
 			}
 		}
@@ -440,17 +459,17 @@ struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 	result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
 	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
 	{
-		struct cell *uptest = map->cells + j;
-		if(uptest->building == NULL)
+		struct cell *upTest = map->cells + j;
+		if(upTest->type == -1)
 		{
 			for(int i = 0; i < NBSTATS; i++)
 			{
-				if(uptest->stats[i] > maxneed)
+				if(upTest->stats[i] > maxneed)
 				{
 					*a = j;
-					maxneed = uptest->stats[i];
+					maxneed = upTest->stats[i];
 					*maxstat = i;
-					result = uptest;
+					result = upTest;
 				}
 			}
 		}
@@ -481,7 +500,7 @@ struct cell *generateRandomBuilding(struct map *map, struct building **buildingL
 		rdmH = rand() % (2*range) - range;
 
 		tempcell += rdmW + (map->maxWidth*rdmH);
-		if(tempcell->building == NULL)
+		if(tempcell->type == -1)
 			break;
 		compt++;
 	}
@@ -505,6 +524,7 @@ int  maxStat(struct cell *cell, int *stat)//renvoie le type et le nombre du beso
 	return max;
 }
 
+/*
 struct building *getBat(int stat, struct building **buildingList)
 {
 	struct building *bat = *buildingList+1;
@@ -514,7 +534,7 @@ struct building *getBat(int stat, struct building **buildingList)
 	}
 	bat->placed = 1;
 	return bat;
-}
+}*/
 
 /*
 void updateNeeds(struct cell *cell, struct map *map, int compt, struct building **buildingList, int nbcompt, int roof)
@@ -541,11 +561,11 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 
 	int bias[NBSTATS];
 	for(int i = 0; i < NBSTATS; i++)
-		bias[i] = cell->building->values->stats[i];
+		bias[i] = cell->values->stats[i];
 
 	int maxTemp = 0;
 
-	unsigned int r = (unsigned int) cell->building->values->range;
+	unsigned int r = (unsigned int) cell->values->range;
 
 	struct cell *pos;
 	unsigned int i = 0;
@@ -566,7 +586,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 				DownCell->stats[j] += i == 0?0:bias[j] - (int)(ponderation * (float)bias[j]);
 
 			maxTemp = maxStat(UpCell, stat);
-			if(maxTemp>= roof && maxTemp > maxdeficit && UpCell->building == NULL)
+			if(maxTemp>= roof && maxTemp > maxdeficit && UpCell == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
@@ -574,7 +594,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 			}
 
 			maxTemp = maxStat(DownCell, stat);
-			if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell->building == NULL)
+			if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
@@ -601,7 +621,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 				DownCell->stats[j] += i == 0?0:bias[j] - (int)(ponderation * (float)bias[j]);
 
 			maxTemp = maxStat(UpCell, stat);
-			if(maxTemp>= roof && maxTemp > maxdeficit &&  UpCell->building == NULL)
+			if(maxTemp>= roof && maxTemp > maxdeficit &&  UpCell == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
@@ -609,7 +629,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 			}
 
 			maxTemp = maxStat(DownCell, stat);
-			if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell->building == NULL)
+			if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
@@ -637,7 +657,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 					DownCell->stats[j] += i == 0?0:bias[j] - (int)(ponderation * (float)bias[j]);
 
 				maxTemp = maxStat(UpCell, stat);
-				if(maxTemp>= roof && maxTemp > maxdeficit && UpCell->building == NULL)
+				if(maxTemp>= roof && maxTemp > maxdeficit && UpCell == NULL)
 				{
 					maxdeficit = maxTemp;
 					*maxStats = *stat;
@@ -645,7 +665,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 				}
 
 				maxTemp = maxStat(DownCell, stat);
-				if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell->building == NULL)
+				if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell == NULL)
 				{
 					maxdeficit = maxTemp;
 					*maxStats = *stat;
@@ -673,7 +693,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 				DownCell->stats[j] += i == 0?0:bias[j] - (int)(ponderation * (float)bias[j]);
 
 			maxTemp = maxStat(UpCell, stat);
-			if(maxTemp>= roof && maxTemp > maxdeficit && UpCell->building == NULL)
+			if(maxTemp>= roof && maxTemp > maxdeficit && UpCell == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
@@ -681,7 +701,7 @@ void updateNeeds(struct cell *cell, struct map *map, int compt, struct building 
 			}
 
 			maxTemp = maxStat(DownCell, stat);
-			if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell->building == NULL)
+			if(maxTemp  >= roof && maxTemp > maxdeficit && DownCell == NULL)
 			{
 				maxdeficit = maxTemp;
 				*maxStats = *stat;
