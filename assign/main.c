@@ -45,7 +45,7 @@ void fill_and_replace(struct map *newmap, struct building **buildingList, int ro
 			replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
 			nbverif++;
 		}
-		//printf("nbreplacement : %i", *nbreplacement);
+		printf("nbreplacement : %i", *nbreplacement);
 	}
 
 	free(nbreplacement);
@@ -53,7 +53,6 @@ void fill_and_replace(struct map *newmap, struct building **buildingList, int ro
 
 void testAssign(int compt, int roof)
 {
-	printf("compt = %i \n", compt);
 	//init structs
 	int **building_value = load_building_value();
 	char **buildind_label = load_building_labels();
@@ -65,26 +64,28 @@ void testAssign(int compt, int roof)
 	(center+1)->type = 6;
 	(center-1)->type = 6;
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
-	printf("compt = %i \n", compt);
+
 	fillTown(newmap, buildingList, roof, building_value);
-	printf("compt = %i \n", compt);
 	fillTown(newmap, buildingList, roof, building_value);
-	printf("compt = %i \n", compt);
-	printMatrix(newmap);
-	roadToConnect(newmap, 15,15);
-	((newmap->cells)+20 + 20*(newmap->maxWidth))->type = 9;
-	printMatrix(newmap);
+	fillTown(newmap, buildingList, roof, building_value);
+	fillTown(newmap, buildingList, roof, building_value);
+	fillTown(newmap, buildingList, roof, building_value);
+	fillTown(newmap, buildingList, roof, building_value);
+	fillTown(newmap, buildingList, roof, building_value);
+
 	free(newmap->cells);
 	free(newmap);
 
-/*
-	for(int nbcompt = 2; nbcompt < 100; nbcompt++)
+
+	/*for(int nbcompt = 2; nbcompt < 100; nbcompt++)
 	{
 		for(int nbreplay = 1; nbreplay < 10; nbreplay++)
 		{
 			struct map *newmap = initMap(40,40);
 			struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
-			center->building = *buildingList;
+			center->type = 0;
+		  (center+1)->type = 6;
+			(center-1)->type = 6;
 			updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 			int i = 1;
 			int nbcompt = 40;
@@ -94,8 +95,9 @@ void testAssign(int compt, int roof)
 			//printf(" *comptage : %i \n", *comptage);
 			while(i < compt)
 			{
-				fill_and_replace(newmap, buildingList, roof, building_value, *comptage, verif, i);
-				i+=*comptage;
+				fillTown(newmap, buildingList, roof, building_value);
+				//fill_and_replace(newmap, buildingList, roof, building_value, *comptage, verif, i);
+				i++;//+=*comptage;
 			}
 
 			//printf("\n");
@@ -115,7 +117,6 @@ void testAssign(int compt, int roof)
 		}
 		sleep(1);
 	}*/
-	//free :
 
 	//free
 	freeList(buildingList);

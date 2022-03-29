@@ -19,20 +19,22 @@ int updateConnected(struct map *map, int x, int y)
 
 void square(struct map *map, int x, int y, int len, int *a, int *b)
 {
+  printf("init : x = %i || y = %i || len = %i \n", x, y, len);
   int startx = x-len/2 < 0 ? 0 : x-len/2;
   int starty = y-len/2 < 0 ? 0 : y-len/2;
   struct cell* tempcell = map->cells + (startx + starty * map->maxWidth);
   int endx = (x + len/2) >= map->maxWidth ? map->maxWidth-1 : x + len/2;
   int endy = (y + len/2) >= map->maxHeight ? map->maxHeight-1 : (y + len/2) ;
-  //printf("startx = %i  || starty = %i || endx = %i || endy = %i \n",startx,starty,endx,endy);
+
 
   for(int i = 0; i <= endx-startx; i++)
   {
+    printf("startx = %i  || starty = %i || endx = %i || endy = %i || i = %i\n",startx,starty,endx,endy, i);
     if((tempcell + i)->type == 6)
     {
-      *a = i;
+      *a = startx+i;
       *b = starty;
-      printf(" hey hey trouver 1");
+      printf(" hey hey trouver 1\n");
       return;
     }
     //(tempcell + i)->type = 13;
@@ -42,8 +44,8 @@ void square(struct map *map, int x, int y, int len, int *a, int *b)
     if((tempcell + j * map->maxWidth)->type == 6)
     {
       *a = startx;
-      *b = j;
-      printf(" hey hey trouver 2");
+      *b = starty+j;
+      printf(" hey hey trouver 2\n");
       return;
     }
     //(tempcell + j * map->maxWidth)->type = 12;
@@ -55,9 +57,9 @@ void square(struct map *map, int x, int y, int len, int *a, int *b)
   {
     if((tempcell + i)->type == 6)
     {
-      *a = i;
+      *a = startx+i;
       *b = endy;
-      printf(" hey hey trouver 3");
+      printf(" hey hey trouver 3\n");
       return;
     }
     //(tempcell+i)->type = 14;
@@ -69,8 +71,8 @@ void square(struct map *map, int x, int y, int len, int *a, int *b)
     if((tempcell + j * map->maxWidth)->type == 6)
     {
       *a = endx;
-      *b = j;
-      printf(" hey hey trouver 4");
+      *b = starty+j;
+      printf(" hey hey trouver 4\n");
       return;
     }
     //(tempcell + j * map->maxWidth)->type = 11;
@@ -84,12 +86,11 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
 {
   int **building_value = load_building_value();
   struct cell* tempcell = map->cells;
-  printf(" x = %i || y = %i || a = %i || b = %i \n",x,y,a,b);
   if(y < b)
   {
-    for(int i = b-1; y != i; i--)
+    for(int i = b; i != y; i--)
     {
-      tempcell += a + i*map->maxWidth;
+      tempcell = map->cells + a + i*map->maxWidth;
       if(tempcell->type != -1 && tempcell->type != 6)
       {
         reverseUpdateAround(map, a, i, building_value);
@@ -103,7 +104,7 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
   {
     for(int i = b; y != i; i++)
     {
-      tempcell += a + i*map->maxWidth;
+      tempcell = map->cells + a + i*map->maxWidth;
       if(tempcell->type != -1 && tempcell->type != 6)
       {
         reverseUpdateAround(map, a, i, building_value);
@@ -117,7 +118,7 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
   {
     for(int j = a; x != j; j--)
     {
-      tempcell += j + y*map->maxWidth;
+      tempcell = map->cells + j + y*map->maxWidth;
       if(tempcell->type != -1 && tempcell->type != 6)
       {
         reverseUpdateAround(map, j, y, building_value);
@@ -131,7 +132,7 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
   {
     for(int j = a; x != j; j++)
     {
-      tempcell += j + y*map->maxWidth;
+      tempcell = map->cells + j + y*map->maxWidth;
       if(tempcell->type != -1 && tempcell->type != 6)
       {
         reverseUpdateAround(map, j, y, building_value);
@@ -141,6 +142,7 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
         tempcell->type = 6;
     }
   }
+  free_building_list((void **)building_value);
   return;
 }
 
@@ -155,7 +157,6 @@ void roadToConnect(struct map *map, int x, int y)
     if(a != 0)
     {
       printf("hey hey we found a = %i || b = %i\n", a,b);
-      (map->cells+ a + b*map->maxWidth)->type = 0;
     }
     far++;
   }
