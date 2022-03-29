@@ -174,6 +174,8 @@ char charType(int type)//renvoie le symbole associé au type
 		return 'S';
 	if(type == 5)
 		return 'H';
+	if(type == 6)
+		return 'R';
 	errx(EXIT_FAILURE, "charType(): Type undifined");
 }
 
@@ -186,7 +188,7 @@ void printMatrix(struct map *newmap)
 	int nbbat = 0;
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
-		if(j%(newmap->maxWidth) == 0)
+		/*if(j%(newmap->maxWidth) == 0)
 			printf("\n");
 		struct cell *upTest = newmap->cells + j;
 		if(upTest->type == -1)
@@ -213,30 +215,34 @@ void printMatrix(struct map *newmap)
 		}
 
 	}
-}
-			/*nbbat++;
-			printf("");
-			if(upTest->type == 0)
-				printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->type));
-			else if(upTest->type == 1)
-				printf(COLOR_GREEN "%c ;" COLOR_RESET, charType(upTest->type));
-			else if(upTest->type == 2)
-				printf(COLOR_YELLOW "%c ;" COLOR_RESET, charType(upTest->type));
-			else if(upTest->type == 3)
-				printf(COLOR_PURPLE "%c ;" COLOR_RESET, charType(upTest->type));
-			else if(upTest->type == 4)
-				printf(COLOR_CYAN "%c ;" COLOR_RESET, charType(upTest->type));
+}*/
+			if(j%(newmap->maxWidth) == 0)
+				printf("\n");
+			struct cell *upTest = newmap->cells + j;
+			if(upTest->type == -1)
+				printf("  ;");
+			//printf("");
 			else
-				printf(COLOR_RED "%c ;" COLOR_RESET,charType(upTest->type));
-		}
-		if(j%(newmap->maxWidth) == 0){
-			printf("\n");
-		}*/
-	/*}
+			{
+				nbbat++;
+				if(upTest->type == 0)
+					printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->type));
+				else if(upTest->type == 1)
+					printf(COLOR_GREEN "%c ;" COLOR_RESET, charType(upTest->type));
+				else if(upTest->type == 2)
+					printf(COLOR_YELLOW "%c ;" COLOR_RESET, charType(upTest->type));
+				else if(upTest->type == 3)
+					printf(COLOR_PURPLE "%c ;" COLOR_RESET, charType(upTest->type));
+				else if(upTest->type == 4)
+					printf(COLOR_CYAN "%c ;" COLOR_RESET, charType(upTest->type));
+				else
+					printf(COLOR_RED "%c ;" COLOR_RESET,charType(upTest->type));
+			}
+	}
 	printf("NBBAT = %i\n", nbbat);
 	printf("\n");
 }
-}*/
+
 
 void printMatrixStat(struct map *newmap, int stat)
 {
@@ -340,26 +346,31 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 	if(maxStats == 0)
 	{
 		cell->building = *(buildingList+1);
+		cell->type = 1;
 		cell->stats[0] = 0;
 	}
 	else if(maxStats == 1)
 	{
 		cell->building = *(buildingList+14);
+		cell->type = 2;
 		cell->stats[1] = 0;
 	}
 	else if(maxStats == 2)
 	{
 		cell->building  = *(buildingList+4);
+		cell->type = 3;
 		cell->stats[2] = 0;
 	}
 	else if(maxStats == 3)
 	{
 		cell->building  = *(buildingList+18);
+		cell->type = 4;
 		cell->stats[3] = 0;
 	}
 	else
 	{
 		cell->building  = *(buildingList+2);
+		cell->type = 5;
 		cell->stats[4]= 0;
 	}
 	int temp = *a;

@@ -61,10 +61,17 @@ void testAssign(int compt, int roof)
 
 	struct map *newmap = initMap(40,40);
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
-	int a = 0;
-	int b = 0;
-	roadToConnect(newmap, 20,20);
-	//square(newmap, 35, 35, 10, &a, &b);
+	center->type = 0;
+	(center+1)->type = 6;
+	(center-1)->type = 6;
+	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
+	printf("compt = %i \n", compt);
+	fillTown(newmap, buildingList, roof, building_value);
+	printf("compt = %i \n", compt);
+	fillTown(newmap, buildingList, roof, building_value);
+	printf("compt = %i \n", compt);
+	printMatrix(newmap);
+	roadToConnect(newmap, 15,15);
 	((newmap->cells)+20 + 20*(newmap->maxWidth))->type = 9;
 	printMatrix(newmap);
 	free(newmap->cells);
