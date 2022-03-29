@@ -19,11 +19,12 @@ int updateConnected(struct map *map, int x, int y)
 
 void square(struct map *map, int x, int y, int len, int *a, int *b)
 {
-  int startx = x < 0 ? 0 : x;
-  int starty = y < 0 ? 0 : y;
+  int startx = x-len/2 < 0 ? 0 : x-len/2;
+  int starty = y-len/2 < 0 ? 0 : y-len/2;
   struct cell* tempcell = map->cells + (startx + starty * map->maxWidth);
-  int endx = x + len > map->maxWidth ? map->maxWidth : x + len;
-  int endy = (y + len) > map->maxHeight ? map->maxHeight : (y + len) ;
+  int endx = (x + len/2) >= map->maxWidth ? map->maxWidth-1 : x + len/2;
+  int endy = (y + len/2) >= map->maxHeight ? map->maxHeight-1 : (y + len/2) ;
+  //printf("startx = %i  || starty = %i || endx = %i || endy = %i \n",startx,starty,endx,endy);
 
   for(int i = 0; i <= endx-startx; i++)
   {
@@ -31,7 +32,6 @@ void square(struct map *map, int x, int y, int len, int *a, int *b)
     {
       *a = i;
       *b = starty;
-      tempcell->type = 12;
       return;
     }
     (tempcell + i)->type = 13;
@@ -42,7 +42,6 @@ void square(struct map *map, int x, int y, int len, int *a, int *b)
     {
       *a = startx;
       *b = j;
-      tempcell->type = 12;
       return;
     }
     (tempcell + j * map->maxWidth)->type = 12;
@@ -56,7 +55,6 @@ void square(struct map *map, int x, int y, int len, int *a, int *b)
     {
       *a = i;
       *b = endy;
-      tempcell->type = 12;
       return;
     }
     (tempcell+i)->type = 14;
@@ -69,14 +67,30 @@ void square(struct map *map, int x, int y, int len, int *a, int *b)
     {
       *a = endx;
       *b = j;
-      tempcell->type = 12;
       return;
     }
     (tempcell + j * map->maxWidth)->type = 11;
   }
+  *a = 0;
+  return;
+}
+
+void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || a,b = cell to
+{
+  return;
 }
 
 void roadToConnect(struct map *map, int x, int y)
 {
+  int a = 0;
+  int b = 0;
+  int far = 0;
+  while(a == 0/* && far < 20 pour les tests*/)//find the nearest road to connect
+  {
+    square(map, x, y, 3+far*2, &a, &b);
+    far++;
+  }
+  createWay(map, x, y, a, b);//place roads
+
   return;
 }

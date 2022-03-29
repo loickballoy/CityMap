@@ -63,9 +63,12 @@ void testAssign(int compt, int roof)
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
 	int a = 0;
 	int b = 0;
-	square(newmap, 5, 5, 5, &a, &b);
-	((newmap->cells)+5 + 5*(newmap->maxWidth))->type = 13;
+	roadToConnect(newmap, 20,20);
+	//square(newmap, 35, 35, 10, &a, &b);
+	((newmap->cells)+20 + 20*(newmap->maxWidth))->type = 9;
 	printMatrix(newmap);
+	free(newmap->cells);
+	free(newmap);
 
 /*
 	for(int nbcompt = 2; nbcompt < 100; nbcompt++)
@@ -111,6 +114,7 @@ void testAssign(int compt, int roof)
 	freeList(buildingList);
 	free_building_list((void **)building_value);
 	free_building_list((void **)buildind_label);
+
 }
 
 int main(int argc, char **argv)

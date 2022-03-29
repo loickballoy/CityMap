@@ -186,9 +186,15 @@ void printMatrix(struct map *newmap)
 	int nbbat = 0;
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
+		if(j%(newmap->maxWidth) == 0)
+			printf("\n");
 		struct cell *upTest = newmap->cells + j;
 		if(upTest->type == -1)
 			printf("   ;");
+		if(upTest->type == 9)
+		{
+			printf(COLOR_BLEU "%i  ;" COLOR_RESET, upTest->type);
+		}
 		if(upTest->type == 12)
 		{
 			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
@@ -205,8 +211,7 @@ void printMatrix(struct map *newmap)
 		{
 			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
 		}
-		if(j%(newmap->maxWidth) == 0)
-			printf("\n");
+
 	}
 }
 			/*nbbat++;
