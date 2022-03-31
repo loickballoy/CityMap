@@ -120,6 +120,11 @@ void add_edge(Graph g, int src, int dest)
 		fprintf(g->graph_file, "\t%d -- %d;\n", src, dest);
 }
 
+void add_label(Graph g, int num, int i, int j)
+{
+  fprintf(g->graph_file, "\t%d [label=\"(%d,%d)\"]; \n", num, i, j);
+}
+
 /*----------------------------------------------------------------------------------------------*/
 
 /**

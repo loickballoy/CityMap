@@ -35,7 +35,8 @@
 	Bool is_empty_graph(Graph g);
 	NodeList add_node(int x);
 	void add_edge(Graph g, int src, int dest);
-	void print_graph(Graph g);
+        void add_label(Graph g, int num, int i, int j);
+        void print_graph(Graph g);
 	void display_graph(Graph g);
 	void erase_graph(Graph g);
 

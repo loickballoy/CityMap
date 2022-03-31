@@ -2,6 +2,7 @@
 #include <err.h>
 #include <stdlib.h>
 #include "toSDL.h"
+#include "../metro/network.h"
 
 
 char **genMat(int DIM)
@@ -25,7 +26,7 @@ char **genMat(int DIM)
                 matrice[i][j] = 'H';
             if(number%2 == 0)
                 matrice[i][j] = 'P';
-            if(number%5 == 0)
+            if(number%10 == 0)
                 matrice[i][j] = 'S';
 	}
     }
@@ -38,7 +39,7 @@ void build_city()
 
   printf("Bienvenue sur CityMap !\n");
   printf("Rentrez les différents paramètres et nous vous générerons une ville\n");
-
+  /*
   int nb_hab;
   int budget;
   int sec;
@@ -61,6 +62,8 @@ void build_city()
   scanf("%d", &env);
   printf("\n");
   
+  */
+  
   //list batiment
   
   //execute les programmes de génération de ville
@@ -75,6 +78,8 @@ void build_city()
   char **matrice = genMat(DIM);
 
   PrintMat(matrice, DIM);
+
+  MakeMetro(matrice);
 
   for(int i = 0; i < DIM; i++)
     {

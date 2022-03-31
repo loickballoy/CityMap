@@ -7,14 +7,14 @@ CFLAGS = -Wall -Wextra -std=c99 -O0 -g
 LDFLAGS =
 LDLIBS = -lm 
 
-SRC = metro.c graph.c
+SRC = network.c graph.c
 
 OBJ = ${SRC:.c=.o}                                                              
 DEP = ${SRC:.c=.d} 
 
-all: metro
+all: network
 
-metro: ${OBJ}
+network: ${OBJ}
 
 run: all
 	./main
@@ -22,7 +22,7 @@ run: all
 .PHONY: clean
 
 clean:
-	${RM} ${OBJ} ${DEP} metro
+	${RM} ${OBJ} ${DEP} network
 
 -include ${DEP}
 
