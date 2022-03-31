@@ -12,10 +12,13 @@ int main(void)
     add_edge(g1, 2, 3);
     add_edge(g1, 3, 4);
     add_edge(g1, 4, 5);
+    add_edge(g1, 1, 4);
 
     print_graph(g1);
     display_graph(g1);
     erase_graph(g1);
+    system("dot -Tpng graph.out -o graph.png");
+
 
     return 0;
 }
