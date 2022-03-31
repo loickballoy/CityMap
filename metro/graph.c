@@ -155,9 +155,9 @@ void display_graph(Graph g)
 {
 	//Windows seulement !
 	if(g->is_oriented)
-		system("%CD%/graphviz/bin/dotty.exe digraph.out");
+		system("dot -Tpng digraph.out -o graph.png");
 	else
-		system("%CD%/graphviz/bin/dotty.exe graph.out");
+		system("dot -Tpng graph.out -o graph.png");
 }
 
 /*----------------------------------------------------------------------------------------------*/

@@ -1,20 +1,28 @@
+
 # Simple SDL mini Makefile
 
 CC = gcc -fsanitize=address
 CPPFLAGS = -MMD
-CFLAGS = -Wall -Wextra -std=c99 -O0 -g
+CFLAGS = -Wall -Wextra -std=c99 -O0 -g 
 LDFLAGS =
-LDLIBS =
+LDLIBS = -lm 
 
-OBJ = network.o
-DEP = ${OBJ:.o=.d}
+SRC = metro.c graph.c
 
-all: network
+OBJ = ${SRC:.c=.o}                                                              
+DEP = ${SRC:.c=.d} 
 
-network: ${OBJ}
+all: metro
+
+metro: ${OBJ}
+
+run: all
+	./main
+
+.PHONY: clean
 
 clean:
-	${RM} ${OBJ} ${DEP} network
+	${RM} ${OBJ} ${DEP} metro
 
 -include ${DEP}
 
