@@ -19,12 +19,14 @@ char **genMat(int DIM)
     {
       for(int j =0; j < DIM; j++)
 	{
-	  if(j%2 != 0)
-	    matrice[i][j] = 'H';
-	  if(j%2 == 0)
-	    matrice[i][j] = 'P';
-	  if(j%5 == 0)
-	    matrice[i][j] = 'S';
+            int number = rand();
+            
+            if(number%2 != 0)
+                matrice[i][j] = 'H';
+            if(number%2 == 0)
+                matrice[i][j] = 'P';
+            if(number%5 == 0)
+                matrice[i][j] = 'S';
 	}
     }
   return matrice;
