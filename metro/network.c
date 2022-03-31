@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <err.h>
 #include <stdlib.h>
-
+/*
 struct metro
 {
   unsigned int label;
@@ -44,5 +44,6 @@ int main()
   buildAdjlists
 
   
-  
+
 }
+*/
