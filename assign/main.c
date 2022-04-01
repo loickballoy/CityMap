@@ -59,12 +59,14 @@ void testAssign(int compt, int roof)
 	struct building **buildingList = initTownList();
 	struct map *newmap = initMap(40,40);
 
+	//init first bat
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
 	center->type = 0;
 	(center+1)->type = 6;
 	(center-1)->type = 6;
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 
+	//start the filling
 	for(int nbbat = 0; nbbat < compt; nbbat++)
 	{
 		fillTown(newmap, buildingList, roof, building_value);
@@ -72,6 +74,7 @@ void testAssign(int compt, int roof)
 	}
 	printMatrix(newmap);
 
+	//start replacement
 	int *nbreplacement = malloc(sizeof(int));
 	*nbreplacement = 0;
 	for(int nbbat = 0; nbbat < compt; nbbat++)
@@ -93,7 +96,7 @@ void testAssign(int compt, int roof)
 
 int main(int argc, char **argv)
 {
-	//init temps
+	//init time 
 	float temps;
   clock_t t1, t2;
   t1 = clock();
