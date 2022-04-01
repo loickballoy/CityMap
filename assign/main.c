@@ -57,68 +57,34 @@ void testAssign(int compt, int roof)
 	int **building_value = load_building_value();
 	char **buildind_label = load_building_labels();
 	struct building **buildingList = initTownList();
-
 	struct map *newmap = initMap(40,40);
+
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
 	center->type = 0;
 	(center+1)->type = 6;
 	(center-1)->type = 6;
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 
-	fillTown(newmap, buildingList, roof, building_value);
-	fillTown(newmap, buildingList, roof, building_value);
-	fillTown(newmap, buildingList, roof, building_value);
-	fillTown(newmap, buildingList, roof, building_value);
-	fillTown(newmap, buildingList, roof, building_value);
-	fillTown(newmap, buildingList, roof, building_value);
-	fillTown(newmap, buildingList, roof, building_value);
-
-	free(newmap->cells);
-	free(newmap);
-
-
-	/*for(int nbcompt = 2; nbcompt < 100; nbcompt++)
+	for(int nbbat = 0; nbbat < compt; nbbat++)
 	{
-		for(int nbreplay = 1; nbreplay < 10; nbreplay++)
-		{
-			struct map *newmap = initMap(40,40);
-			struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
-			center->type = 0;
-		  (center+1)->type = 6;
-			(center-1)->type = 6;
-			updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
-			int i = 1;
-			int nbcompt = 40;
-			int verif = 1000;
-			int *comptage = malloc(sizeof(int));
-			*comptage = compt/nbcompt;
-			//printf(" *comptage : %i \n", *comptage);
-			while(i < compt)
-			{
-				fillTown(newmap, buildingList, roof, building_value);
-				//fill_and_replace(newmap, buildingList, roof, building_value, *comptage, verif, i);
-				i++;//+=*comptage;
-			}
+		fillTown(newmap, buildingList, roof, building_value);
+		printMatrix(newmap);
+	}
+	printMatrix(newmap);
 
-			//printf("\n");
-			analyseMatrix(newmap);
-			printMatrix(newmap);
-			if(nbreplay == 9)
-			{
-				//printMatrix(newmap);
-				printf(" *comptage : %i \n", *comptage);
-				sleep(1);
-			}
-
-			//free :
-			free(comptage);
-			free(newmap->cells);
-			free(newmap);
-		}
-		sleep(1);
-	}*/
+	int *nbreplacement = malloc(sizeof(int));
+	*nbreplacement = 0;
+	for(int nbbat = 0; nbbat < compt; nbbat++)
+	{
+		replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
+	}
+	printf("nbreplacement : %i\n", *nbreplacement);
+	printMatrix(newmap);
 
 	//free
+	free(nbreplacement);
+	free(newmap->cells);
+	free(newmap);
 	freeList(buildingList);
 	free_building_list((void **)building_value);
 	free_building_list((void **)buildind_label);

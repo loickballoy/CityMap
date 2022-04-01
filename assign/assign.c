@@ -13,6 +13,7 @@
 #define COLOR_YELLOW "\x1b[33m"
 #define COLOR_PURPLE "\x1b[35m"
 #define COLOR_CYAN "\x1b[36m"
+#define COLOR_ROAD "\x1b[30m"
 #define COLOR_RESET "\x1b[0m"
 
 void analyseMatrix(struct map *newmap)
@@ -186,45 +187,20 @@ void printMatrix(struct map *newmap)
 	//print colored building matrix
 
 	int nbbat = 0;
+	int nbroad = 0;
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
-		/*if(j%(newmap->maxWidth) == 0)
-			printf("\n");
-		struct cell *upTest = newmap->cells + j;
-		if(upTest->type == -1)
-			printf("   ;");
-		if(upTest->type == 9)
-		{
-			printf(COLOR_BLEU "%i  ;" COLOR_RESET, upTest->type);
-		}
-		if(upTest->type == 12)
-		{
-			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
-		}
-		if(upTest->type == 11)
-		{
-			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
-		}
-		if(upTest->type == 13)
-		{
-			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
-		}
-		if(upTest->type == 14)
-		{
-			printf(COLOR_BLEU "%i ;" COLOR_RESET, upTest->type);
-		}
-
-	}
-}*/
 			if(j%(newmap->maxWidth) == 0)
 				printf("\n");
 			struct cell *upTest = newmap->cells + j;
 			if(upTest->type == -1)
 				printf("  ;");
-			//printf("");
 			else
 			{
-				nbbat++;
+				if(upTest->type != 6)
+					nbbat++;
+				if(upTest->type == 6)
+					nbroad++;
 				if(upTest->type == 0)
 					printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->type));
 				else if(upTest->type == 1)
@@ -235,11 +211,14 @@ void printMatrix(struct map *newmap)
 					printf(COLOR_PURPLE "%c ;" COLOR_RESET, charType(upTest->type));
 				else if(upTest->type == 4)
 					printf(COLOR_CYAN "%c ;" COLOR_RESET, charType(upTest->type));
-				else
+				else if(upTest->type == 5)
 					printf(COLOR_RED "%c ;" COLOR_RESET,charType(upTest->type));
+				else
+					printf(COLOR_ROAD "%c ;" COLOR_RESET,charType(upTest->type));
 			}
 	}
-	printf("NBBAT = %i\n", nbbat);
+	printf("\nNBBAT = %i\n", nbbat);
+	printf("NBROAD = %i\n", nbroad);
 	printf("\n");
 }
 
@@ -279,7 +258,7 @@ void stringType(int stat)
 
 	if(stat == 0)
 	{
-		printf("SECURITY :");
+		printf("POLITIC :");
 		return;
 	}
 	if(stat == 1)
@@ -300,6 +279,11 @@ void stringType(int stat)
 	if(stat == 4)
 	{
 		printf("HEALTH :");
+		return;
+	}
+	if(stat == 5)
+	{
+		printf("SECURITY :");
 		return;
 	}
 	errx(EXIT_FAILURE,"stringType(): not a type");
@@ -338,47 +322,53 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 	struct cell *cell = searchGlobalNeed(map, &maxStats,roof, a);
 	if(*a == 0)//if(there is no vital need) then generate random
 	{
-		//printf("hey random\n ");
+		printf("hey random\n ");
 		cell = generateRandomBuilding(map, buildingList, &maxStats, a, 0);
 		if(*a == 0)
 			errx(1,"There is no possibility to place a building randomly | assign.c: FillTown()\n");
 	}
-	if(maxStats == 0)
+	//printf("maxstat = %i || maxstat = %i \n", maxStats, cell->stats[maxStats]);
+
+	if(maxStats == 1)
 	{
-		cell->building = *(buildingList+1);
-		cell->type = 1;
-		cell->stats[0] = 0;
-	}
-	else if(maxStats == 1)
-	{
-		cell->building = *(buildingList+14);
-		cell->type = 2;
+		//cell->building = *(buildingList+14);
+		cell->type = 2;//OFFICE
 		cell->stats[1] = 0;
 	}
 	else if(maxStats == 2)
 	{
-		cell->building  = *(buildingList+4);
-		cell->type = 3;
+		//cell->building  = *(buildingList+4);
+		cell->type = 1;//PROPERTY
 		cell->stats[2] = 0;
 	}
 	else if(maxStats == 3)
 	{
-		cell->building  = *(buildingList+18);
-		cell->type = 4;
+		//cell->building  = *(buildingList+18);
+		cell->type = 4;//SHOP
 		cell->stats[3] = 0;
+	}
+	else if(maxStats == 4)
+	{
+		//cell->building  = *(buildingList+2);
+		cell->type = 5;//HOSPITAL
+		cell->stats[4]= 0;
 	}
 	else
 	{
-		cell->building  = *(buildingList+2);
-		cell->type = 5;
+		//cell->building  = *(buildingList+2);
+		cell->type = 3;//COMMISSARY
 		cell->stats[4]= 0;
 	}
 	int temp = *a;
 	*a = temp % map->maxWidth;//set de a
 	*b = temp / map->maxWidth;//set de b
 	updateAround(map, *a, *b, building_value);
-	if(!cell->isRoadConnected)//you have to connect it 
+	if(!cell->isRoadConnected)//you have to connect it
+	{
 		roadToConnect(map, *a, *b);
+	}
+	cleanWay(map);
+
 	free(a);
 	free(b);
 }
@@ -442,14 +432,14 @@ struct cell *replaceGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 
 	//Research the max need to replace in all the map
 
-	int maxneed = 1*(float)roof;
+	int maxneed = 0.9*(float)roof;
 	struct cell *result = NULL;
 	*a = 0;
-	result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
+	//result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
 	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
 	{
 		struct cell *upTest = map->cells + j;
-		if(upTest != NULL && upTest->type != 0)
+		if(upTest->type > 0 && upTest->type < 6 )
 		{
 			for(int i = 0; i < NBSTATS; i++)
 			{
@@ -474,7 +464,7 @@ struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 	int maxneed = roof;
 	struct cell *result = NULL;
 	*a = 0;
-	result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
+	//result = map->cells + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
 	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
 	{
 		struct cell *upTest = map->cells + j;
@@ -484,6 +474,7 @@ struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 			{
 				if(upTest->stats[i] > maxneed)
 				{
+					//printf("search : stats[%i] = %i || maxneed = %i  || a = %i\n", i ,upTest->stats[i],maxneed, *a);
 					*a = j;
 					maxneed = upTest->stats[i];
 					*maxstat = i;
@@ -501,7 +492,7 @@ struct cell *generateRandomBuilding(struct map *map, struct building **buildingL
 	//Generate a building at a free place between the center and RDMRANGE
 
 	int range = RDMRANGE;
-	*maxstat = rand() % 6;
+	*maxstat = rand()%3 +1;
 	struct cell *tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2);//center
 	srand(time(0)* rand());
 	int rdm = rand();

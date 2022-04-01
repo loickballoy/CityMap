@@ -45,7 +45,7 @@ void updateAround(struct map *map, int a, int b, int **building_value)
     struct cell *cell = (map->cells) + (a + b * map->maxWidth);
 
     if (cell->type == -1)
-        errx(1, "updateAround : Error the cell is not occupied by a building");
+        errx(1, "updateAround : Error the cell is not occupied by a building \n ");
 
     int type = cell->type;
     int *value = *(building_value + type);
@@ -71,10 +71,10 @@ void reverseUpdateAround(struct map *map, int a, int b, int **building_value)
 {
     struct cell *cell = (map->cells) + (a + b * map->maxWidth);
 
-    if (!(cell->building))
-        errx(1, "updateAround : Error the cell is not occupied by a building");
+    if (cell->type == -1)
+        errx(1, "reverseUpdateAround : Error the cell is not occupied by a building");
 
-    int type = cell->building->type;
+    int type = cell->type;
     int *value = *(building_value + type);
     int range = *(value + 6);
     int xsquare = a - range;
