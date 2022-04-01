@@ -9,7 +9,7 @@ struct building **initTownList();
 
 struct buildList **initTownList2(unsigned int nb_hab, unsigned int sec);
 
-struct building **initTownList3(unsigned int nb_hab, unsigned int sec);
+unsigned int *initTownList3(unsigned int nb_hab, double sec);
 
 
 #endif
