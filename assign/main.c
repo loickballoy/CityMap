@@ -7,6 +7,7 @@
 #include "../banker/need.c"
 #include "../loader/read.c"
 #include "../geographer/update.h"
+#include "../geographer/road.c"
 
 
 #define COLOR_RED "\x1b[31m"
@@ -44,7 +45,7 @@ void fill_and_replace(struct map *newmap, struct building **buildingList, int ro
 			replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
 			nbverif++;
 		}
-		//printf("nbreplacement : %i", *nbreplacement);
+		printf("nbreplacement : %i", *nbreplacement);
 	}
 
 	free(nbreplacement);
@@ -52,49 +53,50 @@ void fill_and_replace(struct map *newmap, struct building **buildingList, int ro
 
 void testAssign(int compt, int roof)
 {
-	printf("compt = %i \n", compt);
 	//init structs
 	int **building_value = load_building_value();
 	char **buildind_label = load_building_labels();
 	struct building **buildingList = initTownList();
+	struct map *newmap = initMap(40,40);
 
-	/*for(int nbcompt = 1; nbcompt < 100; nbcompt++)
+	//init first bat
+	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
+	center->type = 0;
+	(center+1)->type = 6;
+	(center-1)->type = 6;
+	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
+
+	//start the filling
+	for(int nbbat = 0; nbbat < compt; nbbat++)
 	{
-		for(int nbreplay = 1; nbreplay < 20; nbreplay++)
-		{*/
-			struct map *newmap = initMap(40,40);
-			struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
-			center->building = *buildingList;
-			updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
-			int i = 0;
-			int nbcompt = 30;
-			int verif = 1000;
-			int comptage = compt/nbcompt;
-			while(i < nbcompt)
-			{
-				fill_and_replace(newmap, buildingList, roof, building_value, i*comptage, verif, i);
-				i++;
-			}
+		fillTown(newmap, buildingList, roof, building_value);
+		printMatrix(newmap);
+	}
+	printMatrix(newmap);
 
-			printf("\n");
-			analyseMatrix(newmap);
-
-			//free :
-			free(newmap->cells);
-			free(newmap);
-		/*}
-		sleep(1);
-	}*/
+	//start replacement
+	int *nbreplacement = malloc(sizeof(int));
+	*nbreplacement = 0;
+	for(int nbbat = 0; nbbat < compt; nbbat++)
+	{
+		replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
+	}
+	printf("nbreplacement : %i\n", *nbreplacement);
+	printMatrix(newmap);
 
 	//free
+	free(nbreplacement);
+	free(newmap->cells);
+	free(newmap);
 	freeList(buildingList);
 	free_building_list((void **)building_value);
 	free_building_list((void **)buildind_label);
+
 }
 
 int main(int argc, char **argv)
 {
-	//init temps
+	//init time 
 	float temps;
   clock_t t1, t2;
   t1 = clock();

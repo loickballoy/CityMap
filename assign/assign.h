@@ -7,6 +7,8 @@
 
 struct cell
 {
+
+	int type;
 	struct building *building;
 
 	int stats[NBSTATS];
