@@ -22,12 +22,20 @@ char **genMat(int DIM)
 	{
             int number = rand();
             
-            if(number%2 != 0)
-                matrice[i][j] = 'H';
             if(number%2 == 0)
-                matrice[i][j] = 'P';
-            if(number%10 == 0)
-                matrice[i][j] = 'S';
+	      matrice[i][j] = '1';
+	    if(number%2 != 0)
+	      matrice[i][j] = '4'; 
+            if(number%3 == 0)
+	      matrice[i][j] = '2';
+            if(number%5 == 0)
+	      matrice[i][j] = '3';
+	    if(number%7 == 0)
+	      matrice[i][j] = '4';
+	    if(number%11 == 0)
+	      matrice[i][j] = '0';
+
+	    
 	}
     }
   return matrice;

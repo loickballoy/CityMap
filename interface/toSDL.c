@@ -12,9 +12,11 @@
 void PrintMat(char **matrice, int DIM)
 {
   SDL_Surface* image_surface;
-  SDL_Surface* H;
-  SDL_Surface* P;
-  SDL_Surface* S;
+  SDL_Surface* Hall;
+  SDL_Surface* Prop;
+  SDL_Surface* Comi;
+  SDL_Surface* Hosp;
+  SDL_Surface* Offi;
 
 
   init_sdl();
@@ -22,9 +24,11 @@ void PrintMat(char **matrice, int DIM)
   int dim_surface = DIM * 64;
 
   image_surface =  SDL_CreateRGBSurface(0, dim_surface, dim_surface, 32,0,0,0,0);
-  H = load_image("images/H.png");
-  P = load_image("images/P.png");
-  S = load_image("images/S.png");
+  Hall = load_image("images/hall.png");
+  Prop = load_image("images/prop.png");
+  Comi = load_image("images/comi.png");
+  Hosp = load_image("images/hosp.png");
+  Offi = load_image("images/offi.png");
   display_image(image_surface);
 
   wait_for_keypressed();
@@ -34,12 +38,20 @@ void PrintMat(char **matrice, int DIM)
   {
     SDL_Surface* bat;
 
-    if(b == 'H')
-      bat = H;
-    if(b == 'P')
-      bat = P;
-    if(b == 'S')
-      bat = S;
+    if(b == '0')
+      bat = Hall;
+    
+    if(b == '1')
+      bat = Prop;
+    
+    if(b == '2')
+      bat = Comi;
+
+    if(b == '3')
+      bat = Hosp;
+
+    if(b == '4')
+      bat = Offi;
 
     int _x = x;
     int _y = y;
@@ -75,12 +87,20 @@ void PrintMat(char **matrice, int DIM)
 
             SDL_Surface* bat;
 
-            if(b == 'H')
-                bat = H;
-            if(b == 'P')
-                bat = P;
-            if(b == 'S')
-                bat = S;
+            if(b == '0')
+	      bat = Hall;
+	    
+	    if(b == '1')
+	      bat = Prop;
+	    
+	    if(b == '2')
+	      bat = Comi;
+	    
+	    if(b == '3')
+	      bat = Hosp;
+	    
+	    if(b == '4')
+	      bat = Offi;
 
             SDL_BlitSurface(bat, &srcRect, image_surface, &dstRect);
             display_image(image_surface);
@@ -91,12 +111,14 @@ void PrintMat(char **matrice, int DIM)
 	}
         x += 64;
     }
-  SDL_SaveBMP(image_surface, "test");
+  SDL_SaveBMP(image_surface, "CityMap.png");
   display_image(image_surface);
 
   wait_for_keypressed();
   SDL_FreeSurface(image_surface);
-  SDL_FreeSurface(H);
-  SDL_FreeSurface(P);
-  SDL_FreeSurface(S);
+  SDL_FreeSurface(Hall);
+  SDL_FreeSurface(Prop);
+  SDL_FreeSurface(Comi);
+  SDL_FreeSurface(Hosp);
+  SDL_FreeSurface(Offi);
 }

@@ -48,7 +48,7 @@ int nb_stations(char **matrice, int DIM)
       for(int j =0; j < DIM; j++)
 	{
             
-	  if(matrice[i][j] == 'S')
+	  if(matrice[i][j] == '0')
 	    nb_stat += 1;
             
 	}
@@ -71,7 +71,7 @@ struct Metro *BuildStations(char **matrice, int DIM)
       for(int j =0; j < DIM; j++)
 	{
 	  
-	  if(matrice[i][j] == 'S')
+	  if(matrice[i][j] == '0')
 	    {
 	      struct Metro st = {i+1, i, j};
 	      STATIONS[k] = st;
@@ -94,16 +94,6 @@ void MakeMetro(char **matrice)
   NUMBER_STATIONS = nb_stations(matrice, DIM);
 
   struct Metro *STATIONS = BuildStations(matrice, DIM);
-
-  //remplissage de STATIONS en récupérant les x et y dans la matrice
-
-  //struct Metro st1 = {1, 0, 0};
-  // struct Metro st2 = {2, 4, 1};
-  //struct Metro st3 = {3, 2, 4};
-
-  //STATIONS[0] = st1;
-  //STATIONS[1] = st2;
-  //STATIONS[2] = st3;
 
 
   Graph g1 = new_graph(NUMBER_STATIONS, false);
