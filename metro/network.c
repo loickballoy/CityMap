@@ -56,7 +56,7 @@ int nb_stations(char **matrice, int DIM)
   return nb_stat;
 }
 
-struct Metro *BuildStations(char **matrice, int DIM)
+struct Metro *BuildStations(char **matrice, int DIM, Graph g1)
 {
 
   int nb_stat = nb_stations(matrice, DIM);
@@ -73,7 +73,8 @@ struct Metro *BuildStations(char **matrice, int DIM)
 	  
 	  if(matrice[i][j] == '0')
 	    {
-	      struct Metro st = {i+1, i, j};
+	      struct Metro st = {k+1, i, j};
+	      add_label(g1, k+1, i, j);
 	      STATIONS[k] = st;
 	      k += 1;
 	    }
@@ -93,19 +94,14 @@ void MakeMetro(char **matrice)
 
   NUMBER_STATIONS = nb_stations(matrice, DIM);
 
-  struct Metro *STATIONS = BuildStations(matrice, DIM);
-
-
   Graph g1 = new_graph(NUMBER_STATIONS, false);
 
   fprintf(g1->graph_file, "\tedge [color=black];\n");
   fprintf(g1->graph_file, "\tnode [color=turquoise, style=filled];\n");
+
+  struct Metro *STATIONS = BuildStations(matrice, DIM, g1);
   
   buildAdjlists(STATIONS, NUMBER_STATIONS, MAX, g1);
-
-  //add_label(g1, 1, 0, 0);
-  //add_label(g1, 2, 4, 1);
-  //add_label(g1, 3, 2, 4);
 
   print_graph(g1);
   display_graph(g1);
