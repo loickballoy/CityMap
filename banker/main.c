@@ -69,13 +69,11 @@ void freeList2(struct buildList **buildingL, int nbBat)
 
 void testList()
 {
-  struct building **List = initTownList3(200000, 1);
+  unsigned int *List = initTownList3(2000000, 2.0);
 
-  
   for(int i = 0; i < 6; i++)
-    {
-      free(List[i]);
-    }
+    printf("[%u]\n", List[i]);
+  
   free(List);
 
     

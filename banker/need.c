@@ -211,3 +211,39 @@ struct building **initTownList3(unsigned int nb_hab, unsigned int sec)
     }
   return FinalList;
 }
+*/
+
+unsigned int *initTownList3(unsigned int nb_hab, double sec)
+{
+  unsigned int comi_range = 60000;
+  unsigned int hosp_range = 20000;
+  unsigned int shop_range = 112;
+  
+  unsigned int nb_prop;
+  
+  nb_prop = nb_hab / PROPERTY[2];
+  if(nb_hab % PROPERTY[2] != 0)
+    nb_prop += 1;
+
+  unsigned int nb_offi;
+
+  nb_offi = nb_hab / OFFICE[1];
+  if(nb_hab % OFFICE[1] != 0)
+    nb_offi += 1;
+
+  unsigned int nb_comi = nb_hab / (unsigned int)((double)(comi_range) / sec);
+
+  unsigned int nb_shop = nb_hab / shop_range;
+  
+  unsigned int nb_hosp = nb_hab / (unsigned int)((double)(hosp_range) / sec);
+
+  unsigned int *bat = malloc(sizeof(unsigned int)* NUMBER_TYPE);
+  bat[0] = 1;
+  bat[1] = nb_prop;
+  bat[2] = nb_offi;
+  bat[3] = nb_comi;
+  bat[4] = nb_shop;
+  bat[5] = nb_hosp;
+
+  return bat;
+}

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <err.h>
 #include <stdlib.h>
+#include "toSDL.h"
+#include "../metro/network.h"
 
 
 char **genMat(int DIM)
@@ -18,12 +20,22 @@ char **genMat(int DIM)
     {
       for(int j =0; j < DIM; j++)
 	{
-	  if(j%2 != 0)
-	    matrice[i][j] = 'H';
-	  if(j%2 == 0)
-	    matrice[i][j] = 'P';
-	  if(j%5 == 0)
-	    matrice[i][j] = 'S';
+            int number = rand();
+            
+            if(number%2 == 0)
+	      matrice[i][j] = '1';
+	    if(number%2 != 0)
+	      matrice[i][j] = '4'; 
+            if(number%3 == 0)
+	      matrice[i][j] = '2';
+            if(number%5 == 0)
+	      matrice[i][j] = '3';
+	    if(number%7 == 0)
+	      matrice[i][j] = '4';
+	    if(number%11 == 0)
+	      matrice[i][j] = '0';
+
+	    
 	}
     }
   return matrice;
@@ -35,7 +47,7 @@ void build_city()
 
   printf("Bienvenue sur CityMap !\n");
   printf("Rentrez les différents paramètres et nous vous générerons une ville\n");
-
+  /*
   int nb_hab;
   int budget;
   int sec;
@@ -58,6 +70,8 @@ void build_city()
   scanf("%d", &env);
   printf("\n");
   
+  */
+  
   //list batiment
   
   //execute les programmes de génération de ville
@@ -70,6 +84,10 @@ void build_city()
   printf("VILLE :\n");
   
   char **matrice = genMat(DIM);
+
+  PrintMat(matrice, DIM);
+
+  MakeMetro(matrice);
 
   for(int i = 0; i < DIM; i++)
     {
@@ -91,6 +109,8 @@ void build_city()
   free(matrice);
 
   printf("\n");
+
+  
 
   
 }
