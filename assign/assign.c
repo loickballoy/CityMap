@@ -363,12 +363,14 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 	*a = temp % map->maxWidth;//set de a
 	*b = temp / map->maxWidth;//set de b
 	updateAround(map, *a, *b, building_value);
+
 	if(!cell->isRoadConnected)//you have to connect it
 	{
 		roadToConnect(map, *a, *b);
 	}
 	cleanWay(map);
 
+	//free
 	free(a);
 	free(b);
 }
@@ -423,6 +425,8 @@ void replaceTown(struct map *map, struct building **buildingList, int roof, int 
 	}
 	*nbreplacement += 1;
 	updateAround(map, *a, *b, building_value);
+
+	//free
 	free(a);
 	free(b);
 }
