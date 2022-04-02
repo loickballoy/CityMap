@@ -109,8 +109,5 @@ void MakeMetro(char **matrice)
   system("dot -Tpng graph.out -o graph.png");
   
   free(STATIONS);
-  for(int i = 0; i < DIM; i++)
-    free(matrice[i]);
-  free(matrice);
 }
 
