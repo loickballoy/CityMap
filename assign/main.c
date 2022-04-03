@@ -70,19 +70,20 @@ void testAssign(int compt, int roof)
 	for(int nbbat = 0; nbbat < compt; nbbat++)
 	{
 		fillTown(newmap, buildingList, roof, building_value);
-		printMatrix(newmap);
 	}
 	printMatrix(newmap);
+	analyseMatrix(newmap);
 
 	//start replacement
 	int *nbreplacement = malloc(sizeof(int));
 	*nbreplacement = 0;
-	for(int nbbat = 0; nbbat < compt; nbbat++)
+	for(int nbbat = 0; nbbat < compt*2; nbbat++)
 	{
 		replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
 	}
 	printf("nbreplacement : %i\n", *nbreplacement);
 	printMatrix(newmap);
+	analyseMatrix(newmap);
 
 	//free
 	free(nbreplacement);
@@ -96,7 +97,7 @@ void testAssign(int compt, int roof)
 
 int main(int argc, char **argv)
 {
-	//init time 
+	//init time
 	float temps;
   clock_t t1, t2;
   t1 = clock();

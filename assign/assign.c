@@ -191,7 +191,17 @@ void printMatrix(struct map *newmap)
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
 			if(j%(newmap->maxWidth) == 0)
-				printf("\n");
+				printf("\n %i ", j/newmap->maxWidth);
+			if(j < 10)
+			{
+				printf("%i ;",j);
+				continue;
+			}
+			if(j < newmap->maxWidth)
+			{
+				printf("%i;",j);
+				continue;
+			}
 			struct cell *upTest = newmap->cells + j;
 			if(upTest->type == -1)
 				printf("  ;");
@@ -386,7 +396,7 @@ void replaceTown(struct map *map, struct building **buildingList, int roof, int 
 	*b = 12;
 	int maxStats = 0;
 	struct cell *cell = replaceGlobalNeed(map, &maxStats,roof, a);
-	if(*a == 0)//if(there is no vital need) then generate random
+	if(*a == 0)
 	{
 		free(a);
 		free(b);
@@ -396,33 +406,40 @@ void replaceTown(struct map *map, struct building **buildingList, int roof, int 
 	int temp = *a;
 	*a = temp % map->maxWidth;//set de a
 	*b = temp / map->maxWidth;//set de b
+	//printf("replacement colonne : %i || ligne : %i || type : %i || maxstat : %i \n", *a, *b, cell->type,maxStats);
 	reverseUpdateAround(map, *a, *b, building_value);
 
-	if(maxStats == 0)
+	if(maxStats == 1)
 	{
-		cell->building  = *(buildingList+1);
-		cell->stats[0] = 0;
-	}
-	else if(maxStats == 1)
-	{
-		cell->building  = *(buildingList+14);
+		//cell->building = *(buildingList+14);
+		cell->type = 2;//OFFICE
 		cell->stats[1] = 0;
 	}
 	else if(maxStats == 2)
 	{
-		cell->building  = *(buildingList+4);
+		//cell->building  = *(buildingList+4);
+		cell->type = 1;//PROPERTY
 		cell->stats[2] = 0;
 	}
 	else if(maxStats == 3)
 	{
-		cell->building  = *(buildingList+18);
+		//cell->building  = *(buildingList+18);
+		cell->type = 4;//SHOP
 		cell->stats[3] = 0;
+	}
+	else if(maxStats == 4)
+	{
+		//cell->building  = *(buildingList+2);
+		cell->type = 5;//HOSPITAL
+		cell->stats[4]= 0;
 	}
 	else
 	{
-		cell->building  = *(buildingList+2);
+		//cell->building  = *(buildingList+2);
+		cell->type = 3;//COMMISSARY
 		cell->stats[4]= 0;
 	}
+
 	*nbreplacement += 1;
 	updateAround(map, *a, *b, building_value);
 
@@ -436,23 +453,26 @@ struct cell *replaceGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 
 	//Research the max need to replace in all the map
 
-	int maxneed = 0.9*(float)roof;
+	int maxneed = 0.6*(float)roof;
 	struct cell *result = NULL;
 	*a = 0;
 	//result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
 	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
 	{
 		struct cell *upTest = map->cells + j;
-		if(upTest->type > 0 && upTest->type < 6 )
+		if(upTest->type > 0 && upTest->type < 6)
 		{
 			for(int i = 0; i < NBSTATS; i++)
 			{
 				if(upTest->stats[i] > maxneed)
 				{
-					*a = j;
-					maxneed = upTest->stats[i];
-					*maxstat = i;
-					result = upTest;
+					if(upTest->type+1 != i)//is that really changing ?
+					{
+						*a = j;
+						maxneed = upTest->stats[i];
+						*maxstat = i;
+						result = upTest;
+					}
 				}
 			}
 		}
