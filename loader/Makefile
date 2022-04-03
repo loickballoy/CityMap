@@ -16,6 +16,9 @@ main: ${OBJ}
 clean:
 	${RM} ${OBJ} ${DEP} main
 
+win:
+	gcc main.c read.c write.c loadtools.c -o main.exe
+
 -include ${DEP}
 
 # END

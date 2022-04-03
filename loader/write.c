@@ -1,31 +1,59 @@
-#include "read.h"
 #include <stdio.h>
+#include <string.h>
+#include "read.h"
+#include "loadtools.h"
 
 void write_habitant_number(int habitant_number)
 {
-	FILE *file = settings_open(SETTINGS_PATH);
+	FILE *file = settings_open();
 	char buffer[LINE_BUFFER_SIZE];
 	fgets(buffer, LINE_BUFFER_SIZE, file);
-	int habitant_number;
+
+	long int ft = 0;
+	long int lineS = 0;
+	long int temp = 0;
 	while(!isHabitant(buffer))
+	{
 		fgets(buffer, LINE_BUFFER_SIZE, file);
-	write_value(habitant_number, 0, file);
+		temp = ftell(file);
+		lineS = ft - temp;
+		ft = temp;
+	}
+	fseek(file, lineS, SEEK_CUR);
+	char toPrint[LINE_BUFFER_SIZE];
+	sprintf(toPrint, "HABITANT_NUMBER = [%i]                   ", habitant_number);
+	fprintf(file, "%s", toPrint);
 	fclose(file);
 }
 
-int digit(int value)
+void write_bias(int *building_bias)
 {
-	for (int i = 0; i
-}
+	FILE *file = settings_open();
+	char buffer[LINE_BUFFER_SIZE];
+	fgets(buffer, LINE_BUFFER_SIZE, file);
 
-int write_value(int value, char end, file)
-{
-	while (*building_line != '[')
-        ++building_line;
-	++building_line;
-
-	char buff[32];
-	sprintf(buff, "%d", value);
-	
-	ssize_t x = write(file, buffer, 
+	long int ft = 0;
+	long int lineS = 0;
+	long int temp = 0;
+	while(!isBias(buffer))
+	{
+		fgets(buffer, LINE_BUFFER_SIZE, file);
+		temp = ftell(file);
+		lineS = ft - temp;
+		ft = temp;
+	}
+	fseek(file, lineS, SEEK_CUR);
+	char dst[LINE_BUFFER_SIZE];
+	char src[LINE_BUFFER_SIZE];
+	strcpy(dst, "BIAS = [");
+	for (int i = 0; i < BIAS_NUMBER; ++i)
+	{
+		if (i == BIAS_NUMBER - 1)
+			sprintf(src, "%i]                    ", *(building_bias + i));
+		else
+			sprintf(src, "%i, ", *(building_bias + i));
+		strcat(dst, src);
+	}
+	fprintf(file, "%s", dst);
+	fclose(file);
 }
