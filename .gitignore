@@ -50,6 +50,12 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# VsCode
+.vscode
+
+# Windows
+*.exe
+
 # os
 .DS_Store
 
