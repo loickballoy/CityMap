@@ -56,7 +56,16 @@ void testAssign(int compt, int roof)
 	//init structs
 	int **building_value = load_building_value();
 	char **buildind_label = load_building_labels();
-	struct building **buildingList = initTownList();
+	struct building **buildingList2 = initTownList();
+	unsigned int *buildingList = initTownList3(compt, 1);
+	int i = 0;
+	int nbbat = 0;
+	while(i < 6)
+	{
+		printf("%u \n", *(buildingList+i));
+		nbbat += *(buildingList+i);
+		i++;
+	}
 	struct map *newmap = initMap(40,40);
 
 	//init first bat
@@ -67,36 +76,39 @@ void testAssign(int compt, int roof)
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 
 	//start the filling
-	for(int nbbat = 0; nbbat < compt; nbbat++)
+	for(int n = 0; n < nbbat; n++)
 	{
 		fillTown(newmap, buildingList, roof, building_value);
-		printMatrix(newmap);
+		//printMatrix(newmap);
 	}
 	printMatrix(newmap);
+	analyseMatrix(newmap);
 
 	//start replacement
 	int *nbreplacement = malloc(sizeof(int));
 	*nbreplacement = 0;
-	for(int nbbat = 0; nbbat < compt; nbbat++)
+	for(int n = 0; n < nbbat*2; n++)
 	{
 		replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
 	}
 	printf("nbreplacement : %i\n", *nbreplacement);
 	printMatrix(newmap);
+	analyseMatrix(newmap);
 
 	//free
 	free(nbreplacement);
 	free(newmap->cells);
 	free(newmap);
-	freeList(buildingList);
+	freeList(buildingList2);
 	free_building_list((void **)building_value);
 	free_building_list((void **)buildind_label);
+	free(buildingList);
 
 }
 
 int main(int argc, char **argv)
 {
-	//init time 
+	//init time
 	float temps;
   clock_t t1, t2;
   t1 = clock();
