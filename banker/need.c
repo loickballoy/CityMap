@@ -222,21 +222,21 @@ unsigned int *initTownList3(unsigned int nb_hab, double sec)
 
   unsigned int nb_prop;
 
-  nb_prop = nb_hab / PROPERTY[2];
+  nb_prop = nb_hab / 50;
   if(nb_hab % PROPERTY[2] != 0)
     nb_prop += 1;
 
   unsigned int nb_offi;
 
-  nb_offi = nb_hab / OFFICE[1];
+  nb_offi = nb_hab / 50;
   if(nb_hab % OFFICE[1] != 0)
     nb_offi += 1;
 
-  unsigned int nb_comi = nb_hab / (unsigned int)((double)(comi_range) / sec);
+  unsigned int nb_comi = nb_hab / 20;
 
   unsigned int nb_shop = nb_hab / shop_range;
 
-  unsigned int nb_hosp = nb_hab / (unsigned int)((double)(hosp_range) / sec);
+  unsigned int nb_hosp = nb_hab / 50;
 
   unsigned int *bat = malloc(sizeof(unsigned int)* NUMBER_TYPE);
   bat[0] = 1;
