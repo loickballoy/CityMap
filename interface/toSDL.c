@@ -29,12 +29,9 @@ void PrintMat(char **matrice, int DIM)
   Comi = load_image("images/comi.png");
   Hosp = load_image("images/hosp.png");
   Offi = load_image("images/offi.png");
-  display_image(image_surface);
-
-  wait_for_keypressed();
 
 
-  void SetCase(int x, int y, char b, int dim)
+  /* void SetCase(int x, int y, char b, int dim)
   {
     SDL_Surface* bat;
 
@@ -72,6 +69,7 @@ void PrintMat(char **matrice, int DIM)
 	}
     }
   }
+  */
 
   int x = 0;
   int y = 0;
@@ -115,10 +113,15 @@ void PrintMat(char **matrice, int DIM)
   display_image(image_surface);
 
   wait_for_keypressed();
+  
   SDL_FreeSurface(image_surface);
   SDL_FreeSurface(Hall);
   SDL_FreeSurface(Prop);
   SDL_FreeSurface(Comi);
   SDL_FreeSurface(Hosp);
   SDL_FreeSurface(Offi);
+
+  SDL_Quit();
+  //exit(EXIT_SUCCESS);
+  
 }

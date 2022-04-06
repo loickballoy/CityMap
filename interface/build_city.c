@@ -46,7 +46,7 @@ void build_city()
 {
 
   printf("Bienvenue sur CityMap !\n");
-  printf("Rentrez les différents paramètres et nous vous générerons une ville\n");
+  //printf("Rentrez les différents paramètres et nous vous générerons une ville\n");
   /*
   int nb_hab;
   int budget;
@@ -83,24 +83,13 @@ void build_city()
   
   printf("VILLE :\n");
   
-  char **matrice = genMat(DIM);
+  char **matrice = genMat(DIM);     // A mettre en parametre de build_city quand on pourra récupérer la matrice de Remy
 
-  PrintMat(matrice, DIM);
+  PrintMat(matrice, DIM);           // Affiche en SDL la matrice
 
-  MakeMetro(matrice);
+  MakeMetro(matrice);               // Fait le metro
 
-  for(int i = 0; i < DIM; i++)
-    {
-      printf("\n\n");
-      for(int j =0; j < DIM; j++)
-	{
-	  if(j == DIM-1)
-	    printf("%c", matrice[i][j]);
-	  else
-	    printf("%c - ", matrice[i][j]);
-	  
-	}
-    }
+  //PrintMetro();                   // Affiche le metro en SDL (graph.png)
 
   for(int i = 0; i < DIM; i++)
     {
@@ -110,14 +99,7 @@ void build_city()
 
   printf("\n");
 
-  
-
-  
 }
 
 
 
-int main()
-{
-  build_city();
-}
