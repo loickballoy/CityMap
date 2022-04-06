@@ -2,6 +2,7 @@
 #include <err.h>
 #include <stdlib.h>
 #include <math.h>
+#include <float.h>
 #include "graph.h"
 
 struct Metro
@@ -12,31 +13,49 @@ struct Metro
     //unsigned int *adjlists;
 };
 
+
 void buildAdjlists(struct Metro *STATIONS, unsigned int nb_stat,
 			    double max, Graph g)
 {
-    for(unsigned int i = 0; i < nb_stat; i++)
+  unsigned int * rencontre = (unsigned int *) calloc( nb_stat, sizeof(unsigned int) );
+  //unsigned int nbmax = 5;
+  unsigned int proche;
+  double min = DBL_MAX;
+
+  for(unsigned int i = 0; i < nb_stat; i++)     //Appelle toute les stations
     {
-        unsigned int x1 = STATIONS[i].x;
-        unsigned int y1 = STATIONS[i].y;
-        
-        for(unsigned int j = 0; j < nb_stat; j++)
-        {
-            if(i != j)
-            {
-                unsigned int x2 = STATIONS[j].x;
-                unsigned int y2 = STATIONS[j].y;
+      unsigned int x1 = STATIONS[i].x;
+      unsigned int y1 = STATIONS[i].y;
+
+      min = DBL_MAX;
+      
+      if(rencontre[i] == 0)                     // Si pas deja relié
+	{
+	  rencontre[i] = 1;
+	      
+	  for(unsigned int j = 0; j < nb_stat; j++)
+	    {
+	      if(i != j)
+		{
+		  unsigned int x2 = STATIONS[j].x;
+		  unsigned int y2 = STATIONS[j].y;
                 
-                double a = (double)((x1 - x2) * (x1 - x2));
-                double b = (double)((y1 - y2) * (y1 - y2));
-                double dist = sqrt(a + b);
-                
-                if(dist <= max)
-                    add_edge(g, i+1, j+1);
+		  double a = (double)((x1 - x2) * (x1 - x2));
+		  double b = (double)((y1 - y2) * (y1 - y2));
+		  double dist = sqrt(a + b);
+
+		  if(dist < min && rencontre[j] == 0){
+		    min = dist;
+		    proche = j;
+		  }
                     
+		}
 	    }
-	}
+	  if(min <= max)
+	    add_edge(g, i+1, proche+1);
+	}	
     }
+    free(rencontre);
 }
 
 int nb_stations(char **matrice, int DIM)
@@ -89,7 +108,7 @@ struct Metro *BuildStations(char **matrice, int DIM, Graph g1)
 void MakeMetro(char **matrice)
 {
   int NUMBER_STATIONS; 
-  double MAX = 3.8;
+  double MAX = 4.2;
   int DIM = 15;
 
   NUMBER_STATIONS = nb_stations(matrice, DIM);
@@ -109,8 +128,5 @@ void MakeMetro(char **matrice)
   system("dot -Tpng graph.out -o graph.png");
   
   free(STATIONS);
-  for(int i = 0; i < DIM; i++)
-    free(matrice[i]);
-  free(matrice);
 }
 
