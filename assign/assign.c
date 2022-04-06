@@ -385,9 +385,9 @@ void fillTown(struct map *map, unsigned int *buildingList, int roof, int **build
 
 	if(!cell->isRoadConnected)//you have to connect it
 	{
-		//roadToConnect(map, *a, *b);
+		roadToConnect(map, *a, *b);
 	}
-	//cleanWay(map);
+	cleanWay(map);
 
 	//free
 	free(a);

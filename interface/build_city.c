@@ -42,7 +42,7 @@ char **genMat(int DIM)
 }
 
 
-void build_city(char **matrice)
+void build_city(char **matrice, int DIM)
 {
 
   printf("Bienvenue sur CityMap !\n");
@@ -78,7 +78,6 @@ void build_city(char **matrice)
 
   //affiche l'image de la ville
 
-  int DIM = 40;
 
 
   printf("VILLE :\n");

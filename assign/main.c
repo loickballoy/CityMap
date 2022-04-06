@@ -66,7 +66,7 @@ struct map *testAssign(int compt, int roof)
 		nbbat += *(buildingList+i);
 		i++;
 	}
-	struct map *newmap = initMap(40,40);
+	struct map *newmap = initMap(80,80);
 
 	//init first bat
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;

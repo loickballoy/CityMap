@@ -18,10 +18,9 @@ typedef struct s_Window
 
 const char *nb_habitant;
 
-char **MakeMatrice(struct cell *map)
+char **MakeMatrice(struct cell *map, int DIM)
 {
 
-  int DIM = 40;
   char **matrice =  malloc(sizeof(char *)* DIM);
 
   for(int k = 0; k < DIM; k++)
@@ -54,10 +53,11 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
     nb_habitant = gtk_entry_get_text(GTK_ENTRY(my_w->entry));
 
     int hab_int = atoi(nb_habitant);
+    struct map* map = testAssign(hab_int, 50);
+    int DIM = map->maxWidth;
+    char **matrice = MakeMatrice(map->cells, DIM);
 
-    char **matrice = MakeMatrice(testAssign(hab_int, 50)->cells);
-
-    build_city(matrice);   //TODO :Passer en parametre le nombre d'habitant
+    build_city(matrice, DIM);   //TODO :Passer en parametre le nombre d'habitant
 
     printf("Execute Build_City avec %s habitants \n", nb_habitant);
 
