@@ -191,7 +191,17 @@ void printMatrix(struct map *newmap)
 	for(int j = 0; j < newmap->maxWidth * newmap->maxHeight; j++)
 	{
 			if(j%(newmap->maxWidth) == 0)
-				printf("\n");
+				printf("\n %i ", j/newmap->maxWidth);
+			if(j < 10)
+			{
+				printf("%i ;",j);
+				continue;
+			}
+			if(j < newmap->maxWidth)
+			{
+				printf("%i;",j);
+				continue;
+			}
 			struct cell *upTest = newmap->cells + j;
 			if(upTest->type == -1)
 				printf("  ;");
@@ -309,7 +319,7 @@ struct map *initMap(unsigned int maxH, unsigned int maxW)
 	return newMap;
 }
 
-void fillTown(struct map *map, struct building **buildingList, int roof, int **building_value)
+void fillTown(struct map *map, unsigned int *buildingList, int roof, int **building_value)
 {
 
 	//fill the map with a building at a free place (the most interresting one)
@@ -319,7 +329,8 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 	*a = 0;
 	*b = 12;
 	int maxStats = 0;
-	struct cell *cell = searchGlobalNeed(map, &maxStats,roof, a);
+	struct cell *cell = searchGlobalNeed(map, buildingList, &maxStats,roof, a);
+	//printf("a = %i", *a);
 	if(*a == 0)//if(there is no vital need) then generate random
 	{
 		printf("hey random\n ");
@@ -334,46 +345,55 @@ void fillTown(struct map *map, struct building **buildingList, int roof, int **b
 		//cell->building = *(buildingList+14);
 		cell->type = 2;//OFFICE
 		cell->stats[1] = 0;
+		buildingList[gateValue(maxStats)] -= 1;
 	}
 	else if(maxStats == 2)
 	{
 		//cell->building  = *(buildingList+4);
 		cell->type = 1;//PROPERTY
 		cell->stats[2] = 0;
+		buildingList[gateValue(maxStats)] -= 1;
 	}
+
 	else if(maxStats == 3)
 	{
 		//cell->building  = *(buildingList+18);
 		cell->type = 4;//SHOP
 		cell->stats[3] = 0;
+		buildingList[gateValue(maxStats)] -= 1;
 	}
+
 	else if(maxStats == 4)
 	{
 		//cell->building  = *(buildingList+2);
 		cell->type = 5;//HOSPITAL
 		cell->stats[4]= 0;
+		buildingList[gateValue(maxStats)] -= 1;
 	}
 	else
 	{
 		//cell->building  = *(buildingList+2);
 		cell->type = 3;//COMMISSARY
-		cell->stats[4]= 0;
+		cell->stats[5]= 0;
+		buildingList[gateValue(maxStats)] -= 1;
 	}
 	int temp = *a;
 	*a = temp % map->maxWidth;//set de a
 	*b = temp / map->maxWidth;//set de b
 	updateAround(map, *a, *b, building_value);
+
 	if(!cell->isRoadConnected)//you have to connect it
 	{
-		roadToConnect(map, *a, *b);
+		//roadToConnect(map, *a, *b);
 	}
-	cleanWay(map);
+	//cleanWay(map);
 
+	//free
 	free(a);
 	free(b);
 }
 
-void replaceTown(struct map *map, struct building **buildingList, int roof, int **building_value, int *nbreplacement)
+void replaceTown(struct map *map, unsigned int *buildingList, int roof, int **building_value, int *nbreplacement)
 {
 
 	//Replace some building by others to make the town better
@@ -383,8 +403,8 @@ void replaceTown(struct map *map, struct building **buildingList, int roof, int 
 	*a = 0;
 	*b = 12;
 	int maxStats = 0;
-	struct cell *cell = replaceGlobalNeed(map, &maxStats,roof, a);
-	if(*a == 0)//if(there is no vital need) then generate random
+	struct cell *cell = replaceGlobalNeed(map, buildingList, &maxStats,roof, a);
+	if(*a == 0)
 	{
 		free(a);
 		free(b);
@@ -394,61 +414,94 @@ void replaceTown(struct map *map, struct building **buildingList, int roof, int 
 	int temp = *a;
 	*a = temp % map->maxWidth;//set de a
 	*b = temp / map->maxWidth;//set de b
+	//printf("replacement colonne : %i || ligne : %i || type : %i || maxstat : %i \n", *a, *b, cell->type,maxStats);
 	reverseUpdateAround(map, *a, *b, building_value);
 
-	if(maxStats == 0)
+	buildingList[cell->type] += 1;
+	if(maxStats == 1)
 	{
-		cell->building  = *(buildingList+1);
-		cell->stats[0] = 0;
-	}
-	else if(maxStats == 1)
-	{
-		cell->building  = *(buildingList+14);
+		//cell->building = *(buildingList+14);
+		cell->type = 2;//OFFICE
 		cell->stats[1] = 0;
+		buildingList[gateValue(maxStats)] -= 1;
 	}
 	else if(maxStats == 2)
 	{
-		cell->building  = *(buildingList+4);
+		//cell->building  = *(buildingList+4);
+		cell->type = 1;//PROPERTY
 		cell->stats[2] = 0;
+		buildingList[gateValue(maxStats)] -= 1;
 	}
 	else if(maxStats == 3)
 	{
-		cell->building  = *(buildingList+18);
+		//cell->building  = *(buildingList+18);
+		cell->type = 4;//SHOP
 		cell->stats[3] = 0;
+		buildingList[gateValue(maxStats)] -= 1;
+	}
+	else if(maxStats == 4)
+	{
+		//cell->building  = *(buildingList+2);
+		cell->type = 5;//HOSPITAL
+		cell->stats[4]= 0;
+		buildingList[gateValue(maxStats)] -= 1;
 	}
 	else
 	{
-		cell->building  = *(buildingList+2);
-		cell->stats[4]= 0;
+		//printf("hey hey nouc comico\n");
+		//cell->building  = *(buildingList+2);
+		cell->type = 3;//COMMISSARY
+		cell->stats[5]= 0;
+		buildingList[gateValue(maxStats)] -= 1;
 	}
+
 	*nbreplacement += 1;
 	updateAround(map, *a, *b, building_value);
+
+	//free
 	free(a);
 	free(b);
 }
 
-struct cell *replaceGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
+int gateType(int type)
+{
+	if (type == 1)
+		return 2;
+	else if (type == 2)
+		return 1;
+	else if (type == 3)
+		return 5;
+	else if (type == 4)
+		return 3;
+	else
+		return 4;
+}
+
+struct cell *replaceGlobalNeed(struct map *map, unsigned int *buildingList, int *maxstat,int roof, int *a)
 {
 
 	//Research the max need to replace in all the map
 
-	int maxneed = 0.9*(float)roof;
+	int maxneed = 0.6*(float)roof;
 	struct cell *result = NULL;
 	*a = 0;
 	//result = result + map->maxWidth/2 + map->maxWidth*(map->maxHeight/2);
 	for(int j = 0; j < map->maxWidth * map->maxHeight; j++)
 	{
 		struct cell *upTest = map->cells + j;
-		if(upTest->type > 0 && upTest->type < 6 )
+		if(upTest->type > 0 && upTest->type < 6)
 		{
 			for(int i = 0; i < NBSTATS; i++)
 			{
-				if(upTest->stats[i] > maxneed)
+				if(upTest->stats[i] > maxneed && buildingList[gateValue(i)] != 0)
 				{
-					*a = j;
-					maxneed = upTest->stats[i];
-					*maxstat = i;
-					result = upTest;
+					if(gateType(upTest->type) != i)//is that really changing ?
+					{
+						*a = j;
+						maxneed = upTest->stats[i];
+						*maxstat = i;
+						result = upTest;
+					}
 				}
 			}
 		}
@@ -456,7 +509,21 @@ struct cell *replaceGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 	return result;
 }
 
-struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
+int gateValue(int i)
+{
+	if(i == 0)
+		return 3;
+	else if (i == 1)
+		return 2;
+	else if (i == 2)
+		return 1;
+	else if (i == 3)
+		return 4;
+	else
+		return 5;
+}
+
+struct cell *searchGlobalNeed(struct map *map, unsigned int *buildingList, int *maxstat,int roof, int *a)
 {
 
 	//Research the max need in all the map only at free place
@@ -472,9 +539,11 @@ struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 		{
 			for(int i = 0; i < NBSTATS; i++)
 			{
-				if(upTest->stats[i] > maxneed)
+				//printf("buildingList[%i] = %u \n" ,i, buildingList[i]);
+				if(upTest->stats[i] > maxneed && buildingList[gateValue(i)] != 0)//implement un and buildinglist stat == 0
 				{
-					//printf("search : stats[%i] = %i || maxneed = %i  || a = %i\n", i ,upTest->stats[i],maxneed, *a);
+					//printf("buildingList[%i] = %u \n" ,i, buildingList[i]);
+					//printf("search : stats[%i] = %i || maxneed = %i  || a = %i\n", i ,upTest->stats[i],maxneed, j);
 					*a = j;
 					maxneed = upTest->stats[i];
 					*maxstat = i;
@@ -483,16 +552,26 @@ struct cell *searchGlobalNeed(struct map *map, int *maxstat,int roof, int *a)
 			}
 		}
 	}
+	//printf(" search a = %i\n\n", *a);
 	return result;
 }
 
-struct cell *generateRandomBuilding(struct map *map, struct building **buildingList, int *maxstat, int *a, int nbcompt)
+struct cell *generateRandomBuilding(struct map *map, unsigned int *buildingList, int *maxstat, int *a, int nbcompt)
 {
 
 	//Generate a building at a free place between the center and RDMRANGE
 
 	int range = RDMRANGE;
+	//printf("%i lqlq\n",*maxstat);
 	*maxstat = rand()%3 +1;
+	//printf("%i lqlq\n",*maxstat);
+	while (buildingList[*maxstat] == 0)
+	{
+		//printf("list stat : %u \n", buildingList[*maxstat]);
+		*maxstat = rand()%3 +1;
+		int rndm = rand();
+		srand(rndm + nbcompt+time(0));
+	}
 	struct cell *tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2);//center
 	srand(time(0)* rand());
 	int rdm = rand();

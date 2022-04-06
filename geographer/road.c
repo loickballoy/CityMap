@@ -187,7 +187,7 @@ int isGoodWay(struct map *map, int x, int y)
   {
     if((tempcell + i)->type == -1)
       blanc += 1;
-    if((tempcell + i)->type != 6 && (tempcell + i)->type != -1 && blanc || blanc > 1)
+    if(((tempcell + i)->type != 6 && (tempcell + i)->type != -1 && blanc) || blanc > 1)
     {
       return 1;
     }
@@ -196,7 +196,7 @@ int isGoodWay(struct map *map, int x, int y)
   {
     if((tempcell + j)->type == -1)
       blanc += 1;
-    if((tempcell + j * map->maxWidth)->type != 6 && (tempcell + j * map->maxWidth)->type != -1 || blanc > 1)
+    if(((tempcell + j * map->maxWidth)->type != 6 && (tempcell + j * map->maxWidth)->type != -1) || blanc > 1)
     {
       return 1;
     }
@@ -208,7 +208,7 @@ int isGoodWay(struct map *map, int x, int y)
   {
     if((tempcell + i)->type == -1)
       blanc += 1;
-    if((tempcell + i)->type != 6 && (tempcell + i)->type != -1 || blanc > 1)
+    if(((tempcell + i)->type != 6 && (tempcell + i)->type != -1) || blanc > 1)
     {
       return 1;
     }
@@ -219,7 +219,7 @@ int isGoodWay(struct map *map, int x, int y)
   {
     if((tempcell + j)->type == -1)
       blanc += 1;
-    if((tempcell + j * map->maxWidth)->type != 6 && (tempcell + j * map->maxWidth)->type != -1 || blanc > 1)
+    if(((tempcell + j * map->maxWidth)->type != 6 && (tempcell + j * map->maxWidth)->type != -1) || blanc > 1)
     {
       return 1;
     }
