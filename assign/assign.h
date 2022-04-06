@@ -47,19 +47,19 @@ void stringType(int stat);
 
 struct map *initMap(unsigned int maxH, unsigned int maxW);
 
-void fillTown(struct map *map, unsigned int *buildingList, int roof, int **building_value);
+int fillTown(struct map *map, int *buildingList, int roof, int **building_value);
 
-void replaceTown(struct map *map, unsigned int *buildingList, int roof, int **building_value, int *nbreplacement);
+void replaceTown(struct map *map, int *buildingList, int roof, int **building_value, int *nbreplacement);
 
 int gateValue(int i);
 
 int gateType(int type);
 
-struct cell *replaceGlobalNeed(struct map *map, unsigned int *buildingList ,int *maxstat,int roof, int *a);
+struct cell *replaceGlobalNeed(struct map *map, int *buildingList ,int *maxstat,int roof, int *a);
 
-struct cell *searchGlobalNeed(struct map *map, unsigned int *buildingList, int *maxstat, int roof, int *a);
+struct cell *searchGlobalNeed(struct map *map, int *buildingList, int *maxstat, int roof, int *a);
 
-struct cell *generateRandomBuilding(struct map *map, unsigned int *buildingList, int *maxstat, int *a, int nbcompt);
+struct cell *generateRandomBuilding(struct map *map, int *buildingList, int *maxstat, int *a, int nbcompt);
 
 int maxStat(struct cell *cell, int *stat);
 

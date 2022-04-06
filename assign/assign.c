@@ -6,6 +6,7 @@
 #include "assign.h"
 #include "../banker/need.h"
 #include "../geographer/update.c"
+#include "../loader/loadtools.c"
 
 #define COLOR_RED "\x1b[31m"
 #define COLOR_BLEU "\x1b[34m"
@@ -62,7 +63,7 @@ void analyseMatrix_print(struct map *newmap)
 			printf("   ;");
 		if(max != 0)
 		{
-			printf("");
+			//printf("");
 			if(max / 10 < 10)
 			{
 				if(type == 0)
@@ -136,7 +137,7 @@ void printMatrixTime(struct map *newmap)//print la matricd en couleur avec une p
 		if(upTest != NULL)
 		{
 			nbbat++;
-			printf("");
+			//printf("");
 			if(upTest->type == 0)
 				printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->type));
 			else if(upTest->type == 1)
@@ -319,7 +320,7 @@ struct map *initMap(unsigned int maxH, unsigned int maxW)
 	return newMap;
 }
 
-void fillTown(struct map *map, unsigned int *buildingList, int roof, int **building_value)
+int fillTown(struct map *map, int *buildingList, int roof, int **building_value)
 {
 
 	//fill the map with a building at a free place (the most interresting one)
@@ -331,51 +332,80 @@ void fillTown(struct map *map, unsigned int *buildingList, int roof, int **build
 	int maxStats = 0;
 	struct cell *cell = searchGlobalNeed(map, buildingList, &maxStats,roof, a);
 	//printf("a = %i", *a);
-	if(*a == 0)//if(there is no vital need) then generate random
+	if(*a == 0 && buildingList[1] > 0 && buildingList[2] > 0 && buildingList[4] > 0)//if(there is no vital need) then generate random
 	{
 		printf("hey random\n ");
 		cell = generateRandomBuilding(map, buildingList, &maxStats, a, 0);
 		if(*a == 0)
 			errx(1,"There is no possibility to place a building randomly | assign.c: FillTown()\n");
 	}
-	//printf("maxstat = %i || maxstat = %i \n", maxStats, cell->stats[maxStats]);
+	else
+	{
+		cell = searchGlobalNeed(map, buildingList, &maxStats, 0, a);
+	}
 
-	if(maxStats == 1)
+	if (!cell)
+	{
+		free(a);
+		free(b);
+		return -10;
+	}
+	//printf("maxstat = %i || maxstat = %i \n", maxStats, cell->stats[maxStats]);
+	int t;
+	int r = buildingList[gateValue(maxStats)];
+	if(maxStats == 1 && r > 0)
 	{
 		//cell->building = *(buildingList+14);
 		cell->type = 2;//OFFICE
 		cell->stats[1] = 0;
 		buildingList[gateValue(maxStats)] -= 1;
+		//printf("rest of offices = %i\n", buildingList[gateValue(maxStats)]);
+		t = 2;	
 	}
-	else if(maxStats == 2)
+	else if(maxStats == 2 && r > 0)
 	{
 		//cell->building  = *(buildingList+4);
 		cell->type = 1;//PROPERTY
 		cell->stats[2] = 0;
 		buildingList[gateValue(maxStats)] -= 1;
+		//printf("rest of property = %i\n", buildingList[gateValue(maxStats)]);
+		t = 1;	
 	}
 
-	else if(maxStats == 3)
+	else if(maxStats == 3 && r > 0)
 	{
 		//cell->building  = *(buildingList+18);
 		cell->type = 4;//SHOP
 		cell->stats[3] = 0;
 		buildingList[gateValue(maxStats)] -= 1;
+		//printf("rest of shop = %i\n", buildingList[gateValue(maxStats)]);
+		t = 4;
+	
 	}
 
-	else if(maxStats == 4)
+	else if(maxStats == 4 && r > 0)
 	{
 		//cell->building  = *(buildingList+2);
 		cell->type = 5;//HOSPITAL
 		cell->stats[4]= 0;
 		buildingList[gateValue(maxStats)] -= 1;
+		//printf("rest of hospi = %i\n", buildingList[gateValue(maxStats)]);
+		t = 5;
+	
 	}
-	else
+	else if (maxStats == 0 && r > 0)
 	{
 		//cell->building  = *(buildingList+2);
 		cell->type = 3;//COMMISSARY
 		cell->stats[5]= 0;
 		buildingList[gateValue(maxStats)] -= 1;
+		//printf("rest of bavures = %i\n", buildingList[gateValue(maxStats)]);
+		t = 3;	
+	}
+	else
+	{
+		printf("%i\n sah chelou\n", maxStats);
+		//errx(1,"Undefined  | assign.c: FillTown()\n");
 	}
 	int temp = *a;
 	*a = temp % map->maxWidth;//set de a
@@ -391,9 +421,11 @@ void fillTown(struct map *map, unsigned int *buildingList, int roof, int **build
 	//free
 	free(a);
 	free(b);
+
+	return t;
 }
 
-void replaceTown(struct map *map, unsigned int *buildingList, int roof, int **building_value, int *nbreplacement)
+void replaceTown(struct map *map, int *buildingList, int roof, int **building_value, int *nbreplacement)
 {
 
 	//Replace some building by others to make the town better
@@ -477,7 +509,7 @@ int gateType(int type)
 		return 4;
 }
 
-struct cell *replaceGlobalNeed(struct map *map, unsigned int *buildingList, int *maxstat,int roof, int *a)
+struct cell *replaceGlobalNeed(struct map *map, int *buildingList, int *maxstat,int roof, int *a)
 {
 
 	//Research the max need to replace in all the map
@@ -493,6 +525,7 @@ struct cell *replaceGlobalNeed(struct map *map, unsigned int *buildingList, int 
 		{
 			for(int i = 0; i < NBSTATS; i++)
 			{
+				//printf("%i\n", NBSTATS);
 				if(upTest->stats[i] > maxneed && buildingList[gateValue(i)] != 0)
 				{
 					if(gateType(upTest->type) != i)//is that really changing ?
@@ -523,7 +556,7 @@ int gateValue(int i)
 		return 5;
 }
 
-struct cell *searchGlobalNeed(struct map *map, unsigned int *buildingList, int *maxstat,int roof, int *a)
+struct cell *searchGlobalNeed(struct map *map, int *buildingList, int *maxstat,int roof, int *a)
 {
 
 	//Research the max need in all the map only at free place
@@ -540,10 +573,12 @@ struct cell *searchGlobalNeed(struct map *map, unsigned int *buildingList, int *
 			for(int i = 0; i < NBSTATS; i++)
 			{
 				//printf("buildingList[%i] = %u \n" ,i, buildingList[i]);
-				if(upTest->stats[i] > maxneed && buildingList[gateValue(i)] != 0)//implement un and buildinglist stat == 0
+				if(upTest->stats[i] > maxneed && buildingList[gateValue(i)] > 0)//implement un and buildinglist stat == 0
 				{
 					//printf("buildingList[%i] = %u \n" ,i, buildingList[i]);
 					//printf("search : stats[%i] = %i || maxneed = %i  || a = %i\n", i ,upTest->stats[i],maxneed, j);
+
+					//printf("le reste donnée dans searchGlobal = %i, et la stat = %i\n",buildingList[gateValue(i)], i);
 					*a = j;
 					maxneed = upTest->stats[i];
 					*maxstat = i;
@@ -556,7 +591,7 @@ struct cell *searchGlobalNeed(struct map *map, unsigned int *buildingList, int *
 	return result;
 }
 
-struct cell *generateRandomBuilding(struct map *map, unsigned int *buildingList, int *maxstat, int *a, int nbcompt)
+struct cell *generateRandomBuilding(struct map *map, int *buildingList, int *maxstat, int *a, int nbcompt)
 {
 
 	//Generate a building at a free place between the center and RDMRANGE
@@ -565,17 +600,20 @@ struct cell *generateRandomBuilding(struct map *map, unsigned int *buildingList,
 	//printf("%i lqlq\n",*maxstat);
 	*maxstat = rand()%3 +1;
 	//printf("%i lqlq\n",*maxstat);
-	while (buildingList[*maxstat] == 0)
+	int compt = 0;
+	while (buildingList[gateValue(*maxstat)] > 0 && compt < 1000)
 	{
 		//printf("list stat : %u \n", buildingList[*maxstat]);
 		*maxstat = rand()%3 +1;
 		int rndm = rand();
 		srand(rndm + nbcompt+time(0));
+		compt += 1;
 	}
+	//printf("dans gen rfm maxStats = %i, alors qu'il reste: %i\n", *maxstat, buildingList[gateValue(*maxstat)]);
 	struct cell *tempcell = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2);//center
 	srand(time(0)* rand());
 	int rdm = rand();
-	int compt = 0;
+	compt = 0;
 	int rdmW = 0;
 	int rdmH = 0;
 	while(compt < 10000)

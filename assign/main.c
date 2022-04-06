@@ -26,7 +26,7 @@ void freeList(struct building **buildingL)
 	free(buildingL);
 }
 
-void fill_and_replace(struct map *newmap, struct building **buildingList, int roof, int **building_value, int compt, int verif, int c)
+/*void fill_and_replace(struct map *newmap, struct building **buildingList, int roof, int **building_value, int compt, int verif, int c)
 {
 	int i = 0;
 	while( i < compt)
@@ -49,7 +49,7 @@ void fill_and_replace(struct map *newmap, struct building **buildingList, int ro
 	}
 
 	free(nbreplacement);
-}
+}*/
 
 void testAssign(int compt, int roof)
 {
@@ -57,7 +57,7 @@ void testAssign(int compt, int roof)
 	int **building_value = load_building_value();
 	char **buildind_label = load_building_labels();
 	struct building **buildingList2 = initTownList();
-	unsigned int *buildingList = initTownList3(compt, 1);
+	int *buildingList = initTownList3(compt, 1);
 	int i = 0;
 	int nbbat = 0;
 	while(i < 6)
@@ -76,11 +76,37 @@ void testAssign(int compt, int roof)
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 
 	//start the filling
-	for(int n = 0; n < nbbat; n++)
+	
+	int numOff = 0;
+	int numPro = 0;
+	int numSho = 0;
+	int numHos = 0;
+	int numCom = 0;
+	int ty = fillTown(newmap, buildingList, roof, building_value);
+	for(int n = 0; n < nbbat - 1 && ty != -10; n++)
 	{
-		fillTown(newmap, buildingList, roof, building_value);
-		//printMatrix(newmap);
+		ty = fillTown(newmap, buildingList, roof, building_value);
+		if (ty == 1)
+			numPro += 1;
+		else if (ty == 2)
+			numOff += 1;
+		else if (ty == 3)
+			numCom += 1;
+		else if (ty == 4)
+			numSho += 1;
+		else
+			numHos += 1;
 	}
+	printf("number of offices = %i\n", numOff);
+
+	printf("number of properties = %i\n", numPro);
+
+	printf("number of shops = %i\n", numSho);
+
+	printf("number of hospitals = %i\n", numHos);
+
+	printf("number of bavures = %i\n", numCom);
+
 	printMatrix(newmap);
 	analyseMatrix(newmap);
 
