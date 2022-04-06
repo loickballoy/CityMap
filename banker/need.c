@@ -17,7 +17,7 @@ int SHOP[] = {0, -10, 20, -60, 0, 10, 10};
 int HOSPITAL[] = {0, -20, 30, 0, -70, 0, 20};
 
 
-int *select(unsigned char type)
+/*int *select(unsigned char type)
 {
 	if(type == 0)
 		return HALL;
@@ -32,9 +32,9 @@ int *select(unsigned char type)
 	if(type == 5)
 		return HOSPITAL;
 	errx(1, "select(); Type undefined");
-}
+}*/
 
-struct building *build(unsigned char type)
+/*struct building *build(unsigned char type)
 {
 	int *typeArray = select(type);
 	struct buildingType *newType = malloc(sizeof(struct buildingType));
@@ -58,8 +58,8 @@ struct building *build(unsigned char type)
 
 	return newBuild;
 
-}
-
+}*/
+/*
 struct building **initTownList()
 {
 	struct building **buildingList = malloc(20*sizeof(struct building));
@@ -158,7 +158,7 @@ struct buildList **initTownList2(unsigned int nb_hab, unsigned int sec)
   *(buildingList + 5) = hosp_list;
 
   return buildingList;
-}
+}*/
 
 /*
 struct building **initTownList3(unsigned int nb_hab, unsigned int sec)

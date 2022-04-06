@@ -6,6 +6,6 @@
 
 char **genMat(int DIM);
 
-void build_city();
+void build_city(char **matrice, int DIM);
 
 #endif

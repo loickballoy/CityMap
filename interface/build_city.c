@@ -15,17 +15,17 @@ char **genMat(int DIM)
     {
       matrice[k] = malloc(sizeof(char *) * DIM);
     }
-  
+
   for(int i = 0; i < DIM; i++)
     {
       for(int j =0; j < DIM; j++)
 	{
             int number = rand();
-            
+
             if(number%2 == 0)
 	      matrice[i][j] = '1';
 	    if(number%2 != 0)
-	      matrice[i][j] = '4'; 
+	      matrice[i][j] = '4';
             if(number%3 == 0)
 	      matrice[i][j] = '2';
             if(number%5 == 0)
@@ -35,14 +35,14 @@ char **genMat(int DIM)
 	    if(number%11 == 0)
 	      matrice[i][j] = '0';
 
-	    
+
 	}
     }
   return matrice;
 }
 
 
-void build_city()
+void build_city(char **matrice, int DIM)
 {
 
   printf("Bienvenue sur CityMap !\n");
@@ -69,21 +69,20 @@ void build_city()
   printf("\nEnvironnement : ");
   scanf("%d", &env);
   printf("\n");
-  
+
   */
-  
+
   //list batiment
-  
+
   //execute les programmes de génération de ville
 
   //affiche l'image de la ville
 
-  int DIM = 15;
 
-  
+
   printf("VILLE :\n");
-  
-  char **matrice = genMat(DIM);     // A mettre en parametre de build_city quand on pourra récupérer la matrice de Remy
+
+  //char **matrice = genMat(DIM);     // A mettre en parametre de build_city quand on pourra récupérer la matrice de Remy
 
   PrintMat(matrice, DIM);           // Affiche en SDL la matrice
 
@@ -100,6 +99,3 @@ void build_city()
   printf("\n");
 
 }
-
-
-

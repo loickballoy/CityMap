@@ -17,6 +17,9 @@ void PrintMat(char **matrice, int DIM)
   SDL_Surface* Comi;
   SDL_Surface* Hosp;
   SDL_Surface* Offi;
+  SDL_Surface* Road;
+  SDL_Surface* Shop;
+  SDL_Surface* Noir;
 
 
   init_sdl();
@@ -29,6 +32,9 @@ void PrintMat(char **matrice, int DIM)
   Comi = load_image("images/comi.png");
   Hosp = load_image("images/hosp.png");
   Offi = load_image("images/offi.png");
+  Shop = load_image("images/shop.png");
+  Road = load_image("images/road.png");
+  Noir = load_image("images/noir.png");
 
 
   /* void SetCase(int x, int y, char b, int dim)
@@ -37,10 +43,10 @@ void PrintMat(char **matrice, int DIM)
 
     if(b == '0')
       bat = Hall;
-    
+
     if(b == '1')
       bat = Prop;
-    
+
     if(b == '2')
       bat = Comi;
 
@@ -76,32 +82,38 @@ void PrintMat(char **matrice, int DIM)
   for(int i = 0; i < DIM; i++)
     {
         for(int j = 0; j < DIM; j++)
-	{
+	       {
             char b = matrice[i][j];
-            printf("i:%u j:%u \n", i,j);
+            //printf("i:%u j:%u \n", i,j);
             //SetCase(y,x,b,64);
             SDL_Rect srcRect = {0,0,64,64};
             SDL_Rect dstRect = {y,x,64,64};
 
             SDL_Surface* bat;
+            bat = Noir;
 
-            if(b == '0')
+      if(b == '0')
 	      bat = Hall;
-	    
+
 	    if(b == '1')
 	      bat = Prop;
-	    
+
 	    if(b == '2')
-	      bat = Comi;
-	    
-	    if(b == '3')
-	      bat = Hosp;
-	    
-	    if(b == '4')
 	      bat = Offi;
 
+	    if(b == '3')
+	      bat = Comi;
+
+      if(b == '4')
+        bat = Shop;
+
+	    if(b == '5')
+	      bat = Hosp;
+
+      if(b == '6')
+  	     bat = Road;
             SDL_BlitSurface(bat, &srcRect, image_surface, &dstRect);
-            display_image(image_surface);
+            //display_image(image_surface);
             y += 64;
             if(y == dim_surface){
                 y = 0;
@@ -113,7 +125,7 @@ void PrintMat(char **matrice, int DIM)
   display_image(image_surface);
 
   wait_for_keypressed();
-  
+
   SDL_FreeSurface(image_surface);
   SDL_FreeSurface(Hall);
   SDL_FreeSurface(Prop);
@@ -123,5 +135,5 @@ void PrintMat(char **matrice, int DIM)
 
   SDL_Quit();
   //exit(EXIT_SUCCESS);
-  
+
 }
