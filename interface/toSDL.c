@@ -17,6 +17,8 @@ void PrintMat(char **matrice, int DIM)
   SDL_Surface* Comi;
   SDL_Surface* Hosp;
   SDL_Surface* Offi;
+  SDL_Surface* Road;
+  SDL_Surface* Shop;
 
 
   init_sdl();
@@ -29,6 +31,8 @@ void PrintMat(char **matrice, int DIM)
   Comi = load_image("images/comi.png");
   Hosp = load_image("images/hosp.png");
   Offi = load_image("images/offi.png");
+  Shop = load_image("images/shop.png");
+  Road = load_image("images/road.png");
 
 
   /* void SetCase(int x, int y, char b, int dim)
@@ -37,10 +41,10 @@ void PrintMat(char **matrice, int DIM)
 
     if(b == '0')
       bat = Hall;
-    
+
     if(b == '1')
       bat = Prop;
-    
+
     if(b == '2')
       bat = Comi;
 
@@ -76,7 +80,7 @@ void PrintMat(char **matrice, int DIM)
   for(int i = 0; i < DIM; i++)
     {
         for(int j = 0; j < DIM; j++)
-	{
+	       {
             char b = matrice[i][j];
             printf("i:%u j:%u \n", i,j);
             //SetCase(y,x,b,64);
@@ -85,21 +89,26 @@ void PrintMat(char **matrice, int DIM)
 
             SDL_Surface* bat;
 
-            if(b == '0')
+      if(b == '0')
 	      bat = Hall;
-	    
+
 	    if(b == '1')
 	      bat = Prop;
-	    
+
 	    if(b == '2')
-	      bat = Comi;
-	    
-	    if(b == '3')
-	      bat = Hosp;
-	    
-	    if(b == '4')
 	      bat = Offi;
 
+	    if(b == '3')
+	      bat = Comi;
+
+      if(b == '4')
+        bat = Shop;
+
+	    if(b == '5')
+	      bat = Hosp;
+
+      if(b == '6')
+  	     bat = Road;
             SDL_BlitSurface(bat, &srcRect, image_surface, &dstRect);
             display_image(image_surface);
             y += 64;
@@ -113,7 +122,7 @@ void PrintMat(char **matrice, int DIM)
   display_image(image_surface);
 
   wait_for_keypressed();
-  
+
   SDL_FreeSurface(image_surface);
   SDL_FreeSurface(Hall);
   SDL_FreeSurface(Prop);
@@ -122,6 +131,6 @@ void PrintMat(char **matrice, int DIM)
   SDL_FreeSurface(Offi);
 
   SDL_Quit();
-  //exit(EXIT_SUCCESS);
-  
+  exit(EXIT_SUCCESS);
+
 }

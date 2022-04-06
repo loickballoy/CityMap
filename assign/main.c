@@ -51,12 +51,12 @@ void fill_and_replace(struct map *newmap, struct building **buildingList, int ro
 	free(nbreplacement);
 }
 
-void testAssign(int compt, int roof)
+struct map *testAssign(int compt, int roof)
 {
 	//init structs
 	int **building_value = load_building_value();
 	char **buildind_label = load_building_labels();
-	struct building **buildingList2 = initTownList();
+	//struct building **buildingList2 = initTownList();
 	unsigned int *buildingList = initTownList3(compt, 1);
 	int i = 0;
 	int nbbat = 0;
@@ -97,16 +97,16 @@ void testAssign(int compt, int roof)
 
 	//free
 	free(nbreplacement);
-	free(newmap->cells);
-	free(newmap);
-	freeList(buildingList2);
+	/*free(newmap->cells);
+	free(newmap);*/
+	//freeList(buildingList2);
 	free_building_list((void **)building_value);
 	free_building_list((void **)buildind_label);
 	free(buildingList);
-
+	return newmap;
 }
 
-int main(int argc, char **argv)
+/*int main(int argc, char **argv)
 {
 	//init time
 	float temps;
@@ -132,4 +132,4 @@ int main(int argc, char **argv)
   temps = (float)(t2-t1)/CLOCKS_PER_SEC;
   printf("temps = %f\n", temps);
 	return 0;
-}
+}*/

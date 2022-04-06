@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <math.h>
 #include <gtk/gtk.h>
 #include "build_city.h"
+#include "../assign/assign.c"
+#include "../assign/main.c"
 
 typedef struct s_Window
 {
@@ -14,6 +18,34 @@ typedef struct s_Window
 
 const char *nb_habitant;
 
+char **MakeMatrice(struct cell *map)
+{
+
+  int DIM = 40;
+  char **matrice =  malloc(sizeof(char *)* DIM);
+
+  for(int k = 0; k < DIM; k++)
+  {
+    matrice[k] = malloc(sizeof(char *) * DIM);
+  }
+
+  int souslist = -1;
+  for (int i = 0; i < DIM*DIM; i++)
+  {
+    if(i % DIM == 0)
+    {
+      souslist++;
+      printf("\n");
+    }
+    if(((map+i)->type) != -1)
+      matrice[souslist][i%DIM] = ((map+i)->type)+'0';
+    if(((map+i)->type) == -1)
+      matrice[souslist][i%DIM] = 7;
+    printf("%c ;",matrice[souslist][i%DIM]);
+  }
+  return matrice;
+}
+
 gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer data)
 {
     t_Window *my_w = (t_Window*) data;
@@ -21,9 +53,13 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
 // On récupère le texte contenu dans la GtkEntry
     nb_habitant = gtk_entry_get_text(GTK_ENTRY(my_w->entry));
 
-    build_city();       //TODO :Passer en parametre le nombre d'habitant
-    
-    printf("Execute Build_City avec %c habitants \n", nb_habitant);
+    int hab_int = atoi(nb_habitant);
+
+    char **matrice = MakeMatrice(testAssign(hab_int, 50)->cells);
+
+    build_city(matrice);   //TODO :Passer en parametre le nombre d'habitant
+
+    printf("Execute Build_City avec %s habitants \n", nb_habitant);
 
 // On redonne la main à GTK
     return FALSE;

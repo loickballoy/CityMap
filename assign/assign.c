@@ -6,6 +6,7 @@
 #include "assign.h"
 #include "../banker/need.h"
 #include "../geographer/update.c"
+#include "../loader/loadtools.c"
 
 #define COLOR_RED "\x1b[31m"
 #define COLOR_BLEU "\x1b[34m"
