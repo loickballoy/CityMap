@@ -209,7 +209,7 @@ struct building **initTownList3(unsigned int nb_hab, unsigned int sec)
 }
 */
 
-unsigned int *initTownList3(unsigned int nb_hab, double *biais)
+unsigned int *initTownList3(unsigned int nb_hab, double sec)
 {
   unsigned int comi_range = 60000;
   unsigned int hosp_range = 20000;
