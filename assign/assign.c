@@ -6,6 +6,7 @@
 #include "assign.h"
 #include "../banker/need.h"
 #include "../geographer/update.c"
+#include "../loader/loadtools.c"
 
 #define COLOR_RED "\x1b[31m"
 #define COLOR_BLEU "\x1b[34m"
@@ -384,9 +385,9 @@ void fillTown(struct map *map, unsigned int *buildingList, int roof, int **build
 
 	if(!cell->isRoadConnected)//you have to connect it
 	{
-		//roadToConnect(map, *a, *b);
+		roadToConnect(map, *a, *b);
 	}
-	//cleanWay(map);
+	cleanWay(map);
 
 	//free
 	free(a);
