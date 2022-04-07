@@ -58,6 +58,7 @@ struct map *testAssign(int compt, int roof)
 	char **buildind_label = load_building_labels();
 	//struct building **buildingList2 = initTownList();
 	int *buildingList = initTownList3(compt, 1);
+	int *_buildingList = initTownList3(compt, 1);
 	int i = 0;
 	int nbbat = 0;
 	while(i < 6)
@@ -67,6 +68,7 @@ struct map *testAssign(int compt, int roof)
 		i++;
 	}
 	struct map *newmap = initMap(40,40);
+	struct map *testmap = initMap(40,40);
 
 	//init first bat
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
@@ -83,9 +85,32 @@ struct map *testAssign(int compt, int roof)
 	int numHos = 0;
 	int numCom = 0;
 	int ty = fillTown(newmap, buildingList, roof, building_value);
+	printf("first gen \n");
+	printMatrix(newmap);
+	int _ty = ty;
+	*testmap = *newmap;
+	printMatrix(testmap);
+	printf("test first gen  \n");
 	for(int n = 0; n < nbbat - 1 && ty != -10; n++)
-	{
+	{ 
 		ty = fillTown(newmap, buildingList, roof, building_value);
+		_ty = fillTown(testmap, _buildingList, roof, building_value);
+		//printMatrix(newmap);
+
+		if (minMaxMap(newmap, testmap) == testmap)
+		{
+			printf("a new map has been chosen\n");
+			*newmap = *testmap;
+			*buildingList = *_buildingList;
+			ty = _ty;
+		}
+
+		else
+		{
+			*testmap = *newmap;
+			*_buildingList = *buildingList;
+		}
+		
 		if (ty == 1)
 			numPro += 1;
 		else if (ty == 2)
@@ -123,8 +148,8 @@ struct map *testAssign(int compt, int roof)
 
 	//free
 	free(nbreplacement);
-	/*free(newmap->cells);
-	free(newmap);*/
+	free(newmap->cells);
+	free(newmap);
 	//freeList(buildingList2);
 	free_building_list((void **)building_value);
 	free_building_list((void **)buildind_label);

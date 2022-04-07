@@ -34,6 +34,8 @@ void analyseMatrix_print(struct map *newmap);
 
 void recAnalyseMatrix(struct map *newmap, int *stat);
 
+struct map *minMaxMap(struct map *newMap, struct map *testMap);
+
 void printMatrixTime(struct map *newmap);
 
 char charType(int type);

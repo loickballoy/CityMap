@@ -123,6 +123,54 @@ void recAnalyseMatrix(struct map *newmap, int *stat)
 	}
 }
 
+
+struct map *minMaxMap(struct map *newMap, struct map *testMap)
+{
+	int nbbat = 0;
+
+	int stat[NBSTATS] = {0};
+
+	for(int j = 0; j < newMap->maxWidth * newMap->maxHeight; j++)
+	{
+		struct cell *upTest = newMap->cells + j;
+		for(int i = 0; i < NBSTATS; i++)
+			stat[i] += upTest->stats[i];
+		nbbat++;
+	}
+
+	int M_sec = stat[0]/nbbat;
+	int M_job = stat[1]/nbbat;
+	int M_hab = stat[2]/nbbat;
+	int M_eco = stat[3]/nbbat;
+	int M_hea = stat[4]/nbbat;
+	int moy = (M_sec + M_job + M_hab + M_eco + M_hea)/5;
+
+	nbbat = 0;
+
+	int _stat[NBSTATS] = {0};
+
+	for(int j = 0; j < testMap->maxWidth * testMap->maxHeight; j++)
+	{
+		struct cell *upTest = testMap->cells + j;
+		for(int i = 0; i < NBSTATS; i++)
+			_stat[i] += upTest->stats[i];
+		nbbat++;
+	}
+
+	int _M_sec = _stat[0]/nbbat;
+	int _M_job = _stat[1]/nbbat;
+	int _M_hab = _stat[2]/nbbat;
+	int _M_eco = _stat[3]/nbbat;
+	int _M_hea = _stat[4]/nbbat;
+	int _moy = (_M_sec + _M_job + _M_hab + _M_eco + _M_hea)/5;
+
+	/*printf("moy = %i\n", moy);
+	printf("_moy = %i\n", _moy);*/
+
+	return (moy < _moy)?testMap:newMap;
+
+}
+
 void printMatrixTime(struct map *newmap)//print la matricd en couleur avec une pose de 1sec a la fin
 {
 
