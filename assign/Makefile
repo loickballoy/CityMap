@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -std=c99 -O0 -g
 LDFLAGS =
 LDLIBS =
 
-OBJ = assign.o main.o
+OBJ = assign_tools.o assign.o main.o
 DEP = ${OBJ:.o=.d}
 
 all: main

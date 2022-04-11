@@ -1,0 +1,56 @@
+\hypertarget{assign__tools_8h_source}{}\doxysection{assign\+\_\+tools.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef ASSIGN\_TOOLS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define ASSIGN\_TOOLS\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../banker/building.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define RDMRANGE 8}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} type;}
+\DoxyCodeLine{12     \textcolor{keyword}{struct }building *building;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} stats[NBSTATS];}
+\DoxyCodeLine{15     \textcolor{comment}{/*int security;}}
+\DoxyCodeLine{16 \textcolor{comment}{    int job;}}
+\DoxyCodeLine{17 \textcolor{comment}{    int habitation;}}
+\DoxyCodeLine{18 \textcolor{comment}{    int economy;}}
+\DoxyCodeLine{19 \textcolor{comment}{    int health;*/}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} isRoadConnected;}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{struct }\mbox{\hyperlink{structmap}{map}}}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *cells;}
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} maxHeight;}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} maxWidth;}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} analyseMatrix(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{35 \textcolor{keywordtype}{void} analyseMatrix\_print(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{38 \textcolor{keywordtype}{void} printMatrixTime(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{41 \textcolor{keywordtype}{char} charType(\textcolor{keywordtype}{int} type);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{44 \textcolor{keywordtype}{void} printMatrix(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{47 \textcolor{keywordtype}{void} printMatrixStat(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap, \textcolor{keywordtype}{int} stat);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{50 \textcolor{keywordtype}{void} stringType(\textcolor{keywordtype}{int} stat);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{53 \textcolor{keywordtype}{int} getValue(\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{56 \textcolor{keywordtype}{int} getType(\textcolor{keywordtype}{int} type);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 }
+
+\end{DoxyCode}
