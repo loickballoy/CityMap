@@ -321,6 +321,14 @@ struct cell *searchGlobalNeed(struct map *map, int *buildingList, int *maxstat,i
 				}
 			}
 		}
+		else if (upTest->type > 0 && upTest->type > 6 && upTest->stats[getValue(upTest->type)] > maxneed)
+		{
+			*a = j;
+			maxneed = upTest->stats[upTest->type + 6];
+			*maxstat = upTest->type + 6;
+			result = upTest;
+
+		}
 	}
 	//printf(" search a = %i\n\n", *a);
 	return result;
