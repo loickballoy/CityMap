@@ -170,12 +170,12 @@ int fillTown(struct map *map, int *buildingList, int roof, int **building_value)
 	*a = temp % map->maxWidth;//set de a
 	*b = temp / map->maxWidth;//set de b
 	updateAround(map, *a, *b, building_value);
-
+/*
 	if(!cell->isRoadConnected)//you have to connect it
 	{
 		roadToConnect(map, *a, *b);
 	}
-	cleanWay(map);
+	cleanWay(map);*/
 
 	//free
 	free(a);
@@ -377,4 +377,40 @@ struct cell *generateRandomBuilding(struct map *map, int *buildingList, int *max
 	return tempcell;
 }
 
+struct cell **generateRandomSubway(struct map *map, int *buildingList)
+{
+	struct cell **Nodes = calloc(buildingList[6], sizeof(struct cell *));
+	struct cell *tmp = NULL;
+	int range = RDMRANGE;
+	srand(time(0)* rand());	
+	int compt = 0;
+	int rdm = rand();
+	int rdmW = 0;
+	int rdmH = 0;
+	while(buildingList[6] > 0)
+	{
+		while(compt < 10000)
+		{
+			tmp = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2);
+			srand(rdm + time(0));
+			rdm = rand();
+			rdmW = rdm % (2*range) - range;
+			srand(rdm);
+			rdmH = rand() % (2*range) - range;
+			tmp += rdmW + (map->maxWidth * rdmH);
+			if(tmp->type == -1)
+				break;
+			compt++;
+		}
+		tmp->type = 7;
+		buildingList[6] -= 1;
+		*(Nodes + buildingList[6])= tmp;
+		printf("a subway as been placed");
+	}
+	return Nodes;
+}
 
+void generateRoad()
+{
+	//TODO
+}

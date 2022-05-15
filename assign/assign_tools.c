@@ -161,6 +161,8 @@ char charType(int type)//renvoie le symbole associé au type
 		return 'H';
 	if(type == 6)
 		return 'R';
+	if(type == 7)
+		return 'T';
 	errx(EXIT_FAILURE, "charType(): Type undifined");
 }
 
@@ -207,6 +209,8 @@ void printMatrix(struct map *newmap)
 					printf(COLOR_CYAN "%c ;" COLOR_RESET, charType(upTest->type));
 				else if(upTest->type == 5)
 					printf(COLOR_RED "%c ;" COLOR_RESET,charType(upTest->type));
+				else if(upTest->type == 7)
+					printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->type));
 				else
 					printf(COLOR_ROAD "%c ;" COLOR_RESET,charType(upTest->type));
 			}
@@ -310,4 +314,5 @@ int getValue(int i)
 	else
 		return 5;
 }
+
 

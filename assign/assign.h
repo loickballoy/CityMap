@@ -24,5 +24,6 @@ struct cell *searchGlobalNeed(struct map *map, int *buildingList, int *maxstat, 
 //! Generates a random building when the search algorithm was unsuccesful
 struct cell *generateRandomBuilding(struct map *map, int *buildingList, int *maxstat, int *a, int nbcompt);
 
+struct cell **generateRandomSubway(struct map *map, int *buildingList);
 
 #endif

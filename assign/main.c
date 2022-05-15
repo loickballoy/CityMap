@@ -69,6 +69,8 @@ struct map *testAssign(int compt, int roof)
 	}
 	struct map *newmap = initMap(40,40);
 	struct map *testmap = initMap(40,40);
+	printf("nb_sub = %i; \n", buildingList[6]);
+	struct cell **Subways = generateRandomSubway(newmap, buildingList);
 
 	//init first bat
 	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
