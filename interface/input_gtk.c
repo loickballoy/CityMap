@@ -5,6 +5,7 @@
 #include <gtk/gtk.h>
 #include "build_city.h"
 #include "../assign/assign.c"
+#include "../assign/assign_tools.c"
 #include "../assign/main.c"
 
 typedef struct s_Window
@@ -100,9 +101,9 @@ void RunGTK(int argc, char **argv){
 
 
 
-/*
+
 int main (int argc, char **argv)
 {
   RunGTK(argc, argv);
   return 0;
-  }*/
+  }

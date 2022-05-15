@@ -21,6 +21,7 @@ void PrintMat(char **matrice, int DIM)
   SDL_Surface* Road;
   SDL_Surface* Shop;
   SDL_Surface* Noir;
+  SDL_Surface* Metro;
 
 
   init_sdl();
@@ -28,7 +29,7 @@ void PrintMat(char **matrice, int DIM)
   int dim_surface = DIM * 64;
 
   image_surface =  SDL_CreateRGBSurface(0, dim_surface, dim_surface, 32,0,0,0,0);
-  Hall = load_image("images/metro.png");
+  Hall = load_image("images/hall.png");
   Prop = load_image("images/prop.png");
   Comi = load_image("images/comi.png");
   Hosp = load_image("images/hosp.png");
@@ -36,55 +37,61 @@ void PrintMat(char **matrice, int DIM)
   Shop = load_image("images/shop.png");
   Road = load_image("images/road.png");
   Noir = load_image("images/noir.png");
+  Metro = load_image("images/metro.png");
 
   int x = 0;
   int y = 0;
   for(int i = 0; i < DIM; i++)
     {
-        for(int j = 0; j < DIM; j++)
-	       {
-            char b = matrice[i][j];
-            
-            SDL_Rect srcRect = {0,0,64,64};
-            SDL_Rect dstRect = {y,x,64,64};
+      for(int j = 0; j < DIM; j++)
+	{
+	  char b = matrice[i][j];
+          
+	  SDL_Rect srcRect = {0,0,64,64};
+	  SDL_Rect dstRect = {y,x,64,64};
+	  
+	  SDL_Surface* bat;
+	  bat = Noir;
+	  
+	  if(b == '0')
+	    bat = Hall;
+	  
+	  if(b == '1')
+	    bat = Prop;
+	  
+	  if(b == '2')
+	    bat = Offi;
+	  
+	  if(b == '3')
+	    bat = Comi;
 
-            SDL_Surface* bat;
-            bat = Noir;
+	  if(b == '4')
+	    bat = Shop;
+	  
+	  if(b == '5')
+	    bat = Hosp;
+	  
+	  if(b == '6')
+	    bat = Road;
 
-      if(b == '0')
-	      bat = Hall;
+	  if(b == '7')
+	    bat = Metro;
 
-	    if(b == '1')
-	      bat = Prop;
-
-	    if(b == '2')
-	      bat = Offi;
-
-	    if(b == '3')
-	      bat = Comi;
-
-      if(b == '4')
-        bat = Shop;
-
-	    if(b == '5')
-	      bat = Hosp;
-
-      if(b == '6')
-  	     bat = Road;
-            SDL_BlitSurface(bat, &srcRect, image_surface, &dstRect);
-            
-            y += 64;
-            if(y == dim_surface){
-                y = 0;
-            }
+	  
+	  SDL_BlitSurface(bat, &srcRect, image_surface, &dstRect);
+          
+	  y += 64;
+	  if(y == dim_surface){
+	    y = 0;
+	  }
 	}
-        x += 64;
+      x += 64;
     }
   SDL_SaveBMP(image_surface, "CityMap.png");
   display_image(image_surface);
-
+  
   wait_for_keypressed();
-
+  
   SDL_FreeSurface(image_surface);
   SDL_FreeSurface(Hall);
   SDL_FreeSurface(Prop);
@@ -94,6 +101,7 @@ void PrintMat(char **matrice, int DIM)
   SDL_FreeSurface(Shop);
   SDL_FreeSurface(Road);
   SDL_FreeSurface(Noir);
+  SDL_FreeSurface(Metro);
 
   SDL_Quit();
   //exit(EXIT_SUCCESS);

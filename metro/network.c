@@ -24,7 +24,7 @@ struct EDGE *buildAdjlists(struct Metro *STATIONS, unsigned int nb_stat,
   unsigned int proche;
   double min = DBL_MAX;
 
-  struct EDGE *edges = calloc( nb_stat, sizeof(struct EDGE));
+  struct EDGE *edges = calloc( nb_stat * nb_stat, sizeof(struct EDGE));
   unsigned int k = 0;
 
   int l = 1;
@@ -167,12 +167,12 @@ struct EDGE *buildAdjlists2(struct Metro *STATIONS, unsigned int nb_stat,
 	      
 	    
 	  }
-	
+       
     }
 
+  printf("nb edge : %i", k);
   edges[0].nb_edge = k;
 
-  printf("nb edge : %i", k);
   free(rencontre);
   return edges;
 }
@@ -188,7 +188,7 @@ int nb_stations(char **matrice, int DIM)
       for(int j =0; j < DIM; j++)
 	{
             
-	  if(matrice[i][j] == '0')
+	  if(matrice[i][j] == '7')
 	    nb_stat += 1;
             
 	}
@@ -201,6 +201,8 @@ struct Metro *BuildStations(char **matrice, int DIM, Graph g1)
 
   int nb_stat = nb_stations(matrice, DIM);
 
+  printf("%i : nb staaat", nb_stat);
+
   struct Metro *STATIONS = malloc(sizeof(struct Metro) * nb_stat);
 
   int k = 0;
@@ -211,7 +213,7 @@ struct Metro *BuildStations(char **matrice, int DIM, Graph g1)
       for(int j =0; j < DIM; j++)
 	{
 	  
-	  if(matrice[i][j] == '0')
+	  if(matrice[i][j] == '7')
 	    {
 	      struct Metro st = {k+1, i, j};
 	      add_label(g1, k+1, i, j);
@@ -226,11 +228,10 @@ struct Metro *BuildStations(char **matrice, int DIM, Graph g1)
   
 }
 
-struct EDGE *MakeMetro(char **matrice)
+struct EDGE *MakeMetro(char **matrice, int DIM)
 {
   int NUMBER_STATIONS; 
   double MAX = 4.2;
-  int DIM = 15;
 
   NUMBER_STATIONS = nb_stations(matrice, DIM);
 

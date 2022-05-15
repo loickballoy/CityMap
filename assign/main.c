@@ -150,14 +150,15 @@ struct map *testAssign(int compt, int roof)
 
 	//free
 	free(nbreplacement);
-	free(newmap->cells);
-	free(newmap);
+	//free(newmap->cells);       axel
+	//free(newmap);              axel
 	//freeList(buildingList2);
 	free_building_list((void **)building_value);
 	free_building_list((void **)buildind_label);
 	free(buildingList);
 	return newmap;
 }
+/*
 
 int main(int argc, char **argv)
 {
@@ -186,3 +187,4 @@ int main(int argc, char **argv)
   printf("temps = %f\n", temps);
 	return 0;
 }
+*/

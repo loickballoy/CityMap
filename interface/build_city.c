@@ -86,7 +86,7 @@ void build_city(char **matrice, int DIM)
 
   PrintMat(matrice, DIM);           // Affiche en SDL la matrice
 
-  struct EDGE *edges = MakeMetro(matrice);  // Fait le metro
+  struct EDGE *edges = MakeMetro(matrice, DIM);  // Fait le metro
 
   PrintMetro(edges, DIM);
 

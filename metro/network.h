@@ -18,6 +18,6 @@ struct EDGE
   unsigned int nb_edge;
 };
 
-struct EDGE *MakeMetro(char **matrice);
+struct EDGE *MakeMetro(char **matrice, int DIM);
 
 #endif
