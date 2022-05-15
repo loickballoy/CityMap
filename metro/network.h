@@ -3,6 +3,21 @@
 
 #include <stdlib.h>
 
-void MakeMetro(char **matrice);
+struct EDGE
+{
+  unsigned int src;
+  unsigned int dst;
+
+  unsigned int src_x;
+  unsigned int src_y;
+
+  unsigned int dst_x;
+  unsigned int dst_y;
+
+  int ligne;
+  unsigned int nb_edge;
+};
+
+struct EDGE *MakeMetro(char **matrice);
 
 #endif

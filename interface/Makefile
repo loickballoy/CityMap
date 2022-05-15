@@ -6,14 +6,16 @@ CFLAGS = -Wall -Wextra -std=c99 -O0 -g `pkg-config --cflags sdl` `pkg-config gtk
 LDFLAGS =
 LDLIBS = -lm `pkg-config --libs sdl` -lSDL -lSDL_image `pkg-config gtk+-3.0 --libs`         
 
-SRC = build_city.c toSDL.c tool/pixel_operations.c tool/tool_image.c ../metro/network.c ../metro/graph.c input_gtk.c
+SRC = build_city.c toSDL.c tool/pixel_operations.c tool/tool_image.c ../metro/network.c ../metro/graph.c input_gtk.c main.c
 
 OBJ = ${SRC:.c=.o}                                                              
 DEP = ${SRC:.c=.d} 
 
-all: input_gtk
+all: input_gtk main
 
 input_gtk: ${OBJ}
+
+main: ${OBJ}
 
 run: all
 	./main
@@ -22,6 +24,7 @@ run: all
 
 clean:
 	${RM} ${OBJ} ${DEP} input_gtk
+	${RM} ${OBJ} ${DEP} main
 
 -include ${DEP}
 

@@ -100,9 +100,9 @@ void RunGTK(int argc, char **argv){
 
 
 
-
+/*
 int main (int argc, char **argv)
 {
   RunGTK(argc, argv);
   return 0;
-}
+  }*/

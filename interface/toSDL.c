@@ -7,6 +7,7 @@
 #include "tool/tool_image.h"
 #include "tool/pixel_operations.h"
 #include "toSDL.h"
+#include "../metro/network.h"
 
 
 void PrintMat(char **matrice, int DIM)
@@ -27,7 +28,7 @@ void PrintMat(char **matrice, int DIM)
   int dim_surface = DIM * 64;
 
   image_surface =  SDL_CreateRGBSurface(0, dim_surface, dim_surface, 32,0,0,0,0);
-  Hall = load_image("images/hall.png");
+  Hall = load_image("images/metro.png");
   Prop = load_image("images/prop.png");
   Comi = load_image("images/comi.png");
   Hosp = load_image("images/hosp.png");
@@ -36,47 +37,6 @@ void PrintMat(char **matrice, int DIM)
   Road = load_image("images/road.png");
   Noir = load_image("images/noir.png");
 
-
-  /* void SetCase(int x, int y, char b, int dim)
-  {
-    SDL_Surface* bat;
-
-    if(b == '0')
-      bat = Hall;
-
-    if(b == '1')
-      bat = Prop;
-
-    if(b == '2')
-      bat = Comi;
-
-    if(b == '3')
-      bat = Hosp;
-
-    if(b == '4')
-      bat = Offi;
-
-    int _x = x;
-    int _y = y;
-
-    for(int i = 0; i < dim; i++)
-    {
-        for(int j = 0; j < dim; j++)
-	{
-            //printf("x:%u y:%u \n", x,y);
-            Uint32 pixel = get_pixel(bat, i, j);
-            put_pixel(image_surface, _x, _y, pixel);
-            _y += 1;
-            if(_y == (y + dim))
-	    {
-                _y = y;
-                _x += 1;
-	    }
-	}
-    }
-  }
-  */
-
   int x = 0;
   int y = 0;
   for(int i = 0; i < DIM; i++)
@@ -84,8 +44,7 @@ void PrintMat(char **matrice, int DIM)
         for(int j = 0; j < DIM; j++)
 	       {
             char b = matrice[i][j];
-            //printf("i:%u j:%u \n", i,j);
-            //SetCase(y,x,b,64);
+            
             SDL_Rect srcRect = {0,0,64,64};
             SDL_Rect dstRect = {y,x,64,64};
 
@@ -113,7 +72,7 @@ void PrintMat(char **matrice, int DIM)
       if(b == '6')
   	     bat = Road;
             SDL_BlitSurface(bat, &srcRect, image_surface, &dstRect);
-            //display_image(image_surface);
+            
             y += 64;
             if(y == dim_surface){
                 y = 0;
@@ -132,8 +91,142 @@ void PrintMat(char **matrice, int DIM)
   SDL_FreeSurface(Comi);
   SDL_FreeSurface(Hosp);
   SDL_FreeSurface(Offi);
+  SDL_FreeSurface(Shop);
+  SDL_FreeSurface(Road);
+  SDL_FreeSurface(Noir);
 
   SDL_Quit();
   //exit(EXIT_SUCCESS);
 
+}
+
+void PrintMetro(struct EDGE *edges, int DIM)
+{
+  SDL_Surface* image_surface;
+  SDL_Surface* Metro;
+  SDL_Surface* Ligne;
+  
+  SDL_Surface* Noir;
+  SDL_Surface* Rouge;
+  SDL_Surface* Bleue;
+  SDL_Surface* Orange;
+  SDL_Surface* Vert;
+  SDL_Surface* Violet;
+
+
+  init_sdl();
+
+  int dim_surface = DIM * 64;
+
+  image_surface =  SDL_CreateRGBSurface(0, dim_surface, dim_surface, 32,0,0,0,0);
+
+  //init images
+  Noir = load_image("images/noir.png");
+  Metro = load_image("images/metro.png");
+  Ligne = load_image("images/ligne.png");
+
+  Rouge = load_image("images/rouge.png");
+  Vert = load_image("images/vert.png");
+  Bleue = load_image("images/bleue.png");
+  Orange = load_image("images/orange.png");
+  Violet = load_image("images/violet.png");
+
+  SDL_Rect srcRect = {0,0,64,64};
+
+  unsigned int nb_edge = edges[0].nb_edge;
+
+  printf("nb : %u \n", nb_edge);
+
+  
+  //parcours edges
+  for(int k = 0; k < (int)nb_edge; k++)
+    {
+      
+      struct EDGE ed = edges[k];
+
+      int i = (int) ed.src_x;
+      int j = (int) ed.src_y;
+
+      int a = (int) ed.dst_x;
+      int b = (int) ed.dst_y;
+
+      if(ed.ligne == 1)
+	Ligne = Vert;
+      if(ed.ligne == 2)
+	Ligne = Rouge;
+      if(ed.ligne == 3)
+	Ligne = Bleue;
+      if(ed.ligne == 4)
+	Ligne = Orange;
+      if(ed.ligne == 5)
+	Ligne = Violet;
+
+      
+      int n_i = 1;
+      int n_j = 1;
+      
+      if(i > a)
+	n_i = -1;
+      if(j > b)
+	n_j = -1;
+
+      while(j != b){
+
+	j += n_j; 
+	
+	SDL_Rect dstRect = {j*64,i*64,64,64};
+
+	SDL_BlitSurface(Ligne, &srcRect, image_surface, &dstRect);
+	
+      }
+      while(i != a){
+
+	i += n_i;
+	
+	SDL_Rect dstRect = {j*64,i*64,64,64};
+
+	SDL_BlitSurface(Ligne, &srcRect, image_surface, &dstRect);
+	
+      }
+ 
+    }
+
+  for(int k = 0; k < (int)nb_edge; k++) //Rajoute les stations
+    {
+      
+      struct EDGE ed = edges[k];
+
+      SDL_Rect dstRect1 = {((int)ed.src_y*64),((int)ed.src_x*64),64,64};
+
+      SDL_BlitSurface(Metro, &srcRect, image_surface, &dstRect1);
+
+      SDL_Rect dstRect2 = {((int)ed.dst_y*64),((int)ed.dst_x*64),64,64};
+
+      SDL_BlitSurface(Metro, &srcRect, image_surface, &dstRect2);
+    }
+
+      
+
+  SDL_SaveBMP(image_surface, "Metro.png");
+  display_image(image_surface);
+
+  wait_for_keypressed();
+
+  SDL_FreeSurface(image_surface);
+  SDL_FreeSurface(Metro);
+  //SDL_FreeSurface(Ligne);
+  SDL_FreeSurface(Noir);
+
+  
+  SDL_FreeSurface(Rouge);
+    
+  SDL_FreeSurface(Vert);
+  
+  SDL_FreeSurface(Bleue);
+  
+  SDL_FreeSurface(Orange);
+  
+  SDL_FreeSurface(Violet);
+  
+  SDL_Quit();
 }
