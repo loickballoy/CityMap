@@ -73,6 +73,8 @@ void reverseUpdateAround(struct map *map, int a, int b, int **building_value)
 
     if (cell->type == -1)
         errx(1, "reverseUpdateAround : Error the cell is not occupied by a building");
+    if (cell->type == 7)
+	    return;
 
     int type = cell->type;
     int *value = *(building_value + type);

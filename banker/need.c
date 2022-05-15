@@ -42,7 +42,7 @@ int *initTownList3(unsigned int nb_hab, double sec)
 
   int nb_hosp = nb_hab / 50;
 
-  int nb_sub = nb_hab / 1000;
+  int nb_sub = nb_hab / 500;
 
   int *bat = malloc(sizeof(int)* NUMBER_TYPE);
   bat[0] = 1;

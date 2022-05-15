@@ -170,12 +170,12 @@ int fillTown(struct map *map, int *buildingList, int roof, int **building_value)
 	*a = temp % map->maxWidth;//set de a
 	*b = temp / map->maxWidth;//set de b
 	updateAround(map, *a, *b, building_value);
-/*
+
 	if(!cell->isRoadConnected)//you have to connect it
 	{
 		roadToConnect(map, *a, *b);
 	}
-	cleanWay(map);*/
+	cleanWay(map);
 
 	//free
 	free(a);
@@ -377,7 +377,70 @@ struct cell *generateRandomBuilding(struct map *map, int *buildingList, int *max
 	return tempcell;
 }
 
-struct cell **generateRandomSubway(struct map *map, int *buildingList)
+void subwaySquare(struct map *map, int len, int *a, int *b)
+{
+  *a = 0;
+  *b = 0;
+  int x = map->maxWidth / 2;
+  int y = map->maxHeight / 2; 
+  //printf("init : x = %i || y = %i || len = %i \n", x, y, len);
+  int startx = x-len/2 < 0 ? 0 : x-len/2;
+  int starty = y-len/2 < 0 ? 0 : y-len/2;
+  struct cell* tempcell = map->cells + (startx + starty * map->maxWidth);
+  int endx = (x + len/2) >= map->maxWidth ? map->maxWidth-1 : x + len/2;
+  int endy = (y + len/2) >= map->maxHeight ? map->maxHeight-1 : (y + len/2);
+
+
+  for(int i = 0; i <= endx-startx; i++)
+  {
+    //printf("startx = %i  || starty = %i || endx = %i || endy = %i || i = %i\n",startx,starty,endx,endy, i);
+    if((tempcell + i)->stats[1] == 0)
+    {
+      *a = startx+i;
+      *b = starty;
+      //printf(" hey hey trouver 1\n");
+      return;
+    }
+  }
+  for(int j = 0; j <= endy-starty; j++)
+  {
+    if((tempcell + j * map->maxWidth)->stats[1] == 0)
+    {
+      *a = startx;
+      *b = starty+j;
+      //printf(" hey hey trouver 2\n");
+      return;
+    }
+  }
+
+
+  tempcell = map->cells + (startx + (endy * map->maxWidth));
+  for(int i = 0; i <= endx-startx; i++)
+  {
+    if((tempcell + i)->stats[1] == 0)
+    {
+      *a = startx+i;
+      *b = endy;
+      //printf(" hey hey trouver 3\n");
+      return;
+    }
+  }
+
+  tempcell = map->cells + (endx + (starty * map->maxWidth));
+  for(int j = 0; j <= endy-starty; j++)
+  {
+    if((tempcell + j * map->maxWidth)->stats[1] == 0)
+    {
+      *a = endx;
+      *b = starty+j;
+      //printf(" hey hey trouver 4\n");
+      return;
+    }
+  }
+  return;
+}
+
+struct cell **generateRandomSubway(struct map *map, int *buildingList, int **building_value)
 {
 	struct cell **Nodes = calloc(buildingList[6], sizeof(struct cell *));
 	struct cell *tmp = NULL;
@@ -387,16 +450,16 @@ struct cell **generateRandomSubway(struct map *map, int *buildingList)
 	int rdm = rand();
 	int rdmW = 0;
 	int rdmH = 0;
-	while(buildingList[6] > 0)
+	while(buildingList[6] > buildingList[6] / 2)
 	{
 		while(compt < 10000)
 		{
 			tmp = map->cells + map->maxWidth/2 + map->maxHeight*(map->maxHeight/2);
 			srand(rdm + time(0));
 			rdm = rand();
-			rdmW = rdm % (2*range) - range;
+			rdmW = rdm % (4*range) - 2*range;
 			srand(rdm);
-			rdmH = rand() % (2*range) - range;
+			rdmH = rand() % (4*range) - 2*range;
 			tmp += rdmW + (map->maxWidth * rdmH);
 			if(tmp->type == -1)
 				break;
@@ -405,12 +468,36 @@ struct cell **generateRandomSubway(struct map *map, int *buildingList)
 		tmp->type = 7;
 		buildingList[6] -= 1;
 		*(Nodes + buildingList[6])= tmp;
-		printf("a subway as been placed");
+		updateAround(map, (*(Nodes +buildingList[6]) - map->cells) % map->maxHeight, (*(Nodes +buildingList[6]) - map->cells) / map->maxHeight,building_value);
+		//printf("a subway as been placed");
 	}
+	while (buildingList[6] > 0)
+	{
+		int a, b = 0;
+		int far = 0;
+		while(a == 0)//find the nearest free adress
+  		{
+    			subwaySquare(map, 3+far*2, &a, &b);
+    			far++;
+  		}
+		(map->cells + a + b*map->maxWidth)->type = 7;
+		buildingList[6] -= 1;
+		updateAround(map, a, b, building_value);
+	}
+
 	return Nodes;
 }
 
-void generateRoad()
+void generateRdmRoads(struct map *map, int nb_sub, struct cell **Nodes)
 {
-	//TODO
+	for(int i = 0; i < nb_sub - 1; i++)
+	{
+		createWay(map, (*(Nodes +i) - map->cells) % map->maxHeight, (*(Nodes + i) - map->cells)/map->maxHeight, (*(Nodes + i + 1) - map->cells) % map->maxHeight, (*(Nodes +i + 1) - map->cells) / map->maxHeight);
+		cleanWay(map);
+	}
+	/*for (int i = 1; i < nb_sub; i++)
+	{
+		roadToConnect(map, *(Nodes), *(Nodes + i));
+		cleanWay(map);
+	}*/	
 }

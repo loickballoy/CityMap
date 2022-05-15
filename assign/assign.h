@@ -1,7 +1,7 @@
 #ifndef ASSIGN_H
 #define ASSIGN_H
 
-#define RDMRANGE 8
+#define RDMRANGE 2
 
 //! Runs two map generations and returns the most optimal of both maps
 struct map *minMaxMap(struct map *newMap, struct map *testMap);
@@ -24,6 +24,10 @@ struct cell *searchGlobalNeed(struct map *map, int *buildingList, int *maxstat, 
 //! Generates a random building when the search algorithm was unsuccesful
 struct cell *generateRandomBuilding(struct map *map, int *buildingList, int *maxstat, int *a, int nbcompt);
 
-struct cell **generateRandomSubway(struct map *map, int *buildingList);
+//! Randomly places subways and interest centers
+struct cell **generateRandomSubway(struct map *map, int *buildingList, int **building_value);
+
+//! Places Roads on the map to prevent the loss of buildings
+void generateRdmRoads(struct map *map, int nb_sub, struct cell **Nodes);
 
 #endif
