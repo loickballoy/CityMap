@@ -46,6 +46,7 @@ void build_city(char **matrice, int DIM)
 {
 
   printf("Bienvenue sur CityMap !\n");
+  printf("DIM : %i \n", DIM);
   //printf("Rentrez les différents paramètres et nous vous générerons une ville\n");
   /*
   int nb_hab;

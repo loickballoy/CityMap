@@ -58,6 +58,8 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
     int DIM = map->maxWidth;
     char **matrice = MakeMatrice(map->cells, DIM);
 
+    printf("%i : DIMMM", DIM);
+
     build_city(matrice, DIM);   //TODO :Passer en parametre le nombre d'habitant
 
     printf("Execute Build_City avec %s habitants \n", nb_habitant);
