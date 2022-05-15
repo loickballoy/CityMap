@@ -5,6 +5,7 @@ OFFICE =    [0, -50, 50, 0, 0, 0, 10, 20]
 COMISSARY = [0, -20, 30, 0, 0, -60, 25, 10]
 SHOP =      [0, -5, 20, -50, 0, 20, 10, 5]
 HOSPITAL =  [0, 10, 30, 0, -500, 0, 25, 20]
+SUBWAY =    [0, 10, 10, 10, 10, 10, 10, 20]
 // POLICY JOB HABITATION ECONOMY HEALTH SECURITY //
 BIAS = [50, 50, 50, 50, 50, 50]                                                                                       
 HABITANT_NUMBER = [50]                                                                                             

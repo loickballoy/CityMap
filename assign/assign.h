@@ -1,69 +1,29 @@
 #ifndef ASSIGN_H
 #define ASSIGN_H
 
-#include "../banker/building.h"
-
 #define RDMRANGE 8
 
-struct cell
-{
+//! Runs two map generations and returns the most optimal of both maps
+struct map *minMaxMap(struct map *newMap, struct map *testMap);
 
-	int type;
-	struct building *building;
-
-	int stats[NBSTATS];
-	/*int security;
-	int job;
-	int habitation;
-	int economy;
-	int health;*/
-
-	int isRoadConnected;
-};
-
-struct map
-{
-	struct cell *cells;
-	int maxHeight;
-	int maxWidth;
-};
-
-void analyseMatrix(struct map *newmap);
-
-void analyseMatrix_print(struct map *newmap);
-
-void recAnalyseMatrix(struct map *newmap, int *stat);
-
-void printMatrixTime(struct map *newmap);
-
-char charType(int type);
-
-void printMatrix(struct map *newmap);
-
-void printMatrixStat(struct map *newmap, int stat);
-
-void stringType(int stat);
-
-
+//! Initalises the terrain on which our functions will work
 struct map *initMap(unsigned int maxH, unsigned int maxW);
 
-void fillTown(struct map *map, unsigned int *buildingList, int roof, int **building_value);
+//! Fills the town with buildings from the buildingList according to the needs spread around the map
+int fillTown(struct map *map, int *buildingList, int roof, int **building_value);
 
-void replaceTown(struct map *map, unsigned int *buildingList, int roof, int **building_value, int *nbreplacement);
+//! Acts as a test for map modulation in order to get the best map/city possible
+void replaceTown(struct map *map, int *buildingList, int roof, int **building_value, int *nbreplacement);
 
-int gateValue(int i);
+//! The search algorithm used to find the best possible building in the modulation phase
+struct cell *replaceGlobalNeed(struct map *map, int *buildingList ,int *maxstat,int roof, int *a);
 
-int gateType(int type);
+//! The search algorithm used to find the best possible building in the first filling phase
+struct cell *searchGlobalNeed(struct map *map, int *buildingList, int *maxstat, int roof, int *a);
 
-struct cell *replaceGlobalNeed(struct map *map, unsigned int *buildingList ,int *maxstat,int roof, int *a);
+//! Generates a random building when the search algorithm was unsuccesful
+struct cell *generateRandomBuilding(struct map *map, int *buildingList, int *maxstat, int *a, int nbcompt);
 
-struct cell *searchGlobalNeed(struct map *map, unsigned int *buildingList, int *maxstat, int roof, int *a);
-
-struct cell *generateRandomBuilding(struct map *map, unsigned int *buildingList, int *maxstat, int *a, int nbcompt);
-
-int maxStat(struct cell *cell, int *stat);
-
-struct building *getBat(int stat, struct building **buildingList);
-
+struct cell **generateRandomSubway(struct map *map, int *buildingList);
 
 #endif
