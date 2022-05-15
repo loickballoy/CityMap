@@ -87,7 +87,12 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
     for(int i = b; i != y; i--)
     {
       tempcell = map->cells + a + i*map->maxWidth;
-      if(tempcell->type != -1 && tempcell->type != 6)
+      if (tempcell->type == 7)
+      {
+	      printf("cell type 7 _______ y < b\n");
+	      continue;
+      }
+      else if(tempcell->type != -1 && tempcell->type != 6 )
       {
         reverseUpdateAround(map, a, i, building_value);
         tempcell->type = 6;
@@ -101,7 +106,12 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
     for(int i = b; y != i; i++)
     {
       tempcell = map->cells + a + i*map->maxWidth;
-      if(tempcell->type != -1 && tempcell->type != 6)
+      if (tempcell->type == 7)
+      {
+	      printf("cell type 7 _______ y >= b\n");
+	      continue;
+      }
+      else if(tempcell->type != -1 && tempcell->type != 6)
       {
         reverseUpdateAround(map, a, i, building_value);
         tempcell->type = 6;
@@ -115,7 +125,12 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
     for(int j = a; x != j; j--)
     {
       tempcell = map->cells + j + y*map->maxWidth;
-      if(tempcell->type != -1 && tempcell->type != 6)
+      if (tempcell->type == 7)
+      {
+	      printf("cell type 7 _______ x < a\n");
+	      continue;
+      }
+      else if(tempcell->type != -1 && tempcell->type != 6)
       {
         reverseUpdateAround(map, j, y, building_value);
         tempcell->type = 6;
@@ -129,7 +144,12 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
     for(int j = a; x != j; j++)
     {
       tempcell = map->cells + j + y*map->maxWidth;
-      if(tempcell->type != -1 && tempcell->type != 6)
+      if (tempcell->type == 7)
+      {
+	      printf("cell type 7 _______ x >= a\n");
+	      continue;
+      }
+      else if(tempcell->type != -1 && tempcell->type != 6)
       {
         reverseUpdateAround(map, j, y, building_value);
         tempcell->type = 6;
