@@ -162,6 +162,16 @@ void createWay(struct map* map, int x, int y, int a, int b)//x,y = cell from || 
   return;
 }
 
+/*
+void createWay2(struct map* map, int x, int y, int a, int b)
+{
+	while (x != a && y != b)
+	{
+		
+	}
+}
+*/
+
 void roadToConnect(struct map *map, int x, int y)
 {
   int a = 0;

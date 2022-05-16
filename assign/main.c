@@ -26,30 +26,6 @@ void freeList(struct building **buildingL)
 	free(buildingL);
 }
 
-/*void fill_and_replace(struct map *newmap, struct building **buildingList, int roof, int **building_value, int compt, int verif, int c)
-{
-	int i = 0;
-	while( i < compt)
-	{
-		fillTown(newmap, buildingList, roof, building_value);
-		i += 1;
-	}
-
-	int *nbreplacement = malloc(sizeof(int));
-	*nbreplacement = 0;
-	int nbverif = 0;
-	if(c > 6)
-	{
-		while(nbverif < verif)
-		{
-			replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
-			nbverif++;
-		}
-		printf("nbreplacement : %i", *nbreplacement);
-	}
-
-	free(nbreplacement);
-}*/
 
 struct map *testAssign(int compt, int roof)
 {
@@ -67,8 +43,11 @@ struct map *testAssign(int compt, int roof)
 		nbbat += *(buildingList+i);
 		i++;
 	}
-	struct map *newmap = initMap(40,40);
-	struct map *testmap = initMap(40,40);
+	int truc = 40 + compt/500;
+	truc += truc%2;
+	struct map *newmap = initMap(truc, truc);
+	printf("%p\n",newmap->cells);
+	struct map *testmap = initMap(truc, truc);
 	printf("nb_sub = %i; \n", buildingList[6]);
 	int nb_sub = buildingList[6];
 	struct cell **Subways = generateRandomSubway(newmap, buildingList, building_value);
@@ -76,10 +55,13 @@ struct map *testAssign(int compt, int roof)
 	generateRdmRoads(newmap, nb_sub, Subways);
 
 	//init first bat
-	struct cell *center = newmap->cells + newmap->maxWidth/2 + newmap->maxWidth * newmap->maxHeight/2;
+	printf("%p\n",newmap->cells);
+	struct cell *center = newmap->cells + newmap->maxWidth/2 +newmap->maxWidth * newmap->maxHeight/2;
 	center->type = 0;
 	(center+1)->type = 6;
 	(center-1)->type = 6;
+	printf("centers, %i, %i \n",newmap->maxWidth/2,newmap->maxHeight/2);
+	printMatrix(newmap);
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 
 	//start the filling
@@ -161,8 +143,9 @@ struct map *testAssign(int compt, int roof)
 	free(buildingList);
 	return newmap;
 }
-/*
 
+
+/*
 int main(int argc, char **argv)
 {
 	//init time

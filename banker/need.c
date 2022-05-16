@@ -1,3 +1,4 @@
+#include "../loader/read.h"
 #include "need.h"
 #include "building.h"
 #include <err.h>
@@ -22,36 +23,17 @@ int *initTownList3(unsigned int nb_hab, double sec)
 {
   //int comi_range = 60000;
   //int hosp_range = 20000;
-  int shop_range = 112;
-  sec += 0;
-  int nb_prop;
-
-  nb_prop = nb_hab / 50;
-  if(nb_hab % PROPERTY[2] != 0)
-    nb_prop += 1;
-
-  int nb_offi;
-
-  nb_offi = nb_hab / 50;
-  if(nb_hab % OFFICE[1] != 0)
-    nb_offi += 1;
-
-  int nb_comi = nb_hab / 20;
-
-  int nb_shop = nb_hab / shop_range;
-
-  int nb_hosp = nb_hab / 50;
-
-  int nb_sub = nb_hab / 500;
-
+  sec +=0;
   int *bat = malloc(sizeof(int)* NUMBER_TYPE);
-  bat[0] = 1;
-  bat[1] = nb_prop;
-  bat[2] = nb_offi;
-  bat[3] = nb_comi;
-  bat[4] = nb_shop;
-  bat[5] = nb_hosp;
-  bat[6] = nb_sub;
+  int **building_value = load_building_value();
+  for (int x = 0; x < 7; x++)
+  {
+	  *(bat + x) = nb_hab / *((*(building_value + x)) + 7);
+	  if (x == 6 && *(bat + x) == 1)
+		  *(bat + x) = 0;
+	  else if (*(bat + x) == 0)
+		  *(bat + x) = 1;
+  }
 
   return bat;
 }

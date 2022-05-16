@@ -1,7 +1,7 @@
 #ifndef ASSIGN_H
 #define ASSIGN_H
 
-#define RDMRANGE 2
+#define RDMRANGE 8
 
 //! Runs two map generations and returns the most optimal of both maps
 struct map *minMaxMap(struct map *newMap, struct map *testMap);

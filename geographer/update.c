@@ -3,6 +3,8 @@
 #include "update.h"
 #include <stdio.h>
 
+extern struct map;
+
 int ponderation(int x, int y, int val, int a, int b)
 {
     int xtemp =  x - a;
@@ -45,7 +47,7 @@ void updateAround(struct map *map, int a, int b, int **building_value)
     struct cell *cell = (map->cells) + (a + b * map->maxWidth);
 
     if (cell->type == -1)
-        errx(1, "updateAround : Error the cell is not occupied by a building \n ");
+        errx(1, "updateAround : Error the cell is not occupied by a building at %i, %i \n ",a,b);
 
     int type = cell->type;
     int *value = *(building_value + type);

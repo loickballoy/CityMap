@@ -68,8 +68,13 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
     
     nb_habitant = gtk_entry_get_text(GTK_ENTRY(my_w->entry));
 
+
     int hab_int = atoi(nb_habitant);
-    struct map* map = testAssign(hab_int, 50);
+    if (hab_int < 1200)
+	{
+		errx(1, "The number of habitant must be > 1200");
+	}
+	struct map* map = testAssign(hab_int, 50);
     int DIM = map->maxWidth;
     char **matrice = MakeMatrice(map->cells, DIM);
 

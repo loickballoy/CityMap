@@ -484,7 +484,7 @@ struct cell **generateRandomSubway(struct map *map, int *buildingList, int **bui
 		buildingList[6] -= 1;
 		updateAround(map, a, b, building_value);
 	}
-
+	printf("subway end\n");
 	return Nodes;
 }
 
@@ -494,7 +494,9 @@ void generateRdmRoads(struct map *map, int nb_sub, struct cell **Nodes)
 	{
 		createWay(map, (*(Nodes +i) - map->cells) % map->maxHeight, (*(Nodes + i) - map->cells)/map->maxHeight, (*(Nodes + i + 1) - map->cells) % map->maxHeight, (*(Nodes +i + 1) - map->cells) / map->maxHeight);
 		cleanWay(map);
+		printf("GRR\n");
 	}
+	printf("GRR2\n");
 	/*for (int i = 1; i < nb_sub; i++)
 	{
 		roadToConnect(map, *(Nodes), *(Nodes + i));
