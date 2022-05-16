@@ -33,6 +33,13 @@ typedef struct s_Window
 
 const char *nb_habitant;
 
+const char *policy;
+const char *job;
+const char *habitation;
+const char *economy;
+const char *health;
+const char *security;
+
 char **MakeMatrice(struct cell *map, int DIM)
 {
 
@@ -68,13 +75,34 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
     
     nb_habitant = gtk_entry_get_text(GTK_ENTRY(my_w->entry));
 
+    policy = gtk_entry_get_text(GTK_ENTRY(my_w->policy));
+    job = gtk_entry_get_text(GTK_ENTRY(my_w->job));
+    habitation = gtk_entry_get_text(GTK_ENTRY(my_w->habitation));
+    economy = gtk_entry_get_text(GTK_ENTRY(my_w->economy));
+    health = gtk_entry_get_text(GTK_ENTRY(my_w->health));
+    security = gtk_entry_get_text(GTK_ENTRY(my_w->security));
+
+    int pol_int = atoi(policy);
+    int job_int = atoi(job);
+    int habb_int = atoi(habitation);
+    int eco_int = atoi(economy);
+    int hea_int = atoi(health);
+    int sec_int = atoi(security);
+
+    int *biais = calloc(6, sizeof(int));
+
+    biais[0] = pol_int;
+    biais[1] = job_int;
+    biais[2] = habb_int;
+    biais[3] = eco_int;
+    biais[4] = hea_int;
+    biais[5] = sec_int;
+
+    
+    //write_biais(biais);
 
     int hab_int = atoi(nb_habitant);
-    if (hab_int < 1200)
-	{
-		errx(1, "The number of habitant must be > 1200");
-	}
-	struct map* map = testAssign(hab_int, 50);
+    struct map* map = testAssign(hab_int, 50);
     int DIM = map->maxWidth;
     char **matrice = MakeMatrice(map->cells, DIM);
 
