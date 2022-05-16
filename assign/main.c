@@ -43,7 +43,7 @@ struct map *testAssign(int compt, int roof)
 		nbbat += *(buildingList+i);
 		i++;
 	}
-	int truc = 40 + compt/500;
+	int truc = 50 + compt/2000;
 	truc += truc%2;
 	struct map *newmap = initMap(truc, truc);
 	printf("%p\n",newmap->cells);

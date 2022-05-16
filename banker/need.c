@@ -1,4 +1,5 @@
 #include "../loader/read.h"
+#include "../loader/write.h"
 #include "need.h"
 #include "building.h"
 #include <err.h>
@@ -26,6 +27,7 @@ int *initTownList3(unsigned int nb_hab, double sec)
   sec +=0;
   int *bat = malloc(sizeof(int)* NUMBER_TYPE);
   int **building_value = load_building_value();
+  int *bias = load_building_bias();
   for (int x = 0; x < 7; x++)
   {
 	  *(bat + x) = nb_hab / *((*(building_value + x)) + 7);
@@ -34,6 +36,11 @@ int *initTownList3(unsigned int nb_hab, double sec)
 	  else if (*(bat + x) == 0)
 		  *(bat + x) = 1;
   }
+  *(bat + 1) += *(bat + 1) * (*(bias + 2)) / 100;
+  *(bat + 2) += *(bat + 2) * (*(bias + 1)) / 100;
+  *(bat + 3) += *(bat + 3) * (*(bias + 5)) / 100;
+  *(bat + 4) += *(bat + 4) * (*(bias + 3)) / 100;
+  *(bat + 5) += *(bat + 5) * (*(bias + 4)) / 100;
 
   return bat;
 }

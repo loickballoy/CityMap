@@ -8,6 +8,7 @@
 #include "../assign/assign.c"
 #include "../assign/assign_tools.c"
 #include "../assign/main.c"
+#include "../loader/write.c"
 
 typedef struct s_Window
 {
@@ -99,7 +100,7 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
     biais[5] = sec_int;
 
     
-    //write_biais(biais);
+    write_bias(biais);
 
     int hab_int = atoi(nb_habitant);
     struct map* map = testAssign(hab_int, 50);
@@ -165,10 +166,10 @@ void RunGTK(int argc, char **argv){
 
   gtk_entry_set_placeholder_text(my_window->entry, "Habitants");
   
-  gtk_entry_set_placeholder_text(my_window->policy, "[Police]");
+  gtk_entry_set_placeholder_text(my_window->policy, "[Politique]");
   gtk_entry_set_placeholder_text(my_window->job, "[Travail]");
   gtk_entry_set_placeholder_text(my_window->habitation, "[Logement]");
-  gtk_entry_set_placeholder_text(my_window->economy, "[Economie]");
+  gtk_entry_set_placeholder_text(my_window->economy, "[Commerce]");
   gtk_entry_set_placeholder_text(my_window->health, "[Santé]");
   gtk_entry_set_placeholder_text(my_window->security, "[Sécurité]");
 
