@@ -87,6 +87,7 @@ void PrintMat(char **matrice, int DIM)
 	}
       x += 64;
     }
+  
   SDL_SaveBMP(image_surface, "CityMap.png");
   display_image(image_surface);
   

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <gtk/gtk.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include "build_city.h"
 #include "../assign/assign.c"
 #include "../assign/assign_tools.c"
@@ -10,11 +11,13 @@
 
 typedef struct s_Window
 {
-    GtkWidget *widget;
-    GtkWidget *box;
-    GtkWidget *label;
-    GtkWidget *entry;
-    GtkWidget *button;
+  GtkWidget *widget;
+  GtkWidget *box;
+  GtkWidget *label;
+  GtkWidget *entry;
+  GtkWidget *button;
+  GtkWidget *map;
+  GtkWidget *metro;
 } t_Window;
 
 const char *nb_habitant;
@@ -58,9 +61,30 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
     int DIM = map->maxWidth;
     char **matrice = MakeMatrice(map->cells, DIM);
 
-    printf("%i : DIMMM", DIM);
+    //printf("%i : DIMMM", DIM);
 
     build_city(matrice, DIM);   //TODO :Passer en parametre le nombre d'habitant
+
+    gtk_widget_destroy(my_w->map);
+    gtk_widget_destroy(my_w->metro);
+
+    GdkPixbuf *p_map;
+    p_map = gdk_pixbuf_new_from_file_at_size("CityMap.png",400,400,NULL);
+    my_w->map = gtk_image_new_from_pixbuf (p_map);
+
+    GdkPixbuf *p_metro;
+    p_metro = gdk_pixbuf_new_from_file_at_size("Metro.png",400,400,NULL);
+    my_w->metro = gtk_image_new_from_pixbuf (p_metro);
+    
+    //my_w->map = gtk_image_new_from_file("CityMap.png");
+    //my_w->metro = gtk_image_new_from_file("Metro.png");
+
+    
+    gtk_box_pack_start (GTK_BOX(my_w->box), my_w->map, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX(my_w->box), my_w->metro, TRUE, TRUE, 0);
+
+    gtk_widget_show_all(my_w->widget);
+    
 
     printf("Execute Build_City avec %s habitants \n", nb_habitant);
 
@@ -78,10 +102,13 @@ void RunGTK(int argc, char **argv){
 
   // On initialise les Widgets
   my_window->widget = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-  my_window->box = gtk_hbox_new( TRUE, 0 );
+  my_window->box = gtk_box_new( TRUE, 0 );
   my_window->button = gtk_button_new_with_label("Lancer");
   my_window->label = gtk_label_new("Bienvenue sur CityMap");
   my_window->entry = gtk_entry_new();
+
+  my_window->map = gtk_image_new_from_file("map.png");
+  my_window->metro = gtk_image_new_from_file("metro.png");
 
   // Tout d'abord, on met la GtkHBox dans la GtkWindow :
   gtk_container_add(GTK_CONTAINER(my_window->widget), my_window->box );
@@ -90,6 +117,9 @@ void RunGTK(int argc, char **argv){
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->entry, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->button, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->label, TRUE, TRUE, 0);
+  
+  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->map, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->metro, TRUE, TRUE, 0);
 
   // On connecte le bouton à l'évenement « clicked »
   g_signal_connect(my_window->button, "button-press-event", (GCallback)on_click_button, my_window);
