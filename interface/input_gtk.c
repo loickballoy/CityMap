@@ -18,6 +18,8 @@ typedef struct s_Window
   GtkWidget *button;
   GtkWidget *map;
   GtkWidget *metro;
+  GtkWidget *images;
+  GtkWidget *legend;
 } t_Window;
 
 const char *nb_habitant;
@@ -65,23 +67,31 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
 
     build_city(matrice, DIM);   //TODO :Passer en parametre le nombre d'habitant
 
-    gtk_widget_destroy(my_w->map);
-    gtk_widget_destroy(my_w->metro);
+    gtk_widget_destroy(my_w->images);
 
     GdkPixbuf *p_map;
-    p_map = gdk_pixbuf_new_from_file_at_size("CityMap.png",400,400,NULL);
+    p_map = gdk_pixbuf_new_from_file_at_size("CityMap.png",800,800,NULL);
     my_w->map = gtk_image_new_from_pixbuf (p_map);
 
     GdkPixbuf *p_metro;
-    p_metro = gdk_pixbuf_new_from_file_at_size("Metro.png",400,400,NULL);
+    p_metro = gdk_pixbuf_new_from_file_at_size("Metro.png",800,800,NULL);
     my_w->metro = gtk_image_new_from_pixbuf (p_metro);
-    
-    //my_w->map = gtk_image_new_from_file("CityMap.png");
-    //my_w->metro = gtk_image_new_from_file("Metro.png");
+
+    my_w->legend = gtk_image_new_from_file("legend.png");
+
+    my_w->images = gtk_grid_new();
+
+    gtk_grid_attach(my_w->images, my_w->map,0,0,1,1);
+    gtk_grid_attach(my_w->images, my_w->metro,1,0,1,1);
+    gtk_grid_attach(my_w->images, my_w->legend,2,0,1,1);
+
+    gtk_box_pack_start (GTK_BOX(my_w->box), my_w->images, TRUE, TRUE, 0);
 
     
-    gtk_box_pack_start (GTK_BOX(my_w->box), my_w->map, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX(my_w->box), my_w->metro, TRUE, TRUE, 0);
+
+    
+    //gtk_box_pack_start (GTK_BOX(my_w->box), my_w->map, TRUE, TRUE, 0);
+    //gtk_box_pack_start (GTK_BOX(my_w->box), my_w->metro, TRUE, TRUE, 0);
 
     gtk_widget_show_all(my_w->widget);
     
@@ -109,6 +119,13 @@ void RunGTK(int argc, char **argv){
 
   my_window->map = gtk_image_new_from_file("map.png");
   my_window->metro = gtk_image_new_from_file("metro.png");
+  my_window->legend = gtk_image_new_from_file("legend.png");
+
+  my_window->images = gtk_grid_new();
+
+  gtk_grid_attach(my_window->images, my_window->map,0,0,1,1);
+  gtk_grid_attach(my_window->images, my_window->metro,1,0,1,1);
+  gtk_grid_attach(my_window->images, my_window->legend,2,0,1,1);
 
   // Tout d'abord, on met la GtkHBox dans la GtkWindow :
   gtk_container_add(GTK_CONTAINER(my_window->widget), my_window->box );
@@ -118,8 +135,10 @@ void RunGTK(int argc, char **argv){
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->button, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->label, TRUE, TRUE, 0);
   
-  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->map, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->metro, TRUE, TRUE, 0);
+  //  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->map, TRUE, TRUE, 0);
+  //  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->metro, TRUE, TRUE, 0);
+
+  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->images, TRUE, TRUE, 0);
 
   // On connecte le bouton à l'évenement « clicked »
   g_signal_connect(my_window->button, "button-press-event", (GCallback)on_click_button, my_window);

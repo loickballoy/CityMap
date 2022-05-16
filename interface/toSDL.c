@@ -89,9 +89,9 @@ void PrintMat(char **matrice, int DIM)
     }
   
   SDL_SaveBMP(image_surface, "CityMap.png");
-  display_image(image_surface);
+  //display_image(image_surface);
   
-  wait_for_keypressed();
+  //wait_for_keypressed();
   
   SDL_FreeSurface(image_surface);
   SDL_FreeSurface(Hall);
@@ -217,9 +217,9 @@ void PrintMetro(struct EDGE *edges, int DIM)
       
 
   SDL_SaveBMP(image_surface, "Metro.png");
-  display_image(image_surface);
+  //display_image(image_surface);
 
-  wait_for_keypressed();
+  //wait_for_keypressed();
 
   SDL_FreeSurface(image_surface);
   SDL_FreeSurface(Metro);
