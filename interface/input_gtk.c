@@ -20,6 +20,15 @@ typedef struct s_Window
   GtkWidget *metro;
   GtkWidget *images;
   GtkWidget *legend;
+  GtkWidget *texts;
+
+  GtkWidget *policy;
+  GtkWidget *job;
+  GtkWidget *habitation;
+  GtkWidget *economy;
+  GtkWidget *health;
+  GtkWidget *security;
+  
 } t_Window;
 
 const char *nb_habitant;
@@ -56,6 +65,7 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
     t_Window *my_w = (t_Window*) data;
 
 // On récupère le texte contenu dans la GtkEntry
+    
     nb_habitant = gtk_entry_get_text(GTK_ENTRY(my_w->entry));
 
     int hab_int = atoi(nb_habitant);
@@ -87,11 +97,6 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
 
     gtk_box_pack_start (GTK_BOX(my_w->box), my_w->images, TRUE, TRUE, 0);
 
-    
-
-    
-    //gtk_box_pack_start (GTK_BOX(my_w->box), my_w->map, TRUE, TRUE, 0);
-    //gtk_box_pack_start (GTK_BOX(my_w->box), my_w->metro, TRUE, TRUE, 0);
 
     gtk_widget_show_all(my_w->widget);
     
@@ -113,9 +118,41 @@ void RunGTK(int argc, char **argv){
   // On initialise les Widgets
   my_window->widget = gtk_window_new(GTK_WINDOW_TOPLEVEL);
   my_window->box = gtk_box_new( TRUE, 0 );
-  my_window->button = gtk_button_new_with_label("Lancer");
+  my_window->button = gtk_button_new_with_label("Lancer CityMap");
   my_window->label = gtk_label_new("Bienvenue sur CityMap");
   my_window->entry = gtk_entry_new();
+
+  my_window->policy = gtk_entry_new();
+  my_window->job = gtk_entry_new();
+  my_window->habitation = gtk_entry_new();
+  my_window->economy = gtk_entry_new();
+  my_window->health = gtk_entry_new();
+  my_window->security = gtk_entry_new();
+  
+
+  gtk_entry_set_placeholder_text(my_window->entry, "Habitants");
+  
+  gtk_entry_set_placeholder_text(my_window->policy, "[Police]");
+  gtk_entry_set_placeholder_text(my_window->job, "[Travail]");
+  gtk_entry_set_placeholder_text(my_window->habitation, "[Logement]");
+  gtk_entry_set_placeholder_text(my_window->economy, "[Economie]");
+  gtk_entry_set_placeholder_text(my_window->health, "[Santé]");
+  gtk_entry_set_placeholder_text(my_window->security, "[Sécurité]");
+
+  my_window->texts = gtk_grid_new();
+
+  gtk_grid_attach(my_window->texts, my_window->button,7,0,2,1);
+
+  gtk_grid_attach(my_window->texts, my_window->entry,0,0,1,1);
+
+  gtk_grid_attach(my_window->texts, my_window->policy,1,0,1,1);
+  gtk_grid_attach(my_window->texts, my_window->job,2,0,1,1);
+  gtk_grid_attach(my_window->texts, my_window->habitation,3,0,1,1);
+  gtk_grid_attach(my_window->texts, my_window->economy,4,0,1,1);
+  gtk_grid_attach(my_window->texts, my_window->health,5,0,1,1);
+  gtk_grid_attach(my_window->texts, my_window->security,6,0,1,1);
+  
+  
 
   my_window->map = gtk_image_new_from_file("map.png");
   my_window->metro = gtk_image_new_from_file("metro.png");
@@ -127,18 +164,21 @@ void RunGTK(int argc, char **argv){
   gtk_grid_attach(my_window->images, my_window->metro,1,0,1,1);
   gtk_grid_attach(my_window->images, my_window->legend,2,0,1,1);
 
+  
+
   // Tout d'abord, on met la GtkHBox dans la GtkWindow :
   gtk_container_add(GTK_CONTAINER(my_window->widget), my_window->box );
 
   // Puis on met les Widgets dans la GtkHBox:
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->entry, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->button, TRUE, TRUE, 0);
+  //gtk_box_pack_start (GTK_BOX(my_window->box), my_window->button, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->label, TRUE, TRUE, 0);
   
-  //  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->map, TRUE, TRUE, 0);
-  //  gtk_box_pack_start (GTK_BOX(my_window->box), my_window->metro, TRUE, TRUE, 0);
 
+   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->texts, TRUE, TRUE, 0);
+  
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->images, TRUE, TRUE, 0);
+
 
   // On connecte le bouton à l'évenement « clicked »
   g_signal_connect(my_window->button, "button-press-event", (GCallback)on_click_button, my_window);
