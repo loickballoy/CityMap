@@ -11,19 +11,39 @@ Use for instance <https://github.com/ekalinin/github-markdown-toc>:
 > * [CityMap](#CityMap)
 >   * [About / Synopsis](#about--synopsis)
 >   * [Table of contents](#table-of-contents)
+>   * [Installation](#installation)
 >   * [Usage](#usage)
 >     * [Screenshots](#screenshots)
 >     * [Features](#features)
 >   * [Resources (Documentation and other links)](#resources-documentation-and-other-links)
 >   * [WebSite](#website)
 
+## Installation
+
+To install and run our project you first need to install our source code with this command:
+
+```shell
+git clone git@github.com:loickballoy/CityMap.git
+```
+
+Once that is done you have to make your way to the interface directory, make and run the executable given:
+
+```shell
+cd interface
+make
+./input_gtk
+```
+
+This method of installation will soon be improved. 
+
 ## Usage
 
-We use GTK and SDL libraries to
+We use GTK and SDL libraries to create the city. We use methods such as L-systems to create this city. Furthermore, to add on to our app, a subway network is created for each city that has a minimum of 2000 inhabitants.
 
 ### Screenshots
 
 ![alt text](https://media.discordapp.net/attachments/937331808515817482/975712089651949578/unknown.png?width=1425&height=683)
+![alt-text](https://media.discordapp.net/attachments/937331808515817482/975672979088355388/unknown.png?width=1381&height=683)
 
 ### Features
 
@@ -32,7 +52,7 @@ Have fun with those biases to obtain different cities!!
 
 ## Resources (Documentation and other links)
 
-To have further documentation on our code execute the following commmand:
+To have further documentation on our code execute the following commmand from the source directory:
 
 ```shell
 firefox doc/html/index.html
@@ -40,5 +60,5 @@ firefox doc/html/index.html
 
 ## WebSite
 
-Project site :
+Our project's Website :
 https://thefoxell.github.io/CityMapWebsite/index.html
