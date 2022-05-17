@@ -6,8 +6,6 @@ We are tring to create an app able to create a functioning city with a given num
 
 ## Table of contents
 
-Use for instance <https://github.com/ekalinin/github-markdown-toc>:
-
 > * [CityMap](#CityMap)
 >   * [About / Synopsis](#about--synopsis)
 >   * [Table of contents](#table-of-contents)
