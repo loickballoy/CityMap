@@ -91,7 +91,7 @@ struct EDGE *buildAdjlists(struct Metro *STATIONS, unsigned int nb_stat,
 	}	
     }
   edges[0].nb_edge = k;
-  printf("nb edge : %i", k);
+  
   free(rencontre);
   return edges;
 }
@@ -106,13 +106,15 @@ struct EDGE *buildAdjlists2(struct Metro *STATIONS, unsigned int nb_stat,
   unsigned int proche;
   double min = DBL_MAX;
 
-  unsigned int nb_l = 2;
+  unsigned int nb_l = 1;
 
   if(nb_stat >= 15)
-    nb_l = 3;
+    nb_l = 2;
   if(nb_stat >= 20)
-    nb_l = 4;
+    nb_l = 3;
   if(nb_stat >= 25)
+    nb_l = 4;
+  if(nb_stat >= 30)
     nb_l = 5;
 
   unsigned int nb_st = nb_stat / nb_l;

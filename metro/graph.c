@@ -138,15 +138,15 @@ void print_graph(Graph g)
 	for(i = 1 ; i < g->nb_vertices + 1 ; i++)
 	{
 		NodeList n = g->tab_neighbours[i-1].begin;
-		printf("(%d) : ", i);
+		
 
 		while(n != NULL)
 		{
-			printf("%d, ", n->value);
+			
 			n = n->next;
 		}
 
-		printf("NULL\n");
+		
 	}
 }
 
