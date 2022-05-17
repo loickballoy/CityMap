@@ -23,6 +23,8 @@ We use GTK and SDL libraries to
 
 ### Screenshots
 
+![alt text](https://media.discordapp.net/attachments/937331808515817482/975712089651949578/unknown.png?width=1425&height=683)
+
 ### Features
 
 You can now add biases to fit your city necessities. For instance, by increasing the value of the security bias you will obtain a city with more comissaries. 
