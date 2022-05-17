@@ -9,5 +9,5 @@ var searchData=
   ['tosdl_2ec_6',['toSDL.c',['../to_s_d_l_8c.html',1,'']]],
   ['tosdl_2eh_7',['toSDL.h',['../to_s_d_l_8h.html',1,'']]],
   ['true_8',['true',['../graph_8h.html#a39db6982619d623273fad8a383489309a08f175a5505a10b9ed657defeb050e4b',1,'graph.h']]],
-  ['type_9',['type',['../structcell.html#a8d271074c9068c96ce148c5f8f14ff18',1,'cell']]]
+  ['type_9',['type',['../structcell.html#a8d271074c9068c96ce148c5f8f14ff18',1,'cell::type()'],['../structbuilding.html#a1528c0b061a2162d134b0444cae98563',1,'building::type()']]]
 ];

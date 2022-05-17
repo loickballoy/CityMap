@@ -10,6 +10,16 @@
 #include "../assign/main.c"
 #include "../loader/write.c"
 
+/**
+* @file input_gtk.c
+* @details This is the most important file that combines all our work into a simple GUI
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 //!gtk used struct
 typedef struct s_Window
 {
@@ -59,7 +69,7 @@ char **MakeMatrice(struct cell *map, int DIM)
     if(i % DIM == 0)
     {
       souslist++;
-      printf("\n");
+      
     }
     if(((map+i)->type) != -1)
       matrice[souslist][i%DIM] = ((map+i)->type)+'0';

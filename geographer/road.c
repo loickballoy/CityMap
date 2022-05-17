@@ -3,6 +3,16 @@
 #include "road.h"
 #include <stdio.h>
 
+/**
+* @file road.c
+* @details this files contains our road placing algorithm
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 int updateConnected(struct map *map, int x, int y)
 {
   struct cell* tempcell = map->cells + (x + y * map->maxWidth);

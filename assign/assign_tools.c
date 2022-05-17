@@ -14,6 +14,16 @@
 #define COLOR_ROAD "\x1b[30m"
 #define COLOR_RESET "\x1b[0m"
 
+/**
+* @file assign_tools.c
+* @details This file contains the tools used to display our workl and place buildings
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 void analyseMatrix(struct map *newmap)
 {
 

@@ -34,11 +34,9 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{assign_2main_8c_a633a5f11e0e40867cbb62222077211ce}{free\+List}} (struct building $\ast$$\ast$buildingL)
+void \mbox{\hyperlink{assign_2main_8c_a633a5f11e0e40867cbb62222077211ce}{free\+List}} (struct \mbox{\hyperlink{structbuilding}{building}} $\ast$$\ast$buildingL)
 \item 
 struct \mbox{\hyperlink{structmap}{map}} $\ast$ \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign}} (int compt, int roof)
-\item 
-int \mbox{\hyperlink{assign_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
 \end{DoxyCompactItemize}
 
 
@@ -62,15 +60,15 @@ int \mbox{\hyperlink{assign_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (
 \index{main.c@{main.c}!freeList@{freeList}}
 \index{freeList@{freeList}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{freeList()}{freeList()}}
-{\footnotesize\ttfamily void free\+List (\begin{DoxyParamCaption}\item[{struct building $\ast$$\ast$}]{buildingL }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void free\+List (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbuilding}{building}} $\ast$$\ast$}]{buildingL }\end{DoxyParamCaption})}
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{18 \{}
 \DoxyCodeLine{19     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < 21; i++)}
 \DoxyCodeLine{20     \{}
-\DoxyCodeLine{21         \textcolor{keyword}{struct }building *buildingF = *(buildingL+i);}
-\DoxyCodeLine{22         \textcolor{keyword}{struct }buildingType *values = buildingF-\/>values;}
+\DoxyCodeLine{21         \textcolor{keyword}{struct }\mbox{\hyperlink{structbuilding}{building}} *buildingF = *(buildingL+i);}
+\DoxyCodeLine{22         \textcolor{keyword}{struct }\mbox{\hyperlink{structbuilding_type}{buildingType}} *values = buildingF-\/>\mbox{\hyperlink{structbuilding_acb1f807e47864215ecbfcd3188ff5f73}{values}};}
 \DoxyCodeLine{23         free(buildingF);}
 \DoxyCodeLine{24         free(values);}
 \DoxyCodeLine{25     \}}
@@ -78,45 +76,9 @@ int \mbox{\hyperlink{assign_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (
 \DoxyCodeLine{27 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{assign_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{assign_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
-\index{main.c@{main.c}!main@{main}}
-\index{main@{main}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{main()}{main()}}
-{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
 
 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{148 \{}
-\DoxyCodeLine{149     \textcolor{comment}{//init time}}
-\DoxyCodeLine{150     \textcolor{keywordtype}{float} temps;}
-\DoxyCodeLine{151     clock\_t t1, t2;}
-\DoxyCodeLine{152     t1 = clock();}
-\DoxyCodeLine{153     }
-\DoxyCodeLine{154     \textcolor{comment}{// Ton programme}}
-\DoxyCodeLine{155     \textcolor{keywordflow}{if}(argc != 3)}
-\DoxyCodeLine{156     \{}
-\DoxyCodeLine{157         printf(\textcolor{stringliteral}{"{}You have to pass two arguments: ./main [nbbat] [roof] \(\backslash\)n"{}});}
-\DoxyCodeLine{158         \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{159     \}}
-\DoxyCodeLine{160 }
-\DoxyCodeLine{161     \textcolor{comment}{//init values}}
-\DoxyCodeLine{162     \textcolor{keywordtype}{int} nbbat = (int) atol (argv[1]);}
-\DoxyCodeLine{163     \textcolor{keywordtype}{int} roof = (int) atol (argv[2]);}
-\DoxyCodeLine{164 }
-\DoxyCodeLine{165     \textcolor{comment}{//test}}
-\DoxyCodeLine{166     \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{testAssign}}(nbbat, roof);}
-\DoxyCodeLine{167 }
-\DoxyCodeLine{168     \textcolor{comment}{//calcule de temps}}
-\DoxyCodeLine{169     t2 = clock();}
-\DoxyCodeLine{170     temps = (float)(t2-\/t1)/CLOCKS\_PER\_SEC;}
-\DoxyCodeLine{171     printf(\textcolor{stringliteral}{"{}temps = \%f\(\backslash\)n"{}}, temps);}
-\DoxyCodeLine{172     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{173 \}}
-
-\end{DoxyCode}
-
-
-References \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}.
+References \mbox{\hyperlink{structbuilding_acb1f807e47864215ecbfcd3188ff5f73}{building\+::values}}.
 
 \mbox{\Hypertarget{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}\label{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}} 
 \index{main.c@{main.c}!testAssign@{testAssign}}
@@ -142,47 +104,47 @@ References \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{t
 \DoxyCodeLine{44     \textcolor{keywordtype}{int} truc = 50 + compt/2000;}
 \DoxyCodeLine{45     truc += truc\%2;}
 \DoxyCodeLine{46     \textcolor{keyword}{struct }\mbox{\hyperlink{structmap}{map}} *newmap = \mbox{\hyperlink{assign_8c_a09b468e0b9bf23d8cc13b67fab3b4617}{initMap}}(truc, truc);}
-\DoxyCodeLine{47     }
+\DoxyCodeLine{47 }
 \DoxyCodeLine{48     \textcolor{keyword}{struct }\mbox{\hyperlink{structmap}{map}} *testmap = \mbox{\hyperlink{assign_8c_a09b468e0b9bf23d8cc13b67fab3b4617}{initMap}}(truc, truc);}
-\DoxyCodeLine{49     }
+\DoxyCodeLine{49 }
 \DoxyCodeLine{50     \textcolor{keywordtype}{int} nb\_sub = buildingList[6];}
 \DoxyCodeLine{51     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} **Subways = \mbox{\hyperlink{assign_8c_a8d1b043f2541bd164d2210f7570c8218}{generateRandomSubway}}(newmap, buildingList, building\_value);}
 \DoxyCodeLine{52     \mbox{\hyperlink{assign__tools_8c_a55186af83b1331c4f6769a59cee1211e}{printMatrix}}(newmap);}
 \DoxyCodeLine{53     \mbox{\hyperlink{assign_8c_a71f430d4fa6a854641d8e414ecfead93}{generateRdmRoads}}(newmap, nb\_sub, Subways);}
 \DoxyCodeLine{54 }
 \DoxyCodeLine{55     \textcolor{comment}{//init first bat}}
-\DoxyCodeLine{56     }
+\DoxyCodeLine{56 }
 \DoxyCodeLine{57     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *center = newmap-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}/2 +newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}} * newmap-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}/2;}
 \DoxyCodeLine{58     center-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 0;}
 \DoxyCodeLine{59     (center+1)-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
 \DoxyCodeLine{60     (center-\/1)-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
-\DoxyCodeLine{61     }
-\DoxyCodeLine{62     }
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 }
 \DoxyCodeLine{63     \mbox{\hyperlink{update_8c_a86539730d7569637769e840303e61adc}{updateAround}}(newmap, newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}/2, newmap-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}/2, building\_value);}
 \DoxyCodeLine{64 }
 \DoxyCodeLine{65     \textcolor{comment}{//start the filling}}
-\DoxyCodeLine{66     }
+\DoxyCodeLine{66 }
 \DoxyCodeLine{67     \textcolor{keywordtype}{int} numOff = 0;}
 \DoxyCodeLine{68     \textcolor{keywordtype}{int} numPro = 0;}
 \DoxyCodeLine{69     \textcolor{keywordtype}{int} numSho = 0;}
 \DoxyCodeLine{70     \textcolor{keywordtype}{int} numHos = 0;}
 \DoxyCodeLine{71     \textcolor{keywordtype}{int} numCom = 0;}
 \DoxyCodeLine{72     \textcolor{keywordtype}{int} ty = \mbox{\hyperlink{assign_8c_a527224c39f56ef6cd7c884f61308ad64}{fillTown}}(newmap, buildingList, roof, building\_value);}
-\DoxyCodeLine{73     }
+\DoxyCodeLine{73 }
 \DoxyCodeLine{74     \mbox{\hyperlink{assign__tools_8c_a55186af83b1331c4f6769a59cee1211e}{printMatrix}}(newmap);}
 \DoxyCodeLine{75     \textcolor{keywordtype}{int} \_ty = ty;}
 \DoxyCodeLine{76     *testmap = *newmap;}
 \DoxyCodeLine{77     \mbox{\hyperlink{assign__tools_8c_a55186af83b1331c4f6769a59cee1211e}{printMatrix}}(testmap);}
-\DoxyCodeLine{78     }
+\DoxyCodeLine{78 }
 \DoxyCodeLine{79     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} n = 0; n < nbbat -\/ 1 \&\& ty != -\/10; n++)}
-\DoxyCodeLine{80     \{ }
+\DoxyCodeLine{80     \{}
 \DoxyCodeLine{81         ty = \mbox{\hyperlink{assign_8c_a527224c39f56ef6cd7c884f61308ad64}{fillTown}}(newmap, buildingList, roof, building\_value);}
 \DoxyCodeLine{82         \_ty = \mbox{\hyperlink{assign_8c_a527224c39f56ef6cd7c884f61308ad64}{fillTown}}(testmap, \_buildingList, roof, building\_value);}
-\DoxyCodeLine{83         }
+\DoxyCodeLine{83 }
 \DoxyCodeLine{84 }
 \DoxyCodeLine{85         \textcolor{keywordflow}{if} (\mbox{\hyperlink{assign_8c_acd8aface572ac83fb48302f369e814c8}{minMaxMap}}(newmap, testmap) == testmap)}
 \DoxyCodeLine{86         \{}
-\DoxyCodeLine{87             }
+\DoxyCodeLine{87 }
 \DoxyCodeLine{88             *newmap = *testmap;}
 \DoxyCodeLine{89             *buildingList = *\_buildingList;}
 \DoxyCodeLine{90             ty = \_ty;}
@@ -193,7 +155,7 @@ References \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{t
 \DoxyCodeLine{95             *testmap = *newmap;}
 \DoxyCodeLine{96             *\_buildingList = *buildingList;}
 \DoxyCodeLine{97         \}}
-\DoxyCodeLine{98         }
+\DoxyCodeLine{98 }
 \DoxyCodeLine{99         \textcolor{keywordflow}{if} (ty == 1)}
 \DoxyCodeLine{100             numPro += 1;}
 \DoxyCodeLine{101         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ty == 2)}
@@ -213,7 +175,7 @@ References \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{t
 \DoxyCodeLine{115 }
 \DoxyCodeLine{116     printf(\textcolor{stringliteral}{"{}number of hospitals = \%i\(\backslash\)n"{}}, numHos);}
 \DoxyCodeLine{117 }
-\DoxyCodeLine{118     printf(\textcolor{stringliteral}{"{}number of bavures = \%i\(\backslash\)n"{}}, numCom);}
+\DoxyCodeLine{118     printf(\textcolor{stringliteral}{"{}number of police stations = \%i\(\backslash\)n"{}}, numCom);}
 \DoxyCodeLine{119 }
 \DoxyCodeLine{120     \mbox{\hyperlink{assign__tools_8c_a55186af83b1331c4f6769a59cee1211e}{printMatrix}}(newmap);}
 \DoxyCodeLine{121     \mbox{\hyperlink{assign__tools_8c_a9f3af2ddae6cdac6f969647b40cd3681}{analyseMatrix}}(newmap);}
@@ -225,7 +187,7 @@ References \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{t
 \DoxyCodeLine{127     \{}
 \DoxyCodeLine{128         \mbox{\hyperlink{assign_8c_a4be01986344e82266a0691d32072733f}{replaceTown}}(newmap, buildingList, roof, building\_value, nbreplacement);}
 \DoxyCodeLine{129     \}}
-\DoxyCodeLine{130     }
+\DoxyCodeLine{130 }
 \DoxyCodeLine{131     \mbox{\hyperlink{assign__tools_8c_a55186af83b1331c4f6769a59cee1211e}{printMatrix}}(newmap);}
 \DoxyCodeLine{132     \mbox{\hyperlink{assign__tools_8c_a9f3af2ddae6cdac6f969647b40cd3681}{analyseMatrix}}(newmap);}
 \DoxyCodeLine{133 }
@@ -247,5 +209,5 @@ References \mbox{\hyperlink{assign__tools_8c_a9f3af2ddae6cdac6f969647b40cd3681}{
 
 
 
-Referenced by \mbox{\hyperlink{assign_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main()}}, and \mbox{\hyperlink{input__gtk_8c_aa119a021d6e9b4f19136302b391de6fc}{on\+\_\+click\+\_\+button()}}.
+Referenced by \mbox{\hyperlink{input__gtk_8c_aa119a021d6e9b4f19136302b391de6fc}{on\+\_\+click\+\_\+button()}}.
 

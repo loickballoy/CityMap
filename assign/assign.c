@@ -10,6 +10,15 @@
 #include "../loader/loadtools.c"
 #include "../geographer/road.h"
 
+/**
+* @file assign.c
+* @details In this file we place our buildings
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
 struct map *minMaxMap(struct map *newMap, struct map *testMap)
 {
 	int nbbat = 0;

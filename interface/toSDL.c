@@ -9,6 +9,15 @@
 #include "toSDL.h"
 #include "../metro/network.h"
 
+/**
+* @file toSDL.c
+* @details This file converts the matrix given after the placement of our buildings to an SDL image.
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
 
 void PrintMat(char **matrice, int DIM)
 {
@@ -142,9 +151,7 @@ void PrintMetro(struct EDGE *edges, int DIM)
 
   SDL_Rect srcRect = {0,0,64,64};
 
-  unsigned int nb_edge = edges[0].nb_edge;
-
-  printf("nb : %u \n", nb_edge);
+  unsigned int nb_edge = edges[0].nb_edge; 
 
   
   //parcours edges

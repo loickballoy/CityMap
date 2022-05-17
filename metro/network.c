@@ -6,6 +6,16 @@
 #include "graph.h"
 #include "network.h"
 
+/**
+* @file metro.c
+* @details This file contains our metro algorithm.
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 struct Metro
 {
   unsigned int label;

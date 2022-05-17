@@ -4,6 +4,16 @@
 #include "read.h"
 #include "loadtools.h"
 
+/**
+* @file read.c
+* @details This file reads the settings file in order defin the rules used in our algorithm.
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 int **init_building_value()
 {
     int **building_value = malloc(sizeof(int*) * BUILDING_NUMBER_TYPE);

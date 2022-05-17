@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -101,7 +101,7 @@ Include dependency graph for update.c:</div>
 <area shape="rect" title=" " alt="" coords="203,80,255,107"/>
 <area shape="rect" href="update_8h.html" title=" " alt="" coords="279,80,358,107"/>
 <area shape="rect" title=" " alt="" coords="383,80,449,107"/>
-<area shape="rect" title=" " alt="" coords="19,155,165,181"/>
+<area shape="rect" href="building_8h.html" title=" " alt="" coords="19,155,165,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -136,7 +136,11 @@ Functions</h2></td></tr>
 <tr class="memdesc:a4d8d63e78f5f366a98b4f47b1027da1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as updateAround but reversed no further explaination will be provided.  <a href="update_8c.html#a4d8d63e78f5f366a98b4f47b1027da1f">More...</a><br /></td></tr>
 <tr class="separator:a4d8d63e78f5f366a98b4f47b1027da1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >This files updates the needs to allow the propagation of our rules </p><dl class="section author"><dt>Author</dt><dd>Remy Decourcelle <a href="#" onclick="location.href='mai'+'lto:'+'rem'+'y.'+'dec'+'ou'+'tce'+'ll'+'e@e'+'pi'+'ta.'+'fr'; return false;">remy.<span class="obfuscator">.nosp@m.</span>deco<span class="obfuscator">.nosp@m.</span>utcel<span class="obfuscator">.nosp@m.</span>le@e<span class="obfuscator">.nosp@m.</span>pita.<span class="obfuscator">.nosp@m.</span>fr</a>, Loïck Balloy <a href="#" onclick="location.href='mai'+'lto:'+'loi'+'ck'+'.ba'+'ll'+'oy@'+'ep'+'ita'+'.f'+'r'; return false;">loick<span class="obfuscator">.nosp@m.</span>.bal<span class="obfuscator">.nosp@m.</span>loy@e<span class="obfuscator">.nosp@m.</span>pita<span class="obfuscator">.nosp@m.</span>.fr</a>, Axel Cochepin <a href="#" onclick="location.href='mai'+'lto:'+'axe'+'l.'+'coc'+'he'+'pin'+'@e'+'pit'+'a.'+'fr'; return false;">axel.<span class="obfuscator">.nosp@m.</span>coch<span class="obfuscator">.nosp@m.</span>epin@<span class="obfuscator">.nosp@m.</span>epit<span class="obfuscator">.nosp@m.</span>a.fr</a>, Guillaume Charvolin <a href="#" onclick="location.href='mai'+'lto:'+'gui'+'ll'+'aum'+'e.'+'cha'+'rv'+'oli'+'n@'+'epi'+'ta'+'.fr'; return false;">guill<span class="obfuscator">.nosp@m.</span>aume<span class="obfuscator">.nosp@m.</span>.char<span class="obfuscator">.nosp@m.</span>voli<span class="obfuscator">.nosp@m.</span>n@epi<span class="obfuscator">.nosp@m.</span>ta.f<span class="obfuscator">.nosp@m.</span>r</a> </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2022 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a1c3229c332137c45960924ccb242bc97" name="a1c3229c332137c45960924ccb242bc97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1c3229c332137c45960924ccb242bc97">&#9670;&nbsp;</a></span>attribuate()</h2>
 
@@ -186,16 +190,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   23</span>{</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordtype">int</span> *stats = <a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">stats</a>;</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NBSTATS; i++)</div>
-<div class="line"><span class="lineno">   26</span>        *(stats + i) += <a class="code hl_function" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a>(x, y, *(value + i), a, b);</div>
-<div class="line"><span class="lineno">   27</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordtype">int</span> *stats = <a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">stats</a>;</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="building_8h.html#a92670759c24398df4ead0c1dd49d53d0">NBSTATS</a>; i++)</div>
+<div class="line"><span class="lineno">   36</span>        *(stats + i) += <a class="code hl_function" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a>(x, y, *(value + i), a, b);</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+<div class="ttc" id="abuilding_8h_html_a92670759c24398df4ead0c1dd49d53d0"><div class="ttname"><a href="building_8h.html#a92670759c24398df4ead0c1dd49d53d0">NBSTATS</a></div><div class="ttdeci">#define NBSTATS</div><div class="ttdef"><b>Definition:</b> building.h:4</div></div>
 <div class="ttc" id="astructcell_html"><div class="ttname"><a href="structcell.html">cell</a></div><div class="ttdef"><b>Definition:</b> assign_tools.h:9</div></div>
 <div class="ttc" id="astructcell_html_a33f9eae3bd092d0a68d75898a9c7367d"><div class="ttname"><a href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">cell::stats</a></div><div class="ttdeci">int stats[NBSTATS]</div><div class="ttdef"><b>Definition:</b> assign_tools.h:14</div></div>
-<div class="ttc" id="aupdate_8c_html_a08c7617b6ae1dd6c14713d0115c1f00e"><div class="ttname"><a href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a></div><div class="ttdeci">int ponderation(int x, int y, int val, int a, int b)</div><div class="ttdoc">This functions computes a value to change the needs according to a distance from a cell.</div><div class="ttdef"><b>Definition:</b> update.c:6</div></div>
+<div class="ttc" id="aupdate_8c_html_a08c7617b6ae1dd6c14713d0115c1f00e"><div class="ttname"><a href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a></div><div class="ttdeci">int ponderation(int x, int y, int val, int a, int b)</div><div class="ttdoc">This functions computes a value to change the needs according to a distance from a cell.</div><div class="ttdef"><b>Definition:</b> update.c:16</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation()</a>, and <a class="el" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">cell::stats</a>.</p>
+<p class="reference">References <a class="el" href="building_8h.html#a92670759c24398df4ead0c1dd49d53d0">NBSTATS</a>, <a class="el" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation()</a>, and <a class="el" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">cell::stats</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="update_8c.html#a86539730d7569637769e840303e61adc">updateAround()</a>.</p>
 
@@ -244,9 +249,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   37</span>{</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> (x - a)*(x - a) + (y - b) * (y - b) &lt; range * range;</div>
-<div class="line"><span class="lineno">   39</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>{</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">return</span> (x - a)*(x - a) + (y - b) * (y - b) &lt; range * range;</div>
+<div class="line"><span class="lineno">   49</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="update_8c.html#a4d8d63e78f5f366a98b4f47b1027da1f">reverseUpdateAround()</a>, and <a class="el" href="update_8c.html#a86539730d7569637769e840303e61adc">updateAround()</a>.</p>
 
@@ -295,20 +300,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">    7</span>{</div>
-<div class="line"><span class="lineno">    8</span>    <span class="keywordtype">int</span> xtemp =  x - a;</div>
-<div class="line"><span class="lineno">    9</span>    <span class="keywordtype">int</span> ytemp = y - b;</div>
-<div class="line"><span class="lineno">   10</span>    xtemp = xtemp &lt; 0?(-1)*xtemp:xtemp;</div>
-<div class="line"><span class="lineno">   11</span>    ytemp = ytemp &lt; 0?(-1)*ytemp:ytemp;</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">if</span>(xtemp+ytemp == 0)</div>
-<div class="line"><span class="lineno">   13</span>      <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   14</span> </div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordtype">float</span> pond = ((float)1/((<span class="keywordtype">float</span>)(0.85+(float)xtemp/4+(<span class="keywordtype">float</span>)ytemp/4)));<span class="comment">//The bias we use in this function are represented pas the values 0.85 and /4</span></div>
-<div class="line"><span class="lineno">   16</span> </div>
-<div class="line"><span class="lineno">   17</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a> = (int)(pond*(<span class="keywordtype">float</span>)val);</div>
-<div class="line"><span class="lineno">   18</span> </div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a>;</div>
-<div class="line"><span class="lineno">   20</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordtype">int</span> xtemp =  x - a;</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordtype">int</span> ytemp = y - b;</div>
+<div class="line"><span class="lineno">   20</span>    xtemp = xtemp &lt; 0?(-1)*xtemp:xtemp;</div>
+<div class="line"><span class="lineno">   21</span>    ytemp = ytemp &lt; 0?(-1)*ytemp:ytemp;</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">if</span>(xtemp+ytemp == 0)</div>
+<div class="line"><span class="lineno">   23</span>      <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordtype">float</span> pond = ((float)1/((<span class="keywordtype">float</span>)(0.85+(float)xtemp/4+(<span class="keywordtype">float</span>)ytemp/4)));<span class="comment">//The bias we use in this function are represented pas the values 0.85 and /4</span></div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a> = (int)(pond*(<span class="keywordtype">float</span>)val);</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a>;</div>
+<div class="line"><span class="lineno">   30</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation()</a>.</p>
 
@@ -365,13 +370,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordtype">int</span> *stats = <a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">stats</a>;</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NBSTATS; i++)</div>
-<div class="line"><span class="lineno">   33</span>        *(stats + i) -= <a class="code hl_function" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a>(x, y, *(value + i), a, b);</div>
-<div class="line"><span class="lineno">   34</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordtype">int</span> *stats = <a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">stats</a>;</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="building_8h.html#a92670759c24398df4ead0c1dd49d53d0">NBSTATS</a>; i++)</div>
+<div class="line"><span class="lineno">   43</span>        *(stats + i) -= <a class="code hl_function" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation</a>(x, y, *(value + i), a, b);</div>
+<div class="line"><span class="lineno">   44</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation()</a>, and <a class="el" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">cell::stats</a>.</p>
+<p class="reference">References <a class="el" href="building_8h.html#a92670759c24398df4ead0c1dd49d53d0">NBSTATS</a>, <a class="el" href="update_8c.html#a08c7617b6ae1dd6c14713d0115c1f00e">ponderation()</a>, and <a class="el" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">cell::stats</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="update_8c.html#a4d8d63e78f5f366a98b4f47b1027da1f">reverseUpdateAround()</a>.</p>
 
@@ -414,39 +419,39 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structcell.html">cell</a> *<a class="code hl_struct" href="structcell.html">cell</a> = (<a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">cells</a>) + (a + b * <a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">maxWidth</a>);</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> == -1)</div>
-<div class="line"><span class="lineno">   73</span>        errx(1, <span class="stringliteral">&quot;reverseUpdateAround : Error the cell is not occupied by a building&quot;</span>);</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> == 7)</div>
-<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> = <a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a>;</div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordtype">int</span> *value = *(building_value + <a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a>);</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordtype">int</span> range = *(value + 6);</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordtype">int</span> xsquare = a - range;</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordtype">int</span> ysquare = b - range;</div>
-<div class="line"><span class="lineno">   82</span>    <span class="keywordtype">int</span> diam = range * 2;</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structcell.html">cell</a> *cellatt;</div>
-<div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = xsquare; x &lt; (xsquare + diam); ++x)</div>
-<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">if</span> (x &gt;= 0 &amp;&amp; x &lt; map-&gt;maxWidth)</div>
-<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = ysquare; y &lt; (ysquare + diam); ++y)</div>
-<div class="line"><span class="lineno">   89</span>                <span class="keywordflow">if</span> (y &gt;= 0 &amp;&amp; y &lt; map-&gt;maxHeight)</div>
-<div class="line"><span class="lineno">   90</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="update_8c.html#a2614a565721cddb5f0d506560470846a">equation</a>(x, y, a, b, range))</div>
-<div class="line"><span class="lineno">   91</span>                        {</div>
-<div class="line"><span class="lineno">   92</span>                            cellatt = (<a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">cells</a>) + (x + y * <a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">maxWidth</a>);</div>
-<div class="line"><span class="lineno">   93</span>                            <a class="code hl_function" href="update_8c.html#a45c3ebe31a9e78d882d56036866a6587">reverseAttribuate</a>(x, y, cellatt, value, a, b);</div>
-<div class="line"><span class="lineno">   94</span>                        }</div>
-<div class="line"><span class="lineno">   95</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>{</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structcell.html">cell</a> *<a class="code hl_struct" href="structcell.html">cell</a> = (<a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">cells</a>) + (a + b * <a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">maxWidth</a>);</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> == -1)</div>
+<div class="line"><span class="lineno">   83</span>        errx(1, <span class="stringliteral">&quot;reverseUpdateAround : Error the cell is not occupied by a building&quot;</span>);</div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> == 7)</div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> = <a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a>;</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordtype">int</span> *value = *(building_value + <a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a>);</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordtype">int</span> range = *(value + 6);</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordtype">int</span> xsquare = a - range;</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordtype">int</span> ysquare = b - range;</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordtype">int</span> diam = range * 2;</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structcell.html">cell</a> *cellatt;</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = xsquare; x &lt; (xsquare + diam); ++x)</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">if</span> (x &gt;= 0 &amp;&amp; x &lt; map-&gt;maxWidth)</div>
+<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = ysquare; y &lt; (ysquare + diam); ++y)</div>
+<div class="line"><span class="lineno">   99</span>                <span class="keywordflow">if</span> (y &gt;= 0 &amp;&amp; y &lt; map-&gt;maxHeight)</div>
+<div class="line"><span class="lineno">  100</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="update_8c.html#a2614a565721cddb5f0d506560470846a">equation</a>(x, y, a, b, range))</div>
+<div class="line"><span class="lineno">  101</span>                        {</div>
+<div class="line"><span class="lineno">  102</span>                            cellatt = (<a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">cells</a>) + (x + y * <a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">maxWidth</a>);</div>
+<div class="line"><span class="lineno">  103</span>                            <a class="code hl_function" href="update_8c.html#a45c3ebe31a9e78d882d56036866a6587">reverseAttribuate</a>(x, y, cellatt, value, a, b);</div>
+<div class="line"><span class="lineno">  104</span>                        }</div>
+<div class="line"><span class="lineno">  105</span>}</div>
 <div class="ttc" id="astructcell_html_a8d271074c9068c96ce148c5f8f14ff18"><div class="ttname"><a href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">cell::type</a></div><div class="ttdeci">int type</div><div class="ttdef"><b>Definition:</b> assign_tools.h:11</div></div>
 <div class="ttc" id="astructmap_html"><div class="ttname"><a href="structmap.html">map</a></div><div class="ttdef"><b>Definition:</b> assign_tools.h:19</div></div>
 <div class="ttc" id="astructmap_html_ab5aacba1636793932a1893f75b3f561b"><div class="ttname"><a href="structmap.html#ab5aacba1636793932a1893f75b3f561b">map::cells</a></div><div class="ttdeci">struct cell * cells</div><div class="ttdef"><b>Definition:</b> assign_tools.h:20</div></div>
 <div class="ttc" id="astructmap_html_abcfc00fdba1d07bf4ea2626380b427d6"><div class="ttname"><a href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">map::maxWidth</a></div><div class="ttdeci">int maxWidth</div><div class="ttdef"><b>Definition:</b> assign_tools.h:22</div></div>
-<div class="ttc" id="aupdate_8c_html_a2614a565721cddb5f0d506560470846a"><div class="ttname"><a href="update_8c.html#a2614a565721cddb5f0d506560470846a">equation</a></div><div class="ttdeci">char equation(int x, int y, int a, int b, int range)</div><div class="ttdoc">Simple inequation that returns an int 0 or 1 casted to a char.</div><div class="ttdef"><b>Definition:</b> update.c:36</div></div>
-<div class="ttc" id="aupdate_8c_html_a45c3ebe31a9e78d882d56036866a6587"><div class="ttname"><a href="update_8c.html#a45c3ebe31a9e78d882d56036866a6587">reverseAttribuate</a></div><div class="ttdeci">void reverseAttribuate(int x, int y, struct cell *cell, int *value, int a, int b)</div><div class="ttdoc">The same as attribuate but reversed no further explaination will be provided.</div><div class="ttdef"><b>Definition:</b> update.c:29</div></div>
+<div class="ttc" id="aupdate_8c_html_a2614a565721cddb5f0d506560470846a"><div class="ttname"><a href="update_8c.html#a2614a565721cddb5f0d506560470846a">equation</a></div><div class="ttdeci">char equation(int x, int y, int a, int b, int range)</div><div class="ttdoc">Simple inequation that returns an int 0 or 1 casted to a char.</div><div class="ttdef"><b>Definition:</b> update.c:46</div></div>
+<div class="ttc" id="aupdate_8c_html_a45c3ebe31a9e78d882d56036866a6587"><div class="ttname"><a href="update_8c.html#a45c3ebe31a9e78d882d56036866a6587">reverseAttribuate</a></div><div class="ttdeci">void reverseAttribuate(int x, int y, struct cell *cell, int *value, int a, int b)</div><div class="ttdoc">The same as attribuate but reversed no further explaination will be provided.</div><div class="ttdef"><b>Definition:</b> update.c:39</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">map::cells</a>, <a class="el" href="update_8c.html#a2614a565721cddb5f0d506560470846a">equation()</a>, <a class="el" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">map::maxWidth</a>, <a class="el" href="update_8c.html#a45c3ebe31a9e78d882d56036866a6587">reverseAttribuate()</a>, and <a class="el" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">cell::type</a>.</p>
 
@@ -491,32 +496,32 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structcell.html">cell</a> *<a class="code hl_struct" href="structcell.html">cell</a> = (<a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">cells</a>) + (a + b * <a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">maxWidth</a>);</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> == -1)</div>
-<div class="line"><span class="lineno">   46</span>        errx(1, <span class="stringliteral">&quot;updateAround : Error the cell is not occupied by a building at %i, %i \n &quot;</span>,a,b);</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> = <a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a>;</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordtype">int</span> *value = *(building_value + <a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a>);</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordtype">int</span> range = *(value + 6);</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordtype">int</span> xsquare = a - range;</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordtype">int</span> ysquare = b - range;</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordtype">int</span> diam = range * 2;</div>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
+<div class="line"><span class="lineno">   53</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structcell.html">cell</a> *<a class="code hl_struct" href="structcell.html">cell</a> = (<a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">cells</a>) + (a + b * <a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">maxWidth</a>);</div>
 <div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structcell.html">cell</a> *cellatt;</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = xsquare; x &lt; (xsquare + diam); ++x)</div>
-<div class="line"><span class="lineno">   58</span>        <span class="keywordflow">if</span> (x &gt;= 0 &amp;&amp; x &lt; map-&gt;maxWidth)</div>
-<div class="line"><span class="lineno">   59</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = ysquare; y &lt; (ysquare + diam); ++y)</div>
-<div class="line"><span class="lineno">   60</span>                <span class="keywordflow">if</span> (y &gt;= 0 &amp;&amp; y &lt; map-&gt;maxHeight)</div>
-<div class="line"><span class="lineno">   61</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="update_8c.html#a2614a565721cddb5f0d506560470846a">equation</a>(x, y, a, b, range))</div>
-<div class="line"><span class="lineno">   62</span>                        {</div>
-<div class="line"><span class="lineno">   63</span>                            cellatt = (<a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">cells</a>) + (x + y * <a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">maxWidth</a>);</div>
-<div class="line"><span class="lineno">   64</span>                            <a class="code hl_function" href="update_8c.html#a1c3229c332137c45960924ccb242bc97">attribuate</a>(x, y, cellatt, value, a, b);</div>
-<div class="line"><span class="lineno">   65</span>                        }</div>
-<div class="line"><span class="lineno">   66</span>}</div>
-<div class="ttc" id="aupdate_8c_html_a1c3229c332137c45960924ccb242bc97"><div class="ttname"><a href="update_8c.html#a1c3229c332137c45960924ccb242bc97">attribuate</a></div><div class="ttdeci">void attribuate(int x, int y, struct cell *cell, int *value, int a, int b)</div><div class="ttdoc">A tool to give a cell a value.</div><div class="ttdef"><b>Definition:</b> update.c:22</div></div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> == -1)</div>
+<div class="line"><span class="lineno">   56</span>        errx(1, <span class="stringliteral">&quot;updateAround : Error the cell is not occupied by a building at %i, %i \n &quot;</span>,a,b);</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a> = <a class="code hl_struct" href="structcell.html">cell</a>-&gt;<a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a>;</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordtype">int</span> *value = *(building_value + <a class="code hl_variable" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">type</a>);</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordtype">int</span> range = *(value + 6);</div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordtype">int</span> xsquare = a - range;</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordtype">int</span> ysquare = b - range;</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordtype">int</span> diam = range * 2;</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structcell.html">cell</a> *cellatt;</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = xsquare; x &lt; (xsquare + diam); ++x)</div>
+<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">if</span> (x &gt;= 0 &amp;&amp; x &lt; map-&gt;maxWidth)</div>
+<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = ysquare; y &lt; (ysquare + diam); ++y)</div>
+<div class="line"><span class="lineno">   70</span>                <span class="keywordflow">if</span> (y &gt;= 0 &amp;&amp; y &lt; map-&gt;maxHeight)</div>
+<div class="line"><span class="lineno">   71</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="update_8c.html#a2614a565721cddb5f0d506560470846a">equation</a>(x, y, a, b, range))</div>
+<div class="line"><span class="lineno">   72</span>                        {</div>
+<div class="line"><span class="lineno">   73</span>                            cellatt = (<a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">cells</a>) + (x + y * <a class="code hl_struct" href="structmap.html">map</a>-&gt;<a class="code hl_variable" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">maxWidth</a>);</div>
+<div class="line"><span class="lineno">   74</span>                            <a class="code hl_function" href="update_8c.html#a1c3229c332137c45960924ccb242bc97">attribuate</a>(x, y, cellatt, value, a, b);</div>
+<div class="line"><span class="lineno">   75</span>                        }</div>
+<div class="line"><span class="lineno">   76</span>}</div>
+<div class="ttc" id="aupdate_8c_html_a1c3229c332137c45960924ccb242bc97"><div class="ttname"><a href="update_8c.html#a1c3229c332137c45960924ccb242bc97">attribuate</a></div><div class="ttdeci">void attribuate(int x, int y, struct cell *cell, int *value, int a, int b)</div><div class="ttdoc">A tool to give a cell a value.</div><div class="ttdef"><b>Definition:</b> update.c:32</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="update_8c.html#a1c3229c332137c45960924ccb242bc97">attribuate()</a>, <a class="el" href="structmap.html#ab5aacba1636793932a1893f75b3f561b">map::cells</a>, <a class="el" href="update_8c.html#a2614a565721cddb5f0d506560470846a">equation()</a>, <a class="el" href="structmap.html#abcfc00fdba1d07bf4ea2626380b427d6">map::maxWidth</a>, and <a class="el" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">cell::type</a>.</p>
 

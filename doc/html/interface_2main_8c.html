@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('interface_2main_8c.html',''); initResi
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="to_s_d_l_8h_source.html">toSDL.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="network_8h_source.html">../metro/network.h</a>&quot;</code><br />
-<code>#include &quot;build_city.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="build__city_8h_source.html">build_city.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.c:</div>
 <div class="dyncontent">
@@ -101,11 +101,11 @@ Include dependency graph for main.c:</div>
 <area shape="rect" title=" " alt="" coords="177,5,305,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,72,107"/>
 <area shape="rect" title=" " alt="" coords="97,80,149,107"/>
-<area shape="rect" title=" " alt="" coords="261,229,331,256"/>
-<area shape="rect" href="to_s_d_l_8h.html" title=" " alt="" coords="385,80,457,107"/>
-<area shape="rect" title=" " alt="" coords="526,155,621,181"/>
+<area shape="rect" title=" " alt="" coords="333,229,403,256"/>
+<area shape="rect" href="to_s_d_l_8h.html" title=" " alt="" coords="369,80,441,107"/>
+<area shape="rect" href="build__city_8h.html" title=" " alt="" coords="494,155,589,181"/>
 <area shape="rect" href="network_8h.html" title=" " alt="" coords="225,155,367,181"/>
-<area shape="rect" title=" " alt="" coords="392,155,451,181"/>
+<area shape="rect" title=" " alt="" coords="463,229,521,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -114,7 +114,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >This file is the extenstion of the tests found &lt;<a class="el" href="build__city_8c.html">build_city.c</a>&gt; and executes the code found in said file. </p><dl class="section author"><dt>Author</dt><dd>Remy Decourcelle <a href="#" onclick="location.href='mai'+'lto:'+'rem'+'y.'+'dec'+'ou'+'tce'+'ll'+'e@e'+'pi'+'ta.'+'fr'; return false;">remy.<span class="obfuscator">.nosp@m.</span>deco<span class="obfuscator">.nosp@m.</span>utcel<span class="obfuscator">.nosp@m.</span>le@e<span class="obfuscator">.nosp@m.</span>pita.<span class="obfuscator">.nosp@m.</span>fr</a>, Loïck Balloy <a href="#" onclick="location.href='mai'+'lto:'+'loi'+'ck'+'.ba'+'ll'+'oy@'+'ep'+'ita'+'.f'+'r'; return false;">loick<span class="obfuscator">.nosp@m.</span>.bal<span class="obfuscator">.nosp@m.</span>loy@e<span class="obfuscator">.nosp@m.</span>pita<span class="obfuscator">.nosp@m.</span>.fr</a>, Axel Cochepin <a href="#" onclick="location.href='mai'+'lto:'+'axe'+'l.'+'coc'+'he'+'pin'+'@e'+'pit'+'a.'+'fr'; return false;">axel.<span class="obfuscator">.nosp@m.</span>coch<span class="obfuscator">.nosp@m.</span>epin@<span class="obfuscator">.nosp@m.</span>epit<span class="obfuscator">.nosp@m.</span>a.fr</a>, Guillaume Charvolin <a href="#" onclick="location.href='mai'+'lto:'+'gui'+'ll'+'aum'+'e.'+'cha'+'rv'+'oli'+'n@'+'epi'+'ta'+'.fr'; return false;">guill<span class="obfuscator">.nosp@m.</span>aume<span class="obfuscator">.nosp@m.</span>.char<span class="obfuscator">.nosp@m.</span>voli<span class="obfuscator">.nosp@m.</span>n@epi<span class="obfuscator">.nosp@m.</span>ta.f<span class="obfuscator">.nosp@m.</span>r</a> </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2022 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -130,17 +134,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">    8</span>              {</div>
-<div class="line"><span class="lineno">    9</span> </div>
-<div class="line"><span class="lineno">   10</span>  <span class="keywordtype">int</span> DIM = 15;</div>
-<div class="line"><span class="lineno">   11</span> </div>
-<div class="line"><span class="lineno">   12</span>  <span class="keywordtype">char</span> **matrice = genMat(DIM);</div>
-<div class="line"><span class="lineno">   13</span> </div>
-<div class="line"><span class="lineno">   14</span>  build_city(matrice, DIM);</div>
-<div class="line"><span class="lineno">   15</span>  </div>
-<div class="line"><span class="lineno">   16</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   17</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>              {</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>  <span class="keywordtype">int</span> DIM = 15;</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>  <span class="keywordtype">char</span> **matrice = <a class="code hl_function" href="build__city_8c.html#adce752e05f29c171a86cd857c9cc076a">genMat</a>(DIM);</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>  <a class="code hl_function" href="build__city_8c.html#ae718034bb5f26172f71977253c8c6119">build_city</a>(matrice, DIM);</div>
+<div class="line"><span class="lineno">   25</span>  </div>
+<div class="line"><span class="lineno">   26</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+<div class="ttc" id="abuild__city_8c_html_adce752e05f29c171a86cd857c9cc076a"><div class="ttname"><a href="build__city_8c.html#adce752e05f29c171a86cd857c9cc076a">genMat</a></div><div class="ttdeci">char ** genMat(int DIM)</div><div class="ttdoc">A tool to test build_city.</div><div class="ttdef"><b>Definition:</b> build_city.c:17</div></div>
+<div class="ttc" id="abuild__city_8c_html_ae718034bb5f26172f71977253c8c6119"><div class="ttname"><a href="build__city_8c.html#ae718034bb5f26172f71977253c8c6119">build_city</a></div><div class="ttdeci">void build_city(char **matrice, int DIM)</div><div class="ttdoc">Displays with SDL, the city as well as the subway lines and stations.</div><div class="ttdef"><b>Definition:</b> build_city.c:54</div></div>
 </div><!-- fragment -->
+<p class="reference">References <a class="el" href="build__city_8c.html#ae718034bb5f26172f71977253c8c6119">build_city()</a>, and <a class="el" href="build__city_8c.html#adce752e05f29c171a86cd857c9cc076a">genMat()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->

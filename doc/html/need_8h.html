@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -105,6 +105,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a909501c02dc126cdaeec895c653a964f"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="need_8h.html#a909501c02dc126cdaeec895c653a964f">initTownList3</a> (unsigned int nb_hab, double sec)</td></tr>
+<tr class="memdesc:a909501c02dc126cdaeec895c653a964f"><td class="mdescLeft">&#160;</td><td class="mdescRight">We create a list of int where the index represents a building type and the value is the number of buildings left to place, this list is defined with the settings file.  <a href="need_8h.html#a909501c02dc126cdaeec895c653a964f">More...</a><br /></td></tr>
 <tr class="separator:a909501c02dc126cdaeec895c653a964f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -133,32 +134,32 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   24</span>{</div>
-<div class="line"><span class="lineno">   25</span>  <span class="comment">//int comi_range = 60000;</span></div>
-<div class="line"><span class="lineno">   26</span>  <span class="comment">//int hosp_range = 20000;</span></div>
-<div class="line"><span class="lineno">   27</span>  sec +=0;</div>
-<div class="line"><span class="lineno">   28</span>  <span class="keywordtype">int</span> *bat = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)* <a class="code hl_variable" href="need_8c.html#a7d576a2441117e0e11a96c8ab9f9dbf2">NUMBER_TYPE</a>);</div>
-<div class="line"><span class="lineno">   29</span>  <span class="keywordtype">int</span> **building_value = <a class="code hl_function" href="read_8c.html#a0d5481adb9137a4e76b8b50bf0d626cf">load_building_value</a>();</div>
-<div class="line"><span class="lineno">   30</span>  <span class="keywordtype">int</span> *bias = <a class="code hl_function" href="read_8c.html#a9a187d8a5ac223603383bf86803ff909">load_building_bias</a>();</div>
-<div class="line"><span class="lineno">   31</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 7; x++)</div>
-<div class="line"><span class="lineno">   32</span>  {</div>
-<div class="line"><span class="lineno">   33</span>      *(bat + x) = nb_hab / *((*(building_value + x)) + 7);</div>
-<div class="line"><span class="lineno">   34</span>      <span class="keywordflow">if</span> (x == 6 &amp;&amp; *(bat + x) == 1)</div>
-<div class="line"><span class="lineno">   35</span>          *(bat + x) = 0;</div>
-<div class="line"><span class="lineno">   36</span>      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*(bat + x) == 0)</div>
-<div class="line"><span class="lineno">   37</span>          *(bat + x) = 1;</div>
-<div class="line"><span class="lineno">   38</span>  }</div>
-<div class="line"><span class="lineno">   39</span>  *(bat + 1) += *(bat + 1) * (*(bias + 2)) / 100;</div>
-<div class="line"><span class="lineno">   40</span>  *(bat + 2) += *(bat + 2) * (*(bias + 1)) / 100;</div>
-<div class="line"><span class="lineno">   41</span>  *(bat + 3) += *(bat + 3) * (*(bias + 5)) / 100;</div>
-<div class="line"><span class="lineno">   42</span>  *(bat + 4) += *(bat + 4) * (*(bias + 3)) / 100;</div>
-<div class="line"><span class="lineno">   43</span>  *(bat + 5) += *(bat + 5) * (*(bias + 4)) / 100;</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>  <span class="keywordflow">return</span> bat;</div>
-<div class="line"><span class="lineno">   46</span>}</div>
-<div class="ttc" id="aneed_8c_html_a7d576a2441117e0e11a96c8ab9f9dbf2"><div class="ttname"><a href="need_8c.html#a7d576a2441117e0e11a96c8ab9f9dbf2">NUMBER_TYPE</a></div><div class="ttdeci">unsigned char NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> need.c:12</div></div>
-<div class="ttc" id="aread_8c_html_a0d5481adb9137a4e76b8b50bf0d626cf"><div class="ttname"><a href="read_8c.html#a0d5481adb9137a4e76b8b50bf0d626cf">load_building_value</a></div><div class="ttdeci">int ** load_building_value()</div><div class="ttdef"><b>Definition:</b> read.c:83</div></div>
-<div class="ttc" id="aread_8c_html_a9a187d8a5ac223603383bf86803ff909"><div class="ttname"><a href="read_8c.html#a9a187d8a5ac223603383bf86803ff909">load_building_bias</a></div><div class="ttdeci">int * load_building_bias()</div><div class="ttdef"><b>Definition:</b> read.c:98</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
+<div class="line"><span class="lineno">   35</span>  <span class="comment">//int comi_range = 60000;</span></div>
+<div class="line"><span class="lineno">   36</span>  <span class="comment">//int hosp_range = 20000;</span></div>
+<div class="line"><span class="lineno">   37</span>  sec +=0;</div>
+<div class="line"><span class="lineno">   38</span>  <span class="keywordtype">int</span> *bat = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)* <a class="code hl_variable" href="need_8c.html#a7d576a2441117e0e11a96c8ab9f9dbf2">NUMBER_TYPE</a>);</div>
+<div class="line"><span class="lineno">   39</span>  <span class="keywordtype">int</span> **building_value = <a class="code hl_function" href="read_8c.html#a0d5481adb9137a4e76b8b50bf0d626cf">load_building_value</a>();</div>
+<div class="line"><span class="lineno">   40</span>  <span class="keywordtype">int</span> *bias = <a class="code hl_function" href="read_8c.html#a9a187d8a5ac223603383bf86803ff909">load_building_bias</a>();</div>
+<div class="line"><span class="lineno">   41</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 7; x++)</div>
+<div class="line"><span class="lineno">   42</span>  {</div>
+<div class="line"><span class="lineno">   43</span>      *(bat + x) = nb_hab / *((*(building_value + x)) + 7);</div>
+<div class="line"><span class="lineno">   44</span>      <span class="keywordflow">if</span> (x == 6 &amp;&amp; *(bat + x) == 1)</div>
+<div class="line"><span class="lineno">   45</span>          *(bat + x) = 0;</div>
+<div class="line"><span class="lineno">   46</span>      <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*(bat + x) == 0)</div>
+<div class="line"><span class="lineno">   47</span>          *(bat + x) = 1;</div>
+<div class="line"><span class="lineno">   48</span>  }</div>
+<div class="line"><span class="lineno">   49</span>  *(bat + 1) += *(bat + 1) * (*(bias + 2)) / 100;</div>
+<div class="line"><span class="lineno">   50</span>  *(bat + 2) += *(bat + 2) * (*(bias + 1)) / 100;</div>
+<div class="line"><span class="lineno">   51</span>  *(bat + 3) += *(bat + 3) * (*(bias + 5)) / 100;</div>
+<div class="line"><span class="lineno">   52</span>  *(bat + 4) += *(bat + 4) * (*(bias + 3)) / 100;</div>
+<div class="line"><span class="lineno">   53</span>  *(bat + 5) += *(bat + 5) * (*(bias + 4)) / 100;</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>  <span class="keywordflow">return</span> bat;</div>
+<div class="line"><span class="lineno">   56</span>}</div>
+<div class="ttc" id="aneed_8c_html_a7d576a2441117e0e11a96c8ab9f9dbf2"><div class="ttname"><a href="need_8c.html#a7d576a2441117e0e11a96c8ab9f9dbf2">NUMBER_TYPE</a></div><div class="ttdeci">unsigned char NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> need.c:22</div></div>
+<div class="ttc" id="aread_8c_html_a0d5481adb9137a4e76b8b50bf0d626cf"><div class="ttname"><a href="read_8c.html#a0d5481adb9137a4e76b8b50bf0d626cf">load_building_value</a></div><div class="ttdeci">int ** load_building_value()</div><div class="ttdef"><b>Definition:</b> read.c:93</div></div>
+<div class="ttc" id="aread_8c_html_a9a187d8a5ac223603383bf86803ff909"><div class="ttname"><a href="read_8c.html#a9a187d8a5ac223603383bf86803ff909">load_building_bias</a></div><div class="ttdeci">int * load_building_bias()</div><div class="ttdef"><b>Definition:</b> read.c:108</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="read_8c.html#a9a187d8a5ac223603383bf86803ff909">load_building_bias()</a>, <a class="el" href="read_8c.html#a0d5481adb9137a4e76b8b50bf0d626cf">load_building_value()</a>, and <a class="el" href="need_8c.html#a7d576a2441117e0e11a96c8ab9f9dbf2">NUMBER_TYPE</a>.</p>
 

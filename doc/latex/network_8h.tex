@@ -37,32 +37,36 @@ struct \mbox{\hyperlink{struct_e_d_g_e}{EDGE}} $\ast$ \mbox{\hyperlink{network_8
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{230 \{}
-\DoxyCodeLine{231   \textcolor{keywordtype}{int} NUMBER\_STATIONS; }
-\DoxyCodeLine{232   \textcolor{keywordtype}{double} MAX = 4.2;}
-\DoxyCodeLine{233 }
-\DoxyCodeLine{234   NUMBER\_STATIONS = \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\_stations}}(matrice, DIM);}
-\DoxyCodeLine{235 }
-\DoxyCodeLine{236   \mbox{\hyperlink{struct_graph_element}{Graph}} g1 = \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\_graph}}(NUMBER\_STATIONS, \textcolor{keyword}{false});}
-\DoxyCodeLine{237 }
-\DoxyCodeLine{238   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tedge [color=black];\(\backslash\)n"{}});}
-\DoxyCodeLine{239   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tnode [color=turquoise, style=filled];\(\backslash\)n"{}});}
-\DoxyCodeLine{240 }
-\DoxyCodeLine{241   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} *STATIONS = \mbox{\hyperlink{network_8c_a230c3a893afff0180d28f964d5872681}{BuildStations}}(matrice, DIM, g1);}
-\DoxyCodeLine{242   }
-\DoxyCodeLine{243   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} *edges = \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{buildAdjlists2}}(STATIONS, NUMBER\_STATIONS, MAX, g1);}
-\DoxyCodeLine{244 }
-\DoxyCodeLine{245   \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\_graph}}(g1);}
-\DoxyCodeLine{246   \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\_graph}}(g1);}
-\DoxyCodeLine{247   \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\_graph}}(g1);}
-\DoxyCodeLine{248   system(\textcolor{stringliteral}{"{}dot -\/Tpng graph.out -\/o graph.png"{}});}
-\DoxyCodeLine{249   }
-\DoxyCodeLine{250   free(STATIONS);}
-\DoxyCodeLine{251   \textcolor{keywordflow}{return} edges;}
-\DoxyCodeLine{252 \}}
+\DoxyCodeLine{240 \{}
+\DoxyCodeLine{241   \textcolor{keywordtype}{int} NUMBER\_STATIONS; }
+\DoxyCodeLine{242   \textcolor{keywordtype}{double} MAX = 4.2;}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244   NUMBER\_STATIONS = \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\_stations}}(matrice, DIM);}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246   \mbox{\hyperlink{struct_graph_element}{Graph}} g1 = \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\_graph}}(NUMBER\_STATIONS, \textcolor{keyword}{false});}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tedge [color=black];\(\backslash\)n"{}});}
+\DoxyCodeLine{249   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tnode [color=turquoise, style=filled];\(\backslash\)n"{}});}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{251   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} *STATIONS = \mbox{\hyperlink{network_8c_a230c3a893afff0180d28f964d5872681}{BuildStations}}(matrice, DIM, g1);}
+\DoxyCodeLine{252   }
+\DoxyCodeLine{253   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} *edges = \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{buildAdjlists2}}(STATIONS, NUMBER\_STATIONS, MAX, g1);}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255   \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\_graph}}(g1);}
+\DoxyCodeLine{256   \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\_graph}}(g1);}
+\DoxyCodeLine{257   \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\_graph}}(g1);}
+\DoxyCodeLine{258   system(\textcolor{stringliteral}{"{}dot -\/Tpng graph.out -\/o graph.png"{}});}
+\DoxyCodeLine{259   }
+\DoxyCodeLine{260   free(STATIONS);}
+\DoxyCodeLine{261   \textcolor{keywordflow}{return} edges;}
+\DoxyCodeLine{262 \}}
 
 \end{DoxyCode}
 
 
 References \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{build\+Adjlists2()}}, \mbox{\hyperlink{network_8c_a230c3a893afff0180d28f964d5872681}{Build\+Stations()}}, \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\+\_\+graph()}}, \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\+\_\+graph()}}, \mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{Graph\+Element\+::graph\+\_\+file}}, \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\+\_\+stations()}}, \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\+\_\+graph()}}, and \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\+\_\+graph()}}.
+
+
+
+Referenced by \mbox{\hyperlink{build__city_8c_ae718034bb5f26172f71977253c8c6119}{build\+\_\+city()}}.
 

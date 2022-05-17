@@ -6,6 +6,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/**
+* @file need.c
+* @details In this file we define our Rules for our L-system being the needs for each type of buildings. We also initialise a list of int that represent the number of buildingd left to place
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 int NO = 0;
 int YES = 1;
 

@@ -37,6 +37,14 @@ This method of installation will soon be improved.
 ## Usage
 
 We use GTK and SDL libraries to create the city. We use methods such as L-systems to create this city. Furthermore, to add on to our app, a subway network is created for each city that has a minimum of 2000 inhabitants.
+If yous wish to create a city with interest points and no subway lines you must enter debug mode and uncomment the main.c file in assign directory then execute the following commands:
+
+```shell
+make
+./main [nbbat] [roof]
+```
+
+this will unfortunately not come with a GUI however the display of matrix is clear and will allow you to understand and modify if wanted this project for personnal usage.
 
 ### Screenshots
 
@@ -50,11 +58,20 @@ Have fun with those biases to obtain different cities!!
 
 ## Resources (Documentation and other links)
 
-To have further documentation on our code execute the following commmand from the source directory:
+To have further documentation on our code, in the form of a html file/website, execute the following commmand from the source directory:
 
 ```shell
 firefox doc/html/index.html
 ```
+
+If you which to open our documentation in the form of a LateX made pdf (will be called refman.pdf), execute the following commands from the source directory:
+
+```shell
+cd doc/latex
+make
+```
+
+a pdf file will then be generated and you will be able to open it
 
 ## WebSite
 

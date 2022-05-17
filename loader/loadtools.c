@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/**
+* @file loadtools.c
+* @details This files contains tools for testing and implementing a parser.
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 // HALL PROPERTY OFFICE COMISSARY SHOP HOSPITAL //
 int BUILDING_NUMBER_TYPE = 8;
 

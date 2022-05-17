@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['economy_0',['economy',['../structs___window.html#af18d36a2b75acc06a17e90ad9419a092',1,'s_Window::economy()'],['../input__gtk_8c.html#a7850068b75080410dc22f0d6765fcb49',1,'economy():&#160;input_gtk.c']]],
+  ['economy_0',['economy',['../structbuilding_type.html#aaaa2e04fa9b78168de27cf1cd4a3434d',1,'buildingType::economy()'],['../structs___window.html#af18d36a2b75acc06a17e90ad9419a092',1,'s_Window::economy()'],['../input__gtk_8c.html#a7850068b75080410dc22f0d6765fcb49',1,'economy():&#160;input_gtk.c']]],
   ['edge_1',['EDGE',['../struct_e_d_g_e.html',1,'']]],
   ['entry_2',['entry',['../structs___window.html#ab7270500cf01e71758002352849570ea',1,'s_Window']]],
   ['equation_3',['equation',['../update_8c.html#a2614a565721cddb5f0d506560470846a',1,'equation(int x, int y, int a, int b, int range):&#160;update.c'],['../update_8h.html#a2614a565721cddb5f0d506560470846a',1,'equation(int x, int y, int a, int b, int range):&#160;update.c']]],

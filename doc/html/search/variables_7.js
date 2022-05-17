@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['job_0',['job',['../structs___window.html#a4f4722cedfa309919308495d0b1064b9',1,'s_Window::job()'],['../input__gtk_8c.html#aae291b2d1d2eea86bef3b628966158bb',1,'job():&#160;input_gtk.c']]]
+  ['images_0',['images',['../structs___window.html#a2416bfeb67ac888312390f94d355b191',1,'s_Window']]],
+  ['is_5foriented_1',['is_oriented',['../struct_graph_element.html#a82dc759b566a258ec83d84f4ebcc5788',1,'GraphElement']]],
+  ['isroadconnected_2',['isRoadConnected',['../structcell.html#a419c7070b137e9a8f0134a45c18873c1',1,'cell']]]
 ];

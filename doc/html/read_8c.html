@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -137,7 +137,11 @@ Functions</h2></td></tr>
 <tr class="memitem:ac1eb9ece9da63abc47d27a7c9d79e3cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="read_8c.html#ac1eb9ece9da63abc47d27a7c9d79e3cd">load_habitant_number</a> ()</td></tr>
 <tr class="separator:ac1eb9ece9da63abc47d27a7c9d79e3cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >This file reads the settings file in order defin the rules used in our algorithm. </p><dl class="section author"><dt>Author</dt><dd>Remy Decourcelle <a href="#" onclick="location.href='mai'+'lto:'+'rem'+'y.'+'dec'+'ou'+'tce'+'ll'+'e@e'+'pi'+'ta.'+'fr'; return false;">remy.<span class="obfuscator">.nosp@m.</span>deco<span class="obfuscator">.nosp@m.</span>utcel<span class="obfuscator">.nosp@m.</span>le@e<span class="obfuscator">.nosp@m.</span>pita.<span class="obfuscator">.nosp@m.</span>fr</a>, Loïck Balloy <a href="#" onclick="location.href='mai'+'lto:'+'loi'+'ck'+'.ba'+'ll'+'oy@'+'ep'+'ita'+'.f'+'r'; return false;">loick<span class="obfuscator">.nosp@m.</span>.bal<span class="obfuscator">.nosp@m.</span>loy@e<span class="obfuscator">.nosp@m.</span>pita<span class="obfuscator">.nosp@m.</span>.fr</a>, Axel Cochepin <a href="#" onclick="location.href='mai'+'lto:'+'axe'+'l.'+'coc'+'he'+'pin'+'@e'+'pit'+'a.'+'fr'; return false;">axel.<span class="obfuscator">.nosp@m.</span>coch<span class="obfuscator">.nosp@m.</span>epin@<span class="obfuscator">.nosp@m.</span>epit<span class="obfuscator">.nosp@m.</span>a.fr</a>, Guillaume Charvolin <a href="#" onclick="location.href='mai'+'lto:'+'gui'+'ll'+'aum'+'e.'+'cha'+'rv'+'oli'+'n@'+'epi'+'ta'+'.fr'; return false;">guill<span class="obfuscator">.nosp@m.</span>aume<span class="obfuscator">.nosp@m.</span>.char<span class="obfuscator">.nosp@m.</span>voli<span class="obfuscator">.nosp@m.</span>n@epi<span class="obfuscator">.nosp@m.</span>ta.f<span class="obfuscator">.nosp@m.</span>r</a> </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2022 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="ac675066bde1f85eaaca3e98d0b1fcf85" name="ac675066bde1f85eaaca3e98d0b1fcf85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac675066bde1f85eaaca3e98d0b1fcf85">&#9670;&nbsp;</a></span>fill_label()</h2>
 
@@ -163,16 +167,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a1efd62316bedcd5941e86fa98123cfa8">LABEL_SIZE</a>; ++i)</div>
-<div class="line"><span class="lineno">   60</span>    {</div>
-<div class="line"><span class="lineno">   61</span>        *label = *building_line;</div>
-<div class="line"><span class="lineno">   62</span>        ++label;</div>
-<div class="line"><span class="lineno">   63</span>        ++building_line;</div>
-<div class="line"><span class="lineno">   64</span>    }</div>
-<div class="line"><span class="lineno">   65</span>    *label = 0;</div>
-<div class="line"><span class="lineno">   66</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_a1efd62316bedcd5941e86fa98123cfa8"><div class="ttname"><a href="loadtools_8c.html#a1efd62316bedcd5941e86fa98123cfa8">LABEL_SIZE</a></div><div class="ttdeci">int LABEL_SIZE</div><div class="ttdef"><b>Definition:</b> loadtools.c:15</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a1efd62316bedcd5941e86fa98123cfa8">LABEL_SIZE</a>; ++i)</div>
+<div class="line"><span class="lineno">   70</span>    {</div>
+<div class="line"><span class="lineno">   71</span>        *label = *building_line;</div>
+<div class="line"><span class="lineno">   72</span>        ++label;</div>
+<div class="line"><span class="lineno">   73</span>        ++building_line;</div>
+<div class="line"><span class="lineno">   74</span>    }</div>
+<div class="line"><span class="lineno">   75</span>    *label = 0;</div>
+<div class="line"><span class="lineno">   76</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_a1efd62316bedcd5941e86fa98123cfa8"><div class="ttname"><a href="loadtools_8c.html#a1efd62316bedcd5941e86fa98123cfa8">LABEL_SIZE</a></div><div class="ttdeci">int LABEL_SIZE</div><div class="ttdef"><b>Definition:</b> loadtools.c:25</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#a1efd62316bedcd5941e86fa98123cfa8">LABEL_SIZE</a>.</p>
 
@@ -205,33 +209,33 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">while</span> (*building_line != <span class="charliteral">&#39;[&#39;</span>)</div>
-<div class="line"><span class="lineno">   32</span>        ++building_line;</div>
-<div class="line"><span class="lineno">   33</span>    </div>
-<div class="line"><span class="lineno">   34</span>    ++building_line;</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#acd8d62179f75714af34ae50caa397a73">BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">while</span> (*building_line != <span class="charliteral">&#39;]&#39;</span>)</div>
-<div class="line"><span class="lineno">   38</span>    {</div>
-<div class="line"><span class="lineno">   39</span>        <span class="keywordtype">char</span> *buf = buffer;</div>
-<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">while</span> (*building_line != <span class="charliteral">&#39;,&#39;</span> &amp;&amp; *building_line != <span class="charliteral">&#39;]&#39;</span>)</div>
-<div class="line"><span class="lineno">   41</span>        {</div>
-<div class="line"><span class="lineno">   42</span>            *buf = *building_line;</div>
-<div class="line"><span class="lineno">   43</span>            ++buf;</div>
-<div class="line"><span class="lineno">   44</span>            ++building_line;</div>
-<div class="line"><span class="lineno">   45</span>        }</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>        *buf = 0;</div>
-<div class="line"><span class="lineno">   48</span>    </div>
-<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (*building_line != <span class="charliteral">&#39;]&#39;</span>)</div>
-<div class="line"><span class="lineno">   50</span>            ++building_line;</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>        *value = (int) atol(buffer);</div>
-<div class="line"><span class="lineno">   53</span>        ++value;</div>
-<div class="line"><span class="lineno">   54</span>    }</div>
-<div class="line"><span class="lineno">   55</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_acd8d62179f75714af34ae50caa397a73"><div class="ttname"><a href="loadtools_8c.html#acd8d62179f75714af34ae50caa397a73">BUFFER_SIZE</a></div><div class="ttdeci">int BUFFER_SIZE</div><div class="ttdef"><b>Definition:</b> loadtools.c:13</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">while</span> (*building_line != <span class="charliteral">&#39;[&#39;</span>)</div>
+<div class="line"><span class="lineno">   42</span>        ++building_line;</div>
+<div class="line"><span class="lineno">   43</span>    </div>
+<div class="line"><span class="lineno">   44</span>    ++building_line;</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#acd8d62179f75714af34ae50caa397a73">BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">while</span> (*building_line != <span class="charliteral">&#39;]&#39;</span>)</div>
+<div class="line"><span class="lineno">   48</span>    {</div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordtype">char</span> *buf = buffer;</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">while</span> (*building_line != <span class="charliteral">&#39;,&#39;</span> &amp;&amp; *building_line != <span class="charliteral">&#39;]&#39;</span>)</div>
+<div class="line"><span class="lineno">   51</span>        {</div>
+<div class="line"><span class="lineno">   52</span>            *buf = *building_line;</div>
+<div class="line"><span class="lineno">   53</span>            ++buf;</div>
+<div class="line"><span class="lineno">   54</span>            ++building_line;</div>
+<div class="line"><span class="lineno">   55</span>        }</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>        *buf = 0;</div>
+<div class="line"><span class="lineno">   58</span>    </div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">if</span> (*building_line != <span class="charliteral">&#39;]&#39;</span>)</div>
+<div class="line"><span class="lineno">   60</span>            ++building_line;</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>        *value = (int) atol(buffer);</div>
+<div class="line"><span class="lineno">   63</span>        ++value;</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_acd8d62179f75714af34ae50caa397a73"><div class="ttname"><a href="loadtools_8c.html#acd8d62179f75714af34ae50caa397a73">BUFFER_SIZE</a></div><div class="ttdeci">int BUFFER_SIZE</div><div class="ttdef"><b>Definition:</b> loadtools.c:23</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#acd8d62179f75714af34ae50caa397a73">BUFFER_SIZE</a>.</p>
 
@@ -253,11 +257,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   24</span>{</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordtype">int</span> *building_bias = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a>);</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> building_bias;</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_ad0e244432d4e11ad5234c8364e82a971"><div class="ttname"><a href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a></div><div class="ttdeci">int BIAS_NUMBER</div><div class="ttdef"><b>Definition:</b> loadtools.c:11</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordtype">int</span> *building_bias = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a>);</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> building_bias;</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_ad0e244432d4e11ad5234c8364e82a971"><div class="ttname"><a href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a></div><div class="ttdeci">int BIAS_NUMBER</div><div class="ttdef"><b>Definition:</b> loadtools.c:21</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a>.</p>
 
@@ -279,13 +283,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
-<div class="line"><span class="lineno">   17</span>    <span class="keywordtype">char</span> **building_labels = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>*) * <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>);</div>
-<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
-<div class="line"><span class="lineno">   19</span>        *(building_labels + i) = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * (<a class="code hl_variable" href="loadtools_8c.html#a1efd62316bedcd5941e86fa98123cfa8">LABEL_SIZE</a> + 1));</div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> building_labels;</div>
-<div class="line"><span class="lineno">   21</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_a9d943ac46a304efd054aabff34fa0d1b"><div class="ttname"><a href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a></div><div class="ttdeci">int BUILDING_NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> loadtools.c:6</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>{</div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordtype">char</span> **building_labels = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>*) * <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>);</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
+<div class="line"><span class="lineno">   29</span>        *(building_labels + i) = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * (<a class="code hl_variable" href="loadtools_8c.html#a1efd62316bedcd5941e86fa98123cfa8">LABEL_SIZE</a> + 1));</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> building_labels;</div>
+<div class="line"><span class="lineno">   31</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_a9d943ac46a304efd054aabff34fa0d1b"><div class="ttname"><a href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a></div><div class="ttdeci">int BUILDING_NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> loadtools.c:16</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>, and <a class="el" href="loadtools_8c.html#a1efd62316bedcd5941e86fa98123cfa8">LABEL_SIZE</a>.</p>
 
@@ -307,13 +311,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">    8</span>{</div>
-<div class="line"><span class="lineno">    9</span>    <span class="keywordtype">int</span> **building_value = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>*) * <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>);</div>
-<div class="line"><span class="lineno">   10</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
-<div class="line"><span class="lineno">   11</span>        *(building_value + i) = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * <a class="code hl_variable" href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a>);</div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">return</span> building_value;</div>
-<div class="line"><span class="lineno">   13</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_a75b5e1e67aeac917dea949b1498a1744"><div class="ttname"><a href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a></div><div class="ttdeci">int VALUE_NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> loadtools.c:9</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordtype">int</span> **building_value = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>*) * <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>);</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
+<div class="line"><span class="lineno">   21</span>        *(building_value + i) = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * <a class="code hl_variable" href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a>);</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">return</span> building_value;</div>
+<div class="line"><span class="lineno">   23</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_a75b5e1e67aeac917dea949b1498a1744"><div class="ttname"><a href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a></div><div class="ttdeci">int VALUE_NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> loadtools.c:19</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>, and <a class="el" href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a>.</p>
 
@@ -335,22 +339,22 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   99</span>{</div>
-<div class="line"><span class="lineno">  100</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">  102</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordtype">int</span> *building_bias = <a class="code hl_function" href="read_8c.html#aa19ac9eba266bd0a777559bb00bd5aba">init_building_bias</a>();</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">while</span>(!<a class="code hl_function" href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias</a>(buffer))</div>
-<div class="line"><span class="lineno">  105</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">  106</span>    <a class="code hl_function" href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value</a>(building_bias, buffer);</div>
-<div class="line"><span class="lineno">  107</span>    fclose(file);</div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">return</span> building_bias;</div>
-<div class="line"><span class="lineno">  109</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_a44aeec48aa5a8c7ef13701de582b99a6"><div class="ttname"><a href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias</a></div><div class="ttdeci">char isBias(char *line)</div><div class="ttdef"><b>Definition:</b> loadtools.c:74</div></div>
-<div class="ttc" id="aloadtools_8c_html_a603cab9e8409fdef1b9ca20fed660c00"><div class="ttname"><a href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a></div><div class="ttdeci">int LINE_BUFFER_SIZE</div><div class="ttdef"><b>Definition:</b> loadtools.c:14</div></div>
-<div class="ttc" id="aloadtools_8c_html_a69b941b6c082cb83b173eb55f8b12333"><div class="ttname"><a href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a></div><div class="ttdeci">FILE * settings_open()</div><div class="ttdef"><b>Definition:</b> loadtools.c:19</div></div>
-<div class="ttc" id="aread_8c_html_a8d842377f7e292de658fe73ef0a77ae4"><div class="ttname"><a href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value</a></div><div class="ttdeci">void fill_value(int *value, char *building_line)</div><div class="ttdef"><b>Definition:</b> read.c:29</div></div>
-<div class="ttc" id="aread_8c_html_aa19ac9eba266bd0a777559bb00bd5aba"><div class="ttname"><a href="read_8c.html#aa19ac9eba266bd0a777559bb00bd5aba">init_building_bias</a></div><div class="ttdeci">int * init_building_bias()</div><div class="ttdef"><b>Definition:</b> read.c:23</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
+<div class="line"><span class="lineno">  110</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">  112</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordtype">int</span> *building_bias = <a class="code hl_function" href="read_8c.html#aa19ac9eba266bd0a777559bb00bd5aba">init_building_bias</a>();</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">while</span>(!<a class="code hl_function" href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias</a>(buffer))</div>
+<div class="line"><span class="lineno">  115</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">  116</span>    <a class="code hl_function" href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value</a>(building_bias, buffer);</div>
+<div class="line"><span class="lineno">  117</span>    fclose(file);</div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">return</span> building_bias;</div>
+<div class="line"><span class="lineno">  119</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_a44aeec48aa5a8c7ef13701de582b99a6"><div class="ttname"><a href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias</a></div><div class="ttdeci">char isBias(char *line)</div><div class="ttdef"><b>Definition:</b> loadtools.c:84</div></div>
+<div class="ttc" id="aloadtools_8c_html_a603cab9e8409fdef1b9ca20fed660c00"><div class="ttname"><a href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a></div><div class="ttdeci">int LINE_BUFFER_SIZE</div><div class="ttdef"><b>Definition:</b> loadtools.c:24</div></div>
+<div class="ttc" id="aloadtools_8c_html_a69b941b6c082cb83b173eb55f8b12333"><div class="ttname"><a href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a></div><div class="ttdeci">FILE * settings_open()</div><div class="ttdef"><b>Definition:</b> loadtools.c:29</div></div>
+<div class="ttc" id="aread_8c_html_a8d842377f7e292de658fe73ef0a77ae4"><div class="ttname"><a href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value</a></div><div class="ttdeci">void fill_value(int *value, char *building_line)</div><div class="ttdef"><b>Definition:</b> read.c:39</div></div>
+<div class="ttc" id="aread_8c_html_aa19ac9eba266bd0a777559bb00bd5aba"><div class="ttname"><a href="read_8c.html#aa19ac9eba266bd0a777559bb00bd5aba">init_building_bias</a></div><div class="ttdeci">int * init_building_bias()</div><div class="ttdef"><b>Definition:</b> read.c:33</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value()</a>, <a class="el" href="read_8c.html#aa19ac9eba266bd0a777559bb00bd5aba">init_building_bias()</a>, <a class="el" href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias()</a>, <a class="el" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, and <a class="el" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open()</a>.</p>
 
@@ -372,21 +376,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{                                                                               </div>
-<div class="line"><span class="lineno">   70</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordtype">char</span> **building_labels = <a class="code hl_function" href="read_8c.html#a69625a54f47680d2cb148d638c8ad024">init_building_labels</a>();</div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">   73</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)                              </div>
-<div class="line"><span class="lineno">   75</span>    {                                                                           </div>
-<div class="line"><span class="lineno">   76</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);                                        </div>
-<div class="line"><span class="lineno">   77</span>        <a class="code hl_function" href="read_8c.html#ac675066bde1f85eaaca3e98d0b1fcf85">fill_label</a>(*(building_labels + i), buffer);                                    </div>
-<div class="line"><span class="lineno">   78</span>    }                                                                           </div>
-<div class="line"><span class="lineno">   79</span>    fclose(file);</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> building_labels;                                                      </div>
-<div class="line"><span class="lineno">   81</span>} </div>
-<div class="ttc" id="aread_8c_html_a69625a54f47680d2cb148d638c8ad024"><div class="ttname"><a href="read_8c.html#a69625a54f47680d2cb148d638c8ad024">init_building_labels</a></div><div class="ttdeci">char ** init_building_labels()</div><div class="ttdef"><b>Definition:</b> read.c:15</div></div>
-<div class="ttc" id="aread_8c_html_ac675066bde1f85eaaca3e98d0b1fcf85"><div class="ttname"><a href="read_8c.html#ac675066bde1f85eaaca3e98d0b1fcf85">fill_label</a></div><div class="ttdeci">void fill_label(char *label, char *building_line)</div><div class="ttdef"><b>Definition:</b> read.c:57</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>{                                                                               </div>
+<div class="line"><span class="lineno">   80</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
+<div class="line"><span class="lineno">   81</span>    <span class="keywordtype">char</span> **building_labels = <a class="code hl_function" href="read_8c.html#a69625a54f47680d2cb148d638c8ad024">init_building_labels</a>();</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">   83</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)                              </div>
+<div class="line"><span class="lineno">   85</span>    {                                                                           </div>
+<div class="line"><span class="lineno">   86</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);                                        </div>
+<div class="line"><span class="lineno">   87</span>        <a class="code hl_function" href="read_8c.html#ac675066bde1f85eaaca3e98d0b1fcf85">fill_label</a>(*(building_labels + i), buffer);                                    </div>
+<div class="line"><span class="lineno">   88</span>    }                                                                           </div>
+<div class="line"><span class="lineno">   89</span>    fclose(file);</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">return</span> building_labels;                                                      </div>
+<div class="line"><span class="lineno">   91</span>} </div>
+<div class="ttc" id="aread_8c_html_a69625a54f47680d2cb148d638c8ad024"><div class="ttname"><a href="read_8c.html#a69625a54f47680d2cb148d638c8ad024">init_building_labels</a></div><div class="ttdeci">char ** init_building_labels()</div><div class="ttdef"><b>Definition:</b> read.c:25</div></div>
+<div class="ttc" id="aread_8c_html_ac675066bde1f85eaaca3e98d0b1fcf85"><div class="ttname"><a href="read_8c.html#ac675066bde1f85eaaca3e98d0b1fcf85">fill_label</a></div><div class="ttdeci">void fill_label(char *label, char *building_line)</div><div class="ttdef"><b>Definition:</b> read.c:67</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>, <a class="el" href="read_8c.html#ac675066bde1f85eaaca3e98d0b1fcf85">fill_label()</a>, <a class="el" href="read_8c.html#a69625a54f47680d2cb148d638c8ad024">init_building_labels()</a>, <a class="el" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, and <a class="el" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open()</a>.</p>
 
@@ -408,20 +412,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   84</span>{   </div>
-<div class="line"><span class="lineno">   85</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">   87</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordtype">int</span> **building_value = <a class="code hl_function" href="read_8c.html#a0b7b9fad85d9ab69d4682b943fe3a48b">init_building_value</a>();</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
-<div class="line"><span class="lineno">   90</span>    {</div>
-<div class="line"><span class="lineno">   91</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">   92</span>        <a class="code hl_function" href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value</a>(*(building_value + i), buffer);</div>
-<div class="line"><span class="lineno">   93</span>    }</div>
-<div class="line"><span class="lineno">   94</span>    fclose(file);</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> building_value;</div>
-<div class="line"><span class="lineno">   96</span>}</div>
-<div class="ttc" id="aread_8c_html_a0b7b9fad85d9ab69d4682b943fe3a48b"><div class="ttname"><a href="read_8c.html#a0b7b9fad85d9ab69d4682b943fe3a48b">init_building_value</a></div><div class="ttdeci">int ** init_building_value()</div><div class="ttdef"><b>Definition:</b> read.c:7</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>{   </div>
+<div class="line"><span class="lineno">   95</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">   97</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordtype">int</span> **building_value = <a class="code hl_function" href="read_8c.html#a0b7b9fad85d9ab69d4682b943fe3a48b">init_building_value</a>();</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
+<div class="line"><span class="lineno">  100</span>    {</div>
+<div class="line"><span class="lineno">  101</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">  102</span>        <a class="code hl_function" href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value</a>(*(building_value + i), buffer);</div>
+<div class="line"><span class="lineno">  103</span>    }</div>
+<div class="line"><span class="lineno">  104</span>    fclose(file);</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">return</span> building_value;</div>
+<div class="line"><span class="lineno">  106</span>}</div>
+<div class="ttc" id="aread_8c_html_a0b7b9fad85d9ab69d4682b943fe3a48b"><div class="ttname"><a href="read_8c.html#a0b7b9fad85d9ab69d4682b943fe3a48b">init_building_value</a></div><div class="ttdeci">int ** init_building_value()</div><div class="ttdef"><b>Definition:</b> read.c:17</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>, <a class="el" href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value()</a>, <a class="el" href="read_8c.html#a0b7b9fad85d9ab69d4682b943fe3a48b">init_building_value()</a>, <a class="el" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, and <a class="el" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open()</a>.</p>
 
@@ -443,18 +447,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  112</span>{</div>
-<div class="line"><span class="lineno">  113</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">  115</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordtype">int</span> habitant_number;</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">while</span>(!<a class="code hl_function" href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant</a>(buffer))</div>
-<div class="line"><span class="lineno">  118</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">  119</span>    <a class="code hl_function" href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value</a>(&amp;habitant_number, buffer);</div>
-<div class="line"><span class="lineno">  120</span>    fclose(file);</div>
-<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">return</span> habitant_number;</div>
-<div class="line"><span class="lineno">  122</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_aee5c88556c41d7cea6476c244221f2d4"><div class="ttname"><a href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant</a></div><div class="ttdeci">char isHabitant(char *line)</div><div class="ttdef"><b>Definition:</b> loadtools.c:82</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  122</span>{</div>
+<div class="line"><span class="lineno">  123</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">  125</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordtype">int</span> habitant_number;</div>
+<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">while</span>(!<a class="code hl_function" href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant</a>(buffer))</div>
+<div class="line"><span class="lineno">  128</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">  129</span>    <a class="code hl_function" href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value</a>(&amp;habitant_number, buffer);</div>
+<div class="line"><span class="lineno">  130</span>    fclose(file);</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">return</span> habitant_number;</div>
+<div class="line"><span class="lineno">  132</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_aee5c88556c41d7cea6476c244221f2d4"><div class="ttname"><a href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant</a></div><div class="ttdeci">char isHabitant(char *line)</div><div class="ttdef"><b>Definition:</b> loadtools.c:92</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="read_8c.html#a8d842377f7e292de658fe73ef0a77ae4">fill_value()</a>, <a class="el" href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant()</a>, <a class="el" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, and <a class="el" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open()</a>.</p>
 

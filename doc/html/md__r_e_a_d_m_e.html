@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CityMap: README</title>
+<title>CityMap: CityMap</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -82,10 +82,56 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html',''); initResizab
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">README </div></div>
+  <div class="headertitle"><div class="title">CityMap </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >Project site : <a href="https://thefoxell.github.io/CityMapWebsite/index.html">https://thefoxell.github.io/CityMapWebsite/index.html</a> </p>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+About / Synopsis</h1>
+<p >We are tring to create an app able to create a functioning city with a given number of inhabitants. At this stage the program is working however there is still room for improvement.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Table of contents</h1>
+<blockquote class="doxtable">
+<p >&zwj;* CityMap</p><ul>
+<li>About / Synopsis</li>
+<li>Table of contents</li>
+<li>Installation</li>
+<li>Usage<ul>
+<li>Screenshots</li>
+<li>Features</li>
+</ul>
+</li>
+<li>Resources (Documentation and other links)</li>
+<li>WebSite </li>
+</ul>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Installation</h1>
+<p >To install and run our project you first need to install our source code with this command:</p>
+<div class="fragment"><div class="line">git clone git@github.com:loickballoy/CityMap.git</div>
+</div><!-- fragment --><p >Once that is done you have to make your way to the interface directory, make and run the executable given:</p>
+<div class="fragment"><div class="line">cd interface</div>
+<div class="line">make</div>
+<div class="line">./input_gtk</div>
+</div><!-- fragment --><p >This method of installation will soon be improved.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Usage</h1>
+<p >We use GTK and SDL libraries to create the city. We use methods such as L-systems to create this city. Furthermore, to add on to our app, a subway network is created for each city that has a minimum of 2000 inhabitants. If yous wish to create a city with interest points and no subway lines you must enter debug mode and uncomment the main.c file in assign directory then execute the following commands:</p>
+<div class="fragment"><div class="line">make</div>
+<div class="line">./main [nbbat] [roof]</div>
+</div><!-- fragment --><p >this will unfortunately not come with a GUI however the display of matrix is clear and will allow you to understand and modify if wanted this project for personnal usage.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Screenshots</h2>
+<p ><img src="https://media.discordapp.net/attachments/937331808515817482/975712089651949578/unknown.png?width=1425&amp;height=683" alt="alt text" class="inline"/> <img src="https://media.discordapp.net/attachments/937331808515817482/975672979088355388/unknown.png?width=1381&amp;height=683" alt="alt-text" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Features</h2>
+<p >You can now add biases to fit your city necessities. For instance, by increasing the value of the security bias you will obtain a city with more comissaries. Have fun with those biases to obtain different cities!!</p>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Resources (Documentation and other links)</h1>
+<p >To have further documentation on our code execute the following commmand from the source directory:</p>
+<div class="fragment"><div class="line">firefox doc/html/index.html</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+WebSite</h1>
+<p >Our project's Website : <a href="https://thefoxell.github.io/CityMapWebsite/index.html">https://thefoxell.github.io/CityMapWebsite/index.html</a> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

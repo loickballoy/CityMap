@@ -3,6 +3,16 @@
 #include "read.h"
 #include "loadtools.h"
 
+/**
+* @file write.c
+* @details This file modifies the setting files to allow the modification of biases and rules in general.
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 void write_habitant_number(int habitant_number)
 {
 	FILE *file = settings_open();

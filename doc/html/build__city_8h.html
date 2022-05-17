@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -150,6 +150,28 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
+<div class="line"><span class="lineno">   56</span>  <a class="code hl_function" href="to_s_d_l_8c.html#a313e7d5fb8d3ac6c3c05b45062677d91">PrintMat</a>(matrice, DIM); <span class="comment">// Uses SDL to display a given matrix</span></div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>  <span class="keyword">struct </span><a class="code hl_struct" href="struct_e_d_g_e.html">EDGE</a> *edges = <a class="code hl_function" href="network_8c.html#aa6c55b5bb8775049f3f8f802acb4f127">MakeMetro</a>(matrice, DIM); <span class="comment">// Executes the subway algorithm</span></div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>  <a class="code hl_function" href="to_s_d_l_8c.html#ab3dadb9c03fe52f5265f999a0e8b73ae">PrintMetro</a>(edges, DIM); <span class="comment">// Uses SDL to display a graph of the subway lines and stations</span></div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; DIM; i++)</div>
+<div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>      free(matrice[i]);</div>
+<div class="line"><span class="lineno">   65</span>    }</div>
+<div class="line"><span class="lineno">   66</span>  free(matrice);</div>
+<div class="line"><span class="lineno">   67</span>  free(edges);</div>
+<div class="line"><span class="lineno">   68</span>}</div>
+<div class="ttc" id="anetwork_8c_html_aa6c55b5bb8775049f3f8f802acb4f127"><div class="ttname"><a href="network_8c.html#aa6c55b5bb8775049f3f8f802acb4f127">MakeMetro</a></div><div class="ttdeci">struct EDGE * MakeMetro(char **matrice, int DIM)</div><div class="ttdef"><b>Definition:</b> network.c:239</div></div>
+<div class="ttc" id="astruct_e_d_g_e_html"><div class="ttname"><a href="struct_e_d_g_e.html">EDGE</a></div><div class="ttdef"><b>Definition:</b> network.h:7</div></div>
+<div class="ttc" id="ato_s_d_l_8c_html_a313e7d5fb8d3ac6c3c05b45062677d91"><div class="ttname"><a href="to_s_d_l_8c.html#a313e7d5fb8d3ac6c3c05b45062677d91">PrintMat</a></div><div class="ttdeci">void PrintMat(char **matrice, int DIM)</div><div class="ttdoc">Displays from a given matrice a city.</div><div class="ttdef"><b>Definition:</b> toSDL.c:22</div></div>
+<div class="ttc" id="ato_s_d_l_8c_html_ab3dadb9c03fe52f5265f999a0e8b73ae"><div class="ttname"><a href="to_s_d_l_8c.html#ab3dadb9c03fe52f5265f999a0e8b73ae">PrintMetro</a></div><div class="ttdeci">void PrintMetro(struct EDGE *edges, int DIM)</div><div class="ttdoc">Displays from a given graph the subway stations and lines.</div><div class="ttdef"><b>Definition:</b> toSDL.c:121</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="network_8c.html#aa6c55b5bb8775049f3f8f802acb4f127">MakeMetro()</a>, <a class="el" href="to_s_d_l_8c.html#a313e7d5fb8d3ac6c3c05b45062677d91">PrintMat()</a>, and <a class="el" href="to_s_d_l_8c.html#ab3dadb9c03fe52f5265f999a0e8b73ae">PrintMetro()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="interface_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main()</a>, and <a class="el" href="input__gtk_8c.html#aa119a021d6e9b4f19136302b391de6fc">on_click_button()</a>.</p>
 
 </div>
 </div>
@@ -168,6 +190,42 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
+<div class="line"><span class="lineno">   19</span>  <span class="keywordtype">char</span> **matrice;</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>  matrice = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *)* DIM);</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k = 0; k &lt; DIM; k++)</div>
+<div class="line"><span class="lineno">   24</span>    {</div>
+<div class="line"><span class="lineno">   25</span>      matrice[k] = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *) * DIM);</div>
+<div class="line"><span class="lineno">   26</span>    }</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; DIM; i++)</div>
+<div class="line"><span class="lineno">   29</span>    {</div>
+<div class="line"><span class="lineno">   30</span>      <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j =0; j &lt; DIM; j++)</div>
+<div class="line"><span class="lineno">   31</span>    {</div>
+<div class="line"><span class="lineno">   32</span>            <span class="keywordtype">int</span> number = rand();</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>            <span class="keywordflow">if</span>(number%2 == 0)</div>
+<div class="line"><span class="lineno">   35</span>          matrice[i][j] = <span class="charliteral">&#39;1&#39;</span>;</div>
+<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">if</span>(number%2 != 0)</div>
+<div class="line"><span class="lineno">   37</span>          matrice[i][j] = <span class="charliteral">&#39;4&#39;</span>;</div>
+<div class="line"><span class="lineno">   38</span>            <span class="keywordflow">if</span>(number%3 == 0)</div>
+<div class="line"><span class="lineno">   39</span>          matrice[i][j] = <span class="charliteral">&#39;2&#39;</span>;</div>
+<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">if</span>(number%5 == 0)</div>
+<div class="line"><span class="lineno">   41</span>          matrice[i][j] = <span class="charliteral">&#39;3&#39;</span>;</div>
+<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">if</span>(number%7 == 0)</div>
+<div class="line"><span class="lineno">   43</span>          matrice[i][j] = <span class="charliteral">&#39;4&#39;</span>;</div>
+<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">if</span>(number%11 == 0)</div>
+<div class="line"><span class="lineno">   45</span>          matrice[i][j] = <span class="charliteral">&#39;0&#39;</span>;</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>    }</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">return</span> matrice;</div>
+<div class="line"><span class="lineno">   51</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="interface_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main()</a>.</p>
 
 </div>
 </div>

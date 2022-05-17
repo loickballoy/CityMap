@@ -3,6 +3,16 @@
 #include "update.h"
 #include <stdio.h>
 
+/**
+* @file update.c
+* @details This files updates the needs to allow the propagation of our rules
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 int ponderation(int x, int y, int val, int a, int b)
 {
     int xtemp =  x - a;

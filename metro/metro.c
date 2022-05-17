@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include "graph.h"
 
+/**
+* @file graph.c
+* @details This files creates and displays a graph (mainly used for tests).
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
+
 int main(void)
 {
     Graph g1 = new_graph(5, false);

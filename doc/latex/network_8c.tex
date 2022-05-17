@@ -43,73 +43,73 @@ struct \mbox{\hyperlink{struct_e_d_g_e}{EDGE}} $\ast$ \mbox{\hyperlink{network_8
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{21 \{}
-\DoxyCodeLine{22   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} * rencontre = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *) calloc( nb\_stat, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}) );}
-\DoxyCodeLine{23   }
-\DoxyCodeLine{24   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} proche;}
-\DoxyCodeLine{25   \textcolor{keywordtype}{double} min = DBL\_MAX;}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} *edges = calloc( nb\_stat * nb\_stat, \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_e_d_g_e}{EDGE}}));}
-\DoxyCodeLine{28   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k = 0;}
-\DoxyCodeLine{29 }
-\DoxyCodeLine{30   \textcolor{keywordtype}{int} l = 1;}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < nb\_stat; i++)     \textcolor{comment}{//Appelle toute les stations}}
-\DoxyCodeLine{33     \{}
-\DoxyCodeLine{34       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} x1 = STATIONS[i].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
-\DoxyCodeLine{35       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} y1 = STATIONS[i].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{31 \{}
+\DoxyCodeLine{32   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} * rencontre = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *) calloc( nb\_stat, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}) );}
+\DoxyCodeLine{33   }
+\DoxyCodeLine{34   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} proche;}
+\DoxyCodeLine{35   \textcolor{keywordtype}{double} min = DBL\_MAX;}
 \DoxyCodeLine{36 }
-\DoxyCodeLine{37       min = DBL\_MAX;}
-\DoxyCodeLine{38       }
-\DoxyCodeLine{39       \textcolor{keywordflow}{if}(rencontre[i] == 0)                     \textcolor{comment}{// Si pas deja relié}}
-\DoxyCodeLine{40     \{}
-\DoxyCodeLine{41       rencontre[i] = 1;}
-\DoxyCodeLine{42           }
-\DoxyCodeLine{43       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} j = 0; j < nb\_stat; j++)}
-\DoxyCodeLine{44         \{}
-\DoxyCodeLine{45           \textcolor{keywordflow}{if}(i != j)}
-\DoxyCodeLine{46         \{}
-\DoxyCodeLine{47           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} x2 = STATIONS[j].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
-\DoxyCodeLine{48           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} y2 = STATIONS[j].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
-\DoxyCodeLine{49                 }
-\DoxyCodeLine{50           \textcolor{keywordtype}{double} a = (double)((x1 -\/ x2) * (x1 -\/ x2));}
-\DoxyCodeLine{51           \textcolor{keywordtype}{double} b = (double)((y1 -\/ y2) * (y1 -\/ y2));}
-\DoxyCodeLine{52           \textcolor{keywordtype}{double} dist = sqrt(a + b);}
-\DoxyCodeLine{53 }
-\DoxyCodeLine{54           \textcolor{keywordflow}{if}(dist < min \&\& rencontre[j] == 0 \&\& dist <= max)\{}
-\DoxyCodeLine{55             min = dist;}
-\DoxyCodeLine{56             proche = j;}
-\DoxyCodeLine{57           \}}
-\DoxyCodeLine{58                     }
-\DoxyCodeLine{59         \}}
-\DoxyCodeLine{60         \}}
-\DoxyCodeLine{61 }
-\DoxyCodeLine{62       \textcolor{keywordflow}{if}(min <= max)\{}
-\DoxyCodeLine{63         }
-\DoxyCodeLine{64         \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g, i+1, proche+1);}
-\DoxyCodeLine{65         edges[k].\mbox{\hyperlink{struct_e_d_g_e_abfdcf36614712369ec8cc420a3388f44}{src}} = i;}
-\DoxyCodeLine{66         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a9b46bf8c05f04d9acda28a6f62fc1872}{dst}} = proche;}
-\DoxyCodeLine{67         }
-\DoxyCodeLine{68         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a9f12ea9435ff920d81bd94dcaff718bd}{src\_x}} = STATIONS[i].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
-\DoxyCodeLine{69         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a58037379f154647324421fa4c0f7e1fe}{src\_y}} = STATIONS[i].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
-\DoxyCodeLine{70         }
-\DoxyCodeLine{71         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a94c51ed846e6bfe46b91e7ef49f7a667}{dst\_x}} = STATIONS[proche].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
-\DoxyCodeLine{72         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a8442292edebb4370a0483b818eaf7b28}{dst\_y}} = STATIONS[proche].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{37   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} *edges = calloc( nb\_stat * nb\_stat, \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_e_d_g_e}{EDGE}}));}
+\DoxyCodeLine{38   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k = 0;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40   \textcolor{keywordtype}{int} l = 1;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < nb\_stat; i++)     \textcolor{comment}{//Appelle toute les stations}}
+\DoxyCodeLine{43     \{}
+\DoxyCodeLine{44       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} x1 = STATIONS[i].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
+\DoxyCodeLine{45       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} y1 = STATIONS[i].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47       min = DBL\_MAX;}
+\DoxyCodeLine{48       }
+\DoxyCodeLine{49       \textcolor{keywordflow}{if}(rencontre[i] == 0)                     \textcolor{comment}{// Si pas deja relié}}
+\DoxyCodeLine{50     \{}
+\DoxyCodeLine{51       rencontre[i] = 1;}
+\DoxyCodeLine{52           }
+\DoxyCodeLine{53       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} j = 0; j < nb\_stat; j++)}
+\DoxyCodeLine{54         \{}
+\DoxyCodeLine{55           \textcolor{keywordflow}{if}(i != j)}
+\DoxyCodeLine{56         \{}
+\DoxyCodeLine{57           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} x2 = STATIONS[j].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
+\DoxyCodeLine{58           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} y2 = STATIONS[j].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{59                 }
+\DoxyCodeLine{60           \textcolor{keywordtype}{double} a = (double)((x1 -\/ x2) * (x1 -\/ x2));}
+\DoxyCodeLine{61           \textcolor{keywordtype}{double} b = (double)((y1 -\/ y2) * (y1 -\/ y2));}
+\DoxyCodeLine{62           \textcolor{keywordtype}{double} dist = sqrt(a + b);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64           \textcolor{keywordflow}{if}(dist < min \&\& rencontre[j] == 0 \&\& dist <= max)\{}
+\DoxyCodeLine{65             min = dist;}
+\DoxyCodeLine{66             proche = j;}
+\DoxyCodeLine{67           \}}
+\DoxyCodeLine{68                     }
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72       \textcolor{keywordflow}{if}(min <= max)\{}
 \DoxyCodeLine{73         }
-\DoxyCodeLine{74         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} = l;}
-\DoxyCodeLine{75         }
-\DoxyCodeLine{76         k += 1;}
-\DoxyCodeLine{77       \}}
-\DoxyCodeLine{78       \textcolor{keywordflow}{else}}
-\DoxyCodeLine{79         l += 1;}
-\DoxyCodeLine{80       }
-\DoxyCodeLine{81     \}   }
-\DoxyCodeLine{82     \}}
-\DoxyCodeLine{83   edges[0].\mbox{\hyperlink{struct_e_d_g_e_ad4798844080b56d44961f381922267ce}{nb\_edge}} = k;}
-\DoxyCodeLine{84   printf(\textcolor{stringliteral}{"{}nb edge : \%i"{}}, k);}
-\DoxyCodeLine{85   free(rencontre);}
-\DoxyCodeLine{86   \textcolor{keywordflow}{return} edges;}
-\DoxyCodeLine{87 \}}
+\DoxyCodeLine{74         \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g, i+1, proche+1);}
+\DoxyCodeLine{75         edges[k].\mbox{\hyperlink{struct_e_d_g_e_abfdcf36614712369ec8cc420a3388f44}{src}} = i;}
+\DoxyCodeLine{76         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a9b46bf8c05f04d9acda28a6f62fc1872}{dst}} = proche;}
+\DoxyCodeLine{77         }
+\DoxyCodeLine{78         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a9f12ea9435ff920d81bd94dcaff718bd}{src\_x}} = STATIONS[i].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
+\DoxyCodeLine{79         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a58037379f154647324421fa4c0f7e1fe}{src\_y}} = STATIONS[i].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{80         }
+\DoxyCodeLine{81         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a94c51ed846e6bfe46b91e7ef49f7a667}{dst\_x}} = STATIONS[proche].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
+\DoxyCodeLine{82         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a8442292edebb4370a0483b818eaf7b28}{dst\_y}} = STATIONS[proche].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{83         }
+\DoxyCodeLine{84         edges[k].\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} = l;}
+\DoxyCodeLine{85         }
+\DoxyCodeLine{86         k += 1;}
+\DoxyCodeLine{87       \}}
+\DoxyCodeLine{88       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{89         l += 1;}
+\DoxyCodeLine{90       }
+\DoxyCodeLine{91     \}   }
+\DoxyCodeLine{92     \}}
+\DoxyCodeLine{93   edges[0].\mbox{\hyperlink{struct_e_d_g_e_ad4798844080b56d44961f381922267ce}{nb\_edge}} = k;}
+\DoxyCodeLine{94   printf(\textcolor{stringliteral}{"{}nb edge : \%i"{}}, k);}
+\DoxyCodeLine{95   free(rencontre);}
+\DoxyCodeLine{96   \textcolor{keywordflow}{return} edges;}
+\DoxyCodeLine{97 \}}
 
 \end{DoxyCode}
 
@@ -124,92 +124,92 @@ References \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\+\_\
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{93 \{}
-\DoxyCodeLine{94   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} * rencontre = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *) calloc( nb\_stat, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}) );}
-\DoxyCodeLine{95   }
-\DoxyCodeLine{96   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} proche;}
-\DoxyCodeLine{97   \textcolor{keywordtype}{double} min = DBL\_MAX;}
-\DoxyCodeLine{98 }
-\DoxyCodeLine{99   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nb\_l = 2;}
-\DoxyCodeLine{100 }
-\DoxyCodeLine{101   \textcolor{keywordflow}{if}(nb\_stat >= 15)}
-\DoxyCodeLine{102     nb\_l = 3;}
-\DoxyCodeLine{103   \textcolor{keywordflow}{if}(nb\_stat >= 20)}
-\DoxyCodeLine{104     nb\_l = 4;}
-\DoxyCodeLine{105   \textcolor{keywordflow}{if}(nb\_stat >= 25)}
-\DoxyCodeLine{106     nb\_l = 5;}
-\DoxyCodeLine{107 }
-\DoxyCodeLine{108   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nb\_st = nb\_stat / nb\_l;}
-\DoxyCodeLine{109   }
+\DoxyCodeLine{103 \{}
+\DoxyCodeLine{104   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} * rencontre = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *) calloc( nb\_stat, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}) );}
+\DoxyCodeLine{105   }
+\DoxyCodeLine{106   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} proche;}
+\DoxyCodeLine{107   \textcolor{keywordtype}{double} min = DBL\_MAX;}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nb\_l = 2;}
 \DoxyCodeLine{110 }
-\DoxyCodeLine{111   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} *edges = calloc( nb\_stat, \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_e_d_g_e}{EDGE}}));}
-\DoxyCodeLine{112   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k = 0;}
-\DoxyCodeLine{113 }
-\DoxyCodeLine{114   \textcolor{keywordtype}{int} l = 1;}
-\DoxyCodeLine{115 }
-\DoxyCodeLine{116   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} *stat = \&STATIONS[0];}
-\DoxyCodeLine{117   }
-\DoxyCodeLine{118   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < nb\_stat; i++)     \textcolor{comment}{//Appelle toute les stations}}
-\DoxyCodeLine{119     \{}
-\DoxyCodeLine{120       }
-\DoxyCodeLine{121     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} x1 = stat-\/>\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
-\DoxyCodeLine{122     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} y1 = stat-\/>\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{111   \textcolor{keywordflow}{if}(nb\_stat >= 15)}
+\DoxyCodeLine{112     nb\_l = 3;}
+\DoxyCodeLine{113   \textcolor{keywordflow}{if}(nb\_stat >= 20)}
+\DoxyCodeLine{114     nb\_l = 4;}
+\DoxyCodeLine{115   \textcolor{keywordflow}{if}(nb\_stat >= 25)}
+\DoxyCodeLine{116     nb\_l = 5;}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nb\_st = nb\_stat / nb\_l;}
+\DoxyCodeLine{119   }
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} *edges = calloc( nb\_stat, \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_e_d_g_e}{EDGE}}));}
+\DoxyCodeLine{122   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k = 0;}
 \DoxyCodeLine{123 }
-\DoxyCodeLine{124     min = DBL\_MAX;}
-\DoxyCodeLine{125     }
-\DoxyCodeLine{126     \textcolor{keywordflow}{if}(rencontre[stat-\/>\mbox{\hyperlink{struct_metro_a5a88960222e6777dabfa780d1b23e497}{label}}-\/1] == 0)                     \textcolor{comment}{// Si pas deja relié}}
-\DoxyCodeLine{127       \{}
-\DoxyCodeLine{128         rencontre[stat-\/>\mbox{\hyperlink{struct_metro_a5a88960222e6777dabfa780d1b23e497}{label}}-\/1] = 1;}
-\DoxyCodeLine{129         }
-\DoxyCodeLine{130         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} j = 0; j < nb\_stat; j++)}
-\DoxyCodeLine{131           \{}
-\DoxyCodeLine{132         \textcolor{keywordflow}{if}(i != j)}
-\DoxyCodeLine{133           \{}
-\DoxyCodeLine{134             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} x2 = STATIONS[j].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
-\DoxyCodeLine{135             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} y2 = STATIONS[j].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
-\DoxyCodeLine{136             }
-\DoxyCodeLine{137             \textcolor{keywordtype}{double} a = (double)((x1 -\/ x2) * (x1 -\/ x2));}
-\DoxyCodeLine{138             \textcolor{keywordtype}{double} b = (double)((y1 -\/ y2) * (y1 -\/ y2));}
-\DoxyCodeLine{139             \textcolor{keywordtype}{double} dist = sqrt(a + b);}
-\DoxyCodeLine{140             }
-\DoxyCodeLine{141             \textcolor{keywordflow}{if}(dist < min \&\& rencontre[j] == 0)\{}
-\DoxyCodeLine{142               min = dist;}
-\DoxyCodeLine{143               proche = j;}
-\DoxyCodeLine{144             \}}
-\DoxyCodeLine{145                     }
-\DoxyCodeLine{146           \}}
-\DoxyCodeLine{147           \}}
-\DoxyCodeLine{148         \textcolor{keywordflow}{if}((i+1) \% nb\_st == 0 \&\& l != (\textcolor{keywordtype}{int})nb\_l)\{}
-\DoxyCodeLine{149          l += 1;}
-\DoxyCodeLine{150         \}}
-\DoxyCodeLine{151         \textcolor{comment}{//else\{}}
-\DoxyCodeLine{152           \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g, stat-\/>\mbox{\hyperlink{struct_metro_a5a88960222e6777dabfa780d1b23e497}{label}}, proche+1);}
-\DoxyCodeLine{153           edges[k].\mbox{\hyperlink{struct_e_d_g_e_abfdcf36614712369ec8cc420a3388f44}{src}} = stat-\/>\mbox{\hyperlink{struct_metro_a5a88960222e6777dabfa780d1b23e497}{label}}-\/1;}
-\DoxyCodeLine{154           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a9b46bf8c05f04d9acda28a6f62fc1872}{dst}} = proche;}
-\DoxyCodeLine{155           }
-\DoxyCodeLine{156           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a9f12ea9435ff920d81bd94dcaff718bd}{src\_x}} = stat-\/>\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
-\DoxyCodeLine{157           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a58037379f154647324421fa4c0f7e1fe}{src\_y}} = stat-\/>\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
-\DoxyCodeLine{158           }
-\DoxyCodeLine{159           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a94c51ed846e6bfe46b91e7ef49f7a667}{dst\_x}} = STATIONS[proche].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
-\DoxyCodeLine{160           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a8442292edebb4370a0483b818eaf7b28}{dst\_y}} = STATIONS[proche].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
-\DoxyCodeLine{161           }
-\DoxyCodeLine{162           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} = l;}
-\DoxyCodeLine{163           }
-\DoxyCodeLine{164           k += 1;}
-\DoxyCodeLine{165           \textcolor{comment}{//\}}}
-\DoxyCodeLine{166         stat = \&STATIONS[proche];}
-\DoxyCodeLine{167           }
-\DoxyCodeLine{168         }
-\DoxyCodeLine{169       \}}
-\DoxyCodeLine{170        }
-\DoxyCodeLine{171     \}}
-\DoxyCodeLine{172 }
-\DoxyCodeLine{173   }
-\DoxyCodeLine{174   edges[0].\mbox{\hyperlink{struct_e_d_g_e_ad4798844080b56d44961f381922267ce}{nb\_edge}} = k;}
-\DoxyCodeLine{175 }
-\DoxyCodeLine{176   free(rencontre);}
-\DoxyCodeLine{177   \textcolor{keywordflow}{return} edges;}
-\DoxyCodeLine{178 \}}
+\DoxyCodeLine{124   \textcolor{keywordtype}{int} l = 1;}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} *stat = \&STATIONS[0];}
+\DoxyCodeLine{127   }
+\DoxyCodeLine{128   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < nb\_stat; i++)     \textcolor{comment}{//Appelle toute les stations}}
+\DoxyCodeLine{129     \{}
+\DoxyCodeLine{130       }
+\DoxyCodeLine{131     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} x1 = stat-\/>\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
+\DoxyCodeLine{132     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} y1 = stat-\/>\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     min = DBL\_MAX;}
+\DoxyCodeLine{135     }
+\DoxyCodeLine{136     \textcolor{keywordflow}{if}(rencontre[stat-\/>\mbox{\hyperlink{struct_metro_a5a88960222e6777dabfa780d1b23e497}{label}}-\/1] == 0)                     \textcolor{comment}{// Si pas deja relié}}
+\DoxyCodeLine{137       \{}
+\DoxyCodeLine{138         rencontre[stat-\/>\mbox{\hyperlink{struct_metro_a5a88960222e6777dabfa780d1b23e497}{label}}-\/1] = 1;}
+\DoxyCodeLine{139         }
+\DoxyCodeLine{140         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} j = 0; j < nb\_stat; j++)}
+\DoxyCodeLine{141           \{}
+\DoxyCodeLine{142         \textcolor{keywordflow}{if}(i != j)}
+\DoxyCodeLine{143           \{}
+\DoxyCodeLine{144             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} x2 = STATIONS[j].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
+\DoxyCodeLine{145             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} y2 = STATIONS[j].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{146             }
+\DoxyCodeLine{147             \textcolor{keywordtype}{double} a = (double)((x1 -\/ x2) * (x1 -\/ x2));}
+\DoxyCodeLine{148             \textcolor{keywordtype}{double} b = (double)((y1 -\/ y2) * (y1 -\/ y2));}
+\DoxyCodeLine{149             \textcolor{keywordtype}{double} dist = sqrt(a + b);}
+\DoxyCodeLine{150             }
+\DoxyCodeLine{151             \textcolor{keywordflow}{if}(dist < min \&\& rencontre[j] == 0)\{}
+\DoxyCodeLine{152               min = dist;}
+\DoxyCodeLine{153               proche = j;}
+\DoxyCodeLine{154             \}}
+\DoxyCodeLine{155                     }
+\DoxyCodeLine{156           \}}
+\DoxyCodeLine{157           \}}
+\DoxyCodeLine{158         \textcolor{keywordflow}{if}((i+1) \% nb\_st == 0 \&\& l != (\textcolor{keywordtype}{int})nb\_l)\{}
+\DoxyCodeLine{159          l += 1;}
+\DoxyCodeLine{160         \}}
+\DoxyCodeLine{161         \textcolor{comment}{//else\{}}
+\DoxyCodeLine{162           \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g, stat-\/>\mbox{\hyperlink{struct_metro_a5a88960222e6777dabfa780d1b23e497}{label}}, proche+1);}
+\DoxyCodeLine{163           edges[k].\mbox{\hyperlink{struct_e_d_g_e_abfdcf36614712369ec8cc420a3388f44}{src}} = stat-\/>\mbox{\hyperlink{struct_metro_a5a88960222e6777dabfa780d1b23e497}{label}}-\/1;}
+\DoxyCodeLine{164           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a9b46bf8c05f04d9acda28a6f62fc1872}{dst}} = proche;}
+\DoxyCodeLine{165           }
+\DoxyCodeLine{166           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a9f12ea9435ff920d81bd94dcaff718bd}{src\_x}} = stat-\/>\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
+\DoxyCodeLine{167           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a58037379f154647324421fa4c0f7e1fe}{src\_y}} = stat-\/>\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{168           }
+\DoxyCodeLine{169           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a94c51ed846e6bfe46b91e7ef49f7a667}{dst\_x}} = STATIONS[proche].\mbox{\hyperlink{struct_metro_ac89b346e5d028fdbc70d68a52ef39cd7}{x}};}
+\DoxyCodeLine{170           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a8442292edebb4370a0483b818eaf7b28}{dst\_y}} = STATIONS[proche].\mbox{\hyperlink{struct_metro_a638dfc659f67044331a3068b4298bbb0}{y}};}
+\DoxyCodeLine{171           }
+\DoxyCodeLine{172           edges[k].\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} = l;}
+\DoxyCodeLine{173           }
+\DoxyCodeLine{174           k += 1;}
+\DoxyCodeLine{175           \textcolor{comment}{//\}}}
+\DoxyCodeLine{176         stat = \&STATIONS[proche];}
+\DoxyCodeLine{177           }
+\DoxyCodeLine{178         }
+\DoxyCodeLine{179       \}}
+\DoxyCodeLine{180        }
+\DoxyCodeLine{181     \}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183   }
+\DoxyCodeLine{184   edges[0].\mbox{\hyperlink{struct_e_d_g_e_ad4798844080b56d44961f381922267ce}{nb\_edge}} = k;}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186   free(rencontre);}
+\DoxyCodeLine{187   \textcolor{keywordflow}{return} edges;}
+\DoxyCodeLine{188 \}}
 
 \end{DoxyCode}
 
@@ -228,34 +228,34 @@ Referenced by \mbox{\hyperlink{network_8c_aa6c55b5bb8775049f3f8f802acb4f127}{Mak
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{200 \{}
-\DoxyCodeLine{201 }
-\DoxyCodeLine{202   \textcolor{keywordtype}{int} nb\_stat = \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\_stations}}(matrice, DIM); }
-\DoxyCodeLine{203 }
-\DoxyCodeLine{204   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} *STATIONS = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_metro}{Metro}}) * nb\_stat);}
-\DoxyCodeLine{205 }
-\DoxyCodeLine{206   \textcolor{keywordtype}{int} k = 0;}
-\DoxyCodeLine{207   }
-\DoxyCodeLine{208 }
-\DoxyCodeLine{209   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < DIM; i++)}
-\DoxyCodeLine{210     \{}
-\DoxyCodeLine{211       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j =0; j < DIM; j++)}
-\DoxyCodeLine{212     \{}
-\DoxyCodeLine{213       }
-\DoxyCodeLine{214       \textcolor{keywordflow}{if}(matrice[i][j] == \textcolor{charliteral}{'7'})}
-\DoxyCodeLine{215         \{}
-\DoxyCodeLine{216           \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} st = \{k+1, i, j\};}
-\DoxyCodeLine{217           \mbox{\hyperlink{graph_8c_a2405a35c02d0b2b04b47fe0eb37d08fe}{add\_label}}(g1, k+1, i, j);}
-\DoxyCodeLine{218           STATIONS[k] = st;}
-\DoxyCodeLine{219           k += 1;}
-\DoxyCodeLine{220         \}}
-\DoxyCodeLine{221       }
-\DoxyCodeLine{222     \}}
-\DoxyCodeLine{223     \}}
-\DoxyCodeLine{224   }
-\DoxyCodeLine{225   \textcolor{keywordflow}{return} STATIONS;}
-\DoxyCodeLine{226   }
-\DoxyCodeLine{227 \}}
+\DoxyCodeLine{210 \{}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212   \textcolor{keywordtype}{int} nb\_stat = \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\_stations}}(matrice, DIM); }
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} *STATIONS = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_metro}{Metro}}) * nb\_stat);}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216   \textcolor{keywordtype}{int} k = 0;}
+\DoxyCodeLine{217   }
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < DIM; i++)}
+\DoxyCodeLine{220     \{}
+\DoxyCodeLine{221       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j =0; j < DIM; j++)}
+\DoxyCodeLine{222     \{}
+\DoxyCodeLine{223       }
+\DoxyCodeLine{224       \textcolor{keywordflow}{if}(matrice[i][j] == \textcolor{charliteral}{'7'})}
+\DoxyCodeLine{225         \{}
+\DoxyCodeLine{226           \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} st = \{k+1, i, j\};}
+\DoxyCodeLine{227           \mbox{\hyperlink{graph_8c_a2405a35c02d0b2b04b47fe0eb37d08fe}{add\_label}}(g1, k+1, i, j);}
+\DoxyCodeLine{228           STATIONS[k] = st;}
+\DoxyCodeLine{229           k += 1;}
+\DoxyCodeLine{230         \}}
+\DoxyCodeLine{231       }
+\DoxyCodeLine{232     \}}
+\DoxyCodeLine{233     \}}
+\DoxyCodeLine{234   }
+\DoxyCodeLine{235   \textcolor{keywordflow}{return} STATIONS;}
+\DoxyCodeLine{236   }
+\DoxyCodeLine{237 \}}
 
 \end{DoxyCode}
 
@@ -274,34 +274,38 @@ Referenced by \mbox{\hyperlink{network_8c_aa6c55b5bb8775049f3f8f802acb4f127}{Mak
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{230 \{}
-\DoxyCodeLine{231   \textcolor{keywordtype}{int} NUMBER\_STATIONS; }
-\DoxyCodeLine{232   \textcolor{keywordtype}{double} MAX = 4.2;}
-\DoxyCodeLine{233 }
-\DoxyCodeLine{234   NUMBER\_STATIONS = \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\_stations}}(matrice, DIM);}
-\DoxyCodeLine{235 }
-\DoxyCodeLine{236   \mbox{\hyperlink{struct_graph_element}{Graph}} g1 = \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\_graph}}(NUMBER\_STATIONS, \textcolor{keyword}{false});}
-\DoxyCodeLine{237 }
-\DoxyCodeLine{238   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tedge [color=black];\(\backslash\)n"{}});}
-\DoxyCodeLine{239   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tnode [color=turquoise, style=filled];\(\backslash\)n"{}});}
-\DoxyCodeLine{240 }
-\DoxyCodeLine{241   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} *STATIONS = \mbox{\hyperlink{network_8c_a230c3a893afff0180d28f964d5872681}{BuildStations}}(matrice, DIM, g1);}
-\DoxyCodeLine{242   }
-\DoxyCodeLine{243   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} *edges = \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{buildAdjlists2}}(STATIONS, NUMBER\_STATIONS, MAX, g1);}
-\DoxyCodeLine{244 }
-\DoxyCodeLine{245   \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\_graph}}(g1);}
-\DoxyCodeLine{246   \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\_graph}}(g1);}
-\DoxyCodeLine{247   \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\_graph}}(g1);}
-\DoxyCodeLine{248   system(\textcolor{stringliteral}{"{}dot -\/Tpng graph.out -\/o graph.png"{}});}
-\DoxyCodeLine{249   }
-\DoxyCodeLine{250   free(STATIONS);}
-\DoxyCodeLine{251   \textcolor{keywordflow}{return} edges;}
-\DoxyCodeLine{252 \}}
+\DoxyCodeLine{240 \{}
+\DoxyCodeLine{241   \textcolor{keywordtype}{int} NUMBER\_STATIONS; }
+\DoxyCodeLine{242   \textcolor{keywordtype}{double} MAX = 4.2;}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244   NUMBER\_STATIONS = \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\_stations}}(matrice, DIM);}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246   \mbox{\hyperlink{struct_graph_element}{Graph}} g1 = \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\_graph}}(NUMBER\_STATIONS, \textcolor{keyword}{false});}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tedge [color=black];\(\backslash\)n"{}});}
+\DoxyCodeLine{249   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tnode [color=turquoise, style=filled];\(\backslash\)n"{}});}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{251   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} *STATIONS = \mbox{\hyperlink{network_8c_a230c3a893afff0180d28f964d5872681}{BuildStations}}(matrice, DIM, g1);}
+\DoxyCodeLine{252   }
+\DoxyCodeLine{253   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} *edges = \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{buildAdjlists2}}(STATIONS, NUMBER\_STATIONS, MAX, g1);}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255   \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\_graph}}(g1);}
+\DoxyCodeLine{256   \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\_graph}}(g1);}
+\DoxyCodeLine{257   \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\_graph}}(g1);}
+\DoxyCodeLine{258   system(\textcolor{stringliteral}{"{}dot -\/Tpng graph.out -\/o graph.png"{}});}
+\DoxyCodeLine{259   }
+\DoxyCodeLine{260   free(STATIONS);}
+\DoxyCodeLine{261   \textcolor{keywordflow}{return} edges;}
+\DoxyCodeLine{262 \}}
 
 \end{DoxyCode}
 
 
 References \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{build\+Adjlists2()}}, \mbox{\hyperlink{network_8c_a230c3a893afff0180d28f964d5872681}{Build\+Stations()}}, \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\+\_\+graph()}}, \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\+\_\+graph()}}, \mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{Graph\+Element\+::graph\+\_\+file}}, \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\+\_\+stations()}}, \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\+\_\+graph()}}, and \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\+\_\+graph()}}.
+
+
+
+Referenced by \mbox{\hyperlink{build__city_8c_ae718034bb5f26172f71977253c8c6119}{build\+\_\+city()}}.
 
 \mbox{\Hypertarget{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}\label{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}} 
 \index{network.c@{network.c}!nb\_stations@{nb\_stations}}
@@ -311,21 +315,21 @@ References \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{build\
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{183 \{}
-\DoxyCodeLine{184   \textcolor{keywordtype}{int} nb\_stat = 0;}
-\DoxyCodeLine{185   }
-\DoxyCodeLine{186   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < DIM; i++)}
-\DoxyCodeLine{187     \{}
-\DoxyCodeLine{188       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j =0; j < DIM; j++)}
-\DoxyCodeLine{189     \{}
-\DoxyCodeLine{190             }
-\DoxyCodeLine{191       \textcolor{keywordflow}{if}(matrice[i][j] == \textcolor{charliteral}{'7'})}
-\DoxyCodeLine{192         nb\_stat += 1;}
-\DoxyCodeLine{193             }
-\DoxyCodeLine{194     \}}
-\DoxyCodeLine{195     \}}
-\DoxyCodeLine{196   \textcolor{keywordflow}{return} nb\_stat;}
-\DoxyCodeLine{197 \}}
+\DoxyCodeLine{193 \{}
+\DoxyCodeLine{194   \textcolor{keywordtype}{int} nb\_stat = 0;}
+\DoxyCodeLine{195   }
+\DoxyCodeLine{196   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < DIM; i++)}
+\DoxyCodeLine{197     \{}
+\DoxyCodeLine{198       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j =0; j < DIM; j++)}
+\DoxyCodeLine{199     \{}
+\DoxyCodeLine{200             }
+\DoxyCodeLine{201       \textcolor{keywordflow}{if}(matrice[i][j] == \textcolor{charliteral}{'7'})}
+\DoxyCodeLine{202         nb\_stat += 1;}
+\DoxyCodeLine{203             }
+\DoxyCodeLine{204     \}}
+\DoxyCodeLine{205     \}}
+\DoxyCodeLine{206   \textcolor{keywordflow}{return} nb\_stat;}
+\DoxyCodeLine{207 \}}
 
 \end{DoxyCode}
 

@@ -11,7 +11,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 int $\ast$ \mbox{\hyperlink{need_8h_a909501c02dc126cdaeec895c653a964f}{init\+Town\+List3}} (unsigned int nb\+\_\+hab, double sec)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em We create a list of int where the index represents a building type and the value is the number of buildings left to place, this list is defined with the settings file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -23,29 +23,29 @@ int $\ast$ \mbox{\hyperlink{need_8h_a909501c02dc126cdaeec895c653a964f}{init\+Tow
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{24 \{}
-\DoxyCodeLine{25   \textcolor{comment}{//int comi\_range = 60000;}}
-\DoxyCodeLine{26   \textcolor{comment}{//int hosp\_range = 20000;}}
-\DoxyCodeLine{27   sec +=0;}
-\DoxyCodeLine{28   \textcolor{keywordtype}{int} *bat = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int})* \mbox{\hyperlink{need_8c_a7d576a2441117e0e11a96c8ab9f9dbf2}{NUMBER\_TYPE}});}
-\DoxyCodeLine{29   \textcolor{keywordtype}{int} **building\_value = \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\_building\_value}}();}
-\DoxyCodeLine{30   \textcolor{keywordtype}{int} *bias = \mbox{\hyperlink{read_8c_a9a187d8a5ac223603383bf86803ff909}{load\_building\_bias}}();}
-\DoxyCodeLine{31   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < 7; x++)}
-\DoxyCodeLine{32   \{}
-\DoxyCodeLine{33       *(bat + x) = nb\_hab / *((*(building\_value + x)) + 7);}
-\DoxyCodeLine{34       \textcolor{keywordflow}{if} (x == 6 \&\& *(bat + x) == 1)}
-\DoxyCodeLine{35           *(bat + x) = 0;}
-\DoxyCodeLine{36       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (*(bat + x) == 0)}
-\DoxyCodeLine{37           *(bat + x) = 1;}
-\DoxyCodeLine{38   \}}
-\DoxyCodeLine{39   *(bat + 1) += *(bat + 1) * (*(bias + 2)) / 100;}
-\DoxyCodeLine{40   *(bat + 2) += *(bat + 2) * (*(bias + 1)) / 100;}
-\DoxyCodeLine{41   *(bat + 3) += *(bat + 3) * (*(bias + 5)) / 100;}
-\DoxyCodeLine{42   *(bat + 4) += *(bat + 4) * (*(bias + 3)) / 100;}
-\DoxyCodeLine{43   *(bat + 5) += *(bat + 5) * (*(bias + 4)) / 100;}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45   \textcolor{keywordflow}{return} bat;}
-\DoxyCodeLine{46 \}}
+\DoxyCodeLine{34 \{}
+\DoxyCodeLine{35   \textcolor{comment}{//int comi\_range = 60000;}}
+\DoxyCodeLine{36   \textcolor{comment}{//int hosp\_range = 20000;}}
+\DoxyCodeLine{37   sec +=0;}
+\DoxyCodeLine{38   \textcolor{keywordtype}{int} *bat = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int})* \mbox{\hyperlink{need_8c_a7d576a2441117e0e11a96c8ab9f9dbf2}{NUMBER\_TYPE}});}
+\DoxyCodeLine{39   \textcolor{keywordtype}{int} **building\_value = \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\_building\_value}}();}
+\DoxyCodeLine{40   \textcolor{keywordtype}{int} *bias = \mbox{\hyperlink{read_8c_a9a187d8a5ac223603383bf86803ff909}{load\_building\_bias}}();}
+\DoxyCodeLine{41   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < 7; x++)}
+\DoxyCodeLine{42   \{}
+\DoxyCodeLine{43       *(bat + x) = nb\_hab / *((*(building\_value + x)) + 7);}
+\DoxyCodeLine{44       \textcolor{keywordflow}{if} (x == 6 \&\& *(bat + x) == 1)}
+\DoxyCodeLine{45           *(bat + x) = 0;}
+\DoxyCodeLine{46       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (*(bat + x) == 0)}
+\DoxyCodeLine{47           *(bat + x) = 1;}
+\DoxyCodeLine{48   \}}
+\DoxyCodeLine{49   *(bat + 1) += *(bat + 1) * (*(bias + 2)) / 100;}
+\DoxyCodeLine{50   *(bat + 2) += *(bat + 2) * (*(bias + 1)) / 100;}
+\DoxyCodeLine{51   *(bat + 3) += *(bat + 3) * (*(bias + 5)) / 100;}
+\DoxyCodeLine{52   *(bat + 4) += *(bat + 4) * (*(bias + 3)) / 100;}
+\DoxyCodeLine{53   *(bat + 5) += *(bat + 5) * (*(bias + 4)) / 100;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55   \textcolor{keywordflow}{return} bat;}
+\DoxyCodeLine{56 \}}
 
 \end{DoxyCode}
 

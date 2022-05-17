@@ -33,16 +33,16 @@ void \mbox{\hyperlink{update_8h_a45c3ebe31a9e78d882d56036866a6587}{reverse\+Attr
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{23 \{}
-\DoxyCodeLine{24     \textcolor{keywordtype}{int} *stats = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}};}
-\DoxyCodeLine{25     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NBSTATS; i++)}
-\DoxyCodeLine{26         *(stats + i) += \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}}(x, y, *(value + i), a, b);}
-\DoxyCodeLine{27 \}}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34     \textcolor{keywordtype}{int} *stats = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}};}
+\DoxyCodeLine{35     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{building_8h_a92670759c24398df4ead0c1dd49d53d0}{NBSTATS}}; i++)}
+\DoxyCodeLine{36         *(stats + i) += \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}}(x, y, *(value + i), a, b);}
+\DoxyCodeLine{37 \}}
 
 \end{DoxyCode}
 
 
-References \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation()}}, and \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{cell\+::stats}}.
+References \mbox{\hyperlink{building_8h_a92670759c24398df4ead0c1dd49d53d0}{NBSTATS}}, \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation()}}, and \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{cell\+::stats}}.
 
 
 
@@ -56,9 +56,9 @@ Referenced by \mbox{\hyperlink{update_8c_a86539730d7569637769e840303e61adc}{upda
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{37 \{}
-\DoxyCodeLine{38     \textcolor{keywordflow}{return} (x -\/ a)*(x -\/ a) + (y -\/ b) * (y -\/ b) < range * range;}
-\DoxyCodeLine{39 \}}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48     \textcolor{keywordflow}{return} (x -\/ a)*(x -\/ a) + (y -\/ b) * (y -\/ b) < range * range;}
+\DoxyCodeLine{49 \}}
 
 \end{DoxyCode}
 
@@ -73,20 +73,20 @@ Referenced by \mbox{\hyperlink{update_8c_a4d8d63e78f5f366a98b4f47b1027da1f}{reve
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{7 \{}
-\DoxyCodeLine{8     \textcolor{keywordtype}{int} xtemp =  x -\/ a;}
-\DoxyCodeLine{9     \textcolor{keywordtype}{int} ytemp = y -\/ b;}
-\DoxyCodeLine{10     xtemp = xtemp < 0?(-\/1)*xtemp:xtemp;}
-\DoxyCodeLine{11     ytemp = ytemp < 0?(-\/1)*ytemp:ytemp;}
-\DoxyCodeLine{12     \textcolor{keywordflow}{if}(xtemp+ytemp == 0)}
-\DoxyCodeLine{13       \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15     \textcolor{keywordtype}{float} pond = ((float)1/((\textcolor{keywordtype}{float})(0.85+(float)xtemp/4+(\textcolor{keywordtype}{float})ytemp/4)));\textcolor{comment}{//The bias we use in this function are represented pas the values 0.85 and /4}}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17     \textcolor{keywordtype}{int} \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}} = (int)(pond*(\textcolor{keywordtype}{float})val);}
-\DoxyCodeLine{18 }
-\DoxyCodeLine{19     \textcolor{keywordflow}{return} \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}};}
-\DoxyCodeLine{20 \}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} xtemp =  x -\/ a;}
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} ytemp = y -\/ b;}
+\DoxyCodeLine{20     xtemp = xtemp < 0?(-\/1)*xtemp:xtemp;}
+\DoxyCodeLine{21     ytemp = ytemp < 0?(-\/1)*ytemp:ytemp;}
+\DoxyCodeLine{22     \textcolor{keywordflow}{if}(xtemp+ytemp == 0)}
+\DoxyCodeLine{23       \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keywordtype}{float} pond = ((float)1/((\textcolor{keywordtype}{float})(0.85+(float)xtemp/4+(\textcolor{keywordtype}{float})ytemp/4)));\textcolor{comment}{//The bias we use in this function are represented pas the values 0.85 and /4}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}} = (int)(pond*(\textcolor{keywordtype}{float})val);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordflow}{return} \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}};}
+\DoxyCodeLine{30 \}}
 
 \end{DoxyCode}
 
@@ -105,16 +105,16 @@ Referenced by \mbox{\hyperlink{update_8c_a1c3229c332137c45960924ccb242bc97}{attr
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{30 \{}
-\DoxyCodeLine{31     \textcolor{keywordtype}{int} *stats = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}};}
-\DoxyCodeLine{32     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NBSTATS; i++)}
-\DoxyCodeLine{33         *(stats + i) -\/= \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}}(x, y, *(value + i), a, b);}
-\DoxyCodeLine{34 \}}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41     \textcolor{keywordtype}{int} *stats = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}};}
+\DoxyCodeLine{42     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{building_8h_a92670759c24398df4ead0c1dd49d53d0}{NBSTATS}}; i++)}
+\DoxyCodeLine{43         *(stats + i) -\/= \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}}(x, y, *(value + i), a, b);}
+\DoxyCodeLine{44 \}}
 
 \end{DoxyCode}
 
 
-References \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation()}}, and \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{cell\+::stats}}.
+References \mbox{\hyperlink{building_8h_a92670759c24398df4ead0c1dd49d53d0}{NBSTATS}}, \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation()}}, and \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{cell\+::stats}}.
 
 
 
@@ -128,33 +128,33 @@ Referenced by \mbox{\hyperlink{update_8c_a4d8d63e78f5f366a98b4f47b1027da1f}{reve
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{69 \{}
-\DoxyCodeLine{70     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *\mbox{\hyperlink{structcell}{cell}} = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (a + b * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
-\DoxyCodeLine{71 }
-\DoxyCodeLine{72     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == -\/1)}
-\DoxyCodeLine{73         errx(1, \textcolor{stringliteral}{"{}reverseUpdateAround : Error the cell is not occupied by a building"{}});}
-\DoxyCodeLine{74     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 7)}
-\DoxyCodeLine{75         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{76 }
-\DoxyCodeLine{77     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}};}
-\DoxyCodeLine{78     \textcolor{keywordtype}{int} *value = *(building\_value + \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}});}
-\DoxyCodeLine{79     \textcolor{keywordtype}{int} range = *(value + 6);}
-\DoxyCodeLine{80     \textcolor{keywordtype}{int} xsquare = a -\/ range;}
-\DoxyCodeLine{81     \textcolor{keywordtype}{int} ysquare = b -\/ range;}
-\DoxyCodeLine{82     \textcolor{keywordtype}{int} diam = range * 2;}
-\DoxyCodeLine{83 }
-\DoxyCodeLine{84     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *cellatt;}
-\DoxyCodeLine{85 }
-\DoxyCodeLine{86     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = xsquare; x < (xsquare + diam); ++x)}
-\DoxyCodeLine{87         \textcolor{keywordflow}{if} (x >= 0 \&\& x < map-\/>maxWidth)}
-\DoxyCodeLine{88             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = ysquare; y < (ysquare + diam); ++y)}
-\DoxyCodeLine{89                 \textcolor{keywordflow}{if} (y >= 0 \&\& y < map-\/>maxHeight)}
-\DoxyCodeLine{90                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{update_8c_a2614a565721cddb5f0d506560470846a}{equation}}(x, y, a, b, range))}
-\DoxyCodeLine{91                         \{}
-\DoxyCodeLine{92                             cellatt = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (x + y * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
-\DoxyCodeLine{93                             \mbox{\hyperlink{update_8c_a45c3ebe31a9e78d882d56036866a6587}{reverseAttribuate}}(x, y, cellatt, value, a, b);}
-\DoxyCodeLine{94                         \}}
-\DoxyCodeLine{95 \}}
+\DoxyCodeLine{79 \{}
+\DoxyCodeLine{80     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *\mbox{\hyperlink{structcell}{cell}} = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (a + b * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == -\/1)}
+\DoxyCodeLine{83         errx(1, \textcolor{stringliteral}{"{}reverseUpdateAround : Error the cell is not occupied by a building"{}});}
+\DoxyCodeLine{84     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 7)}
+\DoxyCodeLine{85         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}};}
+\DoxyCodeLine{88     \textcolor{keywordtype}{int} *value = *(building\_value + \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}});}
+\DoxyCodeLine{89     \textcolor{keywordtype}{int} range = *(value + 6);}
+\DoxyCodeLine{90     \textcolor{keywordtype}{int} xsquare = a -\/ range;}
+\DoxyCodeLine{91     \textcolor{keywordtype}{int} ysquare = b -\/ range;}
+\DoxyCodeLine{92     \textcolor{keywordtype}{int} diam = range * 2;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *cellatt;}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = xsquare; x < (xsquare + diam); ++x)}
+\DoxyCodeLine{97         \textcolor{keywordflow}{if} (x >= 0 \&\& x < map-\/>maxWidth)}
+\DoxyCodeLine{98             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = ysquare; y < (ysquare + diam); ++y)}
+\DoxyCodeLine{99                 \textcolor{keywordflow}{if} (y >= 0 \&\& y < map-\/>maxHeight)}
+\DoxyCodeLine{100                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{update_8c_a2614a565721cddb5f0d506560470846a}{equation}}(x, y, a, b, range))}
+\DoxyCodeLine{101                         \{}
+\DoxyCodeLine{102                             cellatt = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (x + y * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{103                             \mbox{\hyperlink{update_8c_a45c3ebe31a9e78d882d56036866a6587}{reverseAttribuate}}(x, y, cellatt, value, a, b);}
+\DoxyCodeLine{104                         \}}
+\DoxyCodeLine{105 \}}
 
 \end{DoxyCode}
 
@@ -173,31 +173,31 @@ Referenced by \mbox{\hyperlink{road_8c_aa04096c8b705bb7c9d3df6003353602d}{create
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{42 \{}
-\DoxyCodeLine{43     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *\mbox{\hyperlink{structcell}{cell}} = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (a + b * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == -\/1)}
-\DoxyCodeLine{46         errx(1, \textcolor{stringliteral}{"{}updateAround : Error the cell is not occupied by a building at \%i, \%i \(\backslash\)n "{}},a,b);}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{48     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}};}
-\DoxyCodeLine{49     \textcolor{keywordtype}{int} *value = *(building\_value + \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}});}
-\DoxyCodeLine{50     \textcolor{keywordtype}{int} range = *(value + 6);}
-\DoxyCodeLine{51     \textcolor{keywordtype}{int} xsquare = a -\/ range;}
-\DoxyCodeLine{52     \textcolor{keywordtype}{int} ysquare = b -\/ range;}
-\DoxyCodeLine{53     \textcolor{keywordtype}{int} diam = range * 2;}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *\mbox{\hyperlink{structcell}{cell}} = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (a + b * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
 \DoxyCodeLine{54 }
-\DoxyCodeLine{55     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *cellatt;}
-\DoxyCodeLine{56 }
-\DoxyCodeLine{57     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = xsquare; x < (xsquare + diam); ++x)}
-\DoxyCodeLine{58         \textcolor{keywordflow}{if} (x >= 0 \&\& x < map-\/>maxWidth)}
-\DoxyCodeLine{59             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = ysquare; y < (ysquare + diam); ++y)}
-\DoxyCodeLine{60                 \textcolor{keywordflow}{if} (y >= 0 \&\& y < map-\/>maxHeight)}
-\DoxyCodeLine{61                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{update_8c_a2614a565721cddb5f0d506560470846a}{equation}}(x, y, a, b, range))}
-\DoxyCodeLine{62                         \{}
-\DoxyCodeLine{63                             cellatt = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (x + y * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
-\DoxyCodeLine{64                             \mbox{\hyperlink{update_8c_a1c3229c332137c45960924ccb242bc97}{attribuate}}(x, y, cellatt, value, a, b);}
-\DoxyCodeLine{65                         \}}
-\DoxyCodeLine{66 \}}
+\DoxyCodeLine{55     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == -\/1)}
+\DoxyCodeLine{56         errx(1, \textcolor{stringliteral}{"{}updateAround : Error the cell is not occupied by a building at \%i, \%i \(\backslash\)n "{}},a,b);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}};}
+\DoxyCodeLine{59     \textcolor{keywordtype}{int} *value = *(building\_value + \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}});}
+\DoxyCodeLine{60     \textcolor{keywordtype}{int} range = *(value + 6);}
+\DoxyCodeLine{61     \textcolor{keywordtype}{int} xsquare = a -\/ range;}
+\DoxyCodeLine{62     \textcolor{keywordtype}{int} ysquare = b -\/ range;}
+\DoxyCodeLine{63     \textcolor{keywordtype}{int} diam = range * 2;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *cellatt;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = xsquare; x < (xsquare + diam); ++x)}
+\DoxyCodeLine{68         \textcolor{keywordflow}{if} (x >= 0 \&\& x < map-\/>maxWidth)}
+\DoxyCodeLine{69             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = ysquare; y < (ysquare + diam); ++y)}
+\DoxyCodeLine{70                 \textcolor{keywordflow}{if} (y >= 0 \&\& y < map-\/>maxHeight)}
+\DoxyCodeLine{71                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{update_8c_a2614a565721cddb5f0d506560470846a}{equation}}(x, y, a, b, range))}
+\DoxyCodeLine{72                         \{}
+\DoxyCodeLine{73                             cellatt = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (x + y * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{74                             \mbox{\hyperlink{update_8c_a1c3229c332137c45960924ccb242bc97}{attribuate}}(x, y, cellatt, value, a, b);}
+\DoxyCodeLine{75                         \}}
+\DoxyCodeLine{76 \}}
 
 \end{DoxyCode}
 

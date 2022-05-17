@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -107,7 +107,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="metro_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >This file contains our metro algorithm. </p><dl class="section author"><dt>Author</dt><dd>Remy Decourcelle <a href="#" onclick="location.href='mai'+'lto:'+'rem'+'y.'+'dec'+'ou'+'tce'+'ll'+'e@e'+'pi'+'ta.'+'fr'; return false;">remy.<span class="obfuscator">.nosp@m.</span>deco<span class="obfuscator">.nosp@m.</span>utcel<span class="obfuscator">.nosp@m.</span>le@e<span class="obfuscator">.nosp@m.</span>pita.<span class="obfuscator">.nosp@m.</span>fr</a>, Loïck Balloy <a href="#" onclick="location.href='mai'+'lto:'+'loi'+'ck'+'.ba'+'ll'+'oy@'+'ep'+'ita'+'.f'+'r'; return false;">loick<span class="obfuscator">.nosp@m.</span>.bal<span class="obfuscator">.nosp@m.</span>loy@e<span class="obfuscator">.nosp@m.</span>pita<span class="obfuscator">.nosp@m.</span>.fr</a>, Axel Cochepin <a href="#" onclick="location.href='mai'+'lto:'+'axe'+'l.'+'coc'+'he'+'pin'+'@e'+'pit'+'a.'+'fr'; return false;">axel.<span class="obfuscator">.nosp@m.</span>coch<span class="obfuscator">.nosp@m.</span>epin@<span class="obfuscator">.nosp@m.</span>epit<span class="obfuscator">.nosp@m.</span>a.fr</a>, Guillaume Charvolin <a href="#" onclick="location.href='mai'+'lto:'+'gui'+'ll'+'aum'+'e.'+'cha'+'rv'+'oli'+'n@'+'epi'+'ta'+'.fr'; return false;">guill<span class="obfuscator">.nosp@m.</span>aume<span class="obfuscator">.nosp@m.</span>.char<span class="obfuscator">.nosp@m.</span>voli<span class="obfuscator">.nosp@m.</span>n@epi<span class="obfuscator">.nosp@m.</span>ta.f<span class="obfuscator">.nosp@m.</span>r</a> </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2022 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -123,25 +127,25 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">    6</span>{</div>
-<div class="line"><span class="lineno">    7</span>    <a class="code hl_struct" href="struct_graph_element.html">Graph</a> g1 = <a class="code hl_function" href="graph_8c.html#a27296dfdc775fc2a44cfdbbff2b89525">new_graph</a>(5, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">    8</span> </div>
-<div class="line"><span class="lineno">    9</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 1, 2);</div>
-<div class="line"><span class="lineno">   10</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 1, 5);</div>
-<div class="line"><span class="lineno">   11</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 2, 4);</div>
-<div class="line"><span class="lineno">   12</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 2, 3);</div>
-<div class="line"><span class="lineno">   13</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 3, 4);</div>
-<div class="line"><span class="lineno">   14</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 4, 5);</div>
-<div class="line"><span class="lineno">   15</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 1, 4);</div>
-<div class="line"><span class="lineno">   16</span> </div>
-<div class="line"><span class="lineno">   17</span>    <a class="code hl_function" href="graph_8c.html#a8d4ba8d086d768548b6039ba17d6e5ca">print_graph</a>(g1);</div>
-<div class="line"><span class="lineno">   18</span>    <a class="code hl_function" href="graph_8c.html#aa29eba70c29c94924cbacc4baaeddb76">display_graph</a>(g1);</div>
-<div class="line"><span class="lineno">   19</span>    <a class="code hl_function" href="graph_8c.html#a07c2103b1f15749f3b36b628e42040eb">erase_graph</a>(g1);</div>
-<div class="line"><span class="lineno">   20</span>    system(<span class="stringliteral">&quot;dot -Tpng graph.out -o graph.png&quot;</span>);</div>
-<div class="line"><span class="lineno">   21</span> </div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   24</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
+<div class="line"><span class="lineno">   17</span>    <a class="code hl_struct" href="struct_graph_element.html">Graph</a> g1 = <a class="code hl_function" href="graph_8c.html#a27296dfdc775fc2a44cfdbbff2b89525">new_graph</a>(5, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   18</span> </div>
+<div class="line"><span class="lineno">   19</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 1, 2);</div>
+<div class="line"><span class="lineno">   20</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 1, 5);</div>
+<div class="line"><span class="lineno">   21</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 2, 4);</div>
+<div class="line"><span class="lineno">   22</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 2, 3);</div>
+<div class="line"><span class="lineno">   23</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 3, 4);</div>
+<div class="line"><span class="lineno">   24</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 4, 5);</div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_function" href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a>(g1, 1, 4);</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_function" href="graph_8c.html#a8d4ba8d086d768548b6039ba17d6e5ca">print_graph</a>(g1);</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_function" href="graph_8c.html#aa29eba70c29c94924cbacc4baaeddb76">display_graph</a>(g1);</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_function" href="graph_8c.html#a07c2103b1f15749f3b36b628e42040eb">erase_graph</a>(g1);</div>
+<div class="line"><span class="lineno">   30</span>    system(<span class="stringliteral">&quot;dot -Tpng graph.out -o graph.png&quot;</span>);</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   34</span>}</div>
 <div class="ttc" id="agraph_8c_html_a07c2103b1f15749f3b36b628e42040eb"><div class="ttname"><a href="graph_8c.html#a07c2103b1f15749f3b36b628e42040eb">erase_graph</a></div><div class="ttdeci">void erase_graph(Graph g)</div><div class="ttdef"><b>Definition:</b> graph.c:174</div></div>
 <div class="ttc" id="agraph_8c_html_a27296dfdc775fc2a44cfdbbff2b89525"><div class="ttname"><a href="graph_8c.html#a27296dfdc775fc2a44cfdbbff2b89525">new_graph</a></div><div class="ttdeci">Graph new_graph(int vertices, Bool is_oriented)</div><div class="ttdef"><b>Definition:</b> graph.c:11</div></div>
 <div class="ttc" id="agraph_8c_html_a8d1cb3708a212c720509c3ed2d2fa10a"><div class="ttname"><a href="graph_8c.html#a8d1cb3708a212c720509c3ed2d2fa10a">add_edge</a></div><div class="ttdeci">void add_edge(Graph g, int src, int dest)</div><div class="ttdef"><b>Definition:</b> graph.c:103</div></div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['edge_0',['EDGE',['../struct_e_d_g_e.html',1,'']]]
+  ['cell_0',['cell',['../structcell.html',1,'']]],
+  ['citizen_1',['citizen',['../structcitizen.html',1,'']]]
 ];

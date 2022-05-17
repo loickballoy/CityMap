@@ -115,7 +115,7 @@ struct map *testAssign(int compt, int roof)
 
 	printf("number of hospitals = %i\n", numHos);
 
-	printf("number of bavures = %i\n", numCom);
+	printf("number of police stations = %i\n", numCom);
 
 	printMatrix(newmap);
 	analyseMatrix(newmap);

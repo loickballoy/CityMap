@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['economy_0',['economy',['../structs___window.html#af18d36a2b75acc06a17e90ad9419a092',1,'s_Window::economy()'],['../input__gtk_8c.html#a7850068b75080410dc22f0d6765fcb49',1,'economy():&#160;input_gtk.c']]],
-  ['entry_1',['entry',['../structs___window.html#ab7270500cf01e71758002352849570ea',1,'s_Window']]]
+  ['dst_0',['dst',['../struct_e_d_g_e.html#a9b46bf8c05f04d9acda28a6f62fc1872',1,'EDGE']]],
+  ['dst_5fx_1',['dst_x',['../struct_e_d_g_e.html#a94c51ed846e6bfe46b91e7ef49f7a667',1,'EDGE']]],
+  ['dst_5fy_2',['dst_y',['../struct_e_d_g_e.html#a8442292edebb4370a0483b818eaf7b28',1,'EDGE']]]
 ];

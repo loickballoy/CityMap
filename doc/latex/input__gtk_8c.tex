@@ -59,6 +59,18 @@ const char $\ast$ \mbox{\hyperlink{input__gtk_8c_a3be0c0d80b5713cc63b7896c21ddae
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+This is the most important file that combines all our work into a simple GUI \begin{DoxyAuthor}{Author}
+Remy Decourcelle \href{mailto:remy.decoutcelle@epita.fr}{\texttt{ remy.\+decoutcelle@epita.\+fr}}, Loïck Balloy \href{mailto:loick.balloy@epita.fr}{\texttt{ loick.\+balloy@epita.\+fr}}, Axel Cochepin \href{mailto:axel.cochepin@epita.fr}{\texttt{ axel.\+cochepin@epita.\+fr}}, Guillaume Charvolin \href{mailto:guillaume.charvolin@epita.fr}{\texttt{ guillaume.\+charvolin@epita.\+fr}} 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022 
+\end{DoxyDate}
+
+
 \doxysubsection{Typedef Documentation}
 \mbox{\Hypertarget{input__gtk_8c_a8010a270ebaa82dacef9d4c6dd8d74ef}\label{input__gtk_8c_a8010a270ebaa82dacef9d4c6dd8d74ef}} 
 \index{input\_gtk.c@{input\_gtk.c}!t\_Window@{t\_Window}}
@@ -77,10 +89,10 @@ const char $\ast$ \mbox{\hyperlink{input__gtk_8c_a3be0c0d80b5713cc63b7896c21ddae
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{227 \{}
-\DoxyCodeLine{228   \mbox{\hyperlink{input__gtk_8c_a63f7adfb75cee55c1ed375abf2b8d304}{RunGTK}}(argc, argv);}
-\DoxyCodeLine{229   \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{230   \}}
+\DoxyCodeLine{237 \{}
+\DoxyCodeLine{238   \mbox{\hyperlink{input__gtk_8c_a63f7adfb75cee55c1ed375abf2b8d304}{RunGTK}}(argc, argv);}
+\DoxyCodeLine{239   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{240   \}}
 
 \end{DoxyCode}
 
@@ -95,31 +107,31 @@ References \mbox{\hyperlink{input__gtk_8c_a63f7adfb75cee55c1ed375abf2b8d304}{Run
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{47 \{}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49   \textcolor{keywordtype}{char} **matrice =  malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *)* DIM);}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} k = 0; k < DIM; k++)}
-\DoxyCodeLine{52   \{}
-\DoxyCodeLine{53     matrice[k] = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *) * DIM);}
-\DoxyCodeLine{54   \}}
-\DoxyCodeLine{55 }
-\DoxyCodeLine{56   \textcolor{keywordtype}{int} souslist = -\/1;}
-\DoxyCodeLine{57   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < DIM*DIM; i++)}
-\DoxyCodeLine{58   \{}
-\DoxyCodeLine{59     \textcolor{keywordflow}{if}(i \% DIM == 0)}
-\DoxyCodeLine{60     \{}
-\DoxyCodeLine{61       souslist++;}
-\DoxyCodeLine{62       printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
-\DoxyCodeLine{63     \}}
-\DoxyCodeLine{64     \textcolor{keywordflow}{if}(((\mbox{\hyperlink{structmap}{map}}+i)-\/>type) != -\/1)}
-\DoxyCodeLine{65       matrice[souslist][i\%DIM] = ((\mbox{\hyperlink{structmap}{map}}+i)-\/>type)+\textcolor{charliteral}{'0'};}
-\DoxyCodeLine{66     \textcolor{keywordflow}{if}(((\mbox{\hyperlink{structmap}{map}}+i)-\/>type) == -\/1)}
-\DoxyCodeLine{67       matrice[souslist][i\%DIM] = 7;}
-\DoxyCodeLine{68     }
-\DoxyCodeLine{69   \}}
-\DoxyCodeLine{70   \textcolor{keywordflow}{return} matrice;}
-\DoxyCodeLine{71 \}}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59   \textcolor{keywordtype}{char} **matrice =  malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *)* DIM);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} k = 0; k < DIM; k++)}
+\DoxyCodeLine{62   \{}
+\DoxyCodeLine{63     matrice[k] = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *) * DIM);}
+\DoxyCodeLine{64   \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66   \textcolor{keywordtype}{int} souslist = -\/1;}
+\DoxyCodeLine{67   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < DIM*DIM; i++)}
+\DoxyCodeLine{68   \{}
+\DoxyCodeLine{69     \textcolor{keywordflow}{if}(i \% DIM == 0)}
+\DoxyCodeLine{70     \{}
+\DoxyCodeLine{71       souslist++;}
+\DoxyCodeLine{72       }
+\DoxyCodeLine{73     \}}
+\DoxyCodeLine{74     \textcolor{keywordflow}{if}(((\mbox{\hyperlink{structmap}{map}}+i)-\/>type) != -\/1)}
+\DoxyCodeLine{75       matrice[souslist][i\%DIM] = ((\mbox{\hyperlink{structmap}{map}}+i)-\/>type)+\textcolor{charliteral}{'0'};}
+\DoxyCodeLine{76     \textcolor{keywordflow}{if}(((\mbox{\hyperlink{structmap}{map}}+i)-\/>type) == -\/1)}
+\DoxyCodeLine{77       matrice[souslist][i\%DIM] = 7;}
+\DoxyCodeLine{78     }
+\DoxyCodeLine{79   \}}
+\DoxyCodeLine{80   \textcolor{keywordflow}{return} matrice;}
+\DoxyCodeLine{81 \}}
 
 \end{DoxyCode}
 
@@ -134,76 +146,76 @@ Referenced by \mbox{\hyperlink{input__gtk_8c_aa119a021d6e9b4f19136302b391de6fc}{
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{75 \{}
-\DoxyCodeLine{76     \mbox{\hyperlink{structs___window}{t\_Window}} *my\_w = (\mbox{\hyperlink{structs___window}{t\_Window}}*) data;}
-\DoxyCodeLine{77 }
-\DoxyCodeLine{78     \textcolor{comment}{// Get the text given in GtkEntry}}
-\DoxyCodeLine{79     }
-\DoxyCodeLine{80     \mbox{\hyperlink{input__gtk_8c_ae4e15e0d64308cf20ea81ba7ba615287}{nb\_habitant}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}}));}
-\DoxyCodeLine{81 }
-\DoxyCodeLine{82     \mbox{\hyperlink{input__gtk_8c_a96857bb9e55fe8e300270240d6111f3f}{policy}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{policy}}));}
-\DoxyCodeLine{83     \mbox{\hyperlink{input__gtk_8c_aae291b2d1d2eea86bef3b628966158bb}{job}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{job}}));}
-\DoxyCodeLine{84     \mbox{\hyperlink{input__gtk_8c_ae0b74c63c1e09ce75721f394fd85485b}{habitation}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{habitation}}));}
-\DoxyCodeLine{85     \mbox{\hyperlink{input__gtk_8c_a7850068b75080410dc22f0d6765fcb49}{economy}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{economy}}));}
-\DoxyCodeLine{86     \mbox{\hyperlink{input__gtk_8c_ae2b620cee0fd1e2455ac8b054246dad0}{health}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{health}}));}
-\DoxyCodeLine{87     \mbox{\hyperlink{input__gtk_8c_a3be0c0d80b5713cc63b7896c21ddaeb6}{security}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{security}}));}
-\DoxyCodeLine{88 }
-\DoxyCodeLine{89     \textcolor{keywordtype}{int} pol\_int = atoi(\mbox{\hyperlink{input__gtk_8c_a96857bb9e55fe8e300270240d6111f3f}{policy}});}
-\DoxyCodeLine{90     \textcolor{keywordtype}{int} job\_int = atoi(\mbox{\hyperlink{input__gtk_8c_aae291b2d1d2eea86bef3b628966158bb}{job}});}
-\DoxyCodeLine{91     \textcolor{keywordtype}{int} habb\_int = atoi(\mbox{\hyperlink{input__gtk_8c_ae0b74c63c1e09ce75721f394fd85485b}{habitation}});}
-\DoxyCodeLine{92     \textcolor{keywordtype}{int} eco\_int = atoi(\mbox{\hyperlink{input__gtk_8c_a7850068b75080410dc22f0d6765fcb49}{economy}});}
-\DoxyCodeLine{93     \textcolor{keywordtype}{int} hea\_int = atoi(\mbox{\hyperlink{input__gtk_8c_ae2b620cee0fd1e2455ac8b054246dad0}{health}});}
-\DoxyCodeLine{94     \textcolor{keywordtype}{int} sec\_int = atoi(\mbox{\hyperlink{input__gtk_8c_a3be0c0d80b5713cc63b7896c21ddaeb6}{security}});}
-\DoxyCodeLine{95 }
-\DoxyCodeLine{96     \textcolor{keywordtype}{int} *biais = calloc(6, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
-\DoxyCodeLine{97 }
-\DoxyCodeLine{98     biais[0] = pol\_int;}
-\DoxyCodeLine{99     biais[1] = job\_int;}
-\DoxyCodeLine{100     biais[2] = habb\_int;}
-\DoxyCodeLine{101     biais[3] = eco\_int;}
-\DoxyCodeLine{102     biais[4] = hea\_int;}
-\DoxyCodeLine{103     biais[5] = sec\_int;}
-\DoxyCodeLine{104 }
-\DoxyCodeLine{105     }
-\DoxyCodeLine{106     \mbox{\hyperlink{write_8c_a525dbf0268c0802057e7f53de3580d3e}{write\_bias}}(biais);}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86     \mbox{\hyperlink{structs___window}{t\_Window}} *my\_w = (\mbox{\hyperlink{structs___window}{t\_Window}}*) data;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88     \textcolor{comment}{// Get the text given in GtkEntry}}
+\DoxyCodeLine{89     }
+\DoxyCodeLine{90     \mbox{\hyperlink{input__gtk_8c_ae4e15e0d64308cf20ea81ba7ba615287}{nb\_habitant}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}}));}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \mbox{\hyperlink{input__gtk_8c_a96857bb9e55fe8e300270240d6111f3f}{policy}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{policy}}));}
+\DoxyCodeLine{93     \mbox{\hyperlink{input__gtk_8c_aae291b2d1d2eea86bef3b628966158bb}{job}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{job}}));}
+\DoxyCodeLine{94     \mbox{\hyperlink{input__gtk_8c_ae0b74c63c1e09ce75721f394fd85485b}{habitation}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{habitation}}));}
+\DoxyCodeLine{95     \mbox{\hyperlink{input__gtk_8c_a7850068b75080410dc22f0d6765fcb49}{economy}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{economy}}));}
+\DoxyCodeLine{96     \mbox{\hyperlink{input__gtk_8c_ae2b620cee0fd1e2455ac8b054246dad0}{health}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{health}}));}
+\DoxyCodeLine{97     \mbox{\hyperlink{input__gtk_8c_a3be0c0d80b5713cc63b7896c21ddaeb6}{security}} = gtk\_entry\_get\_text(GTK\_ENTRY(my\_w-\/>\mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{security}}));}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     \textcolor{keywordtype}{int} pol\_int = atoi(\mbox{\hyperlink{input__gtk_8c_a96857bb9e55fe8e300270240d6111f3f}{policy}});}
+\DoxyCodeLine{100     \textcolor{keywordtype}{int} job\_int = atoi(\mbox{\hyperlink{input__gtk_8c_aae291b2d1d2eea86bef3b628966158bb}{job}});}
+\DoxyCodeLine{101     \textcolor{keywordtype}{int} habb\_int = atoi(\mbox{\hyperlink{input__gtk_8c_ae0b74c63c1e09ce75721f394fd85485b}{habitation}});}
+\DoxyCodeLine{102     \textcolor{keywordtype}{int} eco\_int = atoi(\mbox{\hyperlink{input__gtk_8c_a7850068b75080410dc22f0d6765fcb49}{economy}});}
+\DoxyCodeLine{103     \textcolor{keywordtype}{int} hea\_int = atoi(\mbox{\hyperlink{input__gtk_8c_ae2b620cee0fd1e2455ac8b054246dad0}{health}});}
+\DoxyCodeLine{104     \textcolor{keywordtype}{int} sec\_int = atoi(\mbox{\hyperlink{input__gtk_8c_a3be0c0d80b5713cc63b7896c21ddaeb6}{security}});}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106     \textcolor{keywordtype}{int} *biais = calloc(6, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
 \DoxyCodeLine{107 }
-\DoxyCodeLine{108     \textcolor{keywordtype}{int} hab\_int = atoi(\mbox{\hyperlink{input__gtk_8c_ae4e15e0d64308cf20ea81ba7ba615287}{nb\_habitant}});}
-\DoxyCodeLine{109     \textcolor{keyword}{struct }\mbox{\hyperlink{structmap}{map}}* \mbox{\hyperlink{structmap}{map}} = \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{testAssign}}(hab\_int, 50);}
-\DoxyCodeLine{110     \textcolor{keywordtype}{int} DIM = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}};}
-\DoxyCodeLine{111     \textcolor{keywordtype}{char} **matrice = \mbox{\hyperlink{input__gtk_8c_a890884d8355d81cf8b62d40a40f337f1}{MakeMatrice}}(\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}, DIM);}
-\DoxyCodeLine{112 }
-\DoxyCodeLine{113     build\_city(matrice, DIM);}
+\DoxyCodeLine{108     biais[0] = pol\_int;}
+\DoxyCodeLine{109     biais[1] = job\_int;}
+\DoxyCodeLine{110     biais[2] = habb\_int;}
+\DoxyCodeLine{111     biais[3] = eco\_int;}
+\DoxyCodeLine{112     biais[4] = hea\_int;}
+\DoxyCodeLine{113     biais[5] = sec\_int;}
 \DoxyCodeLine{114 }
-\DoxyCodeLine{115     gtk\_widget\_destroy(my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}});}
-\DoxyCodeLine{116 }
-\DoxyCodeLine{117     GdkPixbuf *p\_map;}
-\DoxyCodeLine{118     p\_map = gdk\_pixbuf\_new\_from\_file\_at\_size(\textcolor{stringliteral}{"{}CityMap.png"{}},800,800,NULL);}
-\DoxyCodeLine{119     my\_w-\/>\mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{map}} = gtk\_image\_new\_from\_pixbuf (p\_map);}
-\DoxyCodeLine{120 }
-\DoxyCodeLine{121     GdkPixbuf *p\_metro;}
-\DoxyCodeLine{122     p\_metro = gdk\_pixbuf\_new\_from\_file\_at\_size(\textcolor{stringliteral}{"{}Metro.png"{}},800,800,NULL);}
-\DoxyCodeLine{123     my\_w-\/>\mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{metro}} = gtk\_image\_new\_from\_pixbuf (p\_metro);}
+\DoxyCodeLine{115     }
+\DoxyCodeLine{116     \mbox{\hyperlink{write_8c_a525dbf0268c0802057e7f53de3580d3e}{write\_bias}}(biais);}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{keywordtype}{int} hab\_int = atoi(\mbox{\hyperlink{input__gtk_8c_ae4e15e0d64308cf20ea81ba7ba615287}{nb\_habitant}});}
+\DoxyCodeLine{119     \textcolor{keyword}{struct }\mbox{\hyperlink{structmap}{map}}* \mbox{\hyperlink{structmap}{map}} = \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{testAssign}}(hab\_int, 50);}
+\DoxyCodeLine{120     \textcolor{keywordtype}{int} DIM = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}};}
+\DoxyCodeLine{121     \textcolor{keywordtype}{char} **matrice = \mbox{\hyperlink{input__gtk_8c_a890884d8355d81cf8b62d40a40f337f1}{MakeMatrice}}(\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}, DIM);}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     \mbox{\hyperlink{build__city_8c_ae718034bb5f26172f71977253c8c6119}{build\_city}}(matrice, DIM);}
 \DoxyCodeLine{124 }
-\DoxyCodeLine{125     my\_w-\/>\mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{legend}} = gtk\_image\_new\_from\_file(\textcolor{stringliteral}{"{}legend.png"{}});}
+\DoxyCodeLine{125     gtk\_widget\_destroy(my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}});}
 \DoxyCodeLine{126 }
-\DoxyCodeLine{127     my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}} = gtk\_grid\_new();}
-\DoxyCodeLine{128 }
-\DoxyCodeLine{129     gtk\_grid\_attach(my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_w-\/>\mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{map}},0,0,1,1);}
-\DoxyCodeLine{130     gtk\_grid\_attach(my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_w-\/>\mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{metro}},1,0,1,1);}
-\DoxyCodeLine{131     gtk\_grid\_attach(my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_w-\/>\mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{legend}},2,0,1,1);}
-\DoxyCodeLine{132 }
-\DoxyCodeLine{133     gtk\_box\_pack\_start (GTK\_BOX(my\_w-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, TRUE, TRUE, 0);}
+\DoxyCodeLine{127     GdkPixbuf *p\_map;}
+\DoxyCodeLine{128     p\_map = gdk\_pixbuf\_new\_from\_file\_at\_size(\textcolor{stringliteral}{"{}CityMap.png"{}},800,800,NULL);}
+\DoxyCodeLine{129     my\_w-\/>\mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{map}} = gtk\_image\_new\_from\_pixbuf (p\_map);}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     GdkPixbuf *p\_metro;}
+\DoxyCodeLine{132     p\_metro = gdk\_pixbuf\_new\_from\_file\_at\_size(\textcolor{stringliteral}{"{}Metro.png"{}},800,800,NULL);}
+\DoxyCodeLine{133     my\_w-\/>\mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{metro}} = gtk\_image\_new\_from\_pixbuf (p\_metro);}
 \DoxyCodeLine{134 }
-\DoxyCodeLine{135 }
-\DoxyCodeLine{136     gtk\_widget\_show\_all(my\_w-\/>\mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{widget}});}
-\DoxyCodeLine{137 }
-\DoxyCodeLine{138     \textcolor{keywordflow}{return} FALSE;}
-\DoxyCodeLine{139 \}}
+\DoxyCodeLine{135     my\_w-\/>\mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{legend}} = gtk\_image\_new\_from\_file(\textcolor{stringliteral}{"{}legend.png"{}});}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}} = gtk\_grid\_new();}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139     gtk\_grid\_attach(my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_w-\/>\mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{map}},0,0,1,1);}
+\DoxyCodeLine{140     gtk\_grid\_attach(my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_w-\/>\mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{metro}},1,0,1,1);}
+\DoxyCodeLine{141     gtk\_grid\_attach(my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_w-\/>\mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{legend}},2,0,1,1);}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143     gtk\_box\_pack\_start (GTK\_BOX(my\_w-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_w-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, TRUE, TRUE, 0);}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146     gtk\_widget\_show\_all(my\_w-\/>\mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{widget}});}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148     \textcolor{keywordflow}{return} FALSE;}
+\DoxyCodeLine{149 \}}
 
 \end{DoxyCode}
 
 
-References \mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{s\+\_\+\+Window\+::box}}, \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{s\+\_\+\+Window\+::economy}}, \mbox{\hyperlink{input__gtk_8c_a7850068b75080410dc22f0d6765fcb49}{economy}}, \mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{s\+\_\+\+Window\+::entry}}, \mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{s\+\_\+\+Window\+::habitation}}, \mbox{\hyperlink{input__gtk_8c_ae0b74c63c1e09ce75721f394fd85485b}{habitation}}, \mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{s\+\_\+\+Window\+::health}}, \mbox{\hyperlink{input__gtk_8c_ae2b620cee0fd1e2455ac8b054246dad0}{health}}, \mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{s\+\_\+\+Window\+::images}}, \mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{s\+\_\+\+Window\+::job}}, \mbox{\hyperlink{input__gtk_8c_aae291b2d1d2eea86bef3b628966158bb}{job}}, \mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{s\+\_\+\+Window\+::legend}}, \mbox{\hyperlink{input__gtk_8c_a890884d8355d81cf8b62d40a40f337f1}{Make\+Matrice()}}, \mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{s\+\_\+\+Window\+::map}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, \mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{s\+\_\+\+Window\+::metro}}, \mbox{\hyperlink{input__gtk_8c_ae4e15e0d64308cf20ea81ba7ba615287}{nb\+\_\+habitant}}, \mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{s\+\_\+\+Window\+::policy}}, \mbox{\hyperlink{input__gtk_8c_a96857bb9e55fe8e300270240d6111f3f}{policy}}, \mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{s\+\_\+\+Window\+::security}}, \mbox{\hyperlink{input__gtk_8c_a3be0c0d80b5713cc63b7896c21ddaeb6}{security}}, \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}, \mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{s\+\_\+\+Window\+::widget}}, and \mbox{\hyperlink{write_8c_a525dbf0268c0802057e7f53de3580d3e}{write\+\_\+bias()}}.
+References \mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{s\+\_\+\+Window\+::box}}, \mbox{\hyperlink{build__city_8c_ae718034bb5f26172f71977253c8c6119}{build\+\_\+city()}}, \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{s\+\_\+\+Window\+::economy}}, \mbox{\hyperlink{input__gtk_8c_a7850068b75080410dc22f0d6765fcb49}{economy}}, \mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{s\+\_\+\+Window\+::entry}}, \mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{s\+\_\+\+Window\+::habitation}}, \mbox{\hyperlink{input__gtk_8c_ae0b74c63c1e09ce75721f394fd85485b}{habitation}}, \mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{s\+\_\+\+Window\+::health}}, \mbox{\hyperlink{input__gtk_8c_ae2b620cee0fd1e2455ac8b054246dad0}{health}}, \mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{s\+\_\+\+Window\+::images}}, \mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{s\+\_\+\+Window\+::job}}, \mbox{\hyperlink{input__gtk_8c_aae291b2d1d2eea86bef3b628966158bb}{job}}, \mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{s\+\_\+\+Window\+::legend}}, \mbox{\hyperlink{input__gtk_8c_a890884d8355d81cf8b62d40a40f337f1}{Make\+Matrice()}}, \mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{s\+\_\+\+Window\+::map}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, \mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{s\+\_\+\+Window\+::metro}}, \mbox{\hyperlink{input__gtk_8c_ae4e15e0d64308cf20ea81ba7ba615287}{nb\+\_\+habitant}}, \mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{s\+\_\+\+Window\+::policy}}, \mbox{\hyperlink{input__gtk_8c_a96857bb9e55fe8e300270240d6111f3f}{policy}}, \mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{s\+\_\+\+Window\+::security}}, \mbox{\hyperlink{input__gtk_8c_a3be0c0d80b5713cc63b7896c21ddaeb6}{security}}, \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}, \mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{s\+\_\+\+Window\+::widget}}, and \mbox{\hyperlink{write_8c_a525dbf0268c0802057e7f53de3580d3e}{write\+\_\+bias()}}.
 
 
 
@@ -217,86 +229,86 @@ Referenced by \mbox{\hyperlink{input__gtk_8c_a63f7adfb75cee55c1ed375abf2b8d304}{
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{142                                   \{}
-\DoxyCodeLine{143   \mbox{\hyperlink{structs___window}{t\_Window}} *my\_window = (\mbox{\hyperlink{structs___window}{t\_Window}}*) malloc (\textcolor{keyword}{sizeof} (\mbox{\hyperlink{structs___window}{t\_Window}}));}
-\DoxyCodeLine{144   \textcolor{keywordflow}{if} (my\_window == NULL)}
-\DoxyCodeLine{145     exit(EXIT\_FAILURE);}
-\DoxyCodeLine{146 }
-\DoxyCodeLine{147   \textcolor{comment}{// GTK initialisation}}
-\DoxyCodeLine{148   gtk\_init( \&argc, \&argv );}
-\DoxyCodeLine{149 }
-\DoxyCodeLine{150   \textcolor{comment}{// Widget initialisation}}
-\DoxyCodeLine{151   my\_window-\/>\mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{widget}} = gtk\_window\_new(GTK\_WINDOW\_TOPLEVEL);}
-\DoxyCodeLine{152   my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}} = gtk\_box\_new( TRUE, 0 );}
-\DoxyCodeLine{153   my\_window-\/>\mbox{\hyperlink{structs___window_af3799e7bafd1818efbfb4c923944b99e}{button}} = gtk\_button\_new\_with\_label(\textcolor{stringliteral}{"{}Lancer CityMap"{}});}
-\DoxyCodeLine{154   my\_window-\/>\mbox{\hyperlink{structs___window_aeec200ceaf37c20b2dc944dd5071da88}{label}} = gtk\_label\_new(\textcolor{stringliteral}{"{}Bienvenue sur CityMap"{}});}
-\DoxyCodeLine{155   my\_window-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}} = gtk\_entry\_new();}
+\DoxyCodeLine{152                                   \{}
+\DoxyCodeLine{153   \mbox{\hyperlink{structs___window}{t\_Window}} *my\_window = (\mbox{\hyperlink{structs___window}{t\_Window}}*) malloc (\textcolor{keyword}{sizeof} (\mbox{\hyperlink{structs___window}{t\_Window}}));}
+\DoxyCodeLine{154   \textcolor{keywordflow}{if} (my\_window == NULL)}
+\DoxyCodeLine{155     exit(EXIT\_FAILURE);}
 \DoxyCodeLine{156 }
-\DoxyCodeLine{157   my\_window-\/>\mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{policy}} = gtk\_entry\_new();}
-\DoxyCodeLine{158   my\_window-\/>\mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{job}} = gtk\_entry\_new();}
-\DoxyCodeLine{159   my\_window-\/>\mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{habitation}} = gtk\_entry\_new();}
-\DoxyCodeLine{160   my\_window-\/>\mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{economy}} = gtk\_entry\_new();}
-\DoxyCodeLine{161   my\_window-\/>\mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{health}} = gtk\_entry\_new();}
-\DoxyCodeLine{162   my\_window-\/>\mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{security}} = gtk\_entry\_new();}
-\DoxyCodeLine{163   }
-\DoxyCodeLine{164 }
-\DoxyCodeLine{165   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}}, \textcolor{stringliteral}{"{}Habitants"{}});}
-\DoxyCodeLine{166   }
-\DoxyCodeLine{167   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{policy}}, \textcolor{stringliteral}{"{}[Politique]"{}});}
-\DoxyCodeLine{168   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{job}}, \textcolor{stringliteral}{"{}[Travail]"{}});}
-\DoxyCodeLine{169   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{habitation}}, \textcolor{stringliteral}{"{}[Logement]"{}});}
-\DoxyCodeLine{170   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{economy}}, \textcolor{stringliteral}{"{}[Commerce]"{}});}
-\DoxyCodeLine{171   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{health}}, \textcolor{stringliteral}{"{}[Santé]"{}});}
-\DoxyCodeLine{172   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{security}}, \textcolor{stringliteral}{"{}[Sécurité]"{}});}
-\DoxyCodeLine{173 }
-\DoxyCodeLine{174   my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}} = gtk\_grid\_new();}
-\DoxyCodeLine{175 }
-\DoxyCodeLine{176   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_af3799e7bafd1818efbfb4c923944b99e}{button}},7,0,2,1);}
-\DoxyCodeLine{177 }
-\DoxyCodeLine{178   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}},0,0,1,1);}
-\DoxyCodeLine{179 }
-\DoxyCodeLine{180   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{policy}},1,0,1,1);}
-\DoxyCodeLine{181   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{job}},2,0,1,1);}
-\DoxyCodeLine{182   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{habitation}},3,0,1,1);}
-\DoxyCodeLine{183   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{economy}},4,0,1,1);}
-\DoxyCodeLine{184   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{health}},5,0,1,1);}
-\DoxyCodeLine{185   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{security}},6,0,1,1);}
-\DoxyCodeLine{186   }
-\DoxyCodeLine{187   }
-\DoxyCodeLine{188 }
-\DoxyCodeLine{189   my\_window-\/>\mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{map}} = gtk\_image\_new\_from\_file(\textcolor{stringliteral}{"{}map.png"{}});}
-\DoxyCodeLine{190   my\_window-\/>\mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{metro}} = gtk\_image\_new\_from\_file(\textcolor{stringliteral}{"{}metro.png"{}});}
-\DoxyCodeLine{191   my\_window-\/>\mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{legend}} = gtk\_image\_new\_from\_file(\textcolor{stringliteral}{"{}legend.png"{}});}
-\DoxyCodeLine{192 }
-\DoxyCodeLine{193   my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}} = gtk\_grid\_new();}
-\DoxyCodeLine{194 }
-\DoxyCodeLine{195   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_window-\/>\mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{map}},0,0,1,1);}
-\DoxyCodeLine{196   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_window-\/>\mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{metro}},1,0,1,1);}
-\DoxyCodeLine{197   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_window-\/>\mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{legend}},2,0,1,1);}
+\DoxyCodeLine{157   \textcolor{comment}{// GTK initialisation}}
+\DoxyCodeLine{158   gtk\_init( \&argc, \&argv );}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160   \textcolor{comment}{// Widget initialisation}}
+\DoxyCodeLine{161   my\_window-\/>\mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{widget}} = gtk\_window\_new(GTK\_WINDOW\_TOPLEVEL);}
+\DoxyCodeLine{162   my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}} = gtk\_box\_new( TRUE, 0 );}
+\DoxyCodeLine{163   my\_window-\/>\mbox{\hyperlink{structs___window_af3799e7bafd1818efbfb4c923944b99e}{button}} = gtk\_button\_new\_with\_label(\textcolor{stringliteral}{"{}Lancer CityMap"{}});}
+\DoxyCodeLine{164   my\_window-\/>\mbox{\hyperlink{structs___window_aeec200ceaf37c20b2dc944dd5071da88}{label}} = gtk\_label\_new(\textcolor{stringliteral}{"{}Bienvenue sur CityMap"{}});}
+\DoxyCodeLine{165   my\_window-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}} = gtk\_entry\_new();}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167   my\_window-\/>\mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{policy}} = gtk\_entry\_new();}
+\DoxyCodeLine{168   my\_window-\/>\mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{job}} = gtk\_entry\_new();}
+\DoxyCodeLine{169   my\_window-\/>\mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{habitation}} = gtk\_entry\_new();}
+\DoxyCodeLine{170   my\_window-\/>\mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{economy}} = gtk\_entry\_new();}
+\DoxyCodeLine{171   my\_window-\/>\mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{health}} = gtk\_entry\_new();}
+\DoxyCodeLine{172   my\_window-\/>\mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{security}} = gtk\_entry\_new();}
+\DoxyCodeLine{173   }
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}}, \textcolor{stringliteral}{"{}Habitants"{}});}
+\DoxyCodeLine{176   }
+\DoxyCodeLine{177   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{policy}}, \textcolor{stringliteral}{"{}[Politique]"{}});}
+\DoxyCodeLine{178   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{job}}, \textcolor{stringliteral}{"{}[Travail]"{}});}
+\DoxyCodeLine{179   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{habitation}}, \textcolor{stringliteral}{"{}[Logement]"{}});}
+\DoxyCodeLine{180   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{economy}}, \textcolor{stringliteral}{"{}[Commerce]"{}});}
+\DoxyCodeLine{181   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{health}}, \textcolor{stringliteral}{"{}[Santé]"{}});}
+\DoxyCodeLine{182   gtk\_entry\_set\_placeholder\_text(my\_window-\/>\mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{security}}, \textcolor{stringliteral}{"{}[Sécurité]"{}});}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184   my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}} = gtk\_grid\_new();}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_af3799e7bafd1818efbfb4c923944b99e}{button}},7,0,2,1);}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}},0,0,1,1);}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_a228608d6ea077ef814f7f5c61cc5b60b}{policy}},1,0,1,1);}
+\DoxyCodeLine{191   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_a4f4722cedfa309919308495d0b1064b9}{job}},2,0,1,1);}
+\DoxyCodeLine{192   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_a4520d2d15813b30fcfdf3a6300dae915}{habitation}},3,0,1,1);}
+\DoxyCodeLine{193   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_af18d36a2b75acc06a17e90ad9419a092}{economy}},4,0,1,1);}
+\DoxyCodeLine{194   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_ac12375eb1c4d111c3752f810b3c0c273}{health}},5,0,1,1);}
+\DoxyCodeLine{195   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, my\_window-\/>\mbox{\hyperlink{structs___window_ad54926c5ff53bb67f832fc8774930522}{security}},6,0,1,1);}
+\DoxyCodeLine{196   }
+\DoxyCodeLine{197   }
 \DoxyCodeLine{198 }
-\DoxyCodeLine{199   }
-\DoxyCodeLine{200 }
-\DoxyCodeLine{201   \textcolor{comment}{// First, we add GtkHBox inside GtkWindow}}
-\DoxyCodeLine{202   gtk\_container\_add(GTK\_CONTAINER(my\_window-\/>\mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{widget}}), my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}} );}
-\DoxyCodeLine{203 }
-\DoxyCodeLine{204   \textcolor{comment}{// Then we add the Widgets inside GtkHBox}}
-\DoxyCodeLine{205   gtk\_box\_pack\_start (GTK\_BOX(my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_window-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}}, TRUE, TRUE, 0);}
-\DoxyCodeLine{206   gtk\_box\_pack\_start (GTK\_BOX(my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_window-\/>\mbox{\hyperlink{structs___window_aeec200ceaf37c20b2dc944dd5071da88}{label}}, TRUE, TRUE, 0);}
-\DoxyCodeLine{207   }
+\DoxyCodeLine{199   my\_window-\/>\mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{map}} = gtk\_image\_new\_from\_file(\textcolor{stringliteral}{"{}map.png"{}});}
+\DoxyCodeLine{200   my\_window-\/>\mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{metro}} = gtk\_image\_new\_from\_file(\textcolor{stringliteral}{"{}metro.png"{}});}
+\DoxyCodeLine{201   my\_window-\/>\mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{legend}} = gtk\_image\_new\_from\_file(\textcolor{stringliteral}{"{}legend.png"{}});}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203   my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}} = gtk\_grid\_new();}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_window-\/>\mbox{\hyperlink{structs___window_a2934eeb8bb041eea4dd83e9a4927a564}{map}},0,0,1,1);}
+\DoxyCodeLine{206   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_window-\/>\mbox{\hyperlink{structs___window_a3472ccfa098d4c5ec1d8ca5cb503fb24}{metro}},1,0,1,1);}
+\DoxyCodeLine{207   gtk\_grid\_attach(my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, my\_window-\/>\mbox{\hyperlink{structs___window_a0a938de2eab276f414fabc7eac67d661}{legend}},2,0,1,1);}
 \DoxyCodeLine{208 }
-\DoxyCodeLine{209    gtk\_box\_pack\_start (GTK\_BOX(my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, TRUE, TRUE, 0);}
-\DoxyCodeLine{210   }
-\DoxyCodeLine{211   gtk\_box\_pack\_start (GTK\_BOX(my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, TRUE, TRUE, 0);}
-\DoxyCodeLine{212 }
+\DoxyCodeLine{209   }
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211   \textcolor{comment}{// First, we add GtkHBox inside GtkWindow}}
+\DoxyCodeLine{212   gtk\_container\_add(GTK\_CONTAINER(my\_window-\/>\mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{widget}}), my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}} );}
 \DoxyCodeLine{213 }
-\DoxyCodeLine{214   \textcolor{comment}{// We connect the button to the "{}clicked"{} event}}
-\DoxyCodeLine{215   g\_signal\_connect(my\_window-\/>\mbox{\hyperlink{structs___window_af3799e7bafd1818efbfb4c923944b99e}{button}}, \textcolor{stringliteral}{"{}button-\/press-\/event"{}}, (GCallback)\mbox{\hyperlink{input__gtk_8c_aa119a021d6e9b4f19136302b391de6fc}{on\_click\_button}}, my\_window);}
-\DoxyCodeLine{216 }
-\DoxyCodeLine{217   \textcolor{comment}{// Gtk displays what our window contains}}
-\DoxyCodeLine{218   gtk\_widget\_show\_all(my\_window-\/>\mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{widget}});}
-\DoxyCodeLine{219 }
-\DoxyCodeLine{220   gtk\_main();}
-\DoxyCodeLine{221 \}}
+\DoxyCodeLine{214   \textcolor{comment}{// Then we add the Widgets inside GtkHBox}}
+\DoxyCodeLine{215   gtk\_box\_pack\_start (GTK\_BOX(my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_window-\/>\mbox{\hyperlink{structs___window_ab7270500cf01e71758002352849570ea}{entry}}, TRUE, TRUE, 0);}
+\DoxyCodeLine{216   gtk\_box\_pack\_start (GTK\_BOX(my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_window-\/>\mbox{\hyperlink{structs___window_aeec200ceaf37c20b2dc944dd5071da88}{label}}, TRUE, TRUE, 0);}
+\DoxyCodeLine{217   }
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219    gtk\_box\_pack\_start (GTK\_BOX(my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_window-\/>\mbox{\hyperlink{structs___window_a110812acddf21fb04c0fdcebf4b58747}{texts}}, TRUE, TRUE, 0);}
+\DoxyCodeLine{220   }
+\DoxyCodeLine{221   gtk\_box\_pack\_start (GTK\_BOX(my\_window-\/>\mbox{\hyperlink{structs___window_a9ae0bc6b74c541e63234dd9b70837077}{box}}), my\_window-\/>\mbox{\hyperlink{structs___window_a2416bfeb67ac888312390f94d355b191}{images}}, TRUE, TRUE, 0);}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224   \textcolor{comment}{// We connect the button to the "{}clicked"{} event}}
+\DoxyCodeLine{225   g\_signal\_connect(my\_window-\/>\mbox{\hyperlink{structs___window_af3799e7bafd1818efbfb4c923944b99e}{button}}, \textcolor{stringliteral}{"{}button-\/press-\/event"{}}, (GCallback)\mbox{\hyperlink{input__gtk_8c_aa119a021d6e9b4f19136302b391de6fc}{on\_click\_button}}, my\_window);}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227   \textcolor{comment}{// Gtk displays what our window contains}}
+\DoxyCodeLine{228   gtk\_widget\_show\_all(my\_window-\/>\mbox{\hyperlink{structs___window_a0344d62c6466ff5b5d54713b0764779c}{widget}});}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230   gtk\_main();}
+\DoxyCodeLine{231 \}}
 
 \end{DoxyCode}
 

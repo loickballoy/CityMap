@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['graphelement_0',['GraphElement',['../struct_graph_element.html',1,'']]]
+  ['edge_0',['EDGE',['../struct_e_d_g_e.html',1,'']]]
 ];

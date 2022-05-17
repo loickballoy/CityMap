@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -84,7 +84,14 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <div class="contents">
 &#160;
 
+<h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
+<li>age&#160;:&#160;<a class="el" href="structcitizen.html#a226bfde5361a0abdbfb86065c88f9bd6">citizen</a></li>
+</ul>
+
+
 <h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
+<li>batDisp&#160;:&#160;<a class="el" href="structbuild_list.html#a0cf915e16d536f9a6d08d6bfd3f9f4b4">buildList</a></li>
+<li>batList&#160;:&#160;<a class="el" href="structbuild_list.html#a0a8fdea4c91228611391c2b89dbadd76">buildList</a></li>
 <li>begin&#160;:&#160;<a class="el" href="struct_adjency_list_element.html#ab2970c5a6f6079798fceb31ad8df00fa">AdjencyListElement</a></li>
 <li>box&#160;:&#160;<a class="el" href="structs___window.html#a9ae0bc6b74c541e63234dd9b70837077">s_Window</a></li>
 <li>building&#160;:&#160;<a class="el" href="structcell.html#a7710bc804ed0221a4cf056cacbc633db">cell</a></li>
@@ -105,7 +112,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 
 <h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
-<li>economy&#160;:&#160;<a class="el" href="structs___window.html#af18d36a2b75acc06a17e90ad9419a092">s_Window</a></li>
+<li>economy&#160;:&#160;<a class="el" href="structbuilding_type.html#aaaa2e04fa9b78168de27cf1cd4a3434d">buildingType</a>, <a class="el" href="structs___window.html#af18d36a2b75acc06a17e90ad9419a092">s_Window</a></li>
 <li>entry&#160;:&#160;<a class="el" href="structs___window.html#ab7270500cf01e71758002352849570ea">s_Window</a></li>
 </ul>
 
@@ -116,8 +123,8 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 
 <h3><a id="index_h" name="index_h"></a>- h -</h3><ul>
-<li>habitation&#160;:&#160;<a class="el" href="structs___window.html#a4520d2d15813b30fcfdf3a6300dae915">s_Window</a></li>
-<li>health&#160;:&#160;<a class="el" href="structs___window.html#ac12375eb1c4d111c3752f810b3c0c273">s_Window</a></li>
+<li>habitation&#160;:&#160;<a class="el" href="structbuilding_type.html#a76013da2e9ce5666e417d1745bfaac85">buildingType</a>, <a class="el" href="structs___window.html#a4520d2d15813b30fcfdf3a6300dae915">s_Window</a></li>
+<li>health&#160;:&#160;<a class="el" href="structbuilding_type.html#a846d367044483a40b3b40767e0607454">buildingType</a>, <a class="el" href="structs___window.html#ac12375eb1c4d111c3752f810b3c0c273">s_Window</a></li>
 </ul>
 
 
@@ -129,7 +136,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 
 <h3><a id="index_j" name="index_j"></a>- j -</h3><ul>
-<li>job&#160;:&#160;<a class="el" href="structs___window.html#a4f4722cedfa309919308495d0b1064b9">s_Window</a></li>
+<li>job&#160;:&#160;<a class="el" href="structbuilding_type.html#a102ab4d41af220191e4617636afdbbc3">buildingType</a>, <a class="el" href="structs___window.html#a4f4722cedfa309919308495d0b1064b9">s_Window</a></li>
 </ul>
 
 
@@ -137,6 +144,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>label&#160;:&#160;<a class="el" href="struct_metro.html#a5a88960222e6777dabfa780d1b23e497">Metro</a>, <a class="el" href="structs___window.html#aeec200ceaf37c20b2dc944dd5071da88">s_Window</a></li>
 <li>legend&#160;:&#160;<a class="el" href="structs___window.html#a0a938de2eab276f414fabc7eac67d661">s_Window</a></li>
 <li>ligne&#160;:&#160;<a class="el" href="struct_e_d_g_e.html#a67c72d18662121f7600a2a423f4f3ce5">EDGE</a></li>
+<li>location&#160;:&#160;<a class="el" href="structbuilding_type.html#aca5370730a568d77a9f58f9dbfed5722">buildingType</a></li>
 </ul>
 
 
@@ -156,28 +164,35 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
-<li>policy&#160;:&#160;<a class="el" href="structs___window.html#a228608d6ea077ef814f7f5c61cc5b60b">s_Window</a></li>
+<li>placed&#160;:&#160;<a class="el" href="structbuilding.html#a02358e6cba4ba21b00daba690a608ea0">building</a></li>
+<li>policy&#160;:&#160;<a class="el" href="structbuilding_type.html#ab3029b9101e66d4b2027dc6844eb806c">buildingType</a>, <a class="el" href="structs___window.html#a228608d6ea077ef814f7f5c61cc5b60b">s_Window</a></li>
+</ul>
+
+
+<h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>range&#160;:&#160;<a class="el" href="structbuilding_type.html#a34e76b0e30e822475d00cce91b576d47">buildingType</a></li>
 </ul>
 
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
-<li>security&#160;:&#160;<a class="el" href="structs___window.html#ad54926c5ff53bb67f832fc8774930522">s_Window</a></li>
+<li>security&#160;:&#160;<a class="el" href="structbuilding_type.html#aad94be6f65492ee496aee39e524f4818">buildingType</a>, <a class="el" href="structs___window.html#ad54926c5ff53bb67f832fc8774930522">s_Window</a></li>
 <li>src&#160;:&#160;<a class="el" href="struct_e_d_g_e.html#abfdcf36614712369ec8cc420a3388f44">EDGE</a></li>
 <li>src_x&#160;:&#160;<a class="el" href="struct_e_d_g_e.html#a9f12ea9435ff920d81bd94dcaff718bd">EDGE</a></li>
 <li>src_y&#160;:&#160;<a class="el" href="struct_e_d_g_e.html#a58037379f154647324421fa4c0f7e1fe">EDGE</a></li>
-<li>stats&#160;:&#160;<a class="el" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">cell</a></li>
+<li>stats&#160;:&#160;<a class="el" href="structbuilding_type.html#a283a3f9aac5e49a912faeeb0d6de7184">buildingType</a>, <a class="el" href="structcell.html#a33f9eae3bd092d0a68d75898a9c7367d">cell</a></li>
 </ul>
 
 
 <h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
 <li>tab_neighbours&#160;:&#160;<a class="el" href="struct_graph_element.html#aa6bcac7e99fe15f915b0007eca7565ee">GraphElement</a></li>
 <li>texts&#160;:&#160;<a class="el" href="structs___window.html#a110812acddf21fb04c0fdcebf4b58747">s_Window</a></li>
-<li>type&#160;:&#160;<a class="el" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">cell</a></li>
+<li>type&#160;:&#160;<a class="el" href="structbuilding.html#a1528c0b061a2162d134b0444cae98563">building</a>, <a class="el" href="structcell.html#a8d271074c9068c96ce148c5f8f14ff18">cell</a></li>
 </ul>
 
 
 <h3><a id="index_v" name="index_v"></a>- v -</h3><ul>
 <li>value&#160;:&#160;<a class="el" href="struct_node_list_element.html#a68499271b3fe65b0f0d26d956c8ae6f8">NodeListElement</a></li>
+<li>values&#160;:&#160;<a class="el" href="structbuilding.html#acb1f807e47864215ecbfcd3188ff5f73">building</a></li>
 </ul>
 
 
@@ -187,12 +202,12 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 
 <h3><a id="index_x" name="index_x"></a>- x -</h3><ul>
-<li>x&#160;:&#160;<a class="el" href="struct_metro.html#ac89b346e5d028fdbc70d68a52ef39cd7">Metro</a></li>
+<li>x&#160;:&#160;<a class="el" href="structbuilding.html#a6c4805da80f3e7a5762f1d737083d41a">building</a>, <a class="el" href="struct_metro.html#ac89b346e5d028fdbc70d68a52ef39cd7">Metro</a></li>
 </ul>
 
 
 <h3><a id="index_y" name="index_y"></a>- y -</h3><ul>
-<li>y&#160;:&#160;<a class="el" href="struct_metro.html#a638dfc659f67044331a3068b4298bbb0">Metro</a></li>
+<li>y&#160;:&#160;<a class="el" href="structbuilding.html#acebba38e19b67a17f620ac0e20839dc9">building</a>, <a class="el" href="struct_metro.html#a638dfc659f67044331a3068b4298bbb0">Metro</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

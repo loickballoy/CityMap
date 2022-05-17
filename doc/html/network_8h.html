@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -103,11 +103,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="network_8h__dep__incl.png" border="0" usemap="#ametro_2network_8hdep" alt=""/></div>
 <map name="ametro_2network_8hdep" id="ametro_2network_8hdep">
-<area shape="rect" title=" " alt="" coords="133,5,264,32"/>
-<area shape="rect" href="interface_2main_8c.html" title=" " alt="" coords="5,155,133,181"/>
-<area shape="rect" href="to_s_d_l_8c.html" title=" " alt="" coords="171,155,304,181"/>
-<area shape="rect" href="to_s_d_l_8h.html" title=" " alt="" coords="79,80,214,107"/>
-<area shape="rect" href="network_8c.html" title=" " alt="" coords="290,80,419,107"/>
+<area shape="rect" title=" " alt="" coords="209,5,339,32"/>
+<area shape="rect" href="build__city_8c.html" title=" " alt="" coords="5,155,161,181"/>
+<area shape="rect" href="interface_2main_8c.html" title=" " alt="" coords="186,155,314,181"/>
+<area shape="rect" href="to_s_d_l_8c.html" title=" " alt="" coords="338,155,471,181"/>
+<area shape="rect" href="to_s_d_l_8h.html" title=" " alt="" coords="207,80,341,107"/>
+<area shape="rect" href="network_8c.html" title=" " alt="" coords="417,80,547,107"/>
 </map>
 </div>
 </div>
@@ -149,42 +150,44 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  230</span>{</div>
-<div class="line"><span class="lineno">  231</span>  <span class="keywordtype">int</span> NUMBER_STATIONS; </div>
-<div class="line"><span class="lineno">  232</span>  <span class="keywordtype">double</span> MAX = 4.2;</div>
-<div class="line"><span class="lineno">  233</span> </div>
-<div class="line"><span class="lineno">  234</span>  NUMBER_STATIONS = <a class="code hl_function" href="network_8c.html#aeae3a88ae22ca1470c648cfaa0d10b1a">nb_stations</a>(matrice, DIM);</div>
-<div class="line"><span class="lineno">  235</span> </div>
-<div class="line"><span class="lineno">  236</span>  <a class="code hl_struct" href="struct_graph_element.html">Graph</a> g1 = <a class="code hl_function" href="graph_8c.html#a27296dfdc775fc2a44cfdbbff2b89525">new_graph</a>(NUMBER_STATIONS, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  237</span> </div>
-<div class="line"><span class="lineno">  238</span>  fprintf(g1-&gt;<a class="code hl_variable" href="struct_graph_element.html#a5fa9c7b1ddd00826284f516155de7831">graph_file</a>, <span class="stringliteral">&quot;\tedge [color=black];\n&quot;</span>);</div>
-<div class="line"><span class="lineno">  239</span>  fprintf(g1-&gt;<a class="code hl_variable" href="struct_graph_element.html#a5fa9c7b1ddd00826284f516155de7831">graph_file</a>, <span class="stringliteral">&quot;\tnode [color=turquoise, style=filled];\n&quot;</span>);</div>
-<div class="line"><span class="lineno">  240</span> </div>
-<div class="line"><span class="lineno">  241</span>  <span class="keyword">struct </span><a class="code hl_struct" href="struct_metro.html">Metro</a> *STATIONS = <a class="code hl_function" href="network_8c.html#a230c3a893afff0180d28f964d5872681">BuildStations</a>(matrice, DIM, g1);</div>
-<div class="line"><span class="lineno">  242</span>  </div>
-<div class="line"><span class="lineno">  243</span>  <span class="keyword">struct </span><a class="code hl_struct" href="struct_e_d_g_e.html">EDGE</a> *edges = <a class="code hl_function" href="network_8c.html#a58fead597937c833680e3e1a695a0546">buildAdjlists2</a>(STATIONS, NUMBER_STATIONS, MAX, g1);</div>
-<div class="line"><span class="lineno">  244</span> </div>
-<div class="line"><span class="lineno">  245</span>  <a class="code hl_function" href="graph_8c.html#a8d4ba8d086d768548b6039ba17d6e5ca">print_graph</a>(g1);</div>
-<div class="line"><span class="lineno">  246</span>  <a class="code hl_function" href="graph_8c.html#aa29eba70c29c94924cbacc4baaeddb76">display_graph</a>(g1);</div>
-<div class="line"><span class="lineno">  247</span>  <a class="code hl_function" href="graph_8c.html#a07c2103b1f15749f3b36b628e42040eb">erase_graph</a>(g1);</div>
-<div class="line"><span class="lineno">  248</span>  system(<span class="stringliteral">&quot;dot -Tpng graph.out -o graph.png&quot;</span>);</div>
-<div class="line"><span class="lineno">  249</span>  </div>
-<div class="line"><span class="lineno">  250</span>  free(STATIONS);</div>
-<div class="line"><span class="lineno">  251</span>  <span class="keywordflow">return</span> edges;</div>
-<div class="line"><span class="lineno">  252</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  240</span>{</div>
+<div class="line"><span class="lineno">  241</span>  <span class="keywordtype">int</span> NUMBER_STATIONS; </div>
+<div class="line"><span class="lineno">  242</span>  <span class="keywordtype">double</span> MAX = 4.2;</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>  NUMBER_STATIONS = <a class="code hl_function" href="network_8c.html#aeae3a88ae22ca1470c648cfaa0d10b1a">nb_stations</a>(matrice, DIM);</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>  <a class="code hl_struct" href="struct_graph_element.html">Graph</a> g1 = <a class="code hl_function" href="graph_8c.html#a27296dfdc775fc2a44cfdbbff2b89525">new_graph</a>(NUMBER_STATIONS, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  247</span> </div>
+<div class="line"><span class="lineno">  248</span>  fprintf(g1-&gt;<a class="code hl_variable" href="struct_graph_element.html#a5fa9c7b1ddd00826284f516155de7831">graph_file</a>, <span class="stringliteral">&quot;\tedge [color=black];\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  249</span>  fprintf(g1-&gt;<a class="code hl_variable" href="struct_graph_element.html#a5fa9c7b1ddd00826284f516155de7831">graph_file</a>, <span class="stringliteral">&quot;\tnode [color=turquoise, style=filled];\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  250</span> </div>
+<div class="line"><span class="lineno">  251</span>  <span class="keyword">struct </span><a class="code hl_struct" href="struct_metro.html">Metro</a> *STATIONS = <a class="code hl_function" href="network_8c.html#a230c3a893afff0180d28f964d5872681">BuildStations</a>(matrice, DIM, g1);</div>
+<div class="line"><span class="lineno">  252</span>  </div>
+<div class="line"><span class="lineno">  253</span>  <span class="keyword">struct </span><a class="code hl_struct" href="struct_e_d_g_e.html">EDGE</a> *edges = <a class="code hl_function" href="network_8c.html#a58fead597937c833680e3e1a695a0546">buildAdjlists2</a>(STATIONS, NUMBER_STATIONS, MAX, g1);</div>
+<div class="line"><span class="lineno">  254</span> </div>
+<div class="line"><span class="lineno">  255</span>  <a class="code hl_function" href="graph_8c.html#a8d4ba8d086d768548b6039ba17d6e5ca">print_graph</a>(g1);</div>
+<div class="line"><span class="lineno">  256</span>  <a class="code hl_function" href="graph_8c.html#aa29eba70c29c94924cbacc4baaeddb76">display_graph</a>(g1);</div>
+<div class="line"><span class="lineno">  257</span>  <a class="code hl_function" href="graph_8c.html#a07c2103b1f15749f3b36b628e42040eb">erase_graph</a>(g1);</div>
+<div class="line"><span class="lineno">  258</span>  system(<span class="stringliteral">&quot;dot -Tpng graph.out -o graph.png&quot;</span>);</div>
+<div class="line"><span class="lineno">  259</span>  </div>
+<div class="line"><span class="lineno">  260</span>  free(STATIONS);</div>
+<div class="line"><span class="lineno">  261</span>  <span class="keywordflow">return</span> edges;</div>
+<div class="line"><span class="lineno">  262</span>}</div>
 <div class="ttc" id="agraph_8c_html_a07c2103b1f15749f3b36b628e42040eb"><div class="ttname"><a href="graph_8c.html#a07c2103b1f15749f3b36b628e42040eb">erase_graph</a></div><div class="ttdeci">void erase_graph(Graph g)</div><div class="ttdef"><b>Definition:</b> graph.c:174</div></div>
 <div class="ttc" id="agraph_8c_html_a27296dfdc775fc2a44cfdbbff2b89525"><div class="ttname"><a href="graph_8c.html#a27296dfdc775fc2a44cfdbbff2b89525">new_graph</a></div><div class="ttdeci">Graph new_graph(int vertices, Bool is_oriented)</div><div class="ttdef"><b>Definition:</b> graph.c:11</div></div>
 <div class="ttc" id="agraph_8c_html_a8d4ba8d086d768548b6039ba17d6e5ca"><div class="ttname"><a href="graph_8c.html#a8d4ba8d086d768548b6039ba17d6e5ca">print_graph</a></div><div class="ttdeci">void print_graph(Graph g)</div><div class="ttdef"><b>Definition:</b> graph.c:134</div></div>
 <div class="ttc" id="agraph_8c_html_aa29eba70c29c94924cbacc4baaeddb76"><div class="ttname"><a href="graph_8c.html#aa29eba70c29c94924cbacc4baaeddb76">display_graph</a></div><div class="ttdeci">void display_graph(Graph g)</div><div class="ttdef"><b>Definition:</b> graph.c:159</div></div>
-<div class="ttc" id="anetwork_8c_html_a230c3a893afff0180d28f964d5872681"><div class="ttname"><a href="network_8c.html#a230c3a893afff0180d28f964d5872681">BuildStations</a></div><div class="ttdeci">struct Metro * BuildStations(char **matrice, int DIM, Graph g1)</div><div class="ttdef"><b>Definition:</b> network.c:199</div></div>
-<div class="ttc" id="anetwork_8c_html_a58fead597937c833680e3e1a695a0546"><div class="ttname"><a href="network_8c.html#a58fead597937c833680e3e1a695a0546">buildAdjlists2</a></div><div class="ttdeci">struct EDGE * buildAdjlists2(struct Metro *STATIONS, unsigned int nb_stat, double max, Graph g)</div><div class="ttdef"><b>Definition:</b> network.c:91</div></div>
-<div class="ttc" id="anetwork_8c_html_aeae3a88ae22ca1470c648cfaa0d10b1a"><div class="ttname"><a href="network_8c.html#aeae3a88ae22ca1470c648cfaa0d10b1a">nb_stations</a></div><div class="ttdeci">int nb_stations(char **matrice, int DIM)</div><div class="ttdef"><b>Definition:</b> network.c:182</div></div>
+<div class="ttc" id="anetwork_8c_html_a230c3a893afff0180d28f964d5872681"><div class="ttname"><a href="network_8c.html#a230c3a893afff0180d28f964d5872681">BuildStations</a></div><div class="ttdeci">struct Metro * BuildStations(char **matrice, int DIM, Graph g1)</div><div class="ttdef"><b>Definition:</b> network.c:209</div></div>
+<div class="ttc" id="anetwork_8c_html_a58fead597937c833680e3e1a695a0546"><div class="ttname"><a href="network_8c.html#a58fead597937c833680e3e1a695a0546">buildAdjlists2</a></div><div class="ttdeci">struct EDGE * buildAdjlists2(struct Metro *STATIONS, unsigned int nb_stat, double max, Graph g)</div><div class="ttdef"><b>Definition:</b> network.c:101</div></div>
+<div class="ttc" id="anetwork_8c_html_aeae3a88ae22ca1470c648cfaa0d10b1a"><div class="ttname"><a href="network_8c.html#aeae3a88ae22ca1470c648cfaa0d10b1a">nb_stations</a></div><div class="ttdeci">int nb_stations(char **matrice, int DIM)</div><div class="ttdef"><b>Definition:</b> network.c:192</div></div>
 <div class="ttc" id="astruct_e_d_g_e_html"><div class="ttname"><a href="struct_e_d_g_e.html">EDGE</a></div><div class="ttdef"><b>Definition:</b> network.h:7</div></div>
 <div class="ttc" id="astruct_graph_element_html"><div class="ttname"><a href="struct_graph_element.html">GraphElement</a></div><div class="ttdef"><b>Definition:</b> graph.h:26</div></div>
 <div class="ttc" id="astruct_graph_element_html_a5fa9c7b1ddd00826284f516155de7831"><div class="ttname"><a href="struct_graph_element.html#a5fa9c7b1ddd00826284f516155de7831">GraphElement::graph_file</a></div><div class="ttdeci">FILE * graph_file</div><div class="ttdef"><b>Definition:</b> graph.h:30</div></div>
-<div class="ttc" id="astruct_metro_html"><div class="ttname"><a href="struct_metro.html">Metro</a></div><div class="ttdef"><b>Definition:</b> network.c:10</div></div>
+<div class="ttc" id="astruct_metro_html"><div class="ttname"><a href="struct_metro.html">Metro</a></div><div class="ttdef"><b>Definition:</b> network.c:20</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="network_8c.html#a58fead597937c833680e3e1a695a0546">buildAdjlists2()</a>, <a class="el" href="network_8c.html#a230c3a893afff0180d28f964d5872681">BuildStations()</a>, <a class="el" href="graph_8c.html#aa29eba70c29c94924cbacc4baaeddb76">display_graph()</a>, <a class="el" href="graph_8c.html#a07c2103b1f15749f3b36b628e42040eb">erase_graph()</a>, <a class="el" href="struct_graph_element.html#a5fa9c7b1ddd00826284f516155de7831">GraphElement::graph_file</a>, <a class="el" href="network_8c.html#aeae3a88ae22ca1470c648cfaa0d10b1a">nb_stations()</a>, <a class="el" href="graph_8c.html#a27296dfdc775fc2a44cfdbbff2b89525">new_graph()</a>, and <a class="el" href="graph_8c.html#a8d4ba8d086d768548b6039ba17d6e5ca">print_graph()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="build__city_8c.html#ae718034bb5f26172f71977253c8c6119">build_city()</a>.</p>
 
 </div>
 </div>

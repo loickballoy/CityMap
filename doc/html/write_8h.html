@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -124,40 +124,40 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">   33</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">   34</span> </div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> ft = 0;</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> lineS = 0;</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> temp = 0;</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">while</span>(!<a class="code hl_function" href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias</a>(buffer))</div>
-<div class="line"><span class="lineno">   39</span>    {</div>
-<div class="line"><span class="lineno">   40</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">   41</span>        temp = ftell(file);</div>
-<div class="line"><span class="lineno">   42</span>        lineS = ft - temp;</div>
-<div class="line"><span class="lineno">   43</span>        ft = temp;</div>
-<div class="line"><span class="lineno">   44</span>    }</div>
-<div class="line"><span class="lineno">   45</span>    fseek(file, lineS, SEEK_CUR);</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordtype">char</span> dst[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keywordtype">char</span> src[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">   48</span>    strcpy(dst, <span class="stringliteral">&quot;BIAS = [&quot;</span>);</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a>; ++i)</div>
-<div class="line"><span class="lineno">   50</span>    {</div>
-<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">if</span> (i == <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a> - 1)</div>
-<div class="line"><span class="lineno">   52</span>            sprintf(src, <span class="stringliteral">&quot;%i]                    &quot;</span>, *(building_bias + i));</div>
-<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   54</span>            sprintf(src, <span class="stringliteral">&quot;%i, &quot;</span>, *(building_bias + i));</div>
-<div class="line"><span class="lineno">   55</span>        strcat(dst, src);</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span>    fprintf(file, <span class="stringliteral">&quot;%s&quot;</span>, dst);</div>
-<div class="line"><span class="lineno">   58</span>    fclose(file);</div>
-<div class="line"><span class="lineno">   59</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_a44aeec48aa5a8c7ef13701de582b99a6"><div class="ttname"><a href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias</a></div><div class="ttdeci">char isBias(char *line)</div><div class="ttdef"><b>Definition:</b> loadtools.c:74</div></div>
-<div class="ttc" id="aloadtools_8c_html_a603cab9e8409fdef1b9ca20fed660c00"><div class="ttname"><a href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a></div><div class="ttdeci">int LINE_BUFFER_SIZE</div><div class="ttdef"><b>Definition:</b> loadtools.c:14</div></div>
-<div class="ttc" id="aloadtools_8c_html_a69b941b6c082cb83b173eb55f8b12333"><div class="ttname"><a href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a></div><div class="ttdeci">FILE * settings_open()</div><div class="ttdef"><b>Definition:</b> loadtools.c:19</div></div>
-<div class="ttc" id="aloadtools_8c_html_ad0e244432d4e11ad5234c8364e82a971"><div class="ttname"><a href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a></div><div class="ttdeci">int BIAS_NUMBER</div><div class="ttdef"><b>Definition:</b> loadtools.c:11</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">   43</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> ft = 0;</div>
+<div class="line"><span class="lineno">   46</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> lineS = 0;</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> temp = 0;</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">while</span>(!<a class="code hl_function" href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias</a>(buffer))</div>
+<div class="line"><span class="lineno">   49</span>    {</div>
+<div class="line"><span class="lineno">   50</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">   51</span>        temp = ftell(file);</div>
+<div class="line"><span class="lineno">   52</span>        lineS = ft - temp;</div>
+<div class="line"><span class="lineno">   53</span>        ft = temp;</div>
+<div class="line"><span class="lineno">   54</span>    }</div>
+<div class="line"><span class="lineno">   55</span>    fseek(file, lineS, SEEK_CUR);</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordtype">char</span> dst[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keywordtype">char</span> src[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">   58</span>    strcpy(dst, <span class="stringliteral">&quot;BIAS = [&quot;</span>);</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a>; ++i)</div>
+<div class="line"><span class="lineno">   60</span>    {</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">if</span> (i == <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a> - 1)</div>
+<div class="line"><span class="lineno">   62</span>            sprintf(src, <span class="stringliteral">&quot;%i]                    &quot;</span>, *(building_bias + i));</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   64</span>            sprintf(src, <span class="stringliteral">&quot;%i, &quot;</span>, *(building_bias + i));</div>
+<div class="line"><span class="lineno">   65</span>        strcat(dst, src);</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span>    fprintf(file, <span class="stringliteral">&quot;%s&quot;</span>, dst);</div>
+<div class="line"><span class="lineno">   68</span>    fclose(file);</div>
+<div class="line"><span class="lineno">   69</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_a44aeec48aa5a8c7ef13701de582b99a6"><div class="ttname"><a href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias</a></div><div class="ttdeci">char isBias(char *line)</div><div class="ttdef"><b>Definition:</b> loadtools.c:84</div></div>
+<div class="ttc" id="aloadtools_8c_html_a603cab9e8409fdef1b9ca20fed660c00"><div class="ttname"><a href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a></div><div class="ttdeci">int LINE_BUFFER_SIZE</div><div class="ttdef"><b>Definition:</b> loadtools.c:24</div></div>
+<div class="ttc" id="aloadtools_8c_html_a69b941b6c082cb83b173eb55f8b12333"><div class="ttname"><a href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a></div><div class="ttdeci">FILE * settings_open()</div><div class="ttdef"><b>Definition:</b> loadtools.c:29</div></div>
+<div class="ttc" id="aloadtools_8c_html_ad0e244432d4e11ad5234c8364e82a971"><div class="ttname"><a href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a></div><div class="ttdeci">int BIAS_NUMBER</div><div class="ttdef"><b>Definition:</b> loadtools.c:21</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a>, <a class="el" href="loadtools_8c.html#a44aeec48aa5a8c7ef13701de582b99a6">isBias()</a>, <a class="el" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, and <a class="el" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open()</a>.</p>
 
@@ -180,28 +180,28 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">    7</span>{</div>
-<div class="line"><span class="lineno">    8</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
-<div class="line"><span class="lineno">    9</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">   10</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">   11</span> </div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> ft = 0;</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> lineS = 0;</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> temp = 0;</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">while</span>(!<a class="code hl_function" href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant</a>(buffer))</div>
-<div class="line"><span class="lineno">   16</span>    {</div>
-<div class="line"><span class="lineno">   17</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
-<div class="line"><span class="lineno">   18</span>        temp = ftell(file);</div>
-<div class="line"><span class="lineno">   19</span>        lineS = ft - temp;</div>
-<div class="line"><span class="lineno">   20</span>        ft = temp;</div>
-<div class="line"><span class="lineno">   21</span>    }</div>
-<div class="line"><span class="lineno">   22</span>    fseek(file, lineS, SEEK_CUR);</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordtype">char</span> toPrint[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
-<div class="line"><span class="lineno">   24</span>    sprintf(toPrint, <span class="stringliteral">&quot;HABITANT_NUMBER = [%i]                   &quot;</span>, habitant_number);</div>
-<div class="line"><span class="lineno">   25</span>    fprintf(file, <span class="stringliteral">&quot;%s&quot;</span>, toPrint);</div>
-<div class="line"><span class="lineno">   26</span>    fclose(file);</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_aee5c88556c41d7cea6476c244221f2d4"><div class="ttname"><a href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant</a></div><div class="ttdeci">char isHabitant(char *line)</div><div class="ttdef"><b>Definition:</b> loadtools.c:82</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
+<div class="line"><span class="lineno">   18</span>    FILE *file = <a class="code hl_function" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open</a>();</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">   20</span>    fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> ft = 0;</div>
+<div class="line"><span class="lineno">   23</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> lineS = 0;</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordtype">long</span> <span class="keywordtype">int</span> temp = 0;</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">while</span>(!<a class="code hl_function" href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant</a>(buffer))</div>
+<div class="line"><span class="lineno">   26</span>    {</div>
+<div class="line"><span class="lineno">   27</span>        fgets(buffer, <a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, file);</div>
+<div class="line"><span class="lineno">   28</span>        temp = ftell(file);</div>
+<div class="line"><span class="lineno">   29</span>        lineS = ft - temp;</div>
+<div class="line"><span class="lineno">   30</span>        ft = temp;</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
+<div class="line"><span class="lineno">   32</span>    fseek(file, lineS, SEEK_CUR);</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordtype">char</span> toPrint[<a class="code hl_variable" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">   34</span>    sprintf(toPrint, <span class="stringliteral">&quot;HABITANT_NUMBER = [%i]                   &quot;</span>, habitant_number);</div>
+<div class="line"><span class="lineno">   35</span>    fprintf(file, <span class="stringliteral">&quot;%s&quot;</span>, toPrint);</div>
+<div class="line"><span class="lineno">   36</span>    fclose(file);</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_aee5c88556c41d7cea6476c244221f2d4"><div class="ttname"><a href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant</a></div><div class="ttdeci">char isHabitant(char *line)</div><div class="ttdef"><b>Definition:</b> loadtools.c:92</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#aee5c88556c41d7cea6476c244221f2d4">isHabitant()</a>, <a class="el" href="loadtools_8c.html#a603cab9e8409fdef1b9ca20fed660c00">LINE_BUFFER_SIZE</a>, and <a class="el" href="loadtools_8c.html#a69b941b6c082cb83b173eb55f8b12333">settings_open()</a>.</p>
 

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CityMap<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">CityMap<span id="projectnumber">&#160;0.1</span>
    </div>
   </td>
  </tr>
@@ -182,12 +182,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   91</span>{</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
-<div class="line"><span class="lineno">   93</span>        free(*(build_ + i));</div>
-<div class="line"><span class="lineno">   94</span>    free(build_);</div>
-<div class="line"><span class="lineno">   95</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_a9d943ac46a304efd054aabff34fa0d1b"><div class="ttname"><a href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a></div><div class="ttdeci">int BUILDING_NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> loadtools.c:6</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>{</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
+<div class="line"><span class="lineno">  103</span>        free(*(build_ + i));</div>
+<div class="line"><span class="lineno">  104</span>    free(build_);</div>
+<div class="line"><span class="lineno">  105</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_a9d943ac46a304efd054aabff34fa0d1b"><div class="ttname"><a href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a></div><div class="ttdeci">int BUILDING_NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> loadtools.c:16</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>.</p>
 
@@ -210,12 +210,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordtype">char</span> is = 0;</div>
-<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">if</span> (*line == <span class="charliteral">&#39;B&#39;</span> &amp;&amp; *(line + 1) == <span class="charliteral">&#39;I&#39;</span> &amp;&amp; *(line + 2) == <span class="charliteral">&#39;A&#39;</span>)</div>
-<div class="line"><span class="lineno">   78</span>        is = 1;</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">return</span> is;</div>
-<div class="line"><span class="lineno">   80</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>{</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordtype">char</span> is = 0;</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> (*line == <span class="charliteral">&#39;B&#39;</span> &amp;&amp; *(line + 1) == <span class="charliteral">&#39;I&#39;</span> &amp;&amp; *(line + 2) == <span class="charliteral">&#39;A&#39;</span>)</div>
+<div class="line"><span class="lineno">   88</span>        is = 1;</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> is;</div>
+<div class="line"><span class="lineno">   90</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="read_8c.html#a9a187d8a5ac223603383bf86803ff909">load_building_bias()</a>, and <a class="el" href="write_8c.html#a525dbf0268c0802057e7f53de3580d3e">write_bias()</a>.</p>
 
@@ -236,12 +236,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordtype">char</span> is = 0;</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">if</span> (*line == <span class="charliteral">&#39;H&#39;</span> &amp;&amp; *(line + 1) == <span class="charliteral">&#39;A&#39;</span> &amp;&amp; *(line + 2) == <span class="charliteral">&#39;B&#39;</span>)</div>
-<div class="line"><span class="lineno">   86</span>        is = 1;</div>
-<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">return</span> is;</div>
-<div class="line"><span class="lineno">   88</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordtype">char</span> is = 0;</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">if</span> (*line == <span class="charliteral">&#39;H&#39;</span> &amp;&amp; *(line + 1) == <span class="charliteral">&#39;A&#39;</span> &amp;&amp; *(line + 2) == <span class="charliteral">&#39;B&#39;</span>)</div>
+<div class="line"><span class="lineno">   96</span>        is = 1;</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> is;</div>
+<div class="line"><span class="lineno">   98</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="read_8c.html#ac1eb9ece9da63abc47d27a7c9d79e3cd">load_habitant_number()</a>, and <a class="el" href="write_8c.html#a40d0bbf5b92a0a99aabd83261d1a1f55">write_habitant_number()</a>.</p>
 
@@ -272,19 +272,19 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
-<div class="line"><span class="lineno">   62</span>    printf(<span class="stringliteral">&quot;bias = [&quot;</span>);</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a>; ++i)</div>
-<div class="line"><span class="lineno">   64</span>    {</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">if</span> (i == <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a> - 1)</div>
-<div class="line"><span class="lineno">   66</span>            printf(<span class="stringliteral">&quot;%i]\n&quot;</span>, *(building_bias + i));</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   68</span>            printf(<span class="stringliteral">&quot;%i, &quot;</span>, *(building_bias + i));</div>
-<div class="line"><span class="lineno">   69</span>    }</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> (jump)</div>
-<div class="line"><span class="lineno">   71</span>        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><span class="lineno">   72</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_ad0e244432d4e11ad5234c8364e82a971"><div class="ttname"><a href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a></div><div class="ttdeci">int BIAS_NUMBER</div><div class="ttdef"><b>Definition:</b> loadtools.c:11</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
+<div class="line"><span class="lineno">   72</span>    printf(<span class="stringliteral">&quot;bias = [&quot;</span>);</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a>; ++i)</div>
+<div class="line"><span class="lineno">   74</span>    {</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (i == <a class="code hl_variable" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a> - 1)</div>
+<div class="line"><span class="lineno">   76</span>            printf(<span class="stringliteral">&quot;%i]\n&quot;</span>, *(building_bias + i));</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   78</span>            printf(<span class="stringliteral">&quot;%i, &quot;</span>, *(building_bias + i));</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">if</span> (jump)</div>
+<div class="line"><span class="lineno">   81</span>        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   82</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_ad0e244432d4e11ad5234c8364e82a971"><div class="ttname"><a href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a></div><div class="ttdeci">int BIAS_NUMBER</div><div class="ttdef"><b>Definition:</b> loadtools.c:21</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#ad0e244432d4e11ad5234c8364e82a971">BIAS_NUMBER</a>.</p>
 
@@ -305,17 +305,17 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   48</span>{   </div>
-<div class="line"><span class="lineno">   49</span>    printf(<span class="stringliteral">&quot;labels = [&quot;</span>);</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
-<div class="line"><span class="lineno">   51</span>    {</div>
-<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">if</span> (i == <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a> - 1)</div>
-<div class="line"><span class="lineno">   53</span>            printf(<span class="stringliteral">&quot;%s]\n&quot;</span>, *(building_labels + i));</div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   55</span>            printf(<span class="stringliteral">&quot;%s, &quot;</span>, *(building_labels + i));</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span>    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><span class="lineno">   58</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{   </div>
+<div class="line"><span class="lineno">   59</span>    printf(<span class="stringliteral">&quot;labels = [&quot;</span>);</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
+<div class="line"><span class="lineno">   61</span>    {</div>
+<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">if</span> (i == <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a> - 1)</div>
+<div class="line"><span class="lineno">   63</span>            printf(<span class="stringliteral">&quot;%s]\n&quot;</span>, *(building_labels + i));</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   65</span>            printf(<span class="stringliteral">&quot;%s, &quot;</span>, *(building_labels + i));</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span>    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   68</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>.</p>
 
@@ -336,22 +336,22 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
-<div class="line"><span class="lineno">   33</span>    {</div>
-<div class="line"><span class="lineno">   34</span>        printf(<span class="stringliteral">&quot;building %i = [&quot;</span>, i);</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a>; ++j)</div>
-<div class="line"><span class="lineno">   36</span>        {</div>
-<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">if</span> (j == <a class="code hl_variable" href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a> - 1)</div>
-<div class="line"><span class="lineno">   38</span>                printf(<span class="stringliteral">&quot;%i&quot;</span>, *(j + *(building_value + i)));</div>
-<div class="line"><span class="lineno">   39</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   40</span>                printf(<span class="stringliteral">&quot;%i, &quot;</span>, *(j + *(building_value + i)));</div>
-<div class="line"><span class="lineno">   41</span>        }</div>
-<div class="line"><span class="lineno">   42</span>        printf(<span class="stringliteral">&quot;]\n&quot;</span>);</div>
-<div class="line"><span class="lineno">   43</span>    }</div>
-<div class="line"><span class="lineno">   44</span>    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><span class="lineno">   45</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_a75b5e1e67aeac917dea949b1498a1744"><div class="ttname"><a href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a></div><div class="ttdeci">int VALUE_NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> loadtools.c:9</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>{</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>; ++i)</div>
+<div class="line"><span class="lineno">   43</span>    {</div>
+<div class="line"><span class="lineno">   44</span>        printf(<span class="stringliteral">&quot;building %i = [&quot;</span>, i);</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a>; ++j)</div>
+<div class="line"><span class="lineno">   46</span>        {</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (j == <a class="code hl_variable" href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a> - 1)</div>
+<div class="line"><span class="lineno">   48</span>                printf(<span class="stringliteral">&quot;%i&quot;</span>, *(j + *(building_value + i)));</div>
+<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   50</span>                printf(<span class="stringliteral">&quot;%i, &quot;</span>, *(j + *(building_value + i)));</div>
+<div class="line"><span class="lineno">   51</span>        }</div>
+<div class="line"><span class="lineno">   52</span>        printf(<span class="stringliteral">&quot;]\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   53</span>    }</div>
+<div class="line"><span class="lineno">   54</span>    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   55</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_a75b5e1e67aeac917dea949b1498a1744"><div class="ttname"><a href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a></div><div class="ttdeci">int VALUE_NUMBER_TYPE</div><div class="ttdef"><b>Definition:</b> loadtools.c:19</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#a9d943ac46a304efd054aabff34fa0d1b">BUILDING_NUMBER_TYPE</a>, and <a class="el" href="loadtools_8c.html#a75b5e1e67aeac917dea949b1498a1744">VALUE_NUMBER_TYPE</a>.</p>
 
@@ -371,16 +371,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   20</span>{</div>
-<div class="line"><span class="lineno">   21</span>    FILE *file = fopen(<a class="code hl_variable" href="loadtools_8c.html#a6859bb17335d618c2da1931874ec1cf3">SETTINGS</a>, <span class="stringliteral">&quot;r+&quot;</span>);</div>
-<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">if</span> (file == NULL)</div>
-<div class="line"><span class="lineno">   23</span>    {   </div>
-<div class="line"><span class="lineno">   24</span>        perror(<span class="stringliteral">&quot;Error in settings_open_write() in load&quot;</span>);</div>
-<div class="line"><span class="lineno">   25</span>        exit(1);</div>
-<div class="line"><span class="lineno">   26</span>    }</div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">return</span> file;</div>
-<div class="line"><span class="lineno">   28</span>}</div>
-<div class="ttc" id="aloadtools_8c_html_a6859bb17335d618c2da1931874ec1cf3"><div class="ttname"><a href="loadtools_8c.html#a6859bb17335d618c2da1931874ec1cf3">SETTINGS</a></div><div class="ttdeci">char SETTINGS[]</div><div class="ttdef"><b>Definition:</b> loadtools.c:17</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
+<div class="line"><span class="lineno">   31</span>    FILE *file = fopen(<a class="code hl_variable" href="loadtools_8c.html#a6859bb17335d618c2da1931874ec1cf3">SETTINGS</a>, <span class="stringliteral">&quot;r+&quot;</span>);</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (file == NULL)</div>
+<div class="line"><span class="lineno">   33</span>    {   </div>
+<div class="line"><span class="lineno">   34</span>        perror(<span class="stringliteral">&quot;Error in settings_open_write() in load&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span>        exit(1);</div>
+<div class="line"><span class="lineno">   36</span>    }</div>
+<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span> file;</div>
+<div class="line"><span class="lineno">   38</span>}</div>
+<div class="ttc" id="aloadtools_8c_html_a6859bb17335d618c2da1931874ec1cf3"><div class="ttname"><a href="loadtools_8c.html#a6859bb17335d618c2da1931874ec1cf3">SETTINGS</a></div><div class="ttdeci">char SETTINGS[]</div><div class="ttdef"><b>Definition:</b> loadtools.c:27</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="loadtools_8c.html#a6859bb17335d618c2da1931874ec1cf3">SETTINGS</a>.</p>
 

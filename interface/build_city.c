@@ -4,6 +4,15 @@
 #include "toSDL.h"
 #include "../metro/network.h"
 
+/**
+* @file build_city.c
+* @details This file was mainly used for tests and built a random city in order to test the display with our GTK and SDL Graphical User Interface
+* @author Remy Decourcelle <remy.decoutcelle@epita.fr>, Loïck Balloy <loick.balloy@epita.fr>, Axel Cochepin <axel.cochepin@epita.fr>, Guillaume Charvolin <guillaume.charvolin@epita.fr>
+* @version 0.1
+* @date 2022
+*/
+
+
 
 char **genMat(int DIM)
 {

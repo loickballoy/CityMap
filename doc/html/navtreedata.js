@@ -25,7 +25,17 @@
 var NAVTREE =
 [
   [ "CityMap", "index.html", [
-    [ "README", "md__r_e_a_d_m_e.html", null ],
+    [ "CityMap", "md__r_e_a_d_m_e.html", [
+      [ "About / Synopsis", "md__r_e_a_d_m_e.html#autotoc_md1", null ],
+      [ "Table of contents", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
+      [ "Installation", "md__r_e_a_d_m_e.html#autotoc_md3", null ],
+      [ "Usage", "md__r_e_a_d_m_e.html#autotoc_md4", [
+        [ "Screenshots", "md__r_e_a_d_m_e.html#autotoc_md5", null ],
+        [ "Features", "md__r_e_a_d_m_e.html#autotoc_md6", null ]
+      ] ],
+      [ "Resources (Documentation and other links)", "md__r_e_a_d_m_e.html#autotoc_md7", null ],
+      [ "WebSite", "md__r_e_a_d_m_e.html#autotoc_md8", null ]
+    ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
@@ -52,7 +62,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"struct_e_d_g_e.html#a58037379f154647324421fa4c0f7e1fe"
+"road_8c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

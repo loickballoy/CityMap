@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['rdmrange_0',['RDMRANGE',['../assign_8h.html#a403c57e536b5d9e74b0348cbf6cb82c4',1,'RDMRANGE():&#160;assign.h'],['../assign__tools_8h.html#a403c57e536b5d9e74b0348cbf6cb82c4',1,'RDMRANGE():&#160;assign_tools.h']]],
-  ['read_2ec_1',['read.c',['../read_8c.html',1,'']]],
-  ['read_2eh_2',['read.h',['../read_8h.html',1,'']]],
-  ['readme_3',['README',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['range_0',['range',['../structbuilding_type.html#a34e76b0e30e822475d00cce91b576d47',1,'buildingType']]],
+  ['rdmrange_1',['RDMRANGE',['../assign_8h.html#a403c57e536b5d9e74b0348cbf6cb82c4',1,'RDMRANGE():&#160;assign.h'],['../assign__tools_8h.html#a403c57e536b5d9e74b0348cbf6cb82c4',1,'RDMRANGE():&#160;assign_tools.h']]],
+  ['read_2ec_2',['read.c',['../read_8c.html',1,'']]],
+  ['read_2eh_3',['read.h',['../read_8h.html',1,'']]],
   ['readme_2emd_4',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
   ['replaceglobalneed_5',['replaceGlobalNeed',['../assign_8c.html#ae8edf5c268e483bf6616420db4061584',1,'replaceGlobalNeed(struct map *map, int *buildingList, int *maxstat, int roof, int *a):&#160;assign.c'],['../assign_8h.html#ae8edf5c268e483bf6616420db4061584',1,'replaceGlobalNeed(struct map *map, int *buildingList, int *maxstat, int roof, int *a):&#160;assign.c']]],
   ['replacetown_6',['replaceTown',['../assign_8c.html#a4be01986344e82266a0691d32072733f',1,'replaceTown(struct map *map, int *buildingList, int roof, int **building_value, int *nbreplacement):&#160;assign.c'],['../assign_8h.html#a4be01986344e82266a0691d32072733f',1,'replaceTown(struct map *map, int *buildingList, int roof, int **building_value, int *nbreplacement):&#160;assign.c']]],

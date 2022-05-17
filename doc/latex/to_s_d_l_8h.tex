@@ -9,7 +9,7 @@ Include dependency graph for to\+SDL.\+h\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{to_s_d_l_8h__incl}
+\includegraphics[width=308pt]{to_s_d_l_8h__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -17,7 +17,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=294pt]{to_s_d_l_8h__dep__incl}
+\includegraphics[width=350pt]{to_s_d_l_8h__dep__incl}
 \end{center}
 \end{figure}
 \doxysubsection*{Functions}
@@ -38,108 +38,112 @@ void \mbox{\hyperlink{to_s_d_l_8h_ab3dadb9c03fe52f5265f999a0e8b73ae}{Print\+Metr
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{14 \{}
-\DoxyCodeLine{15   SDL\_Surface* image\_surface;}
-\DoxyCodeLine{16   SDL\_Surface* Hall;}
-\DoxyCodeLine{17   SDL\_Surface* Prop;}
-\DoxyCodeLine{18   SDL\_Surface* Comi;}
-\DoxyCodeLine{19   SDL\_Surface* Hosp;}
-\DoxyCodeLine{20   SDL\_Surface* Offi;}
-\DoxyCodeLine{21   SDL\_Surface* Road;}
-\DoxyCodeLine{22   SDL\_Surface* Shop;}
-\DoxyCodeLine{23   SDL\_Surface* Noir;}
-\DoxyCodeLine{24   SDL\_Surface* \mbox{\hyperlink{struct_metro}{Metro}};}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27   \mbox{\hyperlink{tool__image_8c_a02b747ee9a45485dd694783af494b4f9}{init\_sdl}}();}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29   \textcolor{keywordtype}{int} dim\_surface = DIM * 64;}
-\DoxyCodeLine{30 }
-\DoxyCodeLine{31   image\_surface =  SDL\_CreateRGBSurface(0, dim\_surface, dim\_surface, 32,0,0,0,0);}
-\DoxyCodeLine{32   Hall = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/hall.png"{}});}
-\DoxyCodeLine{33   Prop = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/prop.png"{}});}
-\DoxyCodeLine{34   Comi = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/comi.png"{}});}
-\DoxyCodeLine{35   Hosp = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/hosp.png"{}});}
-\DoxyCodeLine{36   Offi = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/offi.png"{}});}
-\DoxyCodeLine{37   Shop = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/shop.png"{}});}
-\DoxyCodeLine{38   Road = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/road.png"{}});}
-\DoxyCodeLine{39   Noir = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/noir.png"{}});}
-\DoxyCodeLine{40   \mbox{\hyperlink{struct_metro}{Metro}} = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/metro.png"{}});}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42   \textcolor{keywordtype}{int} x = 0;}
-\DoxyCodeLine{43   \textcolor{keywordtype}{int} y = 0;}
-\DoxyCodeLine{44   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < DIM; i++)}
-\DoxyCodeLine{45     \{}
-\DoxyCodeLine{46       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < DIM; j++)}
-\DoxyCodeLine{47     \{}
-\DoxyCodeLine{48       \textcolor{keywordtype}{char} b = matrice[i][j];}
-\DoxyCodeLine{49           }
-\DoxyCodeLine{50       SDL\_Rect srcRect = \{0,0,64,64\};}
-\DoxyCodeLine{51       SDL\_Rect dstRect = \{y,x,64,64\};}
-\DoxyCodeLine{52       }
-\DoxyCodeLine{53       SDL\_Surface* bat;}
-\DoxyCodeLine{54       bat = Noir;}
-\DoxyCodeLine{55       }
-\DoxyCodeLine{56       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'0'})}
-\DoxyCodeLine{57         bat = Hall;}
-\DoxyCodeLine{58       }
-\DoxyCodeLine{59       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'1'})}
-\DoxyCodeLine{60         bat = Prop;}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24   SDL\_Surface* image\_surface;}
+\DoxyCodeLine{25   SDL\_Surface* Hall;}
+\DoxyCodeLine{26   SDL\_Surface* Prop;}
+\DoxyCodeLine{27   SDL\_Surface* Comi;}
+\DoxyCodeLine{28   SDL\_Surface* Hosp;}
+\DoxyCodeLine{29   SDL\_Surface* Offi;}
+\DoxyCodeLine{30   SDL\_Surface* Road;}
+\DoxyCodeLine{31   SDL\_Surface* Shop;}
+\DoxyCodeLine{32   SDL\_Surface* Noir;}
+\DoxyCodeLine{33   SDL\_Surface* \mbox{\hyperlink{struct_metro}{Metro}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36   \mbox{\hyperlink{tool__image_8c_a02b747ee9a45485dd694783af494b4f9}{init\_sdl}}();}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38   \textcolor{keywordtype}{int} dim\_surface = DIM * 64;}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40   image\_surface =  SDL\_CreateRGBSurface(0, dim\_surface, dim\_surface, 32,0,0,0,0);}
+\DoxyCodeLine{41   Hall = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/hall.png"{}});}
+\DoxyCodeLine{42   Prop = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/prop.png"{}});}
+\DoxyCodeLine{43   Comi = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/comi.png"{}});}
+\DoxyCodeLine{44   Hosp = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/hosp.png"{}});}
+\DoxyCodeLine{45   Offi = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/offi.png"{}});}
+\DoxyCodeLine{46   Shop = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/shop.png"{}});}
+\DoxyCodeLine{47   Road = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/road.png"{}});}
+\DoxyCodeLine{48   Noir = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/noir.png"{}});}
+\DoxyCodeLine{49   \mbox{\hyperlink{struct_metro}{Metro}} = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/metro.png"{}});}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51   \textcolor{keywordtype}{int} x = 0;}
+\DoxyCodeLine{52   \textcolor{keywordtype}{int} y = 0;}
+\DoxyCodeLine{53   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < DIM; i++)}
+\DoxyCodeLine{54     \{}
+\DoxyCodeLine{55       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < DIM; j++)}
+\DoxyCodeLine{56     \{}
+\DoxyCodeLine{57       \textcolor{keywordtype}{char} b = matrice[i][j];}
+\DoxyCodeLine{58           }
+\DoxyCodeLine{59       SDL\_Rect srcRect = \{0,0,64,64\};}
+\DoxyCodeLine{60       SDL\_Rect dstRect = \{y,x,64,64\};}
 \DoxyCodeLine{61       }
-\DoxyCodeLine{62       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'2'})}
-\DoxyCodeLine{63         bat = Offi;}
+\DoxyCodeLine{62       SDL\_Surface* bat;}
+\DoxyCodeLine{63       bat = Noir;}
 \DoxyCodeLine{64       }
-\DoxyCodeLine{65       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'3'})}
-\DoxyCodeLine{66         bat = Comi;}
-\DoxyCodeLine{67 }
-\DoxyCodeLine{68       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'4'})}
-\DoxyCodeLine{69         bat = Shop;}
+\DoxyCodeLine{65       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'0'})}
+\DoxyCodeLine{66         bat = Hall;}
+\DoxyCodeLine{67       }
+\DoxyCodeLine{68       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'1'})}
+\DoxyCodeLine{69         bat = Prop;}
 \DoxyCodeLine{70       }
-\DoxyCodeLine{71       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'5'})}
-\DoxyCodeLine{72         bat = Hosp;}
+\DoxyCodeLine{71       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'2'})}
+\DoxyCodeLine{72         bat = Offi;}
 \DoxyCodeLine{73       }
-\DoxyCodeLine{74       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'6'})}
-\DoxyCodeLine{75         bat = Road;}
+\DoxyCodeLine{74       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'3'})}
+\DoxyCodeLine{75         bat = Comi;}
 \DoxyCodeLine{76 }
-\DoxyCodeLine{77       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'7'})}
-\DoxyCodeLine{78         bat = \mbox{\hyperlink{struct_metro}{Metro}};}
-\DoxyCodeLine{79 }
-\DoxyCodeLine{80       }
-\DoxyCodeLine{81       SDL\_BlitSurface(bat, \&srcRect, image\_surface, \&dstRect);}
-\DoxyCodeLine{82           }
-\DoxyCodeLine{83       y += 64;}
-\DoxyCodeLine{84       \textcolor{keywordflow}{if}(y == dim\_surface)\{}
-\DoxyCodeLine{85         y = 0;}
-\DoxyCodeLine{86       \}}
-\DoxyCodeLine{87     \}}
-\DoxyCodeLine{88       x += 64;}
-\DoxyCodeLine{89     \}}
-\DoxyCodeLine{90   }
-\DoxyCodeLine{91   SDL\_SaveBMP(image\_surface, \textcolor{stringliteral}{"{}CityMap.png"{}});}
-\DoxyCodeLine{92   \textcolor{comment}{//display\_image(image\_surface);}}
-\DoxyCodeLine{93   }
-\DoxyCodeLine{94   \textcolor{comment}{//wait\_for\_keypressed();}}
-\DoxyCodeLine{95   }
-\DoxyCodeLine{96   SDL\_FreeSurface(image\_surface);}
-\DoxyCodeLine{97   SDL\_FreeSurface(Hall);}
-\DoxyCodeLine{98   SDL\_FreeSurface(Prop);}
-\DoxyCodeLine{99   SDL\_FreeSurface(Comi);}
-\DoxyCodeLine{100   SDL\_FreeSurface(Hosp);}
-\DoxyCodeLine{101   SDL\_FreeSurface(Offi);}
-\DoxyCodeLine{102   SDL\_FreeSurface(Shop);}
-\DoxyCodeLine{103   SDL\_FreeSurface(Road);}
-\DoxyCodeLine{104   SDL\_FreeSurface(Noir);}
-\DoxyCodeLine{105   SDL\_FreeSurface(\mbox{\hyperlink{struct_metro}{Metro}});}
-\DoxyCodeLine{106 }
-\DoxyCodeLine{107   SDL\_Quit();}
-\DoxyCodeLine{108   \textcolor{comment}{//exit(EXIT\_SUCCESS);}}
-\DoxyCodeLine{109 }
-\DoxyCodeLine{110 \}}
+\DoxyCodeLine{77       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'4'})}
+\DoxyCodeLine{78         bat = Shop;}
+\DoxyCodeLine{79       }
+\DoxyCodeLine{80       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'5'})}
+\DoxyCodeLine{81         bat = Hosp;}
+\DoxyCodeLine{82       }
+\DoxyCodeLine{83       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'6'})}
+\DoxyCodeLine{84         bat = Road;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86       \textcolor{keywordflow}{if}(b == \textcolor{charliteral}{'7'})}
+\DoxyCodeLine{87         bat = \mbox{\hyperlink{struct_metro}{Metro}};}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89       }
+\DoxyCodeLine{90       SDL\_BlitSurface(bat, \&srcRect, image\_surface, \&dstRect);}
+\DoxyCodeLine{91           }
+\DoxyCodeLine{92       y += 64;}
+\DoxyCodeLine{93       \textcolor{keywordflow}{if}(y == dim\_surface)\{}
+\DoxyCodeLine{94         y = 0;}
+\DoxyCodeLine{95       \}}
+\DoxyCodeLine{96     \}}
+\DoxyCodeLine{97       x += 64;}
+\DoxyCodeLine{98     \}}
+\DoxyCodeLine{99   }
+\DoxyCodeLine{100   SDL\_SaveBMP(image\_surface, \textcolor{stringliteral}{"{}CityMap.png"{}});}
+\DoxyCodeLine{101   \textcolor{comment}{//display\_image(image\_surface);}}
+\DoxyCodeLine{102   }
+\DoxyCodeLine{103   \textcolor{comment}{//wait\_for\_keypressed();}}
+\DoxyCodeLine{104   }
+\DoxyCodeLine{105   SDL\_FreeSurface(image\_surface);}
+\DoxyCodeLine{106   SDL\_FreeSurface(Hall);}
+\DoxyCodeLine{107   SDL\_FreeSurface(Prop);}
+\DoxyCodeLine{108   SDL\_FreeSurface(Comi);}
+\DoxyCodeLine{109   SDL\_FreeSurface(Hosp);}
+\DoxyCodeLine{110   SDL\_FreeSurface(Offi);}
+\DoxyCodeLine{111   SDL\_FreeSurface(Shop);}
+\DoxyCodeLine{112   SDL\_FreeSurface(Road);}
+\DoxyCodeLine{113   SDL\_FreeSurface(Noir);}
+\DoxyCodeLine{114   SDL\_FreeSurface(\mbox{\hyperlink{struct_metro}{Metro}});}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116   SDL\_Quit();}
+\DoxyCodeLine{117   \textcolor{comment}{//exit(EXIT\_SUCCESS);}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \}}
 
 \end{DoxyCode}
 
 
 References \mbox{\hyperlink{tool__image_8c_a02b747ee9a45485dd694783af494b4f9}{init\+\_\+sdl()}}, and \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\+\_\+image()}}.
+
+
+
+Referenced by \mbox{\hyperlink{build__city_8c_ae718034bb5f26172f71977253c8c6119}{build\+\_\+city()}}.
 
 \mbox{\Hypertarget{to_s_d_l_8h_ab3dadb9c03fe52f5265f999a0e8b73ae}\label{to_s_d_l_8h_ab3dadb9c03fe52f5265f999a0e8b73ae}} 
 \index{toSDL.h@{toSDL.h}!PrintMetro@{PrintMetro}}
@@ -149,138 +153,140 @@ References \mbox{\hyperlink{tool__image_8c_a02b747ee9a45485dd694783af494b4f9}{in
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{113 \{}
-\DoxyCodeLine{114   SDL\_Surface* image\_surface;}
-\DoxyCodeLine{115   SDL\_Surface* \mbox{\hyperlink{struct_metro}{Metro}};}
-\DoxyCodeLine{116   SDL\_Surface* Ligne;}
-\DoxyCodeLine{117   }
-\DoxyCodeLine{118   SDL\_Surface* Noir;}
-\DoxyCodeLine{119   SDL\_Surface* Rouge;}
-\DoxyCodeLine{120   SDL\_Surface* Bleue;}
-\DoxyCodeLine{121   SDL\_Surface* Orange;}
-\DoxyCodeLine{122   SDL\_Surface* Vert;}
-\DoxyCodeLine{123   SDL\_Surface* Violet;}
-\DoxyCodeLine{124 }
-\DoxyCodeLine{125 }
-\DoxyCodeLine{126   \mbox{\hyperlink{tool__image_8c_a02b747ee9a45485dd694783af494b4f9}{init\_sdl}}();}
-\DoxyCodeLine{127 }
-\DoxyCodeLine{128   \textcolor{keywordtype}{int} dim\_surface = DIM * 64;}
-\DoxyCodeLine{129 }
-\DoxyCodeLine{130   image\_surface =  SDL\_CreateRGBSurface(0, dim\_surface, dim\_surface, 32,0,0,0,0);}
-\DoxyCodeLine{131 }
-\DoxyCodeLine{132   \textcolor{comment}{//init images}}
-\DoxyCodeLine{133   Noir = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/noir.png"{}});}
-\DoxyCodeLine{134   \mbox{\hyperlink{struct_metro}{Metro}} = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/metro.png"{}});}
-\DoxyCodeLine{135   Ligne = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/ligne.png"{}});}
+\DoxyCodeLine{122 \{}
+\DoxyCodeLine{123   SDL\_Surface* image\_surface;}
+\DoxyCodeLine{124   SDL\_Surface* \mbox{\hyperlink{struct_metro}{Metro}};}
+\DoxyCodeLine{125   SDL\_Surface* Ligne;}
+\DoxyCodeLine{126   }
+\DoxyCodeLine{127   SDL\_Surface* Noir;}
+\DoxyCodeLine{128   SDL\_Surface* Rouge;}
+\DoxyCodeLine{129   SDL\_Surface* Bleue;}
+\DoxyCodeLine{130   SDL\_Surface* Orange;}
+\DoxyCodeLine{131   SDL\_Surface* Vert;}
+\DoxyCodeLine{132   SDL\_Surface* Violet;}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135   \mbox{\hyperlink{tool__image_8c_a02b747ee9a45485dd694783af494b4f9}{init\_sdl}}();}
 \DoxyCodeLine{136 }
-\DoxyCodeLine{137   Rouge = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/rouge.png"{}});}
-\DoxyCodeLine{138   Vert = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/vert.png"{}});}
-\DoxyCodeLine{139   Bleue = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/bleue.png"{}});}
-\DoxyCodeLine{140   Orange = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/orange.png"{}});}
-\DoxyCodeLine{141   Violet = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/violet.png"{}});}
-\DoxyCodeLine{142 }
-\DoxyCodeLine{143   SDL\_Rect srcRect = \{0,0,64,64\};}
-\DoxyCodeLine{144 }
-\DoxyCodeLine{145   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nb\_edge = edges[0].\mbox{\hyperlink{struct_e_d_g_e_ad4798844080b56d44961f381922267ce}{nb\_edge}};}
-\DoxyCodeLine{146 }
-\DoxyCodeLine{147   printf(\textcolor{stringliteral}{"{}nb : \%u \(\backslash\)n"{}}, nb\_edge);}
-\DoxyCodeLine{148 }
-\DoxyCodeLine{149   }
-\DoxyCodeLine{150   \textcolor{comment}{//parcours edges}}
-\DoxyCodeLine{151   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} k = 0; k < (int)nb\_edge; k++)}
-\DoxyCodeLine{152     \{}
-\DoxyCodeLine{153       }
-\DoxyCodeLine{154       \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} ed = edges[k];}
+\DoxyCodeLine{137   \textcolor{keywordtype}{int} dim\_surface = DIM * 64;}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139   image\_surface =  SDL\_CreateRGBSurface(0, dim\_surface, dim\_surface, 32,0,0,0,0);}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141   \textcolor{comment}{//init images}}
+\DoxyCodeLine{142   Noir = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/noir.png"{}});}
+\DoxyCodeLine{143   \mbox{\hyperlink{struct_metro}{Metro}} = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/metro.png"{}});}
+\DoxyCodeLine{144   Ligne = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/ligne.png"{}});}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146   Rouge = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/rouge.png"{}});}
+\DoxyCodeLine{147   Vert = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/vert.png"{}});}
+\DoxyCodeLine{148   Bleue = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/bleue.png"{}});}
+\DoxyCodeLine{149   Orange = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/orange.png"{}});}
+\DoxyCodeLine{150   Violet = \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{stringliteral}{"{}images/violet.png"{}});}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152   SDL\_Rect srcRect = \{0,0,64,64\};}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154   \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} nb\_edge = edges[0].\mbox{\hyperlink{struct_e_d_g_e_ad4798844080b56d44961f381922267ce}{nb\_edge}}; }
 \DoxyCodeLine{155 }
-\DoxyCodeLine{156       \textcolor{keywordtype}{int} i = (int) ed.\mbox{\hyperlink{struct_e_d_g_e_a9f12ea9435ff920d81bd94dcaff718bd}{src\_x}};}
-\DoxyCodeLine{157       \textcolor{keywordtype}{int} j = (\textcolor{keywordtype}{int}) ed.\mbox{\hyperlink{struct_e_d_g_e_a58037379f154647324421fa4c0f7e1fe}{src\_y}};}
-\DoxyCodeLine{158 }
-\DoxyCodeLine{159       \textcolor{keywordtype}{int} a = (int) ed.\mbox{\hyperlink{struct_e_d_g_e_a94c51ed846e6bfe46b91e7ef49f7a667}{dst\_x}};}
-\DoxyCodeLine{160       \textcolor{keywordtype}{int} b = (\textcolor{keywordtype}{int}) ed.\mbox{\hyperlink{struct_e_d_g_e_a8442292edebb4370a0483b818eaf7b28}{dst\_y}};}
-\DoxyCodeLine{161 }
-\DoxyCodeLine{162       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 1)}
-\DoxyCodeLine{163     Ligne = Vert;}
-\DoxyCodeLine{164       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 2)}
-\DoxyCodeLine{165     Ligne = Rouge;}
-\DoxyCodeLine{166       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 3)}
-\DoxyCodeLine{167     Ligne = Bleue;}
-\DoxyCodeLine{168       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 4)}
-\DoxyCodeLine{169     Ligne = Orange;}
-\DoxyCodeLine{170       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 5)}
-\DoxyCodeLine{171     Ligne = Violet;}
-\DoxyCodeLine{172 }
-\DoxyCodeLine{173       }
-\DoxyCodeLine{174       \textcolor{keywordtype}{int} n\_i = 1;}
-\DoxyCodeLine{175       \textcolor{keywordtype}{int} n\_j = 1;}
-\DoxyCodeLine{176       }
-\DoxyCodeLine{177       \textcolor{keywordflow}{if}(i > a)}
-\DoxyCodeLine{178     n\_i = -\/1;}
-\DoxyCodeLine{179       \textcolor{keywordflow}{if}(j > b)}
-\DoxyCodeLine{180     n\_j = -\/1;}
-\DoxyCodeLine{181 }
-\DoxyCodeLine{182       \textcolor{keywordflow}{while}(j != b)\{}
-\DoxyCodeLine{183 }
-\DoxyCodeLine{184     j += n\_j; }
-\DoxyCodeLine{185     }
-\DoxyCodeLine{186     SDL\_Rect dstRect = \{j*64,i*64,64,64\};}
-\DoxyCodeLine{187 }
-\DoxyCodeLine{188     SDL\_BlitSurface(Ligne, \&srcRect, image\_surface, \&dstRect);}
-\DoxyCodeLine{189     }
-\DoxyCodeLine{190       \}}
-\DoxyCodeLine{191       \textcolor{keywordflow}{while}(i != a)\{}
-\DoxyCodeLine{192 }
-\DoxyCodeLine{193     i += n\_i;}
-\DoxyCodeLine{194     }
-\DoxyCodeLine{195     SDL\_Rect dstRect = \{j*64,i*64,64,64\};}
-\DoxyCodeLine{196 }
-\DoxyCodeLine{197     SDL\_BlitSurface(Ligne, \&srcRect, image\_surface, \&dstRect);}
-\DoxyCodeLine{198     }
-\DoxyCodeLine{199       \}}
-\DoxyCodeLine{200  }
-\DoxyCodeLine{201     \}}
-\DoxyCodeLine{202 }
-\DoxyCodeLine{203   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} k = 0; k < (int)\mbox{\hyperlink{struct_e_d_g_e_ad4798844080b56d44961f381922267ce}{nb\_edge}}; k++) \textcolor{comment}{//Rajoute les stations}}
-\DoxyCodeLine{204     \{}
-\DoxyCodeLine{205       }
-\DoxyCodeLine{206       \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} ed = edges[k];}
-\DoxyCodeLine{207 }
-\DoxyCodeLine{208       SDL\_Rect dstRect1 = \{((int)ed.\mbox{\hyperlink{struct_e_d_g_e_a58037379f154647324421fa4c0f7e1fe}{src\_y}}*64),((int)ed.\mbox{\hyperlink{struct_e_d_g_e_a9f12ea9435ff920d81bd94dcaff718bd}{src\_x}}*64),64,64\};}
+\DoxyCodeLine{156   }
+\DoxyCodeLine{157   \textcolor{comment}{//parcours edges}}
+\DoxyCodeLine{158   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} k = 0; k < (int)nb\_edge; k++)}
+\DoxyCodeLine{159     \{}
+\DoxyCodeLine{160       }
+\DoxyCodeLine{161       \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} ed = edges[k];}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163       \textcolor{keywordtype}{int} i = (int) ed.\mbox{\hyperlink{struct_e_d_g_e_a9f12ea9435ff920d81bd94dcaff718bd}{src\_x}};}
+\DoxyCodeLine{164       \textcolor{keywordtype}{int} j = (\textcolor{keywordtype}{int}) ed.\mbox{\hyperlink{struct_e_d_g_e_a58037379f154647324421fa4c0f7e1fe}{src\_y}};}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166       \textcolor{keywordtype}{int} a = (int) ed.\mbox{\hyperlink{struct_e_d_g_e_a94c51ed846e6bfe46b91e7ef49f7a667}{dst\_x}};}
+\DoxyCodeLine{167       \textcolor{keywordtype}{int} b = (\textcolor{keywordtype}{int}) ed.\mbox{\hyperlink{struct_e_d_g_e_a8442292edebb4370a0483b818eaf7b28}{dst\_y}};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 1)}
+\DoxyCodeLine{170     Ligne = Vert;}
+\DoxyCodeLine{171       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 2)}
+\DoxyCodeLine{172     Ligne = Rouge;}
+\DoxyCodeLine{173       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 3)}
+\DoxyCodeLine{174     Ligne = Bleue;}
+\DoxyCodeLine{175       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 4)}
+\DoxyCodeLine{176     Ligne = Orange;}
+\DoxyCodeLine{177       \textcolor{keywordflow}{if}(ed.\mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{ligne}} == 5)}
+\DoxyCodeLine{178     Ligne = Violet;}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180       }
+\DoxyCodeLine{181       \textcolor{keywordtype}{int} n\_i = 1;}
+\DoxyCodeLine{182       \textcolor{keywordtype}{int} n\_j = 1;}
+\DoxyCodeLine{183       }
+\DoxyCodeLine{184       \textcolor{keywordflow}{if}(i > a)}
+\DoxyCodeLine{185     n\_i = -\/1;}
+\DoxyCodeLine{186       \textcolor{keywordflow}{if}(j > b)}
+\DoxyCodeLine{187     n\_j = -\/1;}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189       \textcolor{keywordflow}{while}(j != b)\{}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191     j += n\_j; }
+\DoxyCodeLine{192     }
+\DoxyCodeLine{193     SDL\_Rect dstRect = \{j*64,i*64,64,64\};}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{195     SDL\_BlitSurface(Ligne, \&srcRect, image\_surface, \&dstRect);}
+\DoxyCodeLine{196     }
+\DoxyCodeLine{197       \}}
+\DoxyCodeLine{198       \textcolor{keywordflow}{while}(i != a)\{}
+\DoxyCodeLine{199 }
+\DoxyCodeLine{200     i += n\_i;}
+\DoxyCodeLine{201     }
+\DoxyCodeLine{202     SDL\_Rect dstRect = \{j*64,i*64,64,64\};}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204     SDL\_BlitSurface(Ligne, \&srcRect, image\_surface, \&dstRect);}
+\DoxyCodeLine{205     }
+\DoxyCodeLine{206       \}}
+\DoxyCodeLine{207  }
+\DoxyCodeLine{208     \}}
 \DoxyCodeLine{209 }
-\DoxyCodeLine{210       SDL\_BlitSurface(\mbox{\hyperlink{struct_metro}{Metro}}, \&srcRect, image\_surface, \&dstRect1);}
-\DoxyCodeLine{211 }
-\DoxyCodeLine{212       SDL\_Rect dstRect2 = \{((int)ed.\mbox{\hyperlink{struct_e_d_g_e_a8442292edebb4370a0483b818eaf7b28}{dst\_y}}*64),((int)ed.\mbox{\hyperlink{struct_e_d_g_e_a94c51ed846e6bfe46b91e7ef49f7a667}{dst\_x}}*64),64,64\};}
-\DoxyCodeLine{213 }
-\DoxyCodeLine{214       SDL\_BlitSurface(\mbox{\hyperlink{struct_metro}{Metro}}, \&srcRect, image\_surface, \&dstRect2);}
-\DoxyCodeLine{215     \}}
+\DoxyCodeLine{210   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} k = 0; k < (int)\mbox{\hyperlink{struct_e_d_g_e_ad4798844080b56d44961f381922267ce}{nb\_edge}}; k++) \textcolor{comment}{//Rajoute les stations}}
+\DoxyCodeLine{211     \{}
+\DoxyCodeLine{212       }
+\DoxyCodeLine{213       \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} ed = edges[k];}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215       SDL\_Rect dstRect1 = \{((int)ed.\mbox{\hyperlink{struct_e_d_g_e_a58037379f154647324421fa4c0f7e1fe}{src\_y}}*64),((int)ed.\mbox{\hyperlink{struct_e_d_g_e_a9f12ea9435ff920d81bd94dcaff718bd}{src\_x}}*64),64,64\};}
 \DoxyCodeLine{216 }
-\DoxyCodeLine{217       }
+\DoxyCodeLine{217       SDL\_BlitSurface(\mbox{\hyperlink{struct_metro}{Metro}}, \&srcRect, image\_surface, \&dstRect1);}
 \DoxyCodeLine{218 }
-\DoxyCodeLine{219   SDL\_SaveBMP(image\_surface, \textcolor{stringliteral}{"{}Metro.png"{}});}
-\DoxyCodeLine{220   \textcolor{comment}{//display\_image(image\_surface);}}
-\DoxyCodeLine{221 }
-\DoxyCodeLine{222   \textcolor{comment}{//wait\_for\_keypressed();}}
+\DoxyCodeLine{219       SDL\_Rect dstRect2 = \{((int)ed.\mbox{\hyperlink{struct_e_d_g_e_a8442292edebb4370a0483b818eaf7b28}{dst\_y}}*64),((int)ed.\mbox{\hyperlink{struct_e_d_g_e_a94c51ed846e6bfe46b91e7ef49f7a667}{dst\_x}}*64),64,64\};}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221       SDL\_BlitSurface(\mbox{\hyperlink{struct_metro}{Metro}}, \&srcRect, image\_surface, \&dstRect2);}
+\DoxyCodeLine{222     \}}
 \DoxyCodeLine{223 }
-\DoxyCodeLine{224   SDL\_FreeSurface(image\_surface);}
-\DoxyCodeLine{225   SDL\_FreeSurface(\mbox{\hyperlink{struct_metro}{Metro}});}
-\DoxyCodeLine{226   \textcolor{comment}{//SDL\_FreeSurface(Ligne);}}
-\DoxyCodeLine{227   SDL\_FreeSurface(Noir);}
+\DoxyCodeLine{224       }
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226   SDL\_SaveBMP(image\_surface, \textcolor{stringliteral}{"{}Metro.png"{}});}
+\DoxyCodeLine{227   \textcolor{comment}{//display\_image(image\_surface);}}
 \DoxyCodeLine{228 }
-\DoxyCodeLine{229   }
-\DoxyCodeLine{230   SDL\_FreeSurface(Rouge);}
-\DoxyCodeLine{231     }
-\DoxyCodeLine{232   SDL\_FreeSurface(Vert);}
-\DoxyCodeLine{233   }
-\DoxyCodeLine{234   SDL\_FreeSurface(Bleue);}
-\DoxyCodeLine{235   }
-\DoxyCodeLine{236   SDL\_FreeSurface(Orange);}
-\DoxyCodeLine{237   }
-\DoxyCodeLine{238   SDL\_FreeSurface(Violet);}
-\DoxyCodeLine{239   }
-\DoxyCodeLine{240   SDL\_Quit();}
-\DoxyCodeLine{241 \}}
+\DoxyCodeLine{229   \textcolor{comment}{//wait\_for\_keypressed();}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231   SDL\_FreeSurface(image\_surface);}
+\DoxyCodeLine{232   SDL\_FreeSurface(\mbox{\hyperlink{struct_metro}{Metro}});}
+\DoxyCodeLine{233   \textcolor{comment}{//SDL\_FreeSurface(Ligne);}}
+\DoxyCodeLine{234   SDL\_FreeSurface(Noir);}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236   }
+\DoxyCodeLine{237   SDL\_FreeSurface(Rouge);}
+\DoxyCodeLine{238     }
+\DoxyCodeLine{239   SDL\_FreeSurface(Vert);}
+\DoxyCodeLine{240   }
+\DoxyCodeLine{241   SDL\_FreeSurface(Bleue);}
+\DoxyCodeLine{242   }
+\DoxyCodeLine{243   SDL\_FreeSurface(Orange);}
+\DoxyCodeLine{244   }
+\DoxyCodeLine{245   SDL\_FreeSurface(Violet);}
+\DoxyCodeLine{246   }
+\DoxyCodeLine{247   SDL\_Quit();}
+\DoxyCodeLine{248 \}}
 
 \end{DoxyCode}
 
 
 References \mbox{\hyperlink{struct_e_d_g_e_a94c51ed846e6bfe46b91e7ef49f7a667}{EDGE\+::dst\+\_\+x}}, \mbox{\hyperlink{struct_e_d_g_e_a8442292edebb4370a0483b818eaf7b28}{EDGE\+::dst\+\_\+y}}, \mbox{\hyperlink{tool__image_8c_a02b747ee9a45485dd694783af494b4f9}{init\+\_\+sdl()}}, \mbox{\hyperlink{struct_e_d_g_e_a67c72d18662121f7600a2a423f4f3ce5}{EDGE\+::ligne}}, \mbox{\hyperlink{tool__image_8c_a4dd041463f513097e9448c3f0e58967c}{load\+\_\+image()}}, \mbox{\hyperlink{struct_e_d_g_e_ad4798844080b56d44961f381922267ce}{EDGE\+::nb\+\_\+edge}}, \mbox{\hyperlink{struct_e_d_g_e_a9f12ea9435ff920d81bd94dcaff718bd}{EDGE\+::src\+\_\+x}}, and \mbox{\hyperlink{struct_e_d_g_e_a58037379f154647324421fa4c0f7e1fe}{EDGE\+::src\+\_\+y}}.
+
+
+
+Referenced by \mbox{\hyperlink{build__city_8c_ae718034bb5f26172f71977253c8c6119}{build\+\_\+city()}}.
 
