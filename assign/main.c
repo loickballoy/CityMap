@@ -44,47 +44,47 @@ struct map *testAssign(int compt, int roof)
 	int truc = 50 + compt/2000;
 	truc += truc%2;
 	struct map *newmap = initMap(truc, truc);
-	
+
 	struct map *testmap = initMap(truc, truc);
-	
+
 	int nb_sub = buildingList[6];
 	struct cell **Subways = generateRandomSubway(newmap, buildingList, building_value);
 	printMatrix(newmap);
 	generateRdmRoads(newmap, nb_sub, Subways);
 
 	//init first bat
-	
+
 	struct cell *center = newmap->cells + newmap->maxWidth/2 +newmap->maxWidth * newmap->maxHeight/2;
 	center->type = 0;
 	(center+1)->type = 6;
 	(center-1)->type = 6;
-	
-	
+
+
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 
 	//start the filling
-	
+
 	int numOff = 0;
 	int numPro = 0;
 	int numSho = 0;
 	int numHos = 0;
 	int numCom = 0;
 	int ty = fillTown(newmap, buildingList, roof, building_value);
-	
+
 	printMatrix(newmap);
 	int _ty = ty;
 	*testmap = *newmap;
 	printMatrix(testmap);
-	
+
 	for(int n = 0; n < nbbat - 1 && ty != -10; n++)
-	{ 
+	{
 		ty = fillTown(newmap, buildingList, roof, building_value);
 		_ty = fillTown(testmap, _buildingList, roof, building_value);
-		
+
 
 		if (minMaxMap(newmap, testmap) == testmap)
 		{
-			
+
 			*newmap = *testmap;
 			*buildingList = *_buildingList;
 			ty = _ty;
@@ -95,7 +95,7 @@ struct map *testAssign(int compt, int roof)
 			*testmap = *newmap;
 			*_buildingList = *buildingList;
 		}
-		
+
 		if (ty == 1)
 			numPro += 1;
 		else if (ty == 2)
@@ -127,7 +127,7 @@ struct map *testAssign(int compt, int roof)
 	{
 		replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
 	}
-	
+
 	printMatrix(newmap);
 	analyseMatrix(newmap);
 
@@ -143,14 +143,14 @@ struct map *testAssign(int compt, int roof)
 }
 
 
-
+/*
 int main(int argc, char **argv)
 {
 	//init time
 	float temps;
 	clock_t t1, t2;
 	t1 = clock();
-	
+
 	// Ton programme
 	if(argc != 3)
 	{
@@ -170,5 +170,4 @@ int main(int argc, char **argv)
 	temps = (float)(t2-t1)/CLOCKS_PER_SEC;
   	printf("temps = %f\n", temps);
 	return 0;
-}
-
+}*/
