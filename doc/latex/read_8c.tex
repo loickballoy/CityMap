@@ -1,0 +1,302 @@
+\hypertarget{read_8c}{}\doxysection{loader/read.c File Reference}
+\label{read_8c}\index{loader/read.c@{loader/read.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}read.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}loadtools.\+h\char`\"{}}\newline
+Include dependency graph for read.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{read_8c__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{read_8c__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int $\ast$$\ast$ \mbox{\hyperlink{read_8c_a0b7b9fad85d9ab69d4682b943fe3a48b}{init\+\_\+building\+\_\+value}} ()
+\item 
+char $\ast$$\ast$ \mbox{\hyperlink{read_8c_a69625a54f47680d2cb148d638c8ad024}{init\+\_\+building\+\_\+labels}} ()
+\item 
+int $\ast$ \mbox{\hyperlink{read_8c_aa19ac9eba266bd0a777559bb00bd5aba}{init\+\_\+building\+\_\+bias}} ()
+\item 
+void \mbox{\hyperlink{read_8c_a8d842377f7e292de658fe73ef0a77ae4}{fill\+\_\+value}} (int $\ast$value, char $\ast$building\+\_\+line)
+\item 
+void \mbox{\hyperlink{read_8c_ac675066bde1f85eaaca3e98d0b1fcf85}{fill\+\_\+label}} (char $\ast$label, char $\ast$building\+\_\+line)
+\item 
+char $\ast$$\ast$ \mbox{\hyperlink{read_8c_aefb2347a9abea8eb21651294af6d33bc}{load\+\_\+building\+\_\+labels}} ()
+\item 
+int $\ast$$\ast$ \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\+\_\+building\+\_\+value}} ()
+\item 
+int $\ast$ \mbox{\hyperlink{read_8c_a9a187d8a5ac223603383bf86803ff909}{load\+\_\+building\+\_\+bias}} ()
+\item 
+int \mbox{\hyperlink{read_8c_ac1eb9ece9da63abc47d27a7c9d79e3cd}{load\+\_\+habitant\+\_\+number}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{read_8c_ac675066bde1f85eaaca3e98d0b1fcf85}\label{read_8c_ac675066bde1f85eaaca3e98d0b1fcf85}} 
+\index{read.c@{read.c}!fill\_label@{fill\_label}}
+\index{fill\_label@{fill\_label}!read.c@{read.c}}
+\doxysubsubsection{\texorpdfstring{fill\_label()}{fill\_label()}}
+{\footnotesize\ttfamily void fill\+\_\+label (\begin{DoxyParamCaption}\item[{char $\ast$}]{label,  }\item[{char $\ast$}]{building\+\_\+line }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{loadtools_8c_a1efd62316bedcd5941e86fa98123cfa8}{LABEL\_SIZE}}; ++i)}
+\DoxyCodeLine{60     \{}
+\DoxyCodeLine{61         *label = *building\_line;}
+\DoxyCodeLine{62         ++label;}
+\DoxyCodeLine{63         ++building\_line;}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{65     *label = 0;}
+\DoxyCodeLine{66 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{loadtools_8c_a1efd62316bedcd5941e86fa98123cfa8}{LABEL\+\_\+\+SIZE}}.
+
+
+
+Referenced by \mbox{\hyperlink{read_8c_aefb2347a9abea8eb21651294af6d33bc}{load\+\_\+building\+\_\+labels()}}.
+
+\mbox{\Hypertarget{read_8c_a8d842377f7e292de658fe73ef0a77ae4}\label{read_8c_a8d842377f7e292de658fe73ef0a77ae4}} 
+\index{read.c@{read.c}!fill\_value@{fill\_value}}
+\index{fill\_value@{fill\_value}!read.c@{read.c}}
+\doxysubsubsection{\texorpdfstring{fill\_value()}{fill\_value()}}
+{\footnotesize\ttfamily void fill\+\_\+value (\begin{DoxyParamCaption}\item[{int $\ast$}]{value,  }\item[{char $\ast$}]{building\+\_\+line }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31     \textcolor{keywordflow}{while} (*building\_line != \textcolor{charliteral}{'['})}
+\DoxyCodeLine{32         ++building\_line;}
+\DoxyCodeLine{33     }
+\DoxyCodeLine{34     ++building\_line;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keywordtype}{char} buffer[\mbox{\hyperlink{loadtools_8c_acd8d62179f75714af34ae50caa397a73}{BUFFER\_SIZE}}];}
+\DoxyCodeLine{37     \textcolor{keywordflow}{while} (*building\_line != \textcolor{charliteral}{']'})}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         \textcolor{keywordtype}{char} *buf = buffer;}
+\DoxyCodeLine{40         \textcolor{keywordflow}{while} (*building\_line != \textcolor{charliteral}{','} \&\& *building\_line != \textcolor{charliteral}{']'})}
+\DoxyCodeLine{41         \{}
+\DoxyCodeLine{42             *buf = *building\_line;}
+\DoxyCodeLine{43             ++buf;}
+\DoxyCodeLine{44             ++building\_line;}
+\DoxyCodeLine{45         \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         *buf = 0;}
+\DoxyCodeLine{48     }
+\DoxyCodeLine{49         \textcolor{keywordflow}{if} (*building\_line != \textcolor{charliteral}{']'})}
+\DoxyCodeLine{50             ++building\_line;}
+\DoxyCodeLine{51  }
+\DoxyCodeLine{52         *value = (int) atol(buffer);}
+\DoxyCodeLine{53         ++value;}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{loadtools_8c_acd8d62179f75714af34ae50caa397a73}{BUFFER\+\_\+\+SIZE}}.
+
+
+
+Referenced by \mbox{\hyperlink{read_8c_a9a187d8a5ac223603383bf86803ff909}{load\+\_\+building\+\_\+bias()}}, \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\+\_\+building\+\_\+value()}}, and \mbox{\hyperlink{read_8c_ac1eb9ece9da63abc47d27a7c9d79e3cd}{load\+\_\+habitant\+\_\+number()}}.
+
+\mbox{\Hypertarget{read_8c_aa19ac9eba266bd0a777559bb00bd5aba}\label{read_8c_aa19ac9eba266bd0a777559bb00bd5aba}} 
+\index{read.c@{read.c}!init\_building\_bias@{init\_building\_bias}}
+\index{init\_building\_bias@{init\_building\_bias}!read.c@{read.c}}
+\doxysubsubsection{\texorpdfstring{init\_building\_bias()}{init\_building\_bias()}}
+{\footnotesize\ttfamily int $\ast$ init\+\_\+building\+\_\+bias (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     \textcolor{keywordtype}{int} *building\_bias = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}) * \mbox{\hyperlink{loadtools_8c_ad0e244432d4e11ad5234c8364e82a971}{BIAS\_NUMBER}});}
+\DoxyCodeLine{26     \textcolor{keywordflow}{return} building\_bias;}
+\DoxyCodeLine{27 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{loadtools_8c_ad0e244432d4e11ad5234c8364e82a971}{BIAS\+\_\+\+NUMBER}}.
+
+
+
+Referenced by \mbox{\hyperlink{read_8c_a9a187d8a5ac223603383bf86803ff909}{load\+\_\+building\+\_\+bias()}}.
+
+\mbox{\Hypertarget{read_8c_a69625a54f47680d2cb148d638c8ad024}\label{read_8c_a69625a54f47680d2cb148d638c8ad024}} 
+\index{read.c@{read.c}!init\_building\_labels@{init\_building\_labels}}
+\index{init\_building\_labels@{init\_building\_labels}!read.c@{read.c}}
+\doxysubsubsection{\texorpdfstring{init\_building\_labels()}{init\_building\_labels()}}
+{\footnotesize\ttfamily char $\ast$$\ast$ init\+\_\+building\+\_\+labels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keywordtype}{char} **building\_labels = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}*) * \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\_NUMBER\_TYPE}});}
+\DoxyCodeLine{18     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\_NUMBER\_TYPE}}; ++i)}
+\DoxyCodeLine{19         *(building\_labels + i) = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}) * (\mbox{\hyperlink{loadtools_8c_a1efd62316bedcd5941e86fa98123cfa8}{LABEL\_SIZE}} + 1));}
+\DoxyCodeLine{20     \textcolor{keywordflow}{return} building\_labels;}
+\DoxyCodeLine{21 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\+\_\+\+NUMBER\+\_\+\+TYPE}}, and \mbox{\hyperlink{loadtools_8c_a1efd62316bedcd5941e86fa98123cfa8}{LABEL\+\_\+\+SIZE}}.
+
+
+
+Referenced by \mbox{\hyperlink{read_8c_aefb2347a9abea8eb21651294af6d33bc}{load\+\_\+building\+\_\+labels()}}.
+
+\mbox{\Hypertarget{read_8c_a0b7b9fad85d9ab69d4682b943fe3a48b}\label{read_8c_a0b7b9fad85d9ab69d4682b943fe3a48b}} 
+\index{read.c@{read.c}!init\_building\_value@{init\_building\_value}}
+\index{init\_building\_value@{init\_building\_value}!read.c@{read.c}}
+\doxysubsubsection{\texorpdfstring{init\_building\_value()}{init\_building\_value()}}
+{\footnotesize\ttfamily int $\ast$$\ast$ init\+\_\+building\+\_\+value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \textcolor{keywordtype}{int} **building\_value = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}*) * \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\_NUMBER\_TYPE}});}
+\DoxyCodeLine{10     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\_NUMBER\_TYPE}}; ++i)}
+\DoxyCodeLine{11         *(building\_value + i) = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}) * \mbox{\hyperlink{loadtools_8c_a75b5e1e67aeac917dea949b1498a1744}{VALUE\_NUMBER\_TYPE}});}
+\DoxyCodeLine{12     \textcolor{keywordflow}{return} building\_value;}
+\DoxyCodeLine{13 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\+\_\+\+NUMBER\+\_\+\+TYPE}}, and \mbox{\hyperlink{loadtools_8c_a75b5e1e67aeac917dea949b1498a1744}{VALUE\+\_\+\+NUMBER\+\_\+\+TYPE}}.
+
+
+
+Referenced by \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\+\_\+building\+\_\+value()}}.
+
+\mbox{\Hypertarget{read_8c_a9a187d8a5ac223603383bf86803ff909}\label{read_8c_a9a187d8a5ac223603383bf86803ff909}} 
+\index{read.c@{read.c}!load\_building\_bias@{load\_building\_bias}}
+\index{load\_building\_bias@{load\_building\_bias}!read.c@{read.c}}
+\doxysubsubsection{\texorpdfstring{load\_building\_bias()}{load\_building\_bias()}}
+{\footnotesize\ttfamily int $\ast$ load\+\_\+building\+\_\+bias (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{99 \{}
+\DoxyCodeLine{100     FILE *file = \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\_open}}();}
+\DoxyCodeLine{101     \textcolor{keywordtype}{char} buffer[\mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{102     fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{103     \textcolor{keywordtype}{int} *building\_bias = \mbox{\hyperlink{read_8c_aa19ac9eba266bd0a777559bb00bd5aba}{init\_building\_bias}}();}
+\DoxyCodeLine{104     \textcolor{keywordflow}{while}(!\mbox{\hyperlink{loadtools_8c_a44aeec48aa5a8c7ef13701de582b99a6}{isBias}}(buffer))}
+\DoxyCodeLine{105         fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{106     \mbox{\hyperlink{read_8c_a8d842377f7e292de658fe73ef0a77ae4}{fill\_value}}(building\_bias, buffer);}
+\DoxyCodeLine{107     fclose(file);}
+\DoxyCodeLine{108     \textcolor{keywordflow}{return} building\_bias;}
+\DoxyCodeLine{109 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{read_8c_a8d842377f7e292de658fe73ef0a77ae4}{fill\+\_\+value()}}, \mbox{\hyperlink{read_8c_aa19ac9eba266bd0a777559bb00bd5aba}{init\+\_\+building\+\_\+bias()}}, \mbox{\hyperlink{loadtools_8c_a44aeec48aa5a8c7ef13701de582b99a6}{is\+Bias()}}, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\+\_\+\+BUFFER\+\_\+\+SIZE}}, and \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\+\_\+open()}}.
+
+
+
+Referenced by \mbox{\hyperlink{need_8c_a909501c02dc126cdaeec895c653a964f}{init\+Town\+List3()}}.
+
+\mbox{\Hypertarget{read_8c_aefb2347a9abea8eb21651294af6d33bc}\label{read_8c_aefb2347a9abea8eb21651294af6d33bc}} 
+\index{read.c@{read.c}!load\_building\_labels@{load\_building\_labels}}
+\index{load\_building\_labels@{load\_building\_labels}!read.c@{read.c}}
+\doxysubsubsection{\texorpdfstring{load\_building\_labels()}{load\_building\_labels()}}
+{\footnotesize\ttfamily char $\ast$$\ast$ load\+\_\+building\+\_\+labels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69 \{                                                                               }
+\DoxyCodeLine{70     FILE *file = \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\_open}}();}
+\DoxyCodeLine{71     \textcolor{keywordtype}{char} **building\_labels = \mbox{\hyperlink{read_8c_a69625a54f47680d2cb148d638c8ad024}{init\_building\_labels}}();}
+\DoxyCodeLine{72     \textcolor{keywordtype}{char} buffer[\mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{73     fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{74     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\_NUMBER\_TYPE}}; ++i)                              }
+\DoxyCodeLine{75     \{                                                                           }
+\DoxyCodeLine{76         fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);                                        }
+\DoxyCodeLine{77         \mbox{\hyperlink{read_8c_ac675066bde1f85eaaca3e98d0b1fcf85}{fill\_label}}(*(building\_labels + i), buffer);                                    }
+\DoxyCodeLine{78     \}                                                                           }
+\DoxyCodeLine{79     fclose(file);}
+\DoxyCodeLine{80     \textcolor{keywordflow}{return} building\_labels;                                                      }
+\DoxyCodeLine{81 \} }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\+\_\+\+NUMBER\+\_\+\+TYPE}}, \mbox{\hyperlink{read_8c_ac675066bde1f85eaaca3e98d0b1fcf85}{fill\+\_\+label()}}, \mbox{\hyperlink{read_8c_a69625a54f47680d2cb148d638c8ad024}{init\+\_\+building\+\_\+labels()}}, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\+\_\+\+BUFFER\+\_\+\+SIZE}}, and \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\+\_\+open()}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}.
+
+\mbox{\Hypertarget{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}\label{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}} 
+\index{read.c@{read.c}!load\_building\_value@{load\_building\_value}}
+\index{load\_building\_value@{load\_building\_value}!read.c@{read.c}}
+\doxysubsubsection{\texorpdfstring{load\_building\_value()}{load\_building\_value()}}
+{\footnotesize\ttfamily int $\ast$$\ast$ load\+\_\+building\+\_\+value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84 \{   }
+\DoxyCodeLine{85     FILE *file = \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\_open}}();}
+\DoxyCodeLine{86     \textcolor{keywordtype}{char} buffer[\mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{87     fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{88     \textcolor{keywordtype}{int} **building\_value = \mbox{\hyperlink{read_8c_a0b7b9fad85d9ab69d4682b943fe3a48b}{init\_building\_value}}();}
+\DoxyCodeLine{89     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\_NUMBER\_TYPE}}; ++i)}
+\DoxyCodeLine{90     \{}
+\DoxyCodeLine{91         fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{92         \mbox{\hyperlink{read_8c_a8d842377f7e292de658fe73ef0a77ae4}{fill\_value}}(*(building\_value + i), buffer);}
+\DoxyCodeLine{93     \}}
+\DoxyCodeLine{94     fclose(file);}
+\DoxyCodeLine{95     \textcolor{keywordflow}{return} building\_value;}
+\DoxyCodeLine{96 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{loadtools_8c_a9d943ac46a304efd054aabff34fa0d1b}{BUILDING\+\_\+\+NUMBER\+\_\+\+TYPE}}, \mbox{\hyperlink{read_8c_a8d842377f7e292de658fe73ef0a77ae4}{fill\+\_\+value()}}, \mbox{\hyperlink{read_8c_a0b7b9fad85d9ab69d4682b943fe3a48b}{init\+\_\+building\+\_\+value()}}, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\+\_\+\+BUFFER\+\_\+\+SIZE}}, and \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\+\_\+open()}}.
+
+
+
+Referenced by \mbox{\hyperlink{road_8c_aa04096c8b705bb7c9d3df6003353602d}{create\+Way()}}, \mbox{\hyperlink{need_8c_a909501c02dc126cdaeec895c653a964f}{init\+Town\+List3()}}, and \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}.
+
+\mbox{\Hypertarget{read_8c_ac1eb9ece9da63abc47d27a7c9d79e3cd}\label{read_8c_ac1eb9ece9da63abc47d27a7c9d79e3cd}} 
+\index{read.c@{read.c}!load\_habitant\_number@{load\_habitant\_number}}
+\index{load\_habitant\_number@{load\_habitant\_number}!read.c@{read.c}}
+\doxysubsubsection{\texorpdfstring{load\_habitant\_number()}{load\_habitant\_number()}}
+{\footnotesize\ttfamily int load\+\_\+habitant\+\_\+number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{112 \{}
+\DoxyCodeLine{113     FILE *file = \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\_open}}();}
+\DoxyCodeLine{114     \textcolor{keywordtype}{char} buffer[\mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{115     fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{116     \textcolor{keywordtype}{int} habitant\_number;}
+\DoxyCodeLine{117     \textcolor{keywordflow}{while}(!\mbox{\hyperlink{loadtools_8c_aee5c88556c41d7cea6476c244221f2d4}{isHabitant}}(buffer))}
+\DoxyCodeLine{118         fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{119     \mbox{\hyperlink{read_8c_a8d842377f7e292de658fe73ef0a77ae4}{fill\_value}}(\&habitant\_number, buffer);}
+\DoxyCodeLine{120     fclose(file);}
+\DoxyCodeLine{121     \textcolor{keywordflow}{return} habitant\_number;}
+\DoxyCodeLine{122 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{read_8c_a8d842377f7e292de658fe73ef0a77ae4}{fill\+\_\+value()}}, \mbox{\hyperlink{loadtools_8c_aee5c88556c41d7cea6476c244221f2d4}{is\+Habitant()}}, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\+\_\+\+BUFFER\+\_\+\+SIZE}}, and \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\+\_\+open()}}.
+

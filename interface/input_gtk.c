@@ -10,6 +10,7 @@
 #include "../assign/main.c"
 #include "../loader/write.c"
 
+//!gtk used struct
 typedef struct s_Window
 {
   GtkWidget *widget;
@@ -41,6 +42,7 @@ const char *economy;
 const char *health;
 const char *security;
 
+//!makes a matrice
 char **MakeMatrice(struct cell *map, int DIM)
 {
 
@@ -63,16 +65,17 @@ char **MakeMatrice(struct cell *map, int DIM)
       matrice[souslist][i%DIM] = ((map+i)->type)+'0';
     if(((map+i)->type) == -1)
       matrice[souslist][i%DIM] = 7;
-    printf("%c ;",matrice[souslist][i%DIM]);
+    
   }
   return matrice;
 }
 
+//!Using Gtk to define events on click event
 gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer data)
 {
     t_Window *my_w = (t_Window*) data;
 
-// On récupère le texte contenu dans la GtkEntry
+    // Get the text given in GtkEntry
     
     nb_habitant = gtk_entry_get_text(GTK_ENTRY(my_w->entry));
 
@@ -107,9 +110,7 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
     int DIM = map->maxWidth;
     char **matrice = MakeMatrice(map->cells, DIM);
 
-    //printf("%i : DIMMM", DIM);
-
-    build_city(matrice, DIM);   //TODO :Passer en parametre le nombre d'habitant
+    build_city(matrice, DIM);
 
     gtk_widget_destroy(my_w->images);
 
@@ -133,23 +134,20 @@ gboolean on_click_button (GtkWidget *button, GdkEventButton *event, gpointer dat
 
 
     gtk_widget_show_all(my_w->widget);
-    
 
-    printf("Execute Build_City avec %s habitants \n", nb_habitant);
-
-// On redonne la main à GTK
     return FALSE;
 }
 
+//!Runs the Gtk GUI
 void RunGTK(int argc, char **argv){
   t_Window *my_window = (t_Window*) malloc (sizeof (t_Window));
   if (my_window == NULL)
     exit(EXIT_FAILURE);
 
-  // On initialise GTK
+  // GTK initialisation
   gtk_init( &argc, &argv );
 
-  // On initialise les Widgets
+  // Widget initialisation
   my_window->widget = gtk_window_new(GTK_WINDOW_TOPLEVEL);
   my_window->box = gtk_box_new( TRUE, 0 );
   my_window->button = gtk_button_new_with_label("Lancer CityMap");
@@ -200,12 +198,11 @@ void RunGTK(int argc, char **argv){
 
   
 
-  // Tout d'abord, on met la GtkHBox dans la GtkWindow :
+  // First, we add GtkHBox inside GtkWindow
   gtk_container_add(GTK_CONTAINER(my_window->widget), my_window->box );
 
-  // Puis on met les Widgets dans la GtkHBox:
+  // Then we add the Widgets inside GtkHBox
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->entry, TRUE, TRUE, 0);
-  //gtk_box_pack_start (GTK_BOX(my_window->box), my_window->button, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->label, TRUE, TRUE, 0);
   
 
@@ -214,13 +211,12 @@ void RunGTK(int argc, char **argv){
   gtk_box_pack_start (GTK_BOX(my_window->box), my_window->images, TRUE, TRUE, 0);
 
 
-  // On connecte le bouton à l'évenement « clicked »
+  // We connect the button to the "clicked" event
   g_signal_connect(my_window->button, "button-press-event", (GCallback)on_click_button, my_window);
 
-  // On demande enfin à GTK de montrer notre Window et ce qu'elle contient :
+  // Gtk displays what our window contains
   gtk_widget_show_all(my_window->widget);
 
-  // Puis on entre dans la boucle GTK qui garde la fenêtre ouverte
   gtk_main();
 }
 

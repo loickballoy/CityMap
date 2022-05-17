@@ -44,54 +44,11 @@ char **genMat(int DIM)
 
 void build_city(char **matrice, int DIM)
 {
+  PrintMat(matrice, DIM); // Uses SDL to display a given matrix
 
-  printf("Bienvenue sur CityMap !\n");
-  printf("DIM : %i \n", DIM);
-  //printf("Rentrez les différents paramètres et nous vous générerons une ville\n");
-  /*
-  int nb_hab;
-  int budget;
-  int sec;
-  int edu;
-  int env;
+  struct EDGE *edges = MakeMetro(matrice, DIM); // Executes the subway algorithm
 
-  printf("\nNombre habitants : ");
-  scanf("%d", &nb_hab);
-
-  printf("\nBudget : ");
-  scanf("%d", &budget);
-
-  printf("\nSécurité : ");
-  scanf("%d", &sec);
-
-  printf("\nEducation : ");
-  scanf("%d", &edu);
-
-  printf("\nEnvironnement : ");
-  scanf("%d", &env);
-  printf("\n");
-
-  */
-
-  //list batiment
-
-  //execute les programmes de génération de ville
-
-  //affiche l'image de la ville
-
-
-
-  printf("VILLE :\n");
-
-  //char **matrice = genMat(DIM);     // A mettre en parametre de build_city quand on pourra récupérer la matrice de Remy
-
-  PrintMat(matrice, DIM);           // Affiche en SDL la matrice
-
-  struct EDGE *edges = MakeMetro(matrice, DIM);  // Fait le metro
-
-  PrintMetro(edges, DIM);
-
-  // Affiche le metro en SDL (graph.png)
+  PrintMetro(edges, DIM); // Uses SDL to display a graph of the subway lines and stations
 
   for(int i = 0; i < DIM; i++)
     {
@@ -99,7 +56,4 @@ void build_city(char **matrice, int DIM)
     }
   free(matrice);
   free(edges);
-
-  printf("\n");
-
 }

@@ -60,7 +60,7 @@ void analyseMatrix_print(struct map *newmap)
 			printf("   ;");
 		if(max != 0)
 		{
-			//printf("");
+			
 			if(max / 10 < 10)
 			{
 				if(type == 0)
@@ -106,7 +106,7 @@ void analyseMatrix_print(struct map *newmap)
 }
 
 
-void printMatrixTime(struct map *newmap)//print la matricd en couleur avec une pose de 1sec a la fin
+void printMatrixTime(struct map *newmap)//Prints the matrix in a different color and pauses the program for 1 second
 {
 
 	//print the colored building matrix with a second of stop
@@ -120,7 +120,7 @@ void printMatrixTime(struct map *newmap)//print la matricd en couleur avec une p
 		if(upTest != NULL)
 		{
 			nbbat++;
-			//printf("");
+			
 			if(upTest->type == 0)
 				printf(COLOR_BLEU "%c ;" COLOR_RESET, charType(upTest->type));
 			else if(upTest->type == 1)
@@ -145,7 +145,7 @@ void printMatrixTime(struct map *newmap)//print la matricd en couleur avec une p
 
 }
 
-char charType(int type)//renvoie le symbole associé au type
+char charType(int type)//Returns the string associated to the int:type
 {
 	if(type == 0)
 		return 'M';

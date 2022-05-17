@@ -1,0 +1,9 @@
+var searchData=
+[
+  ['replaceglobalneed_0',['replaceGlobalNeed',['../assign_8c.html#ae8edf5c268e483bf6616420db4061584',1,'replaceGlobalNeed(struct map *map, int *buildingList, int *maxstat, int roof, int *a):&#160;assign.c'],['../assign_8h.html#ae8edf5c268e483bf6616420db4061584',1,'replaceGlobalNeed(struct map *map, int *buildingList, int *maxstat, int roof, int *a):&#160;assign.c']]],
+  ['replacetown_1',['replaceTown',['../assign_8c.html#a4be01986344e82266a0691d32072733f',1,'replaceTown(struct map *map, int *buildingList, int roof, int **building_value, int *nbreplacement):&#160;assign.c'],['../assign_8h.html#a4be01986344e82266a0691d32072733f',1,'replaceTown(struct map *map, int *buildingList, int roof, int **building_value, int *nbreplacement):&#160;assign.c']]],
+  ['reverseattribuate_2',['reverseAttribuate',['../update_8c.html#a45c3ebe31a9e78d882d56036866a6587',1,'reverseAttribuate(int x, int y, struct cell *cell, int *value, int a, int b):&#160;update.c'],['../update_8h.html#a45c3ebe31a9e78d882d56036866a6587',1,'reverseAttribuate(int x, int y, struct cell *cell, int *value, int a, int b):&#160;update.c']]],
+  ['reverseupdatearound_3',['reverseUpdateAround',['../update_8c.html#a4d8d63e78f5f366a98b4f47b1027da1f',1,'reverseUpdateAround(struct map *map, int a, int b, int **building_value):&#160;update.c'],['../update_8h.html#a4d8d63e78f5f366a98b4f47b1027da1f',1,'reverseUpdateAround(struct map *map, int a, int b, int **building_value):&#160;update.c']]],
+  ['roadtoconnect_4',['roadToConnect',['../road_8c.html#a2b4a228e5fca4a5c72c3729dbddf7700',1,'roadToConnect(struct map *map, int x, int y):&#160;road.c'],['../road_8h.html#a2b4a228e5fca4a5c72c3729dbddf7700',1,'roadToConnect(struct map *map, int x, int y):&#160;road.c']]],
+  ['rungtk_5',['RunGTK',['../input__gtk_8c.html#a63f7adfb75cee55c1ed375abf2b8d304',1,'input_gtk.c']]]
+];

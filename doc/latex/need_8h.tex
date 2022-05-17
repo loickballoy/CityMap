@@ -1,0 +1,58 @@
+\hypertarget{need_8h}{}\doxysection{banker/need.h File Reference}
+\label{need_8h}\index{banker/need.h@{banker/need.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{need_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int $\ast$ \mbox{\hyperlink{need_8h_a909501c02dc126cdaeec895c653a964f}{init\+Town\+List3}} (unsigned int nb\+\_\+hab, double sec)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{need_8h_a909501c02dc126cdaeec895c653a964f}\label{need_8h_a909501c02dc126cdaeec895c653a964f}} 
+\index{need.h@{need.h}!initTownList3@{initTownList3}}
+\index{initTownList3@{initTownList3}!need.h@{need.h}}
+\doxysubsubsection{\texorpdfstring{initTownList3()}{initTownList3()}}
+{\footnotesize\ttfamily int $\ast$ init\+Town\+List3 (\begin{DoxyParamCaption}\item[{unsigned int}]{nb\+\_\+hab,  }\item[{double}]{sec }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25   \textcolor{comment}{//int comi\_range = 60000;}}
+\DoxyCodeLine{26   \textcolor{comment}{//int hosp\_range = 20000;}}
+\DoxyCodeLine{27   sec +=0;}
+\DoxyCodeLine{28   \textcolor{keywordtype}{int} *bat = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int})* \mbox{\hyperlink{need_8c_a7d576a2441117e0e11a96c8ab9f9dbf2}{NUMBER\_TYPE}});}
+\DoxyCodeLine{29   \textcolor{keywordtype}{int} **building\_value = \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\_building\_value}}();}
+\DoxyCodeLine{30   \textcolor{keywordtype}{int} *bias = \mbox{\hyperlink{read_8c_a9a187d8a5ac223603383bf86803ff909}{load\_building\_bias}}();}
+\DoxyCodeLine{31   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < 7; x++)}
+\DoxyCodeLine{32   \{}
+\DoxyCodeLine{33       *(bat + x) = nb\_hab / *((*(building\_value + x)) + 7);}
+\DoxyCodeLine{34       \textcolor{keywordflow}{if} (x == 6 \&\& *(bat + x) == 1)}
+\DoxyCodeLine{35           *(bat + x) = 0;}
+\DoxyCodeLine{36       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (*(bat + x) == 0)}
+\DoxyCodeLine{37           *(bat + x) = 1;}
+\DoxyCodeLine{38   \}}
+\DoxyCodeLine{39   *(bat + 1) += *(bat + 1) * (*(bias + 2)) / 100;}
+\DoxyCodeLine{40   *(bat + 2) += *(bat + 2) * (*(bias + 1)) / 100;}
+\DoxyCodeLine{41   *(bat + 3) += *(bat + 3) * (*(bias + 5)) / 100;}
+\DoxyCodeLine{42   *(bat + 4) += *(bat + 4) * (*(bias + 3)) / 100;}
+\DoxyCodeLine{43   *(bat + 5) += *(bat + 5) * (*(bias + 4)) / 100;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45   \textcolor{keywordflow}{return} bat;}
+\DoxyCodeLine{46 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{read_8c_a9a187d8a5ac223603383bf86803ff909}{load\+\_\+building\+\_\+bias()}}, \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\+\_\+building\+\_\+value()}}, and \mbox{\hyperlink{need_8c_a7d576a2441117e0e11a96c8ab9f9dbf2}{NUMBER\+\_\+\+TYPE}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}.
+

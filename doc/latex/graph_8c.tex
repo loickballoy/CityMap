@@ -1,0 +1,367 @@
+\hypertarget{graph_8c}{}\doxysection{metro/graph.c File Reference}
+\label{graph_8c}\index{metro/graph.c@{metro/graph.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}graph.\+h\char`\"{}}\newline
+Include dependency graph for graph.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{graph_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}} \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\+\_\+graph}} (int vertices, \mbox{\hyperlink{graph_8h_a39db6982619d623273fad8a383489309}{Bool}} is\+\_\+oriented)
+\item 
+\mbox{\hyperlink{graph_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{graph_8c_a9c06723a961607eb8645a2108e448105}{is\+\_\+empty\+\_\+graph}} (\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}} g)
+\item 
+\mbox{\hyperlink{graph_8h_adcb846c82d07948a8dbbac8e5eccb641}{Node\+List}} \mbox{\hyperlink{graph_8c_af00f247ddf4dab48d2d3d5ffa8e42cd3}{add\+\_\+node}} (int x)
+\item 
+void \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\+\_\+edge}} (\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}} g, int src, int dest)
+\item 
+void \mbox{\hyperlink{graph_8c_a2405a35c02d0b2b04b47fe0eb37d08fe}{add\+\_\+label}} (\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}} g, int num, int i, int j)
+\item 
+void \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\+\_\+graph}} (\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}} g)
+\item 
+void \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\+\_\+graph}} (\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}} g)
+\item 
+void \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\+\_\+graph}} (\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}} g)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}\label{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}} 
+\index{graph.c@{graph.c}!add\_edge@{add\_edge}}
+\index{add\_edge@{add\_edge}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{add\_edge()}{add\_edge()}}
+{\footnotesize\ttfamily void add\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}}}]{g,  }\item[{int}]{src,  }\item[{int}]{dest }\end{DoxyParamCaption})}
+
+Ajoute une arête à un Graphe 
+\begin{DoxyParams}{Parameters}
+{\em g} & Le Graphe \\
+\hline
+{\em src} & Le premier sommet (ou source) \\
+\hline
+{\em dest} & Le second sommet (ou destination) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{104 \{}
+\DoxyCodeLine{105     \mbox{\hyperlink{struct_node_list_element}{NodeList}} n = \mbox{\hyperlink{graph_8c_af00f247ddf4dab48d2d3d5ffa8e42cd3}{add\_node}}(dest);}
+\DoxyCodeLine{106     n-\/>\mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{next}} = g-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}}[src-\/1].\mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{begin}};}
+\DoxyCodeLine{107     g-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}}[src-\/1].\mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{begin}} = n;}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109     \textcolor{keywordflow}{if}(!g-\/>\mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{is\_oriented}})}
+\DoxyCodeLine{110     \{}
+\DoxyCodeLine{111         n = \mbox{\hyperlink{graph_8c_af00f247ddf4dab48d2d3d5ffa8e42cd3}{add\_node}}(src);}
+\DoxyCodeLine{112         n-\/>\mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{next}} = g-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}}[dest-\/1].\mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{begin}};}
+\DoxyCodeLine{113         g-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}}[dest-\/1].\mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{begin}} = n;}
+\DoxyCodeLine{114     \}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{comment}{//Ajout d'un lien dans le fichier Graphviz}}
+\DoxyCodeLine{117     \textcolor{keywordflow}{if}(g-\/>\mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{is\_oriented}})}
+\DoxyCodeLine{118         fprintf(g-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)t\%d -\/> \%d;\(\backslash\)n"{}}, src, dest);}
+\DoxyCodeLine{119     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{120         fprintf(g-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)t\%d -\/-\/ \%d;\(\backslash\)n"{}}, src, dest);}
+\DoxyCodeLine{121 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{graph_8c_af00f247ddf4dab48d2d3d5ffa8e42cd3}{add\+\_\+node()}}, \mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{Adjency\+List\+Element\+::begin}}, \mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{Graph\+Element\+::graph\+\_\+file}}, \mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{Graph\+Element\+::is\+\_\+oriented}}, \mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{Node\+List\+Element\+::next}}, and \mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{Graph\+Element\+::tab\+\_\+neighbours}}.
+
+
+
+Referenced by \mbox{\hyperlink{network_8c_a5470f03209d35083059b4b4a6c371ddd}{build\+Adjlists()}}, \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{build\+Adjlists2()}}, and \mbox{\hyperlink{metro_8c_a840291bc02cba5474a4cb46a9b9566fe}{main()}}.
+
+\mbox{\Hypertarget{graph_8c_a2405a35c02d0b2b04b47fe0eb37d08fe}\label{graph_8c_a2405a35c02d0b2b04b47fe0eb37d08fe}} 
+\index{graph.c@{graph.c}!add\_label@{add\_label}}
+\index{add\_label@{add\_label}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{add\_label()}{add\_label()}}
+{\footnotesize\ttfamily void add\+\_\+label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}}}]{g,  }\item[{int}]{num,  }\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{124 \{}
+\DoxyCodeLine{125   fprintf(g-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)t\%d [label=\(\backslash\)"{}(\%d,\%d)\(\backslash\)"{}]; \(\backslash\)n"{}}, num, i, j);}
+\DoxyCodeLine{126 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{Graph\+Element\+::graph\+\_\+file}}.
+
+
+
+Referenced by \mbox{\hyperlink{network_8c_a230c3a893afff0180d28f964d5872681}{Build\+Stations()}}.
+
+\mbox{\Hypertarget{graph_8c_af00f247ddf4dab48d2d3d5ffa8e42cd3}\label{graph_8c_af00f247ddf4dab48d2d3d5ffa8e42cd3}} 
+\index{graph.c@{graph.c}!add\_node@{add\_node}}
+\index{add\_node@{add\_node}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{add\_node()}{add\_node()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{graph_8h_adcb846c82d07948a8dbbac8e5eccb641}{Node\+List}} add\+\_\+node (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+Retourne un Noeud 
+\begin{DoxyParams}{Parameters}
+{\em x} & La valeur du Noeud \\
+\hline
+{\em Le} & Noeud créé \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{80 \{}
+\DoxyCodeLine{81     \mbox{\hyperlink{struct_node_list_element}{NodeList}} n = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_node_list_element}{NodeListElement}}));}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{keywordflow}{if}(n == NULL)}
+\DoxyCodeLine{84     \{}
+\DoxyCodeLine{85         fprintf(stderr, \textcolor{stringliteral}{"{}Erreur : Probleme creation Node.\(\backslash\)n"{}});}
+\DoxyCodeLine{86         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{87     \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     n-\/>\mbox{\hyperlink{struct_node_list_element_a68499271b3fe65b0f0d26d956c8ae6f8}{value}} = x;}
+\DoxyCodeLine{90     n-\/>\mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{next}} = NULL;}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{keywordflow}{return} n;}
+\DoxyCodeLine{93 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{Node\+List\+Element\+::next}}, and \mbox{\hyperlink{struct_node_list_element_a68499271b3fe65b0f0d26d956c8ae6f8}{Node\+List\+Element\+::value}}.
+
+
+
+Referenced by \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\+\_\+edge()}}.
+
+\mbox{\Hypertarget{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}\label{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}} 
+\index{graph.c@{graph.c}!display\_graph@{display\_graph}}
+\index{display\_graph@{display\_graph}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{display\_graph()}{display\_graph()}}
+{\footnotesize\ttfamily void display\+\_\+graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}}}]{g }\end{DoxyParamCaption})}
+
+Affiche un Graphe en 2D (avec Graphviz sous WINDOWS) 
+\begin{DoxyParams}{Parameters}
+{\em g} & Le Graphe \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{160 \{}
+\DoxyCodeLine{161     \textcolor{comment}{//Windows seulement !}}
+\DoxyCodeLine{162     \textcolor{keywordflow}{if}(g-\/>\mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{is\_oriented}})}
+\DoxyCodeLine{163         system(\textcolor{stringliteral}{"{}dot -\/Tpng digraph.out -\/o graph.png"{}});}
+\DoxyCodeLine{164     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{165         system(\textcolor{stringliteral}{"{}dot -\/Tpng graph.out -\/o graph.png"{}});}
+\DoxyCodeLine{166 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{Graph\+Element\+::is\+\_\+oriented}}.
+
+
+
+Referenced by \mbox{\hyperlink{metro_8c_a840291bc02cba5474a4cb46a9b9566fe}{main()}}, and \mbox{\hyperlink{network_8c_aa6c55b5bb8775049f3f8f802acb4f127}{Make\+Metro()}}.
+
+\mbox{\Hypertarget{graph_8c_a07c2103b1f15749f3b36b628e42040eb}\label{graph_8c_a07c2103b1f15749f3b36b628e42040eb}} 
+\index{graph.c@{graph.c}!erase\_graph@{erase\_graph}}
+\index{erase\_graph@{erase\_graph}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{erase\_graph()}{erase\_graph()}}
+{\footnotesize\ttfamily void erase\+\_\+graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}}}]{g }\end{DoxyParamCaption})}
+
+Supprime un Graphe 
+\begin{DoxyParams}{Parameters}
+{\em g} & Le Graphe \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{175 \{}
+\DoxyCodeLine{176     \textcolor{keywordflow}{if}(\mbox{\hyperlink{graph_8c_a9c06723a961607eb8645a2108e448105}{is\_empty\_graph}}(g))}
+\DoxyCodeLine{177     \{}
+\DoxyCodeLine{178         printf(\textcolor{stringliteral}{"{}Rien a effacer, le Graphe n'existe pas.\(\backslash\)n"{}});}
+\DoxyCodeLine{179         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{180     \}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182     \textcolor{comment}{//Si il existe des sommets adjacents}}
+\DoxyCodeLine{183     \textcolor{keywordflow}{if}(g-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}})}
+\DoxyCodeLine{184     \{}
+\DoxyCodeLine{185         \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187         \textcolor{keywordflow}{for}(i = 1 ; i < g-\/>\mbox{\hyperlink{struct_graph_element_ad1675bdd419fc9430786e0279d1e641b}{nb\_vertices}} + 1 ; i++)}
+\DoxyCodeLine{188         \{}
+\DoxyCodeLine{189             \mbox{\hyperlink{struct_node_list_element}{NodeList}} n = g-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}}[i-\/1].\mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{begin}};}
+\DoxyCodeLine{190             }
+\DoxyCodeLine{191             \textcolor{keywordflow}{while}(n != NULL)}
+\DoxyCodeLine{192             \{}
+\DoxyCodeLine{193                 \mbox{\hyperlink{struct_node_list_element}{NodeList}} tmp = n;}
+\DoxyCodeLine{194                 n = n-\/>\mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{next}};}
+\DoxyCodeLine{195                 free(tmp);}
+\DoxyCodeLine{196             \}}
+\DoxyCodeLine{197         \}}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199         \textcolor{comment}{//Libération de la liste d'adjacence}}
+\DoxyCodeLine{200         free(g-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}});}
+\DoxyCodeLine{201     \}}
+\DoxyCodeLine{202 }
+\DoxyCodeLine{203     \textcolor{comment}{//Fin et fermeture du fichier Graphviz}}
+\DoxyCodeLine{204     fprintf(g-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\}\(\backslash\)n"{}});}
+\DoxyCodeLine{205     fclose(g-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}});}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207     \textcolor{comment}{//Libération du Graphe de la mémoire}}
+\DoxyCodeLine{208     free(g);}
+\DoxyCodeLine{209 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{Adjency\+List\+Element\+::begin}}, \mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{Graph\+Element\+::graph\+\_\+file}}, \mbox{\hyperlink{graph_8c_a9c06723a961607eb8645a2108e448105}{is\+\_\+empty\+\_\+graph()}}, \mbox{\hyperlink{struct_graph_element_ad1675bdd419fc9430786e0279d1e641b}{Graph\+Element\+::nb\+\_\+vertices}}, \mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{Node\+List\+Element\+::next}}, and \mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{Graph\+Element\+::tab\+\_\+neighbours}}.
+
+
+
+Referenced by \mbox{\hyperlink{metro_8c_a840291bc02cba5474a4cb46a9b9566fe}{main()}}, and \mbox{\hyperlink{network_8c_aa6c55b5bb8775049f3f8f802acb4f127}{Make\+Metro()}}.
+
+\mbox{\Hypertarget{graph_8c_a9c06723a961607eb8645a2108e448105}\label{graph_8c_a9c06723a961607eb8645a2108e448105}} 
+\index{graph.c@{graph.c}!is\_empty\_graph@{is\_empty\_graph}}
+\index{is\_empty\_graph@{is\_empty\_graph}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{is\_empty\_graph()}{is\_empty\_graph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{graph_8h_a39db6982619d623273fad8a383489309}{Bool}} is\+\_\+empty\+\_\+graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}}}]{g }\end{DoxyParamCaption})}
+
+Teste si un Graphe existe 
+\begin{DoxyParams}{Parameters}
+{\em g} & Le Graphe à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Si le Graphe n\textquotesingle{}existe pas, false sinon 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66     \textcolor{keywordflow}{if}(g == NULL)}
+\DoxyCodeLine{67         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{70 \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\+\_\+graph()}}.
+
+\mbox{\Hypertarget{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}\label{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}} 
+\index{graph.c@{graph.c}!new\_graph@{new\_graph}}
+\index{new\_graph@{new\_graph}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{new\_graph()}{new\_graph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}} new\+\_\+graph (\begin{DoxyParamCaption}\item[{int}]{vertices,  }\item[{\mbox{\hyperlink{graph_8h_a39db6982619d623273fad8a383489309}{Bool}}}]{is\+\_\+oriented }\end{DoxyParamCaption})}
+
+Créée un Graphe 
+\begin{DoxyParams}{Parameters}
+{\em vertices} & Le nombre de sommets \\
+\hline
+{\em is\+\_\+oriented} & Est-\/ce un graphe orienté ou non-\/orienté ? \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le graphe créé 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{14     \mbox{\hyperlink{struct_graph_element}{GraphElement}} *element;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     element = malloc(\textcolor{keyword}{sizeof}(*element));}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keywordflow}{if}(element == NULL)}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20         fprintf(stderr, \textcolor{stringliteral}{"{}Erreur : Probleme creation Graphe.\(\backslash\)n"{}});}
+\DoxyCodeLine{21         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{22     \}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     element-\/>\mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{is\_oriented}} = is\_oriented;}
+\DoxyCodeLine{25     element-\/>\mbox{\hyperlink{struct_graph_element_ad1675bdd419fc9430786e0279d1e641b}{nb\_vertices}} = vertices;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     element-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}} = malloc(vertices * \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_adjency_list_element}{AdjencyListElement}}));}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordflow}{if}(element-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}} == NULL)}
+\DoxyCodeLine{30     \{}
+\DoxyCodeLine{31         fprintf(stderr, \textcolor{stringliteral}{"{}Erreur : Probleme creation Graphe.\(\backslash\)n"{}});}
+\DoxyCodeLine{32         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{33     \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keywordflow}{for}(i = 1 ; i < element-\/>\mbox{\hyperlink{struct_graph_element_ad1675bdd419fc9430786e0279d1e641b}{nb\_vertices}} + 1 ; i++)}
+\DoxyCodeLine{36         element-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}}[i-\/1].\mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{begin}} = NULL;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keywordflow}{if}(element-\/>\mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{is\_oriented}})}
+\DoxyCodeLine{39         element-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}} = fopen(\textcolor{stringliteral}{"{}digraph.out"{}}, \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{40     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{41         element-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}} = fopen(\textcolor{stringliteral}{"{}graph.out"{}}, \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keywordflow}{if}(element-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}} == NULL)}
+\DoxyCodeLine{44     \{}
+\DoxyCodeLine{45         fprintf(stderr, \textcolor{stringliteral}{"{}Erreur : Probleme creation du fichier.\(\backslash\)n"{}});}
+\DoxyCodeLine{46         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{47     \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{keywordflow}{if}(element-\/>\mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{is\_oriented}})}
+\DoxyCodeLine{50         fprintf(element-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}digraph my\_graph\(\backslash\)n\{\(\backslash\)n"{}});}
+\DoxyCodeLine{51     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{52         fprintf(element-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}graph my\_graph\(\backslash\)n\{\(\backslash\)n"{}});}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordflow}{return} element;}
+\DoxyCodeLine{55 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{Adjency\+List\+Element\+::begin}}, \mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{Graph\+Element\+::graph\+\_\+file}}, \mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{Graph\+Element\+::is\+\_\+oriented}}, \mbox{\hyperlink{struct_graph_element_ad1675bdd419fc9430786e0279d1e641b}{Graph\+Element\+::nb\+\_\+vertices}}, and \mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{Graph\+Element\+::tab\+\_\+neighbours}}.
+
+
+
+Referenced by \mbox{\hyperlink{metro_8c_a840291bc02cba5474a4cb46a9b9566fe}{main()}}, and \mbox{\hyperlink{network_8c_aa6c55b5bb8775049f3f8f802acb4f127}{Make\+Metro()}}.
+
+\mbox{\Hypertarget{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}\label{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}} 
+\index{graph.c@{graph.c}!print\_graph@{print\_graph}}
+\index{print\_graph@{print\_graph}!graph.c@{graph.c}}
+\doxysubsubsection{\texorpdfstring{print\_graph()}{print\_graph()}}
+{\footnotesize\ttfamily void print\+\_\+graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}}}]{g }\end{DoxyParamCaption})}
+
+Affiche un Graphe en mode console 
+\begin{DoxyParams}{Parameters}
+{\em g} & Le Graphe \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{135 \{}
+\DoxyCodeLine{136     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     \textcolor{keywordflow}{for}(i = 1 ; i < g-\/>\mbox{\hyperlink{struct_graph_element_ad1675bdd419fc9430786e0279d1e641b}{nb\_vertices}} + 1 ; i++)}
+\DoxyCodeLine{139     \{}
+\DoxyCodeLine{140         \mbox{\hyperlink{struct_node_list_element}{NodeList}} n = g-\/>\mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}}[i-\/1].\mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{begin}};}
+\DoxyCodeLine{141         printf(\textcolor{stringliteral}{"{}(\%d) : "{}}, i);}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143         \textcolor{keywordflow}{while}(n != NULL)}
+\DoxyCodeLine{144         \{}
+\DoxyCodeLine{145             printf(\textcolor{stringliteral}{"{}\%d, "{}}, n-\/>\mbox{\hyperlink{struct_node_list_element_a68499271b3fe65b0f0d26d956c8ae6f8}{value}});}
+\DoxyCodeLine{146             n = n-\/>\mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{next}};}
+\DoxyCodeLine{147         \}}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149         printf(\textcolor{stringliteral}{"{}NULL\(\backslash\)n"{}});}
+\DoxyCodeLine{150     \}}
+\DoxyCodeLine{151 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{Adjency\+List\+Element\+::begin}}, \mbox{\hyperlink{struct_graph_element_ad1675bdd419fc9430786e0279d1e641b}{Graph\+Element\+::nb\+\_\+vertices}}, \mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{Node\+List\+Element\+::next}}, \mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{Graph\+Element\+::tab\+\_\+neighbours}}, and \mbox{\hyperlink{struct_node_list_element_a68499271b3fe65b0f0d26d956c8ae6f8}{Node\+List\+Element\+::value}}.
+
+
+
+Referenced by \mbox{\hyperlink{metro_8c_a840291bc02cba5474a4cb46a9b9566fe}{main()}}, and \mbox{\hyperlink{network_8c_aa6c55b5bb8775049f3f8f802acb4f127}{Make\+Metro()}}.
+

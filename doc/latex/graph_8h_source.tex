@@ -1,0 +1,49 @@
+\hypertarget{graph_8h_source}{}\doxysection{graph.\+h}
+\label{graph_8h_source}\index{metro/graph.h@{metro/graph.h}}
+\mbox{\hyperlink{graph_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_GRAPH\_\_H\_\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_GRAPH\_\_H\_\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4     \textcolor{comment}{/* Définition d'un Booléen */}}
+\DoxyCodeLine{5     \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{6     \{}
+\DoxyCodeLine{7         \textcolor{keyword}{false}, }
+\DoxyCodeLine{8         \textcolor{keyword}{true}}
+\DoxyCodeLine{9     \}\mbox{\hyperlink{graph_8h_a39db6982619d623273fad8a383489309}{Bool}};}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{comment}{/* Définition d'une liste de Noeuds (sommet) */}}
+\DoxyCodeLine{12     \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_node_list_element}{NodeListElement}}}
+\DoxyCodeLine{13     \{}
+\DoxyCodeLine{14         \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_node_list_element_a68499271b3fe65b0f0d26d956c8ae6f8}{value}};}
+\DoxyCodeLine{15         \textcolor{keyword}{struct }\mbox{\hyperlink{struct_node_list_element}{NodeListElement}} *\mbox{\hyperlink{struct_node_list_element_aa14a797fef1fe5a500e7ab24c7c067aa}{next}};}
+\DoxyCodeLine{16     \}\mbox{\hyperlink{graph_8h_aa1e42a421835acd9485f02489619b624}{NodeListElement}}, *\mbox{\hyperlink{graph_8h_adcb846c82d07948a8dbbac8e5eccb641}{NodeList}};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{comment}{/* Définition d'une liste d'ajdacence (tableau) */}}
+\DoxyCodeLine{19     \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_adjency_list_element}{AdjencyListElement}}}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         \mbox{\hyperlink{struct_node_list_element}{NodeListElement}} *\mbox{\hyperlink{struct_adjency_list_element_ab2970c5a6f6079798fceb31ad8df00fa}{begin}};}
+\DoxyCodeLine{22     \}\mbox{\hyperlink{graph_8h_ab0fef5d1d90ac38bb281da71def3419e}{AdjencyListElement}}, *\mbox{\hyperlink{graph_8h_abf5ee428a3307bdd90ebcfa193b94349}{AdjencyList}};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{comment}{/* Définition d'un Graphe */}}
+\DoxyCodeLine{25     \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_graph_element}{GraphElement}}}
+\DoxyCodeLine{26     \{}
+\DoxyCodeLine{27         \mbox{\hyperlink{graph_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{struct_graph_element_a82dc759b566a258ec83d84f4ebcc5788}{is\_oriented}};}
+\DoxyCodeLine{28         \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_graph_element_ad1675bdd419fc9430786e0279d1e641b}{nb\_vertices}};}
+\DoxyCodeLine{29         \mbox{\hyperlink{struct_adjency_list_element}{AdjencyList}} \mbox{\hyperlink{struct_graph_element_aa6bcac7e99fe15f915b0007eca7565ee}{tab\_neighbours}};}
+\DoxyCodeLine{30         FILE *\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}};}
+\DoxyCodeLine{31     \}\mbox{\hyperlink{graph_8h_a0992a4116303c1d062335d2dbd196471}{GraphElement}}, *\mbox{\hyperlink{graph_8h_a82ea495d53b95146881628260a8a0166}{Graph}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{comment}{/* Prototypes */}}
+\DoxyCodeLine{34     \mbox{\hyperlink{struct_graph_element}{Graph}} \mbox{\hyperlink{graph_8h_a27296dfdc775fc2a44cfdbbff2b89525}{new\_graph}}(\textcolor{keywordtype}{int} vertices, \mbox{\hyperlink{graph_8h_a39db6982619d623273fad8a383489309}{Bool}} is\_oriented);}
+\DoxyCodeLine{35     \mbox{\hyperlink{graph_8h_a39db6982619d623273fad8a383489309}{Bool}} \mbox{\hyperlink{graph_8h_a9c06723a961607eb8645a2108e448105}{is\_empty\_graph}}(\mbox{\hyperlink{struct_graph_element}{Graph}} g);}
+\DoxyCodeLine{36     \mbox{\hyperlink{struct_node_list_element}{NodeList}} \mbox{\hyperlink{graph_8h_af00f247ddf4dab48d2d3d5ffa8e42cd3}{add\_node}}(\textcolor{keywordtype}{int} x);}
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} \mbox{\hyperlink{graph_8h_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(\mbox{\hyperlink{struct_graph_element}{Graph}} g, \textcolor{keywordtype}{int} src, \textcolor{keywordtype}{int} dest);}
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} \mbox{\hyperlink{graph_8h_a2405a35c02d0b2b04b47fe0eb37d08fe}{add\_label}}(\mbox{\hyperlink{struct_graph_element}{Graph}} g, \textcolor{keywordtype}{int} num, \textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j);}
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} \mbox{\hyperlink{graph_8h_a8d4ba8d086d768548b6039ba17d6e5ca}{print\_graph}}(\mbox{\hyperlink{struct_graph_element}{Graph}} g);}
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} \mbox{\hyperlink{graph_8h_aa29eba70c29c94924cbacc4baaeddb76}{display\_graph}}(\mbox{\hyperlink{struct_graph_element}{Graph}} g);}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{graph_8h_a07c2103b1f15749f3b36b628e42040eb}{erase\_graph}}(\mbox{\hyperlink{struct_graph_element}{Graph}} g);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

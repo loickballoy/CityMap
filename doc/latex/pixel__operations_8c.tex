@@ -1,0 +1,143 @@
+\hypertarget{pixel__operations_8c}{}\doxysection{interface/tool/pixel\+\_\+operations.c File Reference}
+\label{pixel__operations_8c}\index{interface/tool/pixel\_operations.c@{interface/tool/pixel\_operations.c}}
+{\ttfamily \#include $<$err.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}pixel\+\_\+operations.\+h\char`\"{}}\newline
+Include dependency graph for pixel\+\_\+operations.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{pixel__operations_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Uint8 $\ast$ \mbox{\hyperlink{pixel__operations_8c_a0a45d3fedef806c714dd9f79c2df19cd}{pixel\+\_\+ref}} (SDL\+\_\+\+Surface $\ast$surf, unsigned x, unsigned y)
+\item 
+Uint32 \mbox{\hyperlink{pixel__operations_8c_a44f71afbff1f0cd1d7af8c7230086265}{get\+\_\+pixel}} (SDL\+\_\+\+Surface $\ast$surface, unsigned x, unsigned y)
+\item 
+void \mbox{\hyperlink{pixel__operations_8c_aa59892207f157f566ff1916269957997}{put\+\_\+pixel}} (SDL\+\_\+\+Surface $\ast$surface, unsigned x, unsigned y, Uint32 pixel)
+\item 
+void \mbox{\hyperlink{pixel__operations_8c_a0019eb97fd67e9e9d50fbee8d9b7f98d}{update\+\_\+surface}} (SDL\+\_\+\+Surface $\ast$screen, SDL\+\_\+\+Surface $\ast$image)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{pixel__operations_8c_a44f71afbff1f0cd1d7af8c7230086265}\label{pixel__operations_8c_a44f71afbff1f0cd1d7af8c7230086265}} 
+\index{pixel\_operations.c@{pixel\_operations.c}!get\_pixel@{get\_pixel}}
+\index{get\_pixel@{get\_pixel}!pixel\_operations.c@{pixel\_operations.c}}
+\doxysubsubsection{\texorpdfstring{get\_pixel()}{get\_pixel()}}
+{\footnotesize\ttfamily Uint32 get\+\_\+pixel (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface $\ast$}]{surface,  }\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     Uint8 *p = \mbox{\hyperlink{pixel__operations_8c_a0a45d3fedef806c714dd9f79c2df19cd}{pixel\_ref}}(surface, x, y);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordflow}{switch} (surface-\/>format-\/>BytesPerPixel)}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{22             \textcolor{keywordflow}{return} *p;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{25             \textcolor{keywordflow}{return} *(Uint16 *)p;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{28             \textcolor{keywordflow}{if} (SDL\_BYTEORDER == SDL\_BIG\_ENDIAN)}
+\DoxyCodeLine{29                 \textcolor{keywordflow}{return} p[0] << 16 | p[1] << 8 | p[2];}
+\DoxyCodeLine{30             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{31                 \textcolor{keywordflow}{return} p[0] | p[1] << 8 | p[2] << 16;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{34             \textcolor{keywordflow}{return} *(Uint32 *)p;}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{38 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{pixel__operations_8c_a0a45d3fedef806c714dd9f79c2df19cd}{pixel\+\_\+ref()}}.
+
+\mbox{\Hypertarget{pixel__operations_8c_a0a45d3fedef806c714dd9f79c2df19cd}\label{pixel__operations_8c_a0a45d3fedef806c714dd9f79c2df19cd}} 
+\index{pixel\_operations.c@{pixel\_operations.c}!pixel\_ref@{pixel\_ref}}
+\index{pixel\_ref@{pixel\_ref}!pixel\_operations.c@{pixel\_operations.c}}
+\doxysubsubsection{\texorpdfstring{pixel\_ref()}{pixel\_ref()}}
+{\footnotesize\ttfamily static Uint8 $\ast$ pixel\+\_\+ref (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface $\ast$}]{surf,  }\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} bpp = surf-\/>format-\/>BytesPerPixel;}
+\DoxyCodeLine{12     \textcolor{keywordflow}{return} (Uint8*)surf-\/>pixels + y * surf-\/>pitch + x * bpp;}
+\DoxyCodeLine{13 \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{pixel__operations_8c_a44f71afbff1f0cd1d7af8c7230086265}{get\+\_\+pixel()}}, and \mbox{\hyperlink{pixel__operations_8c_aa59892207f157f566ff1916269957997}{put\+\_\+pixel()}}.
+
+\mbox{\Hypertarget{pixel__operations_8c_aa59892207f157f566ff1916269957997}\label{pixel__operations_8c_aa59892207f157f566ff1916269957997}} 
+\index{pixel\_operations.c@{pixel\_operations.c}!put\_pixel@{put\_pixel}}
+\index{put\_pixel@{put\_pixel}!pixel\_operations.c@{pixel\_operations.c}}
+\doxysubsubsection{\texorpdfstring{put\_pixel()}{put\_pixel()}}
+{\footnotesize\ttfamily void put\+\_\+pixel (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface $\ast$}]{surface,  }\item[{unsigned}]{x,  }\item[{unsigned}]{y,  }\item[{Uint32}]{pixel }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{41 \{}
+\DoxyCodeLine{42     Uint8 *p = \mbox{\hyperlink{pixel__operations_8c_a0a45d3fedef806c714dd9f79c2df19cd}{pixel\_ref}}(surface, x, y);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keywordflow}{switch}(surface-\/>format-\/>BytesPerPixel)}
+\DoxyCodeLine{45     \{}
+\DoxyCodeLine{46         \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{47             *p = pixel;}
+\DoxyCodeLine{48             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{51             *(Uint16 *)p = pixel;}
+\DoxyCodeLine{52             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{55             \textcolor{keywordflow}{if}(SDL\_BYTEORDER == SDL\_BIG\_ENDIAN)}
+\DoxyCodeLine{56             \{}
+\DoxyCodeLine{57                 p[0] = (pixel >> 16) \& 0xff;}
+\DoxyCodeLine{58                 p[1] = (pixel >> 8) \& 0xff;}
+\DoxyCodeLine{59                 p[2] = pixel \& 0xff;}
+\DoxyCodeLine{60             \}}
+\DoxyCodeLine{61             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{62             \{}
+\DoxyCodeLine{63                 p[0] = pixel \& 0xff;}
+\DoxyCodeLine{64                 p[1] = (pixel >> 8) \& 0xff;}
+\DoxyCodeLine{65                 p[2] = (pixel >> 16) \& 0xff;}
+\DoxyCodeLine{66             \}}
+\DoxyCodeLine{67             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{70             *(Uint32 *)p = pixel;}
+\DoxyCodeLine{71             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{pixel__operations_8c_a0a45d3fedef806c714dd9f79c2df19cd}{pixel\+\_\+ref()}}.
+
+\mbox{\Hypertarget{pixel__operations_8c_a0019eb97fd67e9e9d50fbee8d9b7f98d}\label{pixel__operations_8c_a0019eb97fd67e9e9d50fbee8d9b7f98d}} 
+\index{pixel\_operations.c@{pixel\_operations.c}!update\_surface@{update\_surface}}
+\index{update\_surface@{update\_surface}!pixel\_operations.c@{pixel\_operations.c}}
+\doxysubsubsection{\texorpdfstring{update\_surface()}{update\_surface()}}
+{\footnotesize\ttfamily void update\+\_\+surface (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface $\ast$}]{screen,  }\item[{SDL\+\_\+\+Surface $\ast$}]{image }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     \textcolor{keywordflow}{if} (SDL\_BlitSurface(image, NULL, screen, NULL) < 0)}
+\DoxyCodeLine{78         warnx(\textcolor{stringliteral}{"{}BlitSurface error: \%s\(\backslash\)n"{}}, SDL\_GetError());}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     SDL\_UpdateRect(screen, 0, 0, image-\/>w, image-\/>h);}
+\DoxyCodeLine{81 \}}
+
+\end{DoxyCode}

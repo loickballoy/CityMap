@@ -11,7 +11,7 @@ struct Metro
   unsigned int label;
   unsigned int x;
   unsigned int y;
-  //unsigned int *adjlists;
+  
 };
 
 
@@ -170,7 +170,7 @@ struct EDGE *buildAdjlists2(struct Metro *STATIONS, unsigned int nb_stat,
        
     }
 
-  printf("nb edge : %i", k);
+  
   edges[0].nb_edge = k;
 
   free(rencontre);
@@ -199,9 +199,7 @@ int nb_stations(char **matrice, int DIM)
 struct Metro *BuildStations(char **matrice, int DIM, Graph g1)
 {
 
-  int nb_stat = nb_stations(matrice, DIM);
-
-  printf("%i : nb staaat", nb_stat);
+  int nb_stat = nb_stations(matrice, DIM); 
 
   struct Metro *STATIONS = malloc(sizeof(struct Metro) * nb_stat);
 

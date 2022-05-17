@@ -1,0 +1,44 @@
+\hypertarget{interface_2main_8c}{}\doxysection{interface/main.c File Reference}
+\label{interface_2main_8c}\index{interface/main.c@{interface/main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$err.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}to\+SDL.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../metro/network.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}build\+\_\+city.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interface_2main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{interface_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{interface_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{interface_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8               \{}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10   \textcolor{keywordtype}{int} DIM = 15;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12   \textcolor{keywordtype}{char} **matrice = genMat(DIM);}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14   build\_city(matrice, DIM);}
+\DoxyCodeLine{15   }
+\DoxyCodeLine{16   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}

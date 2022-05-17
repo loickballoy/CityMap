@@ -1,0 +1,365 @@
+\hypertarget{road_8c}{}\doxysection{geographer/road.c File Reference}
+\label{road_8c}\index{geographer/road.c@{geographer/road.c}}
+{\ttfamily \#include \char`\"{}../assign/assign\+\_\+tools.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}err.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}road.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for road.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{road_8c__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{road_8c__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{road_8c_aef2237682d8c51f2f29a68c67d77ae0a}{update\+Connected}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$\mbox{\hyperlink{structmap}{map}}, int x, int y)
+\item 
+void \mbox{\hyperlink{road_8c_ae2a8bb8573d6ae5e0a2a1133790bfecb}{square}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$\mbox{\hyperlink{structmap}{map}}, int x, int y, int len, int $\ast$a, int $\ast$b)
+\begin{DoxyCompactList}\small\item\em A tool to find the closest road. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{road_8c_aa04096c8b705bb7c9d3df6003353602d}{create\+Way}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$\mbox{\hyperlink{structmap}{map}}, int x, int y, int a, int b)
+\begin{DoxyCompactList}\small\item\em creates a road between to cells with their coordinates given \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{road_8c_a2b4a228e5fca4a5c72c3729dbddf7700}{road\+To\+Connect}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$\mbox{\hyperlink{structmap}{map}}, int x, int y)
+\begin{DoxyCompactList}\small\item\em Uses square to connect roads together. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{road_8c_a0094438005cb56bceef0f213188c8931}{clean\+Way}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$\mbox{\hyperlink{structmap}{map}})
+\begin{DoxyCompactList}\small\item\em Removes eventual useless or extra roads. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{road_8c_ab1f0f67276b625524389762c91849e50}{is\+Good\+Way}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$\mbox{\hyperlink{structmap}{map}}, int x, int y)
+\begin{DoxyCompactList}\small\item\em Checks if a road connects to the rest. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{road_8c_a0094438005cb56bceef0f213188c8931}\label{road_8c_a0094438005cb56bceef0f213188c8931}} 
+\index{road.c@{road.c}!cleanWay@{cleanWay}}
+\index{cleanWay@{cleanWay}!road.c@{road.c}}
+\doxysubsubsection{\texorpdfstring{cleanWay()}{cleanWay()}}
+{\footnotesize\ttfamily void clean\+Way (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{172 \{}
+\DoxyCodeLine{173   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}} * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}; j++)}
+\DoxyCodeLine{174     \{}
+\DoxyCodeLine{175         \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *upTest = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + j;}
+\DoxyCodeLine{176         \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 6)}
+\DoxyCodeLine{177         \{}
+\DoxyCodeLine{178       \textcolor{keywordflow}{if}(\mbox{\hyperlink{road_8c_ab1f0f67276b625524389762c91849e50}{isGoodWay}}(\mbox{\hyperlink{structmap}{map}},j \% \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}, j / \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}) == 0)}
+\DoxyCodeLine{179       \{}
+\DoxyCodeLine{180         upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = -\/1;}
+\DoxyCodeLine{181       \}}
+\DoxyCodeLine{182     \}}
+\DoxyCodeLine{183   \}}
+\DoxyCodeLine{184 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{road_8c_ab1f0f67276b625524389762c91849e50}{is\+Good\+Way()}}, \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{map\+::max\+Height}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, and \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_8c_a527224c39f56ef6cd7c884f61308ad64}{fill\+Town()}}, and \mbox{\hyperlink{assign_8c_a71f430d4fa6a854641d8e414ecfead93}{generate\+Rdm\+Roads()}}.
+
+\mbox{\Hypertarget{road_8c_aa04096c8b705bb7c9d3df6003353602d}\label{road_8c_aa04096c8b705bb7c9d3df6003353602d}} 
+\index{road.c@{road.c}!createWay@{createWay}}
+\index{createWay@{createWay}!road.c@{road.c}}
+\doxysubsubsection{\texorpdfstring{createWay()}{createWay()}}
+{\footnotesize\ttfamily void create\+Way (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{map,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{82 \{}
+\DoxyCodeLine{83   \textcolor{keywordtype}{int} **building\_value = \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\_building\_value}}();}
+\DoxyCodeLine{84   \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}}* tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}};}
+\DoxyCodeLine{85   \textcolor{keywordflow}{if}(y < b)}
+\DoxyCodeLine{86   \{}
+\DoxyCodeLine{87     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = b; i != y; i-\/-\/)}
+\DoxyCodeLine{88     \{}
+\DoxyCodeLine{89       tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + a + i*\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}};}
+\DoxyCodeLine{90       \textcolor{keywordflow}{if} (tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 7)}
+\DoxyCodeLine{91           \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != -\/1 \&\& tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != 6 )}
+\DoxyCodeLine{94       \{}
+\DoxyCodeLine{95         \mbox{\hyperlink{update_8c_a4d8d63e78f5f366a98b4f47b1027da1f}{reverseUpdateAround}}(\mbox{\hyperlink{structmap}{map}}, a, i, building\_value);}
+\DoxyCodeLine{96         tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
+\DoxyCodeLine{97       \}}
+\DoxyCodeLine{98       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{99         tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
+\DoxyCodeLine{100     \}}
+\DoxyCodeLine{101   \}}
+\DoxyCodeLine{102   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{103   \{}
+\DoxyCodeLine{104     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = b; y != i; i++)}
+\DoxyCodeLine{105     \{}
+\DoxyCodeLine{106       tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + a + i*\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}};}
+\DoxyCodeLine{107       \textcolor{keywordflow}{if} (tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 7)}
+\DoxyCodeLine{108           \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != -\/1 \&\& tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != 6)}
+\DoxyCodeLine{111       \{}
+\DoxyCodeLine{112         \mbox{\hyperlink{update_8c_a4d8d63e78f5f366a98b4f47b1027da1f}{reverseUpdateAround}}(\mbox{\hyperlink{structmap}{map}}, a, i, building\_value);}
+\DoxyCodeLine{113         tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
+\DoxyCodeLine{114       \}}
+\DoxyCodeLine{115       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{116         tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
+\DoxyCodeLine{117     \}}
+\DoxyCodeLine{118   \}}
+\DoxyCodeLine{119   \textcolor{keywordflow}{if}(x < a)}
+\DoxyCodeLine{120   \{}
+\DoxyCodeLine{121     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = a; x != j; j-\/-\/)}
+\DoxyCodeLine{122     \{}
+\DoxyCodeLine{123       tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + j + y*\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}};}
+\DoxyCodeLine{124       \textcolor{keywordflow}{if} (tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 7)}
+\DoxyCodeLine{125           \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{126      }
+\DoxyCodeLine{127       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != -\/1 \&\& tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != 6)}
+\DoxyCodeLine{128       \{}
+\DoxyCodeLine{129         \mbox{\hyperlink{update_8c_a4d8d63e78f5f366a98b4f47b1027da1f}{reverseUpdateAround}}(\mbox{\hyperlink{structmap}{map}}, j, y, building\_value);}
+\DoxyCodeLine{130         tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
+\DoxyCodeLine{131       \}}
+\DoxyCodeLine{132       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{133         tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
+\DoxyCodeLine{134     \}}
+\DoxyCodeLine{135   \}}
+\DoxyCodeLine{136   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{137   \{}
+\DoxyCodeLine{138     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = a; x != j; j++)}
+\DoxyCodeLine{139     \{}
+\DoxyCodeLine{140       tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + j + y*\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}};}
+\DoxyCodeLine{141       \textcolor{keywordflow}{if} (tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 7)}
+\DoxyCodeLine{142           \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{143      }
+\DoxyCodeLine{144       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != -\/1 \&\& tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != 6)}
+\DoxyCodeLine{145       \{}
+\DoxyCodeLine{146         \mbox{\hyperlink{update_8c_a4d8d63e78f5f366a98b4f47b1027da1f}{reverseUpdateAround}}(\mbox{\hyperlink{structmap}{map}}, j, y, building\_value);}
+\DoxyCodeLine{147         tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
+\DoxyCodeLine{148       \}}
+\DoxyCodeLine{149       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{150         tempcell-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 6;}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152   \}}
+\DoxyCodeLine{153   \mbox{\hyperlink{loadtools_8c_a51db0d8ee75cbb1854f14c33fe1aae8b}{free\_building\_list}}((\textcolor{keywordtype}{void} **)building\_value);}
+\DoxyCodeLine{154   \textcolor{keywordflow}{return};}
+\DoxyCodeLine{155 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{loadtools_8c_a51db0d8ee75cbb1854f14c33fe1aae8b}{free\+\_\+building\+\_\+list()}}, \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\+\_\+building\+\_\+value()}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, \mbox{\hyperlink{update_8c_a4d8d63e78f5f366a98b4f47b1027da1f}{reverse\+Update\+Around()}}, and \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_8c_a71f430d4fa6a854641d8e414ecfead93}{generate\+Rdm\+Roads()}}, and \mbox{\hyperlink{road_8c_a2b4a228e5fca4a5c72c3729dbddf7700}{road\+To\+Connect()}}.
+
+\mbox{\Hypertarget{road_8c_ab1f0f67276b625524389762c91849e50}\label{road_8c_ab1f0f67276b625524389762c91849e50}} 
+\index{road.c@{road.c}!isGoodWay@{isGoodWay}}
+\index{isGoodWay@{isGoodWay}!road.c@{road.c}}
+\doxysubsubsection{\texorpdfstring{isGoodWay()}{isGoodWay()}}
+{\footnotesize\ttfamily int is\+Good\+Way (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{map,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{188 \{}
+\DoxyCodeLine{189   \textcolor{keywordtype}{int} len = 3;}
+\DoxyCodeLine{190   \textcolor{keywordtype}{int} blanc = 0;}
+\DoxyCodeLine{191   \textcolor{keywordtype}{int} startx = x-\/len/2 < 0 ? 0 : x-\/len/2;}
+\DoxyCodeLine{192   \textcolor{keywordtype}{int} starty = y-\/len/2 < 0 ? 0 : y-\/len/2;}
+\DoxyCodeLine{193   \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}}* tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + (startx + starty * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{194   \textcolor{keywordtype}{int} endx = (x + len/2) >= \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}} ? \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}-\/1 : x + len/2;}
+\DoxyCodeLine{195   \textcolor{keywordtype}{int} endy = (y + len/2) >= \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}} ? \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}-\/1 : (y + len/2) ;}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i <= endx-\/startx; i++)}
+\DoxyCodeLine{198   \{}
+\DoxyCodeLine{199     \textcolor{keywordflow}{if}((tempcell + i)-\/>type == -\/1)}
+\DoxyCodeLine{200       blanc += 1;}
+\DoxyCodeLine{201     \textcolor{keywordflow}{if}(((tempcell + i)-\/>type != 6 \&\& (tempcell + i)-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != -\/1 \&\& blanc) || blanc > 1)}
+\DoxyCodeLine{202     \{}
+\DoxyCodeLine{203       \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{204     \}}
+\DoxyCodeLine{205   \}}
+\DoxyCodeLine{206   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j <= endy-\/starty; j++)}
+\DoxyCodeLine{207   \{}
+\DoxyCodeLine{208     \textcolor{keywordflow}{if}((tempcell + j)-\/>type == -\/1)}
+\DoxyCodeLine{209       blanc += 1;}
+\DoxyCodeLine{210     \textcolor{keywordflow}{if}(((tempcell + j * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}})-\/>type != 6 \&\& (tempcell + j * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}})-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != -\/1) || blanc > 1)}
+\DoxyCodeLine{211     \{}
+\DoxyCodeLine{212       \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{213     \}}
+\DoxyCodeLine{214   \}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217   tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + (startx + (endy * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}));}
+\DoxyCodeLine{218   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i <= endx-\/startx; i++)}
+\DoxyCodeLine{219   \{}
+\DoxyCodeLine{220     \textcolor{keywordflow}{if}((tempcell + i)-\/>type == -\/1)}
+\DoxyCodeLine{221       blanc += 1;}
+\DoxyCodeLine{222     \textcolor{keywordflow}{if}(((tempcell + i)-\/>type != 6 \&\& (tempcell + i)-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != -\/1) || blanc > 1)}
+\DoxyCodeLine{223     \{}
+\DoxyCodeLine{224       \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{225     \}}
+\DoxyCodeLine{226   \}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228   tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + (endx + (starty * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}));}
+\DoxyCodeLine{229   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j <= endy-\/starty; j++)}
+\DoxyCodeLine{230   \{}
+\DoxyCodeLine{231     \textcolor{keywordflow}{if}((tempcell + j)-\/>type == -\/1)}
+\DoxyCodeLine{232       blanc += 1;}
+\DoxyCodeLine{233     \textcolor{keywordflow}{if}(((tempcell + j * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}})-\/>type != 6 \&\& (tempcell + j * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}})-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != -\/1) || blanc > 1)}
+\DoxyCodeLine{234     \{}
+\DoxyCodeLine{235       \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{236     \}}
+\DoxyCodeLine{237   \}}
+\DoxyCodeLine{238   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{239 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{map\+::max\+Height}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, and \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+
+
+Referenced by \mbox{\hyperlink{road_8c_a0094438005cb56bceef0f213188c8931}{clean\+Way()}}.
+
+\mbox{\Hypertarget{road_8c_a2b4a228e5fca4a5c72c3729dbddf7700}\label{road_8c_a2b4a228e5fca4a5c72c3729dbddf7700}} 
+\index{road.c@{road.c}!roadToConnect@{roadToConnect}}
+\index{roadToConnect@{roadToConnect}!road.c@{road.c}}
+\doxysubsubsection{\texorpdfstring{roadToConnect()}{roadToConnect()}}
+{\footnotesize\ttfamily void road\+To\+Connect (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{map,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{158 \{}
+\DoxyCodeLine{159   \textcolor{keywordtype}{int} a = 0;}
+\DoxyCodeLine{160   \textcolor{keywordtype}{int} b = 0;}
+\DoxyCodeLine{161   \textcolor{keywordtype}{int} far = 0;}
+\DoxyCodeLine{162   \textcolor{keywordflow}{while}(a == 0)\textcolor{comment}{//find the nearest road to connect}}
+\DoxyCodeLine{163   \{}
+\DoxyCodeLine{164     \mbox{\hyperlink{road_8c_ae2a8bb8573d6ae5e0a2a1133790bfecb}{square}}(\mbox{\hyperlink{structmap}{map}}, x, y, 3+far*2, \&a, \&b);}
+\DoxyCodeLine{165     far++;}
+\DoxyCodeLine{166   \}}
+\DoxyCodeLine{167   \mbox{\hyperlink{road_8c_aa04096c8b705bb7c9d3df6003353602d}{createWay}}(\mbox{\hyperlink{structmap}{map}}, x, y, a, b);\textcolor{comment}{//place roads need to add the replacement on buildinglist}}
+\DoxyCodeLine{168   \textcolor{keywordflow}{return};}
+\DoxyCodeLine{169 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{road_8c_aa04096c8b705bb7c9d3df6003353602d}{create\+Way()}}, and \mbox{\hyperlink{road_8c_ae2a8bb8573d6ae5e0a2a1133790bfecb}{square()}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_8c_a527224c39f56ef6cd7c884f61308ad64}{fill\+Town()}}.
+
+\mbox{\Hypertarget{road_8c_ae2a8bb8573d6ae5e0a2a1133790bfecb}\label{road_8c_ae2a8bb8573d6ae5e0a2a1133790bfecb}} 
+\index{road.c@{road.c}!square@{square}}
+\index{square@{square}!road.c@{road.c}}
+\doxysubsubsection{\texorpdfstring{square()}{square()}}
+{\footnotesize\ttfamily void square (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{map,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{len,  }\item[{int $\ast$}]{a,  }\item[{int $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22   *a = 0;}
+\DoxyCodeLine{23   *b = 0;}
+\DoxyCodeLine{24   }
+\DoxyCodeLine{25   \textcolor{keywordtype}{int} startx = x-\/len/2 < 0 ? 0 : x-\/len/2;}
+\DoxyCodeLine{26   \textcolor{keywordtype}{int} starty = y-\/len/2 < 0 ? 0 : y-\/len/2;}
+\DoxyCodeLine{27   \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}}* tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + (startx + starty * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{28   \textcolor{keywordtype}{int} endx = (x + len/2) >= \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}} ? \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}-\/1 : x + len/2;}
+\DoxyCodeLine{29   \textcolor{keywordtype}{int} endy = (y + len/2) >= \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}} ? \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}-\/1 : (y + len/2);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i <= endx-\/startx; i++)}
+\DoxyCodeLine{33   \{}
+\DoxyCodeLine{34     }
+\DoxyCodeLine{35     \textcolor{keywordflow}{if}((tempcell + i)-\/>type == 6)}
+\DoxyCodeLine{36     \{}
+\DoxyCodeLine{37       *a = startx+i;}
+\DoxyCodeLine{38       *b = starty;}
+\DoxyCodeLine{39       }
+\DoxyCodeLine{40       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{41     \}}
+\DoxyCodeLine{42   \}}
+\DoxyCodeLine{43   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j <= endy-\/starty; j++)}
+\DoxyCodeLine{44   \{}
+\DoxyCodeLine{45     \textcolor{keywordflow}{if}((tempcell + j * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}})-\/>type == 6)}
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47       *a = startx;}
+\DoxyCodeLine{48       *b = starty+j;}
+\DoxyCodeLine{49       }
+\DoxyCodeLine{50       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52   \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55   tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + (startx + (endy * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}));}
+\DoxyCodeLine{56   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i <= endx-\/startx; i++)}
+\DoxyCodeLine{57   \{}
+\DoxyCodeLine{58     \textcolor{keywordflow}{if}((tempcell + i)-\/>type == 6)}
+\DoxyCodeLine{59     \{}
+\DoxyCodeLine{60       *a = startx+i;}
+\DoxyCodeLine{61       *b = endy;}
+\DoxyCodeLine{62       }
+\DoxyCodeLine{63       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{65   \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67   tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + (endx + (starty * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}));}
+\DoxyCodeLine{68   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j <= endy-\/starty; j++)}
+\DoxyCodeLine{69   \{}
+\DoxyCodeLine{70     \textcolor{keywordflow}{if}((tempcell + j * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}})-\/>type == 6)}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72       *a = endx;}
+\DoxyCodeLine{73       *b = starty+j;}
+\DoxyCodeLine{74       }
+\DoxyCodeLine{75       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77   \}}
+\DoxyCodeLine{78   \textcolor{keywordflow}{return};}
+\DoxyCodeLine{79 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{map\+::max\+Height}}, and \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}.
+
+
+
+Referenced by \mbox{\hyperlink{road_8c_a2b4a228e5fca4a5c72c3729dbddf7700}{road\+To\+Connect()}}.
+
+\mbox{\Hypertarget{road_8c_aef2237682d8c51f2f29a68c67d77ae0a}\label{road_8c_aef2237682d8c51f2f29a68c67d77ae0a}} 
+\index{road.c@{road.c}!updateConnected@{updateConnected}}
+\index{updateConnected@{updateConnected}!road.c@{road.c}}
+\doxysubsubsection{\texorpdfstring{updateConnected()}{updateConnected()}}
+{\footnotesize\ttfamily int update\+Connected (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{map,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8   \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}}* tempcell = \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + (x + y * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{9   \textcolor{keywordflow}{if}(x != 0)}
+\DoxyCodeLine{10     (tempcell-\/1)-\/>\mbox{\hyperlink{structcell_a419c7070b137e9a8f0134a45c18873c1}{isRoadConnected}} += 1;}
+\DoxyCodeLine{11   \textcolor{keywordflow}{if}(y != 0)}
+\DoxyCodeLine{12     (tempcell-\/\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}})-\/>\mbox{\hyperlink{structcell_a419c7070b137e9a8f0134a45c18873c1}{isRoadConnected}} += 1;}
+\DoxyCodeLine{13   \textcolor{keywordflow}{if}(x != \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}})}
+\DoxyCodeLine{14     (tempcell+1)-\/>\mbox{\hyperlink{structcell_a419c7070b137e9a8f0134a45c18873c1}{isRoadConnected}} += 1;}
+\DoxyCodeLine{15   \textcolor{keywordflow}{if}(y != \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}})}
+\DoxyCodeLine{16     (tempcell+\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}})-\/>\mbox{\hyperlink{structcell_a419c7070b137e9a8f0134a45c18873c1}{isRoadConnected}} += 1;}
+\DoxyCodeLine{17   \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{18 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{structcell_a419c7070b137e9a8f0134a45c18873c1}{cell\+::is\+Road\+Connected}}, \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{map\+::max\+Height}}, and \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}.
+

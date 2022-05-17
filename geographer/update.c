@@ -3,8 +3,6 @@
 #include "update.h"
 #include <stdio.h>
 
-extern struct map;
-
 int ponderation(int x, int y, int val, int a, int b)
 {
     int xtemp =  x - a;
@@ -14,12 +12,10 @@ int ponderation(int x, int y, int val, int a, int b)
     if(xtemp+ytemp == 0)
       return 0;
 
-    float pond = ((float)1/((float)(0.85+(float)xtemp/4+(float)ytemp/4)));//modulable par changement du 0.85 et des /4
+    float pond = ((float)1/((float)(0.85+(float)xtemp/4+(float)ytemp/4)));//The bias we use in this function are represented pas the values 0.85 and /4
 
     int ponderation = (int)(pond*(float)val);
 
-    /*if(val < 0)//test if habitation
-      printf("x : %i  , y : %i  , xtemp : %i  , ytemp : %i  , return : %i \n",x,y,xtemp,ytemp,ponderation);*/
     return ponderation;
 }
 

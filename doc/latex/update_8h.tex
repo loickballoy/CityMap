@@ -1,0 +1,210 @@
+\hypertarget{update_8h}{}\doxysection{geographer/update.h File Reference}
+\label{update_8h}\index{geographer/update.h@{geographer/update.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{update_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{update_8h_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}} (int x, int y, int val, int a, int b)
+\begin{DoxyCompactList}\small\item\em This functions computes a value to change the needs according to a distance from a cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{update_8h_a63108cf0be9f2de87ac70cfa08f7dd64}{update\+Around}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$\mbox{\hyperlink{structmap}{map}}, int x, int y, int $\ast$$\ast$building\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Using ponderation we update the values around a cell placed at coordinates x and y. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{update_8h_a4d8d63e78f5f366a98b4f47b1027da1f}{reverse\+Update\+Around}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$\mbox{\hyperlink{structmap}{map}}, int a, int b, int $\ast$$\ast$building\+\_\+value)
+\begin{DoxyCompactList}\small\item\em The same as update\+Around but reversed no further explaination will be provided. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{update_8h_a2614a565721cddb5f0d506560470846a}{equation}} (int x, int y, int a, int b, int range)
+\begin{DoxyCompactList}\small\item\em Simple inequation that returns an int 0 or 1 casted to a char. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{update_8h_a1c3229c332137c45960924ccb242bc97}{attribuate}} (int x, int y, struct \mbox{\hyperlink{structcell}{cell}} $\ast$\mbox{\hyperlink{structcell}{cell}}, int $\ast$value, int a, int b)
+\begin{DoxyCompactList}\small\item\em A tool to give a cell a value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{update_8h_a45c3ebe31a9e78d882d56036866a6587}{reverse\+Attribuate}} (int x, int y, struct \mbox{\hyperlink{structcell}{cell}} $\ast$\mbox{\hyperlink{structcell}{cell}}, int $\ast$value, int a, int b)
+\begin{DoxyCompactList}\small\item\em The same as attribuate but reversed no further explaination will be provided. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{update_8h_a1c3229c332137c45960924ccb242bc97}\label{update_8h_a1c3229c332137c45960924ccb242bc97}} 
+\index{update.h@{update.h}!attribuate@{attribuate}}
+\index{attribuate@{attribuate}!update.h@{update.h}}
+\doxysubsubsection{\texorpdfstring{attribuate()}{attribuate()}}
+{\footnotesize\ttfamily void attribuate (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{struct \mbox{\hyperlink{structcell}{cell}} $\ast$}]{cell,  }\item[{int $\ast$}]{value,  }\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24     \textcolor{keywordtype}{int} *stats = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}};}
+\DoxyCodeLine{25     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NBSTATS; i++)}
+\DoxyCodeLine{26         *(stats + i) += \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}}(x, y, *(value + i), a, b);}
+\DoxyCodeLine{27 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation()}}, and \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{cell\+::stats}}.
+
+
+
+Referenced by \mbox{\hyperlink{update_8c_a86539730d7569637769e840303e61adc}{update\+Around()}}.
+
+\mbox{\Hypertarget{update_8h_a2614a565721cddb5f0d506560470846a}\label{update_8h_a2614a565721cddb5f0d506560470846a}} 
+\index{update.h@{update.h}!equation@{equation}}
+\index{equation@{equation}!update.h@{update.h}}
+\doxysubsubsection{\texorpdfstring{equation()}{equation()}}
+{\footnotesize\ttfamily char equation (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{range }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38     \textcolor{keywordflow}{return} (x -\/ a)*(x -\/ a) + (y -\/ b) * (y -\/ b) < range * range;}
+\DoxyCodeLine{39 \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{update_8c_a4d8d63e78f5f366a98b4f47b1027da1f}{reverse\+Update\+Around()}}, and \mbox{\hyperlink{update_8c_a86539730d7569637769e840303e61adc}{update\+Around()}}.
+
+\mbox{\Hypertarget{update_8h_a08c7617b6ae1dd6c14713d0115c1f00e}\label{update_8h_a08c7617b6ae1dd6c14713d0115c1f00e}} 
+\index{update.h@{update.h}!ponderation@{ponderation}}
+\index{ponderation@{ponderation}!update.h@{update.h}}
+\doxysubsubsection{\texorpdfstring{ponderation()}{ponderation()}}
+{\footnotesize\ttfamily int ponderation (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{val,  }\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8     \textcolor{keywordtype}{int} xtemp =  x -\/ a;}
+\DoxyCodeLine{9     \textcolor{keywordtype}{int} ytemp = y -\/ b;}
+\DoxyCodeLine{10     xtemp = xtemp < 0?(-\/1)*xtemp:xtemp;}
+\DoxyCodeLine{11     ytemp = ytemp < 0?(-\/1)*ytemp:ytemp;}
+\DoxyCodeLine{12     \textcolor{keywordflow}{if}(xtemp+ytemp == 0)}
+\DoxyCodeLine{13       \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keywordtype}{float} pond = ((float)1/((\textcolor{keywordtype}{float})(0.85+(float)xtemp/4+(\textcolor{keywordtype}{float})ytemp/4)));\textcolor{comment}{//The bias we use in this function are represented pas the values 0.85 and /4}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}} = (int)(pond*(\textcolor{keywordtype}{float})val);}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordflow}{return} \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}};}
+\DoxyCodeLine{20 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation()}}.
+
+
+
+Referenced by \mbox{\hyperlink{update_8c_a1c3229c332137c45960924ccb242bc97}{attribuate()}}, \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation()}}, and \mbox{\hyperlink{update_8c_a45c3ebe31a9e78d882d56036866a6587}{reverse\+Attribuate()}}.
+
+\mbox{\Hypertarget{update_8h_a45c3ebe31a9e78d882d56036866a6587}\label{update_8h_a45c3ebe31a9e78d882d56036866a6587}} 
+\index{update.h@{update.h}!reverseAttribuate@{reverseAttribuate}}
+\index{reverseAttribuate@{reverseAttribuate}!update.h@{update.h}}
+\doxysubsubsection{\texorpdfstring{reverseAttribuate()}{reverseAttribuate()}}
+{\footnotesize\ttfamily void reverse\+Attribuate (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{struct \mbox{\hyperlink{structcell}{cell}} $\ast$}]{cell,  }\item[{int $\ast$}]{value,  }\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31     \textcolor{keywordtype}{int} *stats = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}};}
+\DoxyCodeLine{32     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NBSTATS; i++)}
+\DoxyCodeLine{33         *(stats + i) -\/= \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation}}(x, y, *(value + i), a, b);}
+\DoxyCodeLine{34 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{update_8c_a08c7617b6ae1dd6c14713d0115c1f00e}{ponderation()}}, and \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{cell\+::stats}}.
+
+
+
+Referenced by \mbox{\hyperlink{update_8c_a4d8d63e78f5f366a98b4f47b1027da1f}{reverse\+Update\+Around()}}.
+
+\mbox{\Hypertarget{update_8h_a4d8d63e78f5f366a98b4f47b1027da1f}\label{update_8h_a4d8d63e78f5f366a98b4f47b1027da1f}} 
+\index{update.h@{update.h}!reverseUpdateAround@{reverseUpdateAround}}
+\index{reverseUpdateAround@{reverseUpdateAround}!update.h@{update.h}}
+\doxysubsubsection{\texorpdfstring{reverseUpdateAround()}{reverseUpdateAround()}}
+{\footnotesize\ttfamily void reverse\+Update\+Around (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{map,  }\item[{int}]{a,  }\item[{int}]{b,  }\item[{int $\ast$$\ast$}]{building\+\_\+value }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *\mbox{\hyperlink{structcell}{cell}} = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (a + b * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == -\/1)}
+\DoxyCodeLine{73         errx(1, \textcolor{stringliteral}{"{}reverseUpdateAround : Error the cell is not occupied by a building"{}});}
+\DoxyCodeLine{74     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 7)}
+\DoxyCodeLine{75         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}};}
+\DoxyCodeLine{78     \textcolor{keywordtype}{int} *value = *(building\_value + \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}});}
+\DoxyCodeLine{79     \textcolor{keywordtype}{int} range = *(value + 6);}
+\DoxyCodeLine{80     \textcolor{keywordtype}{int} xsquare = a -\/ range;}
+\DoxyCodeLine{81     \textcolor{keywordtype}{int} ysquare = b -\/ range;}
+\DoxyCodeLine{82     \textcolor{keywordtype}{int} diam = range * 2;}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *cellatt;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = xsquare; x < (xsquare + diam); ++x)}
+\DoxyCodeLine{87         \textcolor{keywordflow}{if} (x >= 0 \&\& x < map-\/>maxWidth)}
+\DoxyCodeLine{88             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = ysquare; y < (ysquare + diam); ++y)}
+\DoxyCodeLine{89                 \textcolor{keywordflow}{if} (y >= 0 \&\& y < map-\/>maxHeight)}
+\DoxyCodeLine{90                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{update_8c_a2614a565721cddb5f0d506560470846a}{equation}}(x, y, a, b, range))}
+\DoxyCodeLine{91                         \{}
+\DoxyCodeLine{92                             cellatt = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (x + y * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{93                             \mbox{\hyperlink{update_8c_a45c3ebe31a9e78d882d56036866a6587}{reverseAttribuate}}(x, y, cellatt, value, a, b);}
+\DoxyCodeLine{94                         \}}
+\DoxyCodeLine{95 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{update_8c_a2614a565721cddb5f0d506560470846a}{equation()}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, \mbox{\hyperlink{update_8c_a45c3ebe31a9e78d882d56036866a6587}{reverse\+Attribuate()}}, and \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+
+
+Referenced by \mbox{\hyperlink{road_8c_aa04096c8b705bb7c9d3df6003353602d}{create\+Way()}}, and \mbox{\hyperlink{assign_8c_a4be01986344e82266a0691d32072733f}{replace\+Town()}}.
+
+\mbox{\Hypertarget{update_8h_a63108cf0be9f2de87ac70cfa08f7dd64}\label{update_8h_a63108cf0be9f2de87ac70cfa08f7dd64}} 
+\index{update.h@{update.h}!updateAround@{updateAround}}
+\index{updateAround@{updateAround}!update.h@{update.h}}
+\doxysubsubsection{\texorpdfstring{updateAround()}{updateAround()}}
+{\footnotesize\ttfamily void update\+Around (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{map,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int $\ast$$\ast$}]{building\+\_\+value }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *\mbox{\hyperlink{structcell}{cell}} = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (a + b * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{keywordflow}{if} (\mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == -\/1)}
+\DoxyCodeLine{46         errx(1, \textcolor{stringliteral}{"{}updateAround : Error the cell is not occupied by a building at \%i, \%i \(\backslash\)n "{}},a,b);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = \mbox{\hyperlink{structcell}{cell}}-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}};}
+\DoxyCodeLine{49     \textcolor{keywordtype}{int} *value = *(building\_value + \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}});}
+\DoxyCodeLine{50     \textcolor{keywordtype}{int} range = *(value + 6);}
+\DoxyCodeLine{51     \textcolor{keywordtype}{int} xsquare = a -\/ range;}
+\DoxyCodeLine{52     \textcolor{keywordtype}{int} ysquare = b -\/ range;}
+\DoxyCodeLine{53     \textcolor{keywordtype}{int} diam = range * 2;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *cellatt;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = xsquare; x < (xsquare + diam); ++x)}
+\DoxyCodeLine{58         \textcolor{keywordflow}{if} (x >= 0 \&\& x < map-\/>maxWidth)}
+\DoxyCodeLine{59             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = ysquare; y < (ysquare + diam); ++y)}
+\DoxyCodeLine{60                 \textcolor{keywordflow}{if} (y >= 0 \&\& y < map-\/>maxHeight)}
+\DoxyCodeLine{61                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{update_8c_a2614a565721cddb5f0d506560470846a}{equation}}(x, y, a, b, range))}
+\DoxyCodeLine{62                         \{}
+\DoxyCodeLine{63                             cellatt = (\mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}}) + (x + y * \mbox{\hyperlink{structmap}{map}}-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{64                             \mbox{\hyperlink{update_8c_a1c3229c332137c45960924ccb242bc97}{attribuate}}(x, y, cellatt, value, a, b);}
+\DoxyCodeLine{65                         \}}
+\DoxyCodeLine{66 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{update_8c_a1c3229c332137c45960924ccb242bc97}{attribuate()}}, \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{update_8c_a2614a565721cddb5f0d506560470846a}{equation()}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, and \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_8c_a527224c39f56ef6cd7c884f61308ad64}{fill\+Town()}}, \mbox{\hyperlink{assign_8c_a8d1b043f2541bd164d2210f7570c8218}{generate\+Random\+Subway()}}, \mbox{\hyperlink{assign_8c_a4be01986344e82266a0691d32072733f}{replace\+Town()}}, and \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}.
+

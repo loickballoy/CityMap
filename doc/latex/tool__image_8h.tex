@@ -1,0 +1,154 @@
+\hypertarget{tool__image_8h}{}\doxysection{interface/tool/tool\+\_\+image.h File Reference}
+\label{tool__image_8h}\index{interface/tool/tool\_image.h@{interface/tool/tool\_image.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$SDL.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}SDL/\+SDL\+\_\+image.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pixel\+\_\+operations.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}err.\+h\char`\"{}}\newline
+Include dependency graph for tool\+\_\+image.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tool__image_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{tool__image_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tool__image_8h_a02b747ee9a45485dd694783af494b4f9}{init\+\_\+sdl}} ()
+\item 
+SDL\+\_\+\+Surface $\ast$ \mbox{\hyperlink{tool__image_8h_a4dd041463f513097e9448c3f0e58967c}{load\+\_\+image}} (char $\ast$path)
+\item 
+SDL\+\_\+\+Surface $\ast$ \mbox{\hyperlink{tool__image_8h_ac8aaa98a82a1d49e92bac17ab9d313dd}{create\+\_\+image}} (size\+\_\+t h, size\+\_\+t d)
+\item 
+SDL\+\_\+\+Surface $\ast$ \mbox{\hyperlink{tool__image_8h_a51b687a3dd0a35cd93372ca566b23d0b}{display\+\_\+image}} (SDL\+\_\+\+Surface $\ast$img)
+\item 
+void \mbox{\hyperlink{tool__image_8h_aa9c30cc65a4f58598255cd523fc59df0}{wait\+\_\+for\+\_\+keypressed}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tool__image_8h_ac8aaa98a82a1d49e92bac17ab9d313dd}\label{tool__image_8h_ac8aaa98a82a1d49e92bac17ab9d313dd}} 
+\index{tool\_image.h@{tool\_image.h}!create\_image@{create\_image}}
+\index{create\_image@{create\_image}!tool\_image.h@{tool\_image.h}}
+\doxysubsubsection{\texorpdfstring{create\_image()}{create\_image()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Surface $\ast$ create\+\_\+image (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{h,  }\item[{size\+\_\+t}]{d }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29 \{}
+\DoxyCodeLine{30         SDL\_Surface* img=NULL;}
+\DoxyCodeLine{31         img = SDL\_CreateRGBSurface(0, h, d,32,0,0,0,0);}
+\DoxyCodeLine{32         \textcolor{keywordflow}{return} img;}
+\DoxyCodeLine{33 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tool__image_8h_a51b687a3dd0a35cd93372ca566b23d0b}\label{tool__image_8h_a51b687a3dd0a35cd93372ca566b23d0b}} 
+\index{tool\_image.h@{tool\_image.h}!display\_image@{display\_image}}
+\index{display\_image@{display\_image}!tool\_image.h@{tool\_image.h}}
+\doxysubsubsection{\texorpdfstring{display\_image()}{display\_image()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Surface $\ast$ display\+\_\+image (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface $\ast$}]{img }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36 \{}
+\DoxyCodeLine{37     SDL\_Surface *screen;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{comment}{// Set the window to the same size as the image}}
+\DoxyCodeLine{40     screen = SDL\_SetVideoMode(img-\/>w, img-\/>h, 0, SDL\_SWSURFACE|SDL\_ANYFORMAT);}
+\DoxyCodeLine{41     \textcolor{keywordflow}{if} (screen == NULL)}
+\DoxyCodeLine{42     \{}
+\DoxyCodeLine{43         \textcolor{comment}{// error management}}
+\DoxyCodeLine{44         errx(1, \textcolor{stringliteral}{"{}Couldn't set \%dx\%d video mode: \%s\(\backslash\)n"{}},}
+\DoxyCodeLine{45                 img-\/>w, img-\/>h, SDL\_GetError());}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{comment}{// Blit onto the screen surface}}
+\DoxyCodeLine{49     \textcolor{keywordflow}{if}(SDL\_BlitSurface(img, NULL, screen, NULL) < 0)}
+\DoxyCodeLine{50         warnx(\textcolor{stringliteral}{"{}BlitSurface error: \%s\(\backslash\)n"{}}, SDL\_GetError());}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{comment}{// Update the screen}}
+\DoxyCodeLine{53     SDL\_UpdateRect(screen, 0, 0, img-\/>w, img-\/>h);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{comment}{// return the screen for further uses}}
+\DoxyCodeLine{56     \textcolor{keywordflow}{return} screen;}
+\DoxyCodeLine{57 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tool__image_8h_a02b747ee9a45485dd694783af494b4f9}\label{tool__image_8h_a02b747ee9a45485dd694783af494b4f9}} 
+\index{tool\_image.h@{tool\_image.h}!init\_sdl@{init\_sdl}}
+\index{init\_sdl@{init\_sdl}!tool\_image.h@{tool\_image.h}}
+\doxysubsubsection{\texorpdfstring{init\_sdl()}{init\_sdl()}}
+{\footnotesize\ttfamily void init\+\_\+sdl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \textcolor{comment}{// Init only the video part.}}
+\DoxyCodeLine{10     \textcolor{comment}{// If it fails, die with an error message.}}
+\DoxyCodeLine{11     \textcolor{keywordflow}{if}(SDL\_Init(SDL\_INIT\_VIDEO) == -\/1)}
+\DoxyCodeLine{12         errx(1,\textcolor{stringliteral}{"{}Could not initialize SDL: \%s.\(\backslash\)n"{}}, SDL\_GetError());}
+\DoxyCodeLine{13 \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{to_s_d_l_8c_a313e7d5fb8d3ac6c3c05b45062677d91}{Print\+Mat()}}, and \mbox{\hyperlink{to_s_d_l_8c_ab3dadb9c03fe52f5265f999a0e8b73ae}{Print\+Metro()}}.
+
+\mbox{\Hypertarget{tool__image_8h_a4dd041463f513097e9448c3f0e58967c}\label{tool__image_8h_a4dd041463f513097e9448c3f0e58967c}} 
+\index{tool\_image.h@{tool\_image.h}!load\_image@{load\_image}}
+\index{load\_image@{load\_image}!tool\_image.h@{tool\_image.h}}
+\doxysubsubsection{\texorpdfstring{load\_image()}{load\_image()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Surface $\ast$ load\+\_\+image (\begin{DoxyParamCaption}\item[{char $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     SDL\_Surface* img;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{comment}{// Load an image using SDL\_image with format detection.}}
+\DoxyCodeLine{20     \textcolor{comment}{// If it fails, die with an error message.}}
+\DoxyCodeLine{21     img = IMG\_Load(path);}
+\DoxyCodeLine{22     \textcolor{keywordflow}{if} (!img)}
+\DoxyCodeLine{23         errx(3, \textcolor{stringliteral}{"{}can't load \%s: \%s"{}}, path, IMG\_GetError());}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keywordflow}{return} img;}
+\DoxyCodeLine{26 \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{to_s_d_l_8c_a313e7d5fb8d3ac6c3c05b45062677d91}{Print\+Mat()}}, and \mbox{\hyperlink{to_s_d_l_8c_ab3dadb9c03fe52f5265f999a0e8b73ae}{Print\+Metro()}}.
+
+\mbox{\Hypertarget{tool__image_8h_aa9c30cc65a4f58598255cd523fc59df0}\label{tool__image_8h_aa9c30cc65a4f58598255cd523fc59df0}} 
+\index{tool\_image.h@{tool\_image.h}!wait\_for\_keypressed@{wait\_for\_keypressed}}
+\index{wait\_for\_keypressed@{wait\_for\_keypressed}!tool\_image.h@{tool\_image.h}}
+\doxysubsubsection{\texorpdfstring{wait\_for\_keypressed()}{wait\_for\_keypressed()}}
+{\footnotesize\ttfamily void wait\+\_\+for\+\_\+keypressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{60 \{}
+\DoxyCodeLine{61     SDL\_Event event;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     \textcolor{comment}{// Wait for a key to be down.}}
+\DoxyCodeLine{64     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{65     \{}
+\DoxyCodeLine{66         SDL\_PollEvent(\&event);}
+\DoxyCodeLine{67     \} \textcolor{keywordflow}{while}(event.type != SDL\_KEYDOWN);}
+\DoxyCodeLine{68     printf(\textcolor{stringliteral}{"{}\%i"{}},SDLK\_f);}
+\DoxyCodeLine{69     \textcolor{comment}{// Wait for a key to be up.}}
+\DoxyCodeLine{70     \textcolor{keywordflow}{do}}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72         SDL\_PollEvent(\&event);}
+\DoxyCodeLine{73     \} \textcolor{keywordflow}{while}(event.type != SDL\_KEYUP);}
+\DoxyCodeLine{74 \}}
+
+\end{DoxyCode}

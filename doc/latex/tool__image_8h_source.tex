@@ -1,0 +1,22 @@
+\hypertarget{tool__image_8h_source}{}\doxysection{tool\+\_\+image.\+h}
+\label{tool__image_8h_source}\index{interface/tool/tool\_image.h@{interface/tool/tool\_image.h}}
+\mbox{\hyperlink{tool__image_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef TOOL\_IMAGE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define TOOL\_IMAGE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <SDL.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}SDL/SDL\_image.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{pixel__operations_8h}{pixel\_operations.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}err.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keywordtype}{void} \mbox{\hyperlink{tool__image_8h_a02b747ee9a45485dd694783af494b4f9}{init\_sdl}}();}
+\DoxyCodeLine{11 SDL\_Surface* \mbox{\hyperlink{tool__image_8h_a4dd041463f513097e9448c3f0e58967c}{load\_image}}(\textcolor{keywordtype}{char} *path);}
+\DoxyCodeLine{12 SDL\_Surface* \mbox{\hyperlink{tool__image_8h_ac8aaa98a82a1d49e92bac17ab9d313dd}{create\_image}}(\textcolor{keywordtype}{size\_t} h,\textcolor{keywordtype}{size\_t} d);}
+\DoxyCodeLine{13 SDL\_Surface* \mbox{\hyperlink{tool__image_8h_a51b687a3dd0a35cd93372ca566b23d0b}{display\_image}}(SDL\_Surface *img);}
+\DoxyCodeLine{14 \textcolor{keywordtype}{void} \mbox{\hyperlink{tool__image_8h_aa9c30cc65a4f58598255cd523fc59df0}{wait\_for\_keypressed}}();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

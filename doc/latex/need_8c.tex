@@ -1,0 +1,163 @@
+\hypertarget{need_8c}{}\doxysection{banker/need.c File Reference}
+\label{need_8c}\index{banker/need.c@{banker/need.c}}
+{\ttfamily \#include \char`\"{}../loader/read.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../loader/write.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}need.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}building.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$err.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for need.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{need_8c__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{need_8c__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int $\ast$ \mbox{\hyperlink{need_8c_a909501c02dc126cdaeec895c653a964f}{init\+Town\+List3}} (unsigned int nb\+\_\+hab, double sec)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{need_8c_a3a8d0cb28516563cc48f191049334279}{NO}} = 0
+\item 
+int \mbox{\hyperlink{need_8c_a219bcb50999128dee521e0adfd769a99}{YES}} = 1
+\item 
+unsigned char \mbox{\hyperlink{need_8c_a7d576a2441117e0e11a96c8ab9f9dbf2}{NUMBER\+\_\+\+TYPE}} = 7
+\item 
+int \mbox{\hyperlink{need_8c_a2c2cd6a09042b0b1d03e5a353388ba97}{HALL}} \mbox{[}$\,$\mbox{]} = \{0, 10, 50, 0, 0, 10, 30\}
+\item 
+int \mbox{\hyperlink{need_8c_af62a2c0828947209ee1337ca4f7e7e1b}{PROPERTY}} \mbox{[}$\,$\mbox{]} = \{0, 40, -\/60, 35, 20, 10, 15\}
+\item 
+int \mbox{\hyperlink{need_8c_af92b0701b8c7c9373a3f21bae4ab86cf}{OFFICE}} \mbox{[}$\,$\mbox{]} = \{0, -\/60, 50, 10, 0, 0, 10\}
+\item 
+int \mbox{\hyperlink{need_8c_a197270e86e9508cf3fba9891e8f1eed6}{COMISSARY}} \mbox{[}$\,$\mbox{]} = \{0, -\/20, 20, 0, 0, -\/70, 20\}
+\item 
+int \mbox{\hyperlink{need_8c_a2bfe2a8ccde6e5009a21e0823607cf8c}{SHOP}} \mbox{[}$\,$\mbox{]} = \{0, -\/10, 20, -\/60, 0, 10, 10\}
+\item 
+int \mbox{\hyperlink{need_8c_a6a64846a441ff7fdf699cd730284f0c3}{HOSPITAL}} \mbox{[}$\,$\mbox{]} = \{0, -\/20, 30, 0, -\/70, 0, 20\}
+\item 
+int \mbox{\hyperlink{need_8c_a1f4ab3202d70c0d9d92b338ac6dd824b}{SUBWAY}} \mbox{[}$\,$\mbox{]} = \{0, 10, 10, 10, 10, 10, 20\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{need_8c_a909501c02dc126cdaeec895c653a964f}\label{need_8c_a909501c02dc126cdaeec895c653a964f}} 
+\index{need.c@{need.c}!initTownList3@{initTownList3}}
+\index{initTownList3@{initTownList3}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{initTownList3()}{initTownList3()}}
+{\footnotesize\ttfamily int $\ast$ init\+Town\+List3 (\begin{DoxyParamCaption}\item[{unsigned int}]{nb\+\_\+hab,  }\item[{double}]{sec }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25   \textcolor{comment}{//int comi\_range = 60000;}}
+\DoxyCodeLine{26   \textcolor{comment}{//int hosp\_range = 20000;}}
+\DoxyCodeLine{27   sec +=0;}
+\DoxyCodeLine{28   \textcolor{keywordtype}{int} *bat = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int})* \mbox{\hyperlink{need_8c_a7d576a2441117e0e11a96c8ab9f9dbf2}{NUMBER\_TYPE}});}
+\DoxyCodeLine{29   \textcolor{keywordtype}{int} **building\_value = \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\_building\_value}}();}
+\DoxyCodeLine{30   \textcolor{keywordtype}{int} *bias = \mbox{\hyperlink{read_8c_a9a187d8a5ac223603383bf86803ff909}{load\_building\_bias}}();}
+\DoxyCodeLine{31   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < 7; x++)}
+\DoxyCodeLine{32   \{}
+\DoxyCodeLine{33       *(bat + x) = nb\_hab / *((*(building\_value + x)) + 7);}
+\DoxyCodeLine{34       \textcolor{keywordflow}{if} (x == 6 \&\& *(bat + x) == 1)}
+\DoxyCodeLine{35           *(bat + x) = 0;}
+\DoxyCodeLine{36       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (*(bat + x) == 0)}
+\DoxyCodeLine{37           *(bat + x) = 1;}
+\DoxyCodeLine{38   \}}
+\DoxyCodeLine{39   *(bat + 1) += *(bat + 1) * (*(bias + 2)) / 100;}
+\DoxyCodeLine{40   *(bat + 2) += *(bat + 2) * (*(bias + 1)) / 100;}
+\DoxyCodeLine{41   *(bat + 3) += *(bat + 3) * (*(bias + 5)) / 100;}
+\DoxyCodeLine{42   *(bat + 4) += *(bat + 4) * (*(bias + 3)) / 100;}
+\DoxyCodeLine{43   *(bat + 5) += *(bat + 5) * (*(bias + 4)) / 100;}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45   \textcolor{keywordflow}{return} bat;}
+\DoxyCodeLine{46 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{read_8c_a9a187d8a5ac223603383bf86803ff909}{load\+\_\+building\+\_\+bias()}}, \mbox{\hyperlink{read_8c_a0d5481adb9137a4e76b8b50bf0d626cf}{load\+\_\+building\+\_\+value()}}, and \mbox{\hyperlink{need_8c_a7d576a2441117e0e11a96c8ab9f9dbf2}{NUMBER\+\_\+\+TYPE}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{need_8c_a197270e86e9508cf3fba9891e8f1eed6}\label{need_8c_a197270e86e9508cf3fba9891e8f1eed6}} 
+\index{need.c@{need.c}!COMISSARY@{COMISSARY}}
+\index{COMISSARY@{COMISSARY}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{COMISSARY}{COMISSARY}}
+{\footnotesize\ttfamily int COMISSARY\mbox{[}$\,$\mbox{]} = \{0, -\/20, 20, 0, 0, -\/70, 20\}}
+
+\mbox{\Hypertarget{need_8c_a2c2cd6a09042b0b1d03e5a353388ba97}\label{need_8c_a2c2cd6a09042b0b1d03e5a353388ba97}} 
+\index{need.c@{need.c}!HALL@{HALL}}
+\index{HALL@{HALL}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{HALL}{HALL}}
+{\footnotesize\ttfamily int HALL\mbox{[}$\,$\mbox{]} = \{0, 10, 50, 0, 0, 10, 30\}}
+
+\mbox{\Hypertarget{need_8c_a6a64846a441ff7fdf699cd730284f0c3}\label{need_8c_a6a64846a441ff7fdf699cd730284f0c3}} 
+\index{need.c@{need.c}!HOSPITAL@{HOSPITAL}}
+\index{HOSPITAL@{HOSPITAL}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{HOSPITAL}{HOSPITAL}}
+{\footnotesize\ttfamily int HOSPITAL\mbox{[}$\,$\mbox{]} = \{0, -\/20, 30, 0, -\/70, 0, 20\}}
+
+\mbox{\Hypertarget{need_8c_a3a8d0cb28516563cc48f191049334279}\label{need_8c_a3a8d0cb28516563cc48f191049334279}} 
+\index{need.c@{need.c}!NO@{NO}}
+\index{NO@{NO}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{NO}{NO}}
+{\footnotesize\ttfamily int NO = 0}
+
+\mbox{\Hypertarget{need_8c_a7d576a2441117e0e11a96c8ab9f9dbf2}\label{need_8c_a7d576a2441117e0e11a96c8ab9f9dbf2}} 
+\index{need.c@{need.c}!NUMBER\_TYPE@{NUMBER\_TYPE}}
+\index{NUMBER\_TYPE@{NUMBER\_TYPE}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{NUMBER\_TYPE}{NUMBER\_TYPE}}
+{\footnotesize\ttfamily unsigned char NUMBER\+\_\+\+TYPE = 7}
+
+
+
+Referenced by \mbox{\hyperlink{need_8c_a909501c02dc126cdaeec895c653a964f}{init\+Town\+List3()}}.
+
+\mbox{\Hypertarget{need_8c_af92b0701b8c7c9373a3f21bae4ab86cf}\label{need_8c_af92b0701b8c7c9373a3f21bae4ab86cf}} 
+\index{need.c@{need.c}!OFFICE@{OFFICE}}
+\index{OFFICE@{OFFICE}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{OFFICE}{OFFICE}}
+{\footnotesize\ttfamily int OFFICE\mbox{[}$\,$\mbox{]} = \{0, -\/60, 50, 10, 0, 0, 10\}}
+
+\mbox{\Hypertarget{need_8c_af62a2c0828947209ee1337ca4f7e7e1b}\label{need_8c_af62a2c0828947209ee1337ca4f7e7e1b}} 
+\index{need.c@{need.c}!PROPERTY@{PROPERTY}}
+\index{PROPERTY@{PROPERTY}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{PROPERTY}{PROPERTY}}
+{\footnotesize\ttfamily int PROPERTY\mbox{[}$\,$\mbox{]} = \{0, 40, -\/60, 35, 20, 10, 15\}}
+
+\mbox{\Hypertarget{need_8c_a2bfe2a8ccde6e5009a21e0823607cf8c}\label{need_8c_a2bfe2a8ccde6e5009a21e0823607cf8c}} 
+\index{need.c@{need.c}!SHOP@{SHOP}}
+\index{SHOP@{SHOP}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{SHOP}{SHOP}}
+{\footnotesize\ttfamily int SHOP\mbox{[}$\,$\mbox{]} = \{0, -\/10, 20, -\/60, 0, 10, 10\}}
+
+\mbox{\Hypertarget{need_8c_a1f4ab3202d70c0d9d92b338ac6dd824b}\label{need_8c_a1f4ab3202d70c0d9d92b338ac6dd824b}} 
+\index{need.c@{need.c}!SUBWAY@{SUBWAY}}
+\index{SUBWAY@{SUBWAY}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{SUBWAY}{SUBWAY}}
+{\footnotesize\ttfamily int SUBWAY\mbox{[}$\,$\mbox{]} = \{0, 10, 10, 10, 10, 10, 20\}}
+
+\mbox{\Hypertarget{need_8c_a219bcb50999128dee521e0adfd769a99}\label{need_8c_a219bcb50999128dee521e0adfd769a99}} 
+\index{need.c@{need.c}!YES@{YES}}
+\index{YES@{YES}!need.c@{need.c}}
+\doxysubsubsection{\texorpdfstring{YES}{YES}}
+{\footnotesize\ttfamily int YES = 1}
+

@@ -1,0 +1,102 @@
+\hypertarget{write_8h}{}\doxysection{loader/write.h File Reference}
+\label{write_8h}\index{loader/write.h@{loader/write.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{write_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{write_8h_a40d0bbf5b92a0a99aabd83261d1a1f55}{write\+\_\+habitant\+\_\+number}} (int habitant\+\_\+number)
+\item 
+void \mbox{\hyperlink{write_8h_a525dbf0268c0802057e7f53de3580d3e}{write\+\_\+bias}} (int $\ast$building\+\_\+bias)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{write_8h_a525dbf0268c0802057e7f53de3580d3e}\label{write_8h_a525dbf0268c0802057e7f53de3580d3e}} 
+\index{write.h@{write.h}!write\_bias@{write\_bias}}
+\index{write\_bias@{write\_bias}!write.h@{write.h}}
+\doxysubsubsection{\texorpdfstring{write\_bias()}{write\_bias()}}
+{\footnotesize\ttfamily void write\+\_\+bias (\begin{DoxyParamCaption}\item[{int $\ast$}]{building\+\_\+bias }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31     FILE *file = \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\_open}}();}
+\DoxyCodeLine{32     \textcolor{keywordtype}{char} buffer[\mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{33     fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} ft = 0;}
+\DoxyCodeLine{36     \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} lineS = 0;}
+\DoxyCodeLine{37     \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} temp = 0;}
+\DoxyCodeLine{38     \textcolor{keywordflow}{while}(!\mbox{\hyperlink{loadtools_8c_a44aeec48aa5a8c7ef13701de582b99a6}{isBias}}(buffer))}
+\DoxyCodeLine{39     \{}
+\DoxyCodeLine{40         fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{41         temp = ftell(file);}
+\DoxyCodeLine{42         lineS = ft -\/ temp;}
+\DoxyCodeLine{43         ft = temp;}
+\DoxyCodeLine{44     \}}
+\DoxyCodeLine{45     fseek(file, lineS, SEEK\_CUR);}
+\DoxyCodeLine{46     \textcolor{keywordtype}{char} dst[\mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{47     \textcolor{keywordtype}{char} src[\mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{48     strcpy(dst, \textcolor{stringliteral}{"{}BIAS = ["{}});}
+\DoxyCodeLine{49     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{loadtools_8c_ad0e244432d4e11ad5234c8364e82a971}{BIAS\_NUMBER}}; ++i)}
+\DoxyCodeLine{50     \{}
+\DoxyCodeLine{51         \textcolor{keywordflow}{if} (i == \mbox{\hyperlink{loadtools_8c_ad0e244432d4e11ad5234c8364e82a971}{BIAS\_NUMBER}} -\/ 1)}
+\DoxyCodeLine{52             sprintf(src, \textcolor{stringliteral}{"{}\%i]                    "{}}, *(building\_bias + i));}
+\DoxyCodeLine{53         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{54             sprintf(src, \textcolor{stringliteral}{"{}\%i, "{}}, *(building\_bias + i));}
+\DoxyCodeLine{55         strcat(dst, src);}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{57     fprintf(file, \textcolor{stringliteral}{"{}\%s"{}}, dst);}
+\DoxyCodeLine{58     fclose(file);}
+\DoxyCodeLine{59 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{loadtools_8c_ad0e244432d4e11ad5234c8364e82a971}{BIAS\+\_\+\+NUMBER}}, \mbox{\hyperlink{loadtools_8c_a44aeec48aa5a8c7ef13701de582b99a6}{is\+Bias()}}, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\+\_\+\+BUFFER\+\_\+\+SIZE}}, and \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\+\_\+open()}}.
+
+
+
+Referenced by \mbox{\hyperlink{input__gtk_8c_aa119a021d6e9b4f19136302b391de6fc}{on\+\_\+click\+\_\+button()}}.
+
+\mbox{\Hypertarget{write_8h_a40d0bbf5b92a0a99aabd83261d1a1f55}\label{write_8h_a40d0bbf5b92a0a99aabd83261d1a1f55}} 
+\index{write.h@{write.h}!write\_habitant\_number@{write\_habitant\_number}}
+\index{write\_habitant\_number@{write\_habitant\_number}!write.h@{write.h}}
+\doxysubsubsection{\texorpdfstring{write\_habitant\_number()}{write\_habitant\_number()}}
+{\footnotesize\ttfamily void write\+\_\+habitant\+\_\+number (\begin{DoxyParamCaption}\item[{int}]{habitant\+\_\+number }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8     FILE *file = \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\_open}}();}
+\DoxyCodeLine{9     \textcolor{keywordtype}{char} buffer[\mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{10     fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} ft = 0;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} lineS = 0;}
+\DoxyCodeLine{14     \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} temp = 0;}
+\DoxyCodeLine{15     \textcolor{keywordflow}{while}(!\mbox{\hyperlink{loadtools_8c_aee5c88556c41d7cea6476c244221f2d4}{isHabitant}}(buffer))}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17         fgets(buffer, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}, file);}
+\DoxyCodeLine{18         temp = ftell(file);}
+\DoxyCodeLine{19         lineS = ft -\/ temp;}
+\DoxyCodeLine{20         ft = temp;}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22     fseek(file, lineS, SEEK\_CUR);}
+\DoxyCodeLine{23     \textcolor{keywordtype}{char} toPrint[\mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\_BUFFER\_SIZE}}];}
+\DoxyCodeLine{24     sprintf(toPrint, \textcolor{stringliteral}{"{}HABITANT\_NUMBER = [\%i]                   "{}}, habitant\_number);}
+\DoxyCodeLine{25     fprintf(file, \textcolor{stringliteral}{"{}\%s"{}}, toPrint);}
+\DoxyCodeLine{26     fclose(file);}
+\DoxyCodeLine{27 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{loadtools_8c_aee5c88556c41d7cea6476c244221f2d4}{is\+Habitant()}}, \mbox{\hyperlink{loadtools_8c_a603cab9e8409fdef1b9ca20fed660c00}{LINE\+\_\+\+BUFFER\+\_\+\+SIZE}}, and \mbox{\hyperlink{loadtools_8c_a69b941b6c082cb83b173eb55f8b12333}{settings\+\_\+open()}}.
+

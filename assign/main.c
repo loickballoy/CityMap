@@ -32,36 +32,34 @@ struct map *testAssign(int compt, int roof)
 	//init structs
 	int **building_value = load_building_value();
 	char **buildind_label = load_building_labels();
-	//struct building **buildingList2 = initTownList();
 	int *buildingList = initTownList3(compt, 1);
 	int *_buildingList = initTownList3(compt, 1);
 	int i = 0;
 	int nbbat = 0;
 	while(i < 6)
 	{
-		printf("%u \n", *(buildingList+i));
 		nbbat += *(buildingList+i);
 		i++;
 	}
 	int truc = 50 + compt/2000;
 	truc += truc%2;
 	struct map *newmap = initMap(truc, truc);
-	printf("%p\n",newmap->cells);
+	
 	struct map *testmap = initMap(truc, truc);
-	printf("nb_sub = %i; \n", buildingList[6]);
+	
 	int nb_sub = buildingList[6];
 	struct cell **Subways = generateRandomSubway(newmap, buildingList, building_value);
 	printMatrix(newmap);
 	generateRdmRoads(newmap, nb_sub, Subways);
 
 	//init first bat
-	printf("%p\n",newmap->cells);
+	
 	struct cell *center = newmap->cells + newmap->maxWidth/2 +newmap->maxWidth * newmap->maxHeight/2;
 	center->type = 0;
 	(center+1)->type = 6;
 	(center-1)->type = 6;
-	printf("centers, %i, %i \n",newmap->maxWidth/2,newmap->maxHeight/2);
-	printMatrix(newmap);
+	
+	
 	updateAround(newmap, newmap->maxWidth/2, newmap->maxHeight/2, building_value);
 
 	//start the filling
@@ -72,21 +70,21 @@ struct map *testAssign(int compt, int roof)
 	int numHos = 0;
 	int numCom = 0;
 	int ty = fillTown(newmap, buildingList, roof, building_value);
-	printf("first gen \n");
+	
 	printMatrix(newmap);
 	int _ty = ty;
 	*testmap = *newmap;
 	printMatrix(testmap);
-	printf("test first gen  \n");
+	
 	for(int n = 0; n < nbbat - 1 && ty != -10; n++)
 	{ 
 		ty = fillTown(newmap, buildingList, roof, building_value);
 		_ty = fillTown(testmap, _buildingList, roof, building_value);
-		//printMatrix(newmap);
+		
 
 		if (minMaxMap(newmap, testmap) == testmap)
 		{
-			printf("a new map has been chosen\n");
+			
 			*newmap = *testmap;
 			*buildingList = *_buildingList;
 			ty = _ty;
@@ -129,14 +127,14 @@ struct map *testAssign(int compt, int roof)
 	{
 		replaceTown(newmap, buildingList, roof, building_value, nbreplacement);
 	}
-	printf("nbreplacement : %i\n", *nbreplacement);
+	
 	printMatrix(newmap);
 	analyseMatrix(newmap);
 
 	//free
 	free(nbreplacement);
-	//free(newmap->cells);       axel
-	//free(newmap);              axel
+	//free(newmap->cells);      // axel
+	//free(newmap);             // axel
 	//freeList(buildingList2);
 	free_building_list((void **)building_value);
 	free_building_list((void **)buildind_label);
@@ -145,15 +143,15 @@ struct map *testAssign(int compt, int roof)
 }
 
 
-/*
+
 int main(int argc, char **argv)
 {
 	//init time
 	float temps;
-  clock_t t1, t2;
-  t1 = clock();
-
-  // Ton programme
+	clock_t t1, t2;
+	t1 = clock();
+	
+	// Ton programme
 	if(argc != 3)
 	{
 		printf("You have to pass two arguments: ./main [nbbat] [roof] \n");
@@ -169,8 +167,8 @@ int main(int argc, char **argv)
 
 	//calcule de temps
 	t2 = clock();
-  temps = (float)(t2-t1)/CLOCKS_PER_SEC;
-  printf("temps = %f\n", temps);
+	temps = (float)(t2-t1)/CLOCKS_PER_SEC;
+  	printf("temps = %f\n", temps);
 	return 0;
 }
-*/
+

@@ -12,12 +12,6 @@ struct cell
 	struct building *building;
 
 	int stats[NBSTATS];
-	/*int security;
-	int job;
-	int habitation;
-	int economy;
-	int health;*/
-
 	int isRoadConnected;
 };
 

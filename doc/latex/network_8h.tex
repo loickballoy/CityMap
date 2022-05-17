@@ -1,0 +1,68 @@
+\hypertarget{network_8h}{}\doxysection{metro/network.h File Reference}
+\label{network_8h}\index{metro/network.h@{metro/network.h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for network.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{network_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{network_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_e_d_g_e}{EDGE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_e_d_g_e}{EDGE}} $\ast$ \mbox{\hyperlink{network_8h_aa6c55b5bb8775049f3f8f802acb4f127}{Make\+Metro}} (char $\ast$$\ast$matrice, int DIM)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{network_8h_aa6c55b5bb8775049f3f8f802acb4f127}\label{network_8h_aa6c55b5bb8775049f3f8f802acb4f127}} 
+\index{network.h@{network.h}!MakeMetro@{MakeMetro}}
+\index{MakeMetro@{MakeMetro}!network.h@{network.h}}
+\doxysubsubsection{\texorpdfstring{MakeMetro()}{MakeMetro()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_e_d_g_e}{EDGE}} $\ast$ Make\+Metro (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{matrice,  }\item[{int}]{DIM }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{230 \{}
+\DoxyCodeLine{231   \textcolor{keywordtype}{int} NUMBER\_STATIONS; }
+\DoxyCodeLine{232   \textcolor{keywordtype}{double} MAX = 4.2;}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234   NUMBER\_STATIONS = \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\_stations}}(matrice, DIM);}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236   \mbox{\hyperlink{struct_graph_element}{Graph}} g1 = \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\_graph}}(NUMBER\_STATIONS, \textcolor{keyword}{false});}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tedge [color=black];\(\backslash\)n"{}});}
+\DoxyCodeLine{239   fprintf(g1-\/>\mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{graph\_file}}, \textcolor{stringliteral}{"{}\(\backslash\)tnode [color=turquoise, style=filled];\(\backslash\)n"{}});}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_metro}{Metro}} *STATIONS = \mbox{\hyperlink{network_8c_a230c3a893afff0180d28f964d5872681}{BuildStations}}(matrice, DIM, g1);}
+\DoxyCodeLine{242   }
+\DoxyCodeLine{243   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_e_d_g_e}{EDGE}} *edges = \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{buildAdjlists2}}(STATIONS, NUMBER\_STATIONS, MAX, g1);}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{245   \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\_graph}}(g1);}
+\DoxyCodeLine{246   \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\_graph}}(g1);}
+\DoxyCodeLine{247   \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\_graph}}(g1);}
+\DoxyCodeLine{248   system(\textcolor{stringliteral}{"{}dot -\/Tpng graph.out -\/o graph.png"{}});}
+\DoxyCodeLine{249   }
+\DoxyCodeLine{250   free(STATIONS);}
+\DoxyCodeLine{251   \textcolor{keywordflow}{return} edges;}
+\DoxyCodeLine{252 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{network_8c_a58fead597937c833680e3e1a695a0546}{build\+Adjlists2()}}, \mbox{\hyperlink{network_8c_a230c3a893afff0180d28f964d5872681}{Build\+Stations()}}, \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\+\_\+graph()}}, \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\+\_\+graph()}}, \mbox{\hyperlink{struct_graph_element_a5fa9c7b1ddd00826284f516155de7831}{Graph\+Element\+::graph\+\_\+file}}, \mbox{\hyperlink{network_8c_aeae3a88ae22ca1470c648cfaa0d10b1a}{nb\+\_\+stations()}}, \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\+\_\+graph()}}, and \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\+\_\+graph()}}.
+

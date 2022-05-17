@@ -1,0 +1,539 @@
+\hypertarget{assign__tools_8c}{}\doxysection{assign/assign\+\_\+tools.c File Reference}
+\label{assign__tools_8c}\index{assign/assign\_tools.c@{assign/assign\_tools.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$err.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}assign\+\_\+tools.\+h\char`\"{}}\newline
+Include dependency graph for assign\+\_\+tools.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{assign__tools_8c__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{assign__tools_8c__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\+\_\+\+RED}}~\char`\"{}\textbackslash{}x1b\mbox{[}31m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\+\_\+\+BLEU}}~\char`\"{}\textbackslash{}x1b\mbox{[}34m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\+\_\+\+GREEN}}~\char`\"{}\textbackslash{}x1b\mbox{[}32m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\+\_\+\+YELLOW}}~\char`\"{}\textbackslash{}x1b\mbox{[}33m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\+\_\+\+PURPLE}}~\char`\"{}\textbackslash{}x1b\mbox{[}35m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\+\_\+\+CYAN}}~\char`\"{}\textbackslash{}x1b\mbox{[}36m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{assign__tools_8c_a657925ace96d1a0f47b5dc659ca73197}{COLOR\+\_\+\+ROAD}}~\char`\"{}\textbackslash{}x1b\mbox{[}30m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\+\_\+\+RESET}}~\char`\"{}\textbackslash{}x1b\mbox{[}0m\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{assign__tools_8c_a9f3af2ddae6cdac6f969647b40cd3681}{analyse\+Matrix}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$newmap)
+\begin{DoxyCompactList}\small\item\em Analyses the matrix to make an average of all cells. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{assign__tools_8c_a2e64253e753799f3eb76485eb7584168}{analyse\+Matrix\+\_\+print}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$newmap)
+\begin{DoxyCompactList}\small\item\em Analyses the matrix and prints the need of each cells in the matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{assign__tools_8c_a1e41e73b11347e5f1032b3036f1d1aaf}{print\+Matrix\+Time}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$newmap)
+\begin{DoxyCompactList}\small\item\em Prints the colored building matrix with a sleep second. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{char\+Type}} (int type)
+\begin{DoxyCompactList}\small\item\em Returns a symbol from the given type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{assign__tools_8c_a55186af83b1331c4f6769a59cee1211e}{print\+Matrix}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$newmap)
+\begin{DoxyCompactList}\small\item\em Simple print of the colored building matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{assign__tools_8c_a00e28cbd67a94ac8ec8d7c578e669425}{print\+Matrix\+Stat}} (struct \mbox{\hyperlink{structmap}{map}} $\ast$newmap, int stat)
+\begin{DoxyCompactList}\small\item\em Print the stats of a given matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{assign__tools_8c_afb874241bed5cd492f5a109ab072c9f9}{string\+Type}} (int stat)
+\begin{DoxyCompactList}\small\item\em Prints the String variable associated with the type. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{assign__tools_8c_ae3a3ebd33af3ef2d658519c9c18fc428}{get\+Type}} (int type)
+\begin{DoxyCompactList}\small\item\em Simple getter\+: building\+Type -\/\texorpdfstring{$>$}{>} the according stat (could have been named better) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{assign__tools_8c_a492dde50ddea1b36860c4ea3b1d32470}{get\+Value}} (int i)
+\begin{DoxyCompactList}\small\item\em Simple getter\+: the stat -\/\texorpdfstring{$>$}{>} the building type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}\label{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}} 
+\index{assign\_tools.c@{assign\_tools.c}!COLOR\_BLEU@{COLOR\_BLEU}}
+\index{COLOR\_BLEU@{COLOR\_BLEU}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{COLOR\_BLEU}{COLOR\_BLEU}}
+{\footnotesize\ttfamily \#define COLOR\+\_\+\+BLEU~\char`\"{}\textbackslash{}x1b\mbox{[}34m\char`\"{}}
+
+\mbox{\Hypertarget{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}\label{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}} 
+\index{assign\_tools.c@{assign\_tools.c}!COLOR\_CYAN@{COLOR\_CYAN}}
+\index{COLOR\_CYAN@{COLOR\_CYAN}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{COLOR\_CYAN}{COLOR\_CYAN}}
+{\footnotesize\ttfamily \#define COLOR\+\_\+\+CYAN~\char`\"{}\textbackslash{}x1b\mbox{[}36m\char`\"{}}
+
+\mbox{\Hypertarget{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}\label{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}} 
+\index{assign\_tools.c@{assign\_tools.c}!COLOR\_GREEN@{COLOR\_GREEN}}
+\index{COLOR\_GREEN@{COLOR\_GREEN}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{COLOR\_GREEN}{COLOR\_GREEN}}
+{\footnotesize\ttfamily \#define COLOR\+\_\+\+GREEN~\char`\"{}\textbackslash{}x1b\mbox{[}32m\char`\"{}}
+
+\mbox{\Hypertarget{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}\label{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}} 
+\index{assign\_tools.c@{assign\_tools.c}!COLOR\_PURPLE@{COLOR\_PURPLE}}
+\index{COLOR\_PURPLE@{COLOR\_PURPLE}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{COLOR\_PURPLE}{COLOR\_PURPLE}}
+{\footnotesize\ttfamily \#define COLOR\+\_\+\+PURPLE~\char`\"{}\textbackslash{}x1b\mbox{[}35m\char`\"{}}
+
+\mbox{\Hypertarget{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}\label{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}} 
+\index{assign\_tools.c@{assign\_tools.c}!COLOR\_RED@{COLOR\_RED}}
+\index{COLOR\_RED@{COLOR\_RED}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{COLOR\_RED}{COLOR\_RED}}
+{\footnotesize\ttfamily \#define COLOR\+\_\+\+RED~\char`\"{}\textbackslash{}x1b\mbox{[}31m\char`\"{}}
+
+\mbox{\Hypertarget{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}\label{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}} 
+\index{assign\_tools.c@{assign\_tools.c}!COLOR\_RESET@{COLOR\_RESET}}
+\index{COLOR\_RESET@{COLOR\_RESET}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{COLOR\_RESET}{COLOR\_RESET}}
+{\footnotesize\ttfamily \#define COLOR\+\_\+\+RESET~\char`\"{}\textbackslash{}x1b\mbox{[}0m\char`\"{}}
+
+\mbox{\Hypertarget{assign__tools_8c_a657925ace96d1a0f47b5dc659ca73197}\label{assign__tools_8c_a657925ace96d1a0f47b5dc659ca73197}} 
+\index{assign\_tools.c@{assign\_tools.c}!COLOR\_ROAD@{COLOR\_ROAD}}
+\index{COLOR\_ROAD@{COLOR\_ROAD}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{COLOR\_ROAD}{COLOR\_ROAD}}
+{\footnotesize\ttfamily \#define COLOR\+\_\+\+ROAD~\char`\"{}\textbackslash{}x1b\mbox{[}30m\char`\"{}}
+
+\mbox{\Hypertarget{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}\label{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}} 
+\index{assign\_tools.c@{assign\_tools.c}!COLOR\_YELLOW@{COLOR\_YELLOW}}
+\index{COLOR\_YELLOW@{COLOR\_YELLOW}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{COLOR\_YELLOW}{COLOR\_YELLOW}}
+{\footnotesize\ttfamily \#define COLOR\+\_\+\+YELLOW~\char`\"{}\textbackslash{}x1b\mbox{[}33m\char`\"{}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{assign__tools_8c_a9f3af2ddae6cdac6f969647b40cd3681}\label{assign__tools_8c_a9f3af2ddae6cdac6f969647b40cd3681}} 
+\index{assign\_tools.c@{assign\_tools.c}!analyseMatrix@{analyseMatrix}}
+\index{analyseMatrix@{analyseMatrix}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{analyseMatrix()}{analyseMatrix()}}
+{\footnotesize\ttfamily void analyse\+Matrix (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{newmap }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{comment}{//make an average of all the needs}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} nbbat = 0;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{int} stat[NBSTATS] = \{0\};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}} * newmap-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}; j++)}
+\DoxyCodeLine{27     \{}
+\DoxyCodeLine{28         \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *upTest = newmap-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + j;}
+\DoxyCodeLine{29         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < NBSTATS; i++)}
+\DoxyCodeLine{30             stat[i] += upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[i];}
+\DoxyCodeLine{31         nbbat++;}
+\DoxyCodeLine{32     \}}
+\DoxyCodeLine{33     printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{34     printf(\mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\_BLEU}} \textcolor{stringliteral}{"{}MOY SECU = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, stat[0]/nbbat);}
+\DoxyCodeLine{35     printf(\mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\_GREEN}} \textcolor{stringliteral}{"{}MOY JOB = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, stat[1]/nbbat);}
+\DoxyCodeLine{36     printf(\mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}} \textcolor{stringliteral}{"{}MOY HAB = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, stat[2]/nbbat);}
+\DoxyCodeLine{37     printf(\mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\_PURPLE}} \textcolor{stringliteral}{"{}MOY ECO = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, stat[3]/nbbat);}
+\DoxyCodeLine{38     printf(\mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\_CYAN}} \textcolor{stringliteral}{"{}MOY HEAL = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, stat[4]/nbbat);}
+\DoxyCodeLine{39 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\+\_\+\+BLEU}}, \mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\+\_\+\+CYAN}}, \mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\+\_\+\+GREEN}}, \mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\+\_\+\+PURPLE}}, \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\+\_\+\+RESET}}, \mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\+\_\+\+YELLOW}}, \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{map\+::max\+Height}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, and \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{cell\+::stats}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}.
+
+\mbox{\Hypertarget{assign__tools_8c_a2e64253e753799f3eb76485eb7584168}\label{assign__tools_8c_a2e64253e753799f3eb76485eb7584168}} 
+\index{assign\_tools.c@{assign\_tools.c}!analyseMatrix\_print@{analyseMatrix\_print}}
+\index{analyseMatrix\_print@{analyseMatrix\_print}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{analyseMatrix\_print()}{analyseMatrix\_print()}}
+{\footnotesize\ttfamily void analyse\+Matrix\+\_\+print (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{newmap }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{comment}{//print the strongest need of each cells of the matrix}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}} * newmap-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}; j++)}
+\DoxyCodeLine{47     \{}
+\DoxyCodeLine{48         \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *upTest = newmap-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + j;}
+\DoxyCodeLine{49         \textcolor{keywordtype}{int} max = upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[0];}
+\DoxyCodeLine{50         \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = 0;}
+\DoxyCodeLine{51         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i < NBSTATS; i++)}
+\DoxyCodeLine{52         \{}
+\DoxyCodeLine{53             \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[i] > max)}
+\DoxyCodeLine{54             \{}
+\DoxyCodeLine{55                 max = upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[i];}
+\DoxyCodeLine{56                 \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} = i;}
+\DoxyCodeLine{57             \}}
+\DoxyCodeLine{58         \}}
+\DoxyCodeLine{59         \textcolor{keywordflow}{if}(max == 0)}
+\DoxyCodeLine{60             printf(\textcolor{stringliteral}{"{}   ;"{}});}
+\DoxyCodeLine{61         \textcolor{keywordflow}{if}(max != 0)}
+\DoxyCodeLine{62         \{}
+\DoxyCodeLine{63             }
+\DoxyCodeLine{64             \textcolor{keywordflow}{if}(max / 10 < 10)}
+\DoxyCodeLine{65             \{}
+\DoxyCodeLine{66                 \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 0)}
+\DoxyCodeLine{67                     printf(\mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\_BLEU}} \textcolor{stringliteral}{"{}\%i ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{68                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 1)}
+\DoxyCodeLine{69                     printf(\mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\_GREEN}} \textcolor{stringliteral}{"{}\%i ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{70                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 2)}
+\DoxyCodeLine{71                     printf(\mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}} \textcolor{stringliteral}{"{}\%i ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{72                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 3)}
+\DoxyCodeLine{73                     printf(\mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\_PURPLE}} \textcolor{stringliteral}{"{}\%i ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{74                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 4)}
+\DoxyCodeLine{75                     printf(\mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\_CYAN}} \textcolor{stringliteral}{"{}\%i ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{76                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 5)}
+\DoxyCodeLine{77                     printf(\mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}} \textcolor{stringliteral}{"{}\%i ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{78             \}}
+\DoxyCodeLine{79             \textcolor{keywordflow}{if}(max / 10 >= 10)}
+\DoxyCodeLine{80             \{}
+\DoxyCodeLine{81                 \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 0)}
+\DoxyCodeLine{82                     printf(\mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\_BLEU}} \textcolor{stringliteral}{"{}\%i;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{83                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 1)}
+\DoxyCodeLine{84                     printf(\mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\_GREEN}} \textcolor{stringliteral}{"{}\%i;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{85                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 2)}
+\DoxyCodeLine{86                     printf(\mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}} \textcolor{stringliteral}{"{}\%i;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{87                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 3)}
+\DoxyCodeLine{88                     printf(\mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\_PURPLE}} \textcolor{stringliteral}{"{}\%i;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{89                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 4)}
+\DoxyCodeLine{90                     printf(\mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\_CYAN}} \textcolor{stringliteral}{"{}\%i;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{91                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 5)}
+\DoxyCodeLine{92                     printf(\mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}} \textcolor{stringliteral}{"{}\%i;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}]);}
+\DoxyCodeLine{93             \}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95         \}}
+\DoxyCodeLine{96         \textcolor{keywordflow}{if}(j\%(newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}) == 0)}
+\DoxyCodeLine{97             printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{98     \}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{101     printf(\mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\_BLEU}} \textcolor{stringliteral}{"{}MOY SECU = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, 0 );}
+\DoxyCodeLine{102     printf(\mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\_GREEN}} \textcolor{stringliteral}{"{}MOY JOB = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, 0);}
+\DoxyCodeLine{103     printf(\mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}} \textcolor{stringliteral}{"{}MOY HAB = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, 0);}
+\DoxyCodeLine{104     printf(\mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\_PURPLE}} \textcolor{stringliteral}{"{}MOY ECO = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, 0);}
+\DoxyCodeLine{105     printf(\mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\_CYAN}} \textcolor{stringliteral}{"{}MOY HEAL = \%i\(\backslash\)n"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, 0);}
+\DoxyCodeLine{106 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\+\_\+\+BLEU}}, \mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\+\_\+\+CYAN}}, \mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\+\_\+\+GREEN}}, \mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\+\_\+\+PURPLE}}, \mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\+\_\+\+RED}}, \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\+\_\+\+RESET}}, \mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\+\_\+\+YELLOW}}, \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{map\+::max\+Height}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{cell\+::stats}}, and \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+\mbox{\Hypertarget{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}\label{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}} 
+\index{assign\_tools.c@{assign\_tools.c}!charType@{charType}}
+\index{charType@{charType}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{charType()}{charType()}}
+{\footnotesize\ttfamily char char\+Type (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{149 \{}
+\DoxyCodeLine{150     \textcolor{keywordflow}{if}(type == 0)}
+\DoxyCodeLine{151         \textcolor{keywordflow}{return} \textcolor{charliteral}{'M'};}
+\DoxyCodeLine{152     \textcolor{keywordflow}{if}(type == 1)}
+\DoxyCodeLine{153         \textcolor{keywordflow}{return} \textcolor{charliteral}{'P'};}
+\DoxyCodeLine{154     \textcolor{keywordflow}{if}(type == 2)}
+\DoxyCodeLine{155         \textcolor{keywordflow}{return} \textcolor{charliteral}{'O'};}
+\DoxyCodeLine{156     \textcolor{keywordflow}{if}(type == 3)}
+\DoxyCodeLine{157         \textcolor{keywordflow}{return} \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{158     \textcolor{keywordflow}{if}(type == 4)}
+\DoxyCodeLine{159         \textcolor{keywordflow}{return} \textcolor{charliteral}{'S'};}
+\DoxyCodeLine{160     \textcolor{keywordflow}{if}(type == 5)}
+\DoxyCodeLine{161         \textcolor{keywordflow}{return} \textcolor{charliteral}{'H'};}
+\DoxyCodeLine{162     \textcolor{keywordflow}{if}(type == 6)}
+\DoxyCodeLine{163         \textcolor{keywordflow}{return} \textcolor{charliteral}{'R'};}
+\DoxyCodeLine{164     \textcolor{keywordflow}{if}(type == 7)}
+\DoxyCodeLine{165         \textcolor{keywordflow}{return} \textcolor{charliteral}{'T'};}
+\DoxyCodeLine{166     errx(EXIT\_FAILURE, \textcolor{stringliteral}{"{}charType(): Type undifined"{}});}
+\DoxyCodeLine{167 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign__tools_8c_a55186af83b1331c4f6769a59cee1211e}{print\+Matrix()}}, and \mbox{\hyperlink{assign__tools_8c_a1e41e73b11347e5f1032b3036f1d1aaf}{print\+Matrix\+Time()}}.
+
+\mbox{\Hypertarget{assign__tools_8c_ae3a3ebd33af3ef2d658519c9c18fc428}\label{assign__tools_8c_ae3a3ebd33af3ef2d658519c9c18fc428}} 
+\index{assign\_tools.c@{assign\_tools.c}!getType@{getType}}
+\index{getType@{getType}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily int get\+Type (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{291 \{}
+\DoxyCodeLine{292     \textcolor{keywordflow}{if} (type == 1)}
+\DoxyCodeLine{293         \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{294     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (type == 2)}
+\DoxyCodeLine{295         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{296     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (type == 3)}
+\DoxyCodeLine{297         \textcolor{keywordflow}{return} 5;}
+\DoxyCodeLine{298     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (type == 4)}
+\DoxyCodeLine{299         \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{300     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{301         \textcolor{keywordflow}{return} 4;}
+\DoxyCodeLine{302 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_8c_ae8edf5c268e483bf6616420db4061584}{replace\+Global\+Need()}}.
+
+\mbox{\Hypertarget{assign__tools_8c_a492dde50ddea1b36860c4ea3b1d32470}\label{assign__tools_8c_a492dde50ddea1b36860c4ea3b1d32470}} 
+\index{assign\_tools.c@{assign\_tools.c}!getValue@{getValue}}
+\index{getValue@{getValue}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily int get\+Value (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{305 \{}
+\DoxyCodeLine{306     \textcolor{keywordflow}{if}(i == 0)}
+\DoxyCodeLine{307         \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{308     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 1)}
+\DoxyCodeLine{309         \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{310     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 2)}
+\DoxyCodeLine{311         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{312     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 3)}
+\DoxyCodeLine{313         \textcolor{keywordflow}{return} 4;}
+\DoxyCodeLine{314     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{315         \textcolor{keywordflow}{return} 5;}
+\DoxyCodeLine{316 \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{assign_8c_a527224c39f56ef6cd7c884f61308ad64}{fill\+Town()}}, \mbox{\hyperlink{assign_8c_a00adeb551e9df729140fb6e8d143af48}{generate\+Random\+Building()}}, \mbox{\hyperlink{assign_8c_ae8edf5c268e483bf6616420db4061584}{replace\+Global\+Need()}}, \mbox{\hyperlink{assign_8c_a4be01986344e82266a0691d32072733f}{replace\+Town()}}, and \mbox{\hyperlink{assign_8c_a3deb1131b3df3c9545342a9d4954625e}{search\+Global\+Need()}}.
+
+\mbox{\Hypertarget{assign__tools_8c_a55186af83b1331c4f6769a59cee1211e}\label{assign__tools_8c_a55186af83b1331c4f6769a59cee1211e}} 
+\index{assign\_tools.c@{assign\_tools.c}!printMatrix@{printMatrix}}
+\index{printMatrix@{printMatrix}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{printMatrix()}{printMatrix()}}
+{\footnotesize\ttfamily void print\+Matrix (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{newmap }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{171 \{}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173     \textcolor{comment}{//print colored building matrix}}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175     \textcolor{keywordtype}{int} nbbat = 0;}
+\DoxyCodeLine{176     \textcolor{keywordtype}{int} nbroad = 0;}
+\DoxyCodeLine{177     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}} * newmap-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}; j++)}
+\DoxyCodeLine{178     \{}
+\DoxyCodeLine{179             \textcolor{keywordflow}{if}(j\%(newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}) == 0)}
+\DoxyCodeLine{180                 printf(\textcolor{stringliteral}{"{}\(\backslash\)n \%i "{}}, j/newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}});}
+\DoxyCodeLine{181             \textcolor{keywordflow}{if}(j < 10)}
+\DoxyCodeLine{182             \{}
+\DoxyCodeLine{183                 printf(\textcolor{stringliteral}{"{}\%i ;"{}},j);}
+\DoxyCodeLine{184                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{185             \}}
+\DoxyCodeLine{186             \textcolor{keywordflow}{if}(j < newmap-\/>maxWidth)}
+\DoxyCodeLine{187             \{}
+\DoxyCodeLine{188                 printf(\textcolor{stringliteral}{"{}\%i;"{}},j);}
+\DoxyCodeLine{189                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{190             \}}
+\DoxyCodeLine{191             \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *upTest = newmap-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + j;}
+\DoxyCodeLine{192             \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == -\/1)}
+\DoxyCodeLine{193                 printf(\textcolor{stringliteral}{"{}  ;"{}});}
+\DoxyCodeLine{194             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{195             \{}
+\DoxyCodeLine{196                 \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} != 6)}
+\DoxyCodeLine{197                     nbbat++;}
+\DoxyCodeLine{198                 \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 6)}
+\DoxyCodeLine{199                     nbroad++;}
+\DoxyCodeLine{200                 \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 0)}
+\DoxyCodeLine{201                     printf(\mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\_BLEU}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{202                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 1)}
+\DoxyCodeLine{203                     printf(\mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\_GREEN}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{204                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 2)}
+\DoxyCodeLine{205                     printf(\mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{206                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 3)}
+\DoxyCodeLine{207                     printf(\mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\_PURPLE}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{208                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 4)}
+\DoxyCodeLine{209                     printf(\mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\_CYAN}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{210                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 5)}
+\DoxyCodeLine{211                     printf(\mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},\mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{212                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 7)}
+\DoxyCodeLine{213                     printf(\mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\_BLEU}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{214                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{215                     printf(\mbox{\hyperlink{assign__tools_8c_a657925ace96d1a0f47b5dc659ca73197}{COLOR\_ROAD}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},\mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{216             \}}
+\DoxyCodeLine{217     \}}
+\DoxyCodeLine{218     printf(\textcolor{stringliteral}{"{}\(\backslash\)nNBBAT = \%i\(\backslash\)n"{}}, nbbat);}
+\DoxyCodeLine{219     printf(\textcolor{stringliteral}{"{}NBROAD = \%i\(\backslash\)n"{}}, nbroad);}
+\DoxyCodeLine{220     printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{221 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{char\+Type()}}, \mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\+\_\+\+BLEU}}, \mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\+\_\+\+CYAN}}, \mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\+\_\+\+GREEN}}, \mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\+\_\+\+PURPLE}}, \mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\+\_\+\+RED}}, \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\+\_\+\+RESET}}, \mbox{\hyperlink{assign__tools_8c_a657925ace96d1a0f47b5dc659ca73197}{COLOR\+\_\+\+ROAD}}, \mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\+\_\+\+YELLOW}}, \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{map\+::max\+Height}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, and \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+
+
+Referenced by \mbox{\hyperlink{assign_2main_8c_a3d4cdb81f3bfaf77001e4b79839dfd75}{test\+Assign()}}.
+
+\mbox{\Hypertarget{assign__tools_8c_a00e28cbd67a94ac8ec8d7c578e669425}\label{assign__tools_8c_a00e28cbd67a94ac8ec8d7c578e669425}} 
+\index{assign\_tools.c@{assign\_tools.c}!printMatrixStat@{printMatrixStat}}
+\index{printMatrixStat@{printMatrixStat}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{printMatrixStat()}{printMatrixStat()}}
+{\footnotesize\ttfamily void print\+Matrix\+Stat (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{newmap,  }\item[{int}]{stat }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{225 \{}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227     \textcolor{comment}{//print the stat's natrix}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229     \mbox{\hyperlink{assign__tools_8c_afb874241bed5cd492f5a109ab072c9f9}{stringType}}(stat);}
+\DoxyCodeLine{230     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}} * newmap-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}; j++)}
+\DoxyCodeLine{231     \{}
+\DoxyCodeLine{232         \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *upTest = newmap-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + j;}
+\DoxyCodeLine{233         \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat] == 0)}
+\DoxyCodeLine{234             printf(\textcolor{stringliteral}{"{}\%i ;"{}}, (upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat]));}
+\DoxyCodeLine{235         \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat] != 0)}
+\DoxyCodeLine{236         \{}
+\DoxyCodeLine{237             \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat] < 0)}
+\DoxyCodeLine{238                 printf(\mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}} \textcolor{stringliteral}{"{}\%i;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat]));}
+\DoxyCodeLine{239             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat] < 10)}
+\DoxyCodeLine{240                 printf(\mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}} \textcolor{stringliteral}{"{}\%i ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat]));}
+\DoxyCodeLine{241             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat] < 100)}
+\DoxyCodeLine{242                 printf(\mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}} \textcolor{stringliteral}{"{}\%i;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat]));}
+\DoxyCodeLine{243             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{244                 printf(\mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}} \textcolor{stringliteral}{"{}\%i;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},(upTest-\/>\mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[stat]));}
+\DoxyCodeLine{245         \}}
+\DoxyCodeLine{246         \textcolor{keywordflow}{if}(j\%(newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}) == 0)}
+\DoxyCodeLine{247             printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{248     \}}
+\DoxyCodeLine{249     printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{250 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\+\_\+\+RED}}, \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\+\_\+\+RESET}}, \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{map\+::max\+Height}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{cell\+::stats}}, and \mbox{\hyperlink{assign__tools_8c_afb874241bed5cd492f5a109ab072c9f9}{string\+Type()}}.
+
+\mbox{\Hypertarget{assign__tools_8c_a1e41e73b11347e5f1032b3036f1d1aaf}\label{assign__tools_8c_a1e41e73b11347e5f1032b3036f1d1aaf}} 
+\index{assign\_tools.c@{assign\_tools.c}!printMatrixTime@{printMatrixTime}}
+\index{printMatrixTime@{printMatrixTime}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{printMatrixTime()}{printMatrixTime()}}
+{\footnotesize\ttfamily void print\+Matrix\+Time (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structmap}{map}} $\ast$}]{newmap }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{110 \{}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     \textcolor{comment}{//print the colored building matrix with a second of stop}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     \textcolor{keywordtype}{int} nbbat = 0;}
+\DoxyCodeLine{115     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}} * newmap-\/>\mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}}; j++)}
+\DoxyCodeLine{116     \{}
+\DoxyCodeLine{117         \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *upTest = newmap-\/>\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}} + j;}
+\DoxyCodeLine{118         \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == -\/1)}
+\DoxyCodeLine{119             printf(\textcolor{stringliteral}{"{}  ;"{}});}
+\DoxyCodeLine{120         \textcolor{keywordflow}{if}(upTest != NULL)}
+\DoxyCodeLine{121         \{}
+\DoxyCodeLine{122             nbbat++;}
+\DoxyCodeLine{123             }
+\DoxyCodeLine{124             \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 0)}
+\DoxyCodeLine{125                 printf(\mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\_BLEU}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{126             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 1)}
+\DoxyCodeLine{127                 printf(\mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\_GREEN}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{128             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 2)}
+\DoxyCodeLine{129                 printf(\mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\_YELLOW}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{130             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 3)}
+\DoxyCodeLine{131                 printf(\mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\_PURPLE}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{132             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}} == 4)}
+\DoxyCodeLine{133                 printf(\mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\_CYAN}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{134             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{135                 printf(\mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\_RED}} \textcolor{stringliteral}{"{}\%c ;"{}} \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\_RESET}},\mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{charType}}(upTest-\/>\mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}}));}
+\DoxyCodeLine{136         \}}
+\DoxyCodeLine{137         \textcolor{keywordflow}{if}(j\%(newmap-\/>\mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}}) == 0)}
+\DoxyCodeLine{138         \{}
+\DoxyCodeLine{139             printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141     \}}
+\DoxyCodeLine{142     printf(\textcolor{stringliteral}{"{}NBBAT = \%i\(\backslash\)n"{}}, nbbat);}
+\DoxyCodeLine{143     printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{144     sleep(1);}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{map\+::cells}}, \mbox{\hyperlink{assign__tools_8c_a47156102fd358fea50c7a88aa256080e}{char\+Type()}}, \mbox{\hyperlink{assign__tools_8c_aff5a11a5cf79b672990582764bc7faac}{COLOR\+\_\+\+BLEU}}, \mbox{\hyperlink{assign__tools_8c_a82573859711fce56f1aa0a76b18a9b18}{COLOR\+\_\+\+CYAN}}, \mbox{\hyperlink{assign__tools_8c_afc9149f5de51bd9ac4f5ebbfa153f018}{COLOR\+\_\+\+GREEN}}, \mbox{\hyperlink{assign__tools_8c_a361bd41194ac13caf9169f3f689dc179}{COLOR\+\_\+\+PURPLE}}, \mbox{\hyperlink{assign__tools_8c_ad86358bf19927183dd7b4ae215a29731}{COLOR\+\_\+\+RED}}, \mbox{\hyperlink{assign__tools_8c_a17f760256046df23dd0ab46602f04d02}{COLOR\+\_\+\+RESET}}, \mbox{\hyperlink{assign__tools_8c_a4534b577b74a58b0f4b7be027af664e0}{COLOR\+\_\+\+YELLOW}}, \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{map\+::max\+Height}}, \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{map\+::max\+Width}}, and \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{cell\+::type}}.
+
+\mbox{\Hypertarget{assign__tools_8c_afb874241bed5cd492f5a109ab072c9f9}\label{assign__tools_8c_afb874241bed5cd492f5a109ab072c9f9}} 
+\index{assign\_tools.c@{assign\_tools.c}!stringType@{stringType}}
+\index{stringType@{stringType}!assign\_tools.c@{assign\_tools.c}}
+\doxysubsubsection{\texorpdfstring{stringType()}{stringType()}}
+{\footnotesize\ttfamily void string\+Type (\begin{DoxyParamCaption}\item[{int}]{stat }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{253 \{}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255     \textcolor{comment}{//Return the type's string}}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257     \textcolor{keywordflow}{if}(stat == 0)}
+\DoxyCodeLine{258     \{}
+\DoxyCodeLine{259         printf(\textcolor{stringliteral}{"{}POLITIC :"{}});}
+\DoxyCodeLine{260         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{261     \}}
+\DoxyCodeLine{262     \textcolor{keywordflow}{if}(stat == 1)}
+\DoxyCodeLine{263     \{}
+\DoxyCodeLine{264         printf(\textcolor{stringliteral}{"{}JOB :"{}});}
+\DoxyCodeLine{265         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{266     \}}
+\DoxyCodeLine{267     \textcolor{keywordflow}{if}(stat == 2)}
+\DoxyCodeLine{268     \{}
+\DoxyCodeLine{269         printf(\textcolor{stringliteral}{"{}HABITATION :"{}});}
+\DoxyCodeLine{270         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{271     \}}
+\DoxyCodeLine{272     \textcolor{keywordflow}{if}(stat == 3)}
+\DoxyCodeLine{273     \{}
+\DoxyCodeLine{274         printf(\textcolor{stringliteral}{"{}ECONOMY :"{}});}
+\DoxyCodeLine{275         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{276     \}}
+\DoxyCodeLine{277     \textcolor{keywordflow}{if}(stat == 4)}
+\DoxyCodeLine{278     \{}
+\DoxyCodeLine{279         printf(\textcolor{stringliteral}{"{}HEALTH :"{}});}
+\DoxyCodeLine{280         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{281     \}}
+\DoxyCodeLine{282     \textcolor{keywordflow}{if}(stat == 5)}
+\DoxyCodeLine{283     \{}
+\DoxyCodeLine{284         printf(\textcolor{stringliteral}{"{}SECURITY :"{}});}
+\DoxyCodeLine{285         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{286     \}}
+\DoxyCodeLine{287     errx(EXIT\_FAILURE,\textcolor{stringliteral}{"{}stringType(): not a type"{}});}
+\DoxyCodeLine{288 \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{assign__tools_8c_a00e28cbd67a94ac8ec8d7c578e669425}{print\+Matrix\+Stat()}}.
+

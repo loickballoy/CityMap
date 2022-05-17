@@ -1,0 +1,53 @@
+\hypertarget{metro_8c}{}\doxysection{metro/metro.c File Reference}
+\label{metro_8c}\index{metro/metro.c@{metro/metro.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}graph.\+h\char`\"{}}\newline
+Include dependency graph for metro.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{metro_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{metro_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{metro_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{metro_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{metro.c@{metro.c}!main@{main}}
+\index{main@{main}!metro.c@{metro.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     \mbox{\hyperlink{struct_graph_element}{Graph}} g1 = \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\_graph}}(5, \textcolor{keyword}{false});}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9     \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g1, 1, 2);}
+\DoxyCodeLine{10     \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g1, 1, 5);}
+\DoxyCodeLine{11     \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g1, 2, 4);}
+\DoxyCodeLine{12     \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g1, 2, 3);}
+\DoxyCodeLine{13     \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g1, 3, 4);}
+\DoxyCodeLine{14     \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g1, 4, 5);}
+\DoxyCodeLine{15     \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\_edge}}(g1, 1, 4);}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\_graph}}(g1);}
+\DoxyCodeLine{18     \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\_graph}}(g1);}
+\DoxyCodeLine{19     \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\_graph}}(g1);}
+\DoxyCodeLine{20     system(\textcolor{stringliteral}{"{}dot -\/Tpng graph.out -\/o graph.png"{}});}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{24 \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{graph_8c_a8d1cb3708a212c720509c3ed2d2fa10a}{add\+\_\+edge()}}, \mbox{\hyperlink{graph_8c_aa29eba70c29c94924cbacc4baaeddb76}{display\+\_\+graph()}}, \mbox{\hyperlink{graph_8c_a07c2103b1f15749f3b36b628e42040eb}{erase\+\_\+graph()}}, \mbox{\hyperlink{graph_8c_a27296dfdc775fc2a44cfdbbff2b89525}{new\+\_\+graph()}}, and \mbox{\hyperlink{graph_8c_a8d4ba8d086d768548b6039ba17d6e5ca}{print\+\_\+graph()}}.
+

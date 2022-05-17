@@ -1,0 +1,51 @@
+\hypertarget{assign__tools_8h_source}{}\doxysection{assign\+\_\+tools.\+h}
+\label{assign__tools_8h_source}\index{assign/assign\_tools.h@{assign/assign\_tools.h}}
+\mbox{\hyperlink{assign__tools_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef ASSIGN\_TOOLS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define ASSIGN\_TOOLS\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../banker/building.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define RDMRANGE 8}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}};}
+\DoxyCodeLine{12     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell_a7710bc804ed0221a4cf056cacbc633db}{building}} *\mbox{\hyperlink{structcell_a7710bc804ed0221a4cf056cacbc633db}{building}};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a33f9eae3bd092d0a68d75898a9c7367d}{stats}}[NBSTATS];}
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a419c7070b137e9a8f0134a45c18873c1}{isRoadConnected}};}
+\DoxyCodeLine{16 \};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{struct }\mbox{\hyperlink{structmap}{map}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     \textcolor{keyword}{struct }\mbox{\hyperlink{structcell}{cell}} *\mbox{\hyperlink{structmap_ab5aacba1636793932a1893f75b3f561b}{cells}};}
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} \mbox{\hyperlink{structmap_a946d2182ad7262a74e8674d94d6a1d3b}{maxHeight}};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} \mbox{\hyperlink{structmap_abcfc00fdba1d07bf4ea2626380b427d6}{maxWidth}};}
+\DoxyCodeLine{23 \};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{26 \textcolor{keywordtype}{void} \mbox{\hyperlink{assign__tools_8h_a9f3af2ddae6cdac6f969647b40cd3681}{analyseMatrix}}(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{29 \textcolor{keywordtype}{void} \mbox{\hyperlink{assign__tools_8h_a2e64253e753799f3eb76485eb7584168}{analyseMatrix\_print}}(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} \mbox{\hyperlink{assign__tools_8h_a1e41e73b11347e5f1032b3036f1d1aaf}{printMatrixTime}}(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{35 \textcolor{keywordtype}{char} \mbox{\hyperlink{assign__tools_8h_a47156102fd358fea50c7a88aa256080e}{charType}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}});}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{38 \textcolor{keywordtype}{void} \mbox{\hyperlink{assign__tools_8h_a55186af83b1331c4f6769a59cee1211e}{printMatrix}}(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{41 \textcolor{keywordtype}{void} \mbox{\hyperlink{assign__tools_8h_a00e28cbd67a94ac8ec8d7c578e669425}{printMatrixStat}}(\textcolor{keyword}{struct} \mbox{\hyperlink{structmap}{map}} *newmap, \textcolor{keywordtype}{int} stat);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{44 \textcolor{keywordtype}{void} \mbox{\hyperlink{assign__tools_8h_afb874241bed5cd492f5a109ab072c9f9}{stringType}}(\textcolor{keywordtype}{int} stat);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{47 \textcolor{keywordtype}{int} \mbox{\hyperlink{assign__tools_8h_a492dde50ddea1b36860c4ea3b1d32470}{getValue}}(\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{50 \textcolor{keywordtype}{int} \mbox{\hyperlink{assign__tools_8h_ae3a3ebd33af3ef2d658519c9c18fc428}{getType}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{structcell_a8d271074c9068c96ce148c5f8f14ff18}{type}});}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 }
+
+\end{DoxyCode}
